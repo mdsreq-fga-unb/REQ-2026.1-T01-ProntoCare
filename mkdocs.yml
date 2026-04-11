@@ -1,0 +1,61 @@
+site_name: ProntoCare — REQ 2026.1 T01
+site_description: Documentação do projeto ProntoCare (Requisitos de Software).
+site_url: https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-ProntoCare/
+repo_url: https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare
+repo_name: mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: pt
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+
+nav:
+  - Início: index.md
+  - Visão do Produto:
+      - Visão geral e revisões: visao-produto/index.md
+      - Cliente e negócio: visao-produto/cliente-e-negocio.md
+      - Cenário, problema e desafios: visao-produto/cenario-problema-e-desafios.md
+      - Stakeholders e segmentação: visao-produto/stakeholders-e-segmentacao.md
+      - Solução e características: visao-produto/solucao-e-caracteristicas.md
+      - Estratégias de engenharia de software: visao-produto/estrategias-engenharia-de-software.md
+      - Engenharia de requisitos: visao-produto/engenharia-de-requisitos.md
+      - Cronograma e entregas: visao-produto/cronograma-e-entregas.md
+      - Interação entre equipe e cliente: visao-produto/interacao-equipe-cliente.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare

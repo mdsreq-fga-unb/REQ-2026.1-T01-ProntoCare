@@ -964,14 +964,6 @@
 <h3 id="2-solucao-proposta">2 Solução proposta</h3>
 <h4 id="21-objetivo-geral-do-produto">2.1 Objetivo Geral do Produto</h4>
 <p>Para solucionar a ineficiência operacional e os riscos de segurança gerados pela dependência exclusiva de registros em papel e fluxos manuais, o objetivo do ProntoCare é digitalizar e centralizar o fluxo assistencial do consultório. A solução visa substituir o arquivo físico por um sistema estruturado que permita o registro, a consulta e a recuperação imediata das informações clínicas durante o atendimento, assegurando a agilidade da consulta e a continuidade do cuidado ao paciente. Além de otimizar a rotina do médico, o produto deve garantir a integridade, a rastreabilidade e a conformidade regulatória dos dados sensíveis, mitigando as vulnerabilidades de segurança do cenário atual.</p>
-<ul>
-<li><strong>CP1</strong> — Gestão de Documentação Clínica Estruturada: Provê um ambiente de registro assistencial organizado que garante a organização lógica das informações e a continuidade do cuidado.</li>
-<li><strong>CP2</strong> — Jornada Assistencial Multicanal: Expansão para fluxos operacionais de alta complexidade, integrando plenamente as modalidades de teletriagem avançada e visitas domiciliares exaustivas.</li>
-<li><strong>CP3</strong> — Suporte Algorítmico à Decisão Clínica: Incorporação de inteligência para auxílio em diagnósticos e triagens baseadas em protocolos clínicos complexos.</li>
-<li><strong>CP4</strong> — Garantia de Integridade e Autoria Documental: Implementa mecanismos que asseguram a inviolabilidade dos registros clínicos e a verificação de autoria, garantindo segurança jurídica inicial.</li>
-<li><strong>CP5</strong> — Disponibilidade Operacional Ubíqua: Capacidade de operação contínua em diversos cenários de atendimento, garantindo que o médico não seja interrompido por instabilidades de infraestrutura externa.</li>
-<li><strong>CP6</strong> — Governança de Privacidade e Acesso: Camada de controle que gerencia a visibilidade de dados sensíveis conforme o papel do ator no ecossistema de saúde.</li>
-</ul>
 <h4 id="22-objetivos-especificos-oe-do-produto">2.2 Objetivos Específicos (OE) do Produto</h4>
 <ul>
 <li>
@@ -991,8 +983,7 @@
 </li>
 </ul>
 <h5 id="arquitetura-de-autenticidade-documental">Arquitetura de autenticidade documental</h5>
-<pre><code>O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.
-</code></pre>
+<p>O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.</p>
 <h4 id="23-caracteristicas-de-produto-mapeadas-com-os-objetivos-especificos-do-produto">2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)</h4>
 <p>A solução proposta deverá contemplar, de forma preliminar, as seguintes características:</p>
 <table>
@@ -1052,33 +1043,6 @@
 <td style="text-align: left;">Continuidade do atendimento em ambientes sem internet.</td>
 <td style="text-align: left;">OE4</td>
 <td style="text-align: left;">OE2</td>
-</tr>
-<tr>
-<td style="text-align: left;">CP6</td>
-<td style="text-align: left;">Governança de Privacidade e Acesso</td>
-<td style="text-align: left;">Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado.</td>
-<td style="text-align: left;">VN6</td>
-<td style="text-align: left;">Privacidade, segurança e autonomia do paciente.</td>
-<td style="text-align: left;">OE5</td>
-<td style="text-align: left;">OE6</td>
-</tr>
-<tr>
-<td style="text-align: left;">CP7</td>
-<td style="text-align: left;">Monitoramento de Transparência Operacional</td>
-<td style="text-align: left;">Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas.</td>
-<td style="text-align: left;">VN7</td>
-<td style="text-align: left;">Rastreabilidade das operações, fortalecendo controle e responsabilização.</td>
-<td style="text-align: left;">OE5</td>
-<td style="text-align: left;">OE2</td>
-</tr>
-<tr>
-<td style="text-align: left;">CP8</td>
-<td style="text-align: left;">Framework de Conformidade Normativa</td>
-<td style="text-align: left;">Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM.</td>
-<td style="text-align: left;">VN8</td>
-<td style="text-align: left;">Aderência regulatória e redução de controles manuais para sustentação jurídica.</td>
-<td style="text-align: left;">OE6</td>
-<td style="text-align: left;">OE5</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP6</td>

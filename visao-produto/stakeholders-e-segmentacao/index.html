@@ -508,6 +508,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#historico-de-revisoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisões
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -657,6 +668,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../li%C3%A7%C3%B5es-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lições aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -712,6 +751,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#historico-de-revisoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisões
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -734,11 +784,127 @@
 
 <h1 id="stakeholders-e-segmentacao">Stakeholders e segmentação</h1>
 <h4 id="16-mapa-de-stakeholders">1.6 Mapa de Stakeholders</h4>
-<p>(1) <strong>Médico cliente (Dr. Rogério Duarte)</strong> — valida requisitos, prioridades e entregas; principal decisor e usuário primário do sistema. (2) <strong>Pacientes</strong> — acesso restrito ao próprio prontuário; podem encaminhar dados a outros profissionais. (3) <strong>Outros profissionais de saúde</strong> — destinatários de dados encaminhados pelo paciente. (4) <strong>Equipe de desenvolvimento (Prontuariantes)</strong> — implementa e refina escopo ao longo das sprints. (5) <strong>Professor orientador (George Marsicano)</strong> — valida escopo, processo e viabilidade acadêmica. (6) <strong>Monitor (Willian)</strong> — apoia a equipe no processo e nas entregas da disciplina. Clínicas são stakeholders potenciais futuros, fora do escopo do MVP.</p>
+<ul>
+<li><strong>(1) Médico cliente (Dr. Rogério Duarte)</strong> — valida requisitos, prioridades e entregas; principal decisor e usuário primário do sistema. </li>
+<li><strong>(2) Pacientes</strong> — acesso restrito ao próprio prontuário; podem encaminhar dados a outros profissionais. </li>
+<li><strong>(3) Outros profissionais de saúde</strong> — destinatários de dados encaminhados pelo paciente. </li>
+<li><strong>(4) Equipe de desenvolvimento (Prontuariantes)</strong> — implementa e refina escopo ao longo das sprints. </li>
+<li><strong>(5) Professor orientador (George Marsicano)</strong> — valida escopo, processo e viabilidade acadêmica. </li>
+<li><strong>(6) Monitor (Willian)</strong> — apoia a equipe no processo e nas entregas da disciplina.</li>
+</ul>
 <p><img alt="" src="../../assets/visao-produto/stakeholders.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Relação</th>
+<th>Interesse principal</th>
+<th>Influência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dr. Rogério Duarte</td>
+<td>Representante do cliente.</td>
+<td>Validar escopo, prioridades e adequação ao consultório.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Médico (Usuário)</td>
+<td>Usuário principal do sistema.</td>
+<td>Agilidade no registro clínico e acesso rápido ao histórico.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Pacientes</td>
+<td>Usuários indiretos e Titulares dos dados.</td>
+<td>Privacidade e segurança. Embora não influenciam o andamento do projeto, como Titulares dos Dados (LGPD), exercem alta influência sobre os requisitos de privacidade e exclusão de dados do sistema.</td>
+<td>Baixa (projeto) / Alta (Regras)</td>
+</tr>
+<tr>
+<td>Outros profissionais de saúde</td>
+<td>Destinatários de dados encaminhados pelo paciente.</td>
+<td>Recebimento seguro e íntegro do prontuário do paciente para continuidade do cuidado.</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Órgãos Reguladores (CFM/LGPD)</td>
+<td>Fontes de conformidade e regulamentação.</td>
+<td>Garantir a guarda documental e o tratamento ético dos dados.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Equipe de desenvolvimento</td>
+<td>Responsáveis pela construção do produto</td>
+<td>Entregar uma solução funcional e cumprir requisitos acadêmicos.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Professor orientador (George Marsicano)</td>
+<td>Valida escopo, processo e viabilidade acadêmica.</td>
+<td>Validar o escopo, o processo e a viabilidade acadêmica do projeto.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Monitor (Willian)</td>
+<td>Apoia a equipe no processo e nas entregas da disciplina.</td>
+<td>Apoiar a equipe de desenvolvimento e garantir o cumprimento das entregas da disciplina.</td>
+<td>Média</td>
+</tr>
+</tbody>
+</table>
 <h4 id="17-segmentacao-de-clientes">1.7 Segmentação de Clientes</h4>
-<p>O ProntoCare atende a três segmentos distintos de usuários e clientes: (1) <strong>Segmento primário — médico autônomo:</strong> profissional graduado com CRM ativo que é, simultaneamente, o cliente que comissiona o produto, o usuário primário da solução e o principal decisor quanto à priorização de funcionalidades e à validação das entregas. Opera consultório de pequeno porte, realiza atendimentos ambulatoriais e, atualmente, mantém os registros clínicos em fichas de papel. Demanda solução capaz de apoiar seu fluxo operacional clínico de forma segura, eficiente e compatível com as exigências regulatórias aplicáveis. (2) <strong>Segmento secundário — paciente:</strong> pessoa atendida pelo médico que possui acesso restrito ao próprio prontuário e pode encaminhar seus dados a outros profissionais de saúde. Não é o comprador do sistema, mas é diretamente impactado pela qualidade, segurança e organização dos registros. (3) <strong>Segmento potencial futuro — clínicas e serviços de saúde:</strong> ambientes com múltiplos profissionais que poderiam utilizar o produto em versões futuras. Fora do escopo do MVP e do ciclo acadêmico atual.</p>
+<p>O segmento de cliente alvo exclusivo deste projeto é o Médico Autônomo (Consultório Individual). Este segmento é composto por profissionais liberais da área médica que atuam de forma independente, gerindo a própria carteira de pacientes sem o suporte de grandes infraestruturas hospitalares ou equipes dedicadas de Tecnologia da Informação. O perfil caracteriza-se por uma rotina de trabalho altamente flexível, englobando uma jornada multimodal que divide-se entre atendimentos presenciais em consultório próprio, visitas domiciliares itinerantes e consultas remotas via telemedicina.   </p>
 <p><em><img alt="" src="../../assets/visao-produto/segmentacao.png" /></em></p>
+<h4 id="historico-de-revisoes">Histórico de Revisões</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data</th>
+<th style="text-align: center;">Versão</th>
+<th style="text-align: center;">Descrição</th>
+<th style="text-align: center;">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2026-02-10</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">Elaboração inicial da visão do produto e projeto.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-02-24</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">Refinamento do escopo após reuniões de elicitação com o cliente.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-03-10</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">Definição da arquitetura documental e cadeia de autenticidade.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-03-25</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">Delimitação do escopo reduzido do MVP e revisão geral.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-04-11</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">Correções conforme revisão do professor; inclusão das seções 2.4 a 6.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-04-13</td>
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">Últimas revisões antes da primeira entrega.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+</tbody>
+</table>
 
 
 

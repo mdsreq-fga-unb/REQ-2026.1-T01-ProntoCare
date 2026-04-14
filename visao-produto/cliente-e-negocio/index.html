@@ -464,6 +464,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#historico-de-revisoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisões
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -674,6 +685,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../li%C3%A7%C3%B5es-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lições aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -741,6 +780,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#historico-de-revisoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisões
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -770,14 +820,64 @@
 <h2 id="1-cenario-atual-do-cliente-e-do-negocio">1 Cenário atual do cliente e do negócio</h2>
 <h4 id="11-identificacao-do-clienteparceiro">1.1 Identificação do Cliente/Parceiro</h4>
 <ul>
-<li><strong>Nome:</strong> Médico autônomo — profissional liberal da área médica</li>
-<li><strong>Tipo:</strong> Pessoa física — profissional de saúde</li>
+<li><strong>Nome:</strong> Médico autônomo - profissional liberal da área médica</li>
+<li><strong>Tipo:</strong> Pessoa física - profissional de saúde com consultório médico</li>
 <li><strong>Representante:</strong> Dr. Rogério Duarte</li>
 <li><strong>Forma de contato:</strong> Reuniões periódicas por videoconferência e mensagens instantâneas</li>
 <li><strong>Vínculo com o projeto:</strong> Cliente real e principal parte interessada. Participa ativamente das sessões de elicitação, valida escopo, prioridades e entregas ao longo do desenvolvimento.</li>
 </ul>
 <h4 id="12-introducao-ao-negocio-e-contexto">1.2 Introdução ao Negócio e Contexto</h4>
-<p>O cliente é um médico autônomo que realiza atendimentos em consultório, a domicílio e remotamente. O ciclo assistencial abrange acolhimento, triagem (incluindo teletriagem), consulta, visita domiciliar e acompanhamento longitudinal. Tem como referência o eSUS PEC — prontuário eletrônico da atenção básica pública brasileira — e busca solução adaptada à sua prática autônoma. O produto central é, em essência, um sistema de banco de dados de prontuários assistido por inteligência: registra atendimentos no formato SOAP com folha de rosto, e orienta triagem e encaminhamento por protocolos clínicos.</p>
+<p>O modelo de negócio baseia-se na prestação de serviços médicos por um profissional autônomo que atua de forma itinerante e fixa, realizando atendimentos em consultório próprio, em domicílio e via telemedicina. O ciclo assistencial é composto por atividades sequenciais: inicia-se no acolhimento, seguido por uma triagem (que pode ser presencial ou remota via teletriagem), a consulta clínica propriamente dita, e o acompanhamento longitudinal do paciente ao longo do tempo.</p>
+<p>Atualmente, a execução dessas atividades é estritamente manual e apoiada em registros físicos. Durante as consultas, o registro clínico é realizado no formato SOAP em prontuários de papel, que compõem o arquivo histórico do consultório. A manutenção desses documentos segue as exigências do CFM, que obriga a guarda dos registros por no mínimo 20 anos. Na prática diária, o médico precisa localizar, interpretar e atualizar manualmente essas fichas a cada novo contato com o paciente, dependendo exclusivamente da organização física dos arquivos para garantir a continuidade do cuidado. Em atendimentos domiciliares ou remotos, o profissional opera sem uma ferramenta unificada, o que exige o transporte de informações ou o registro posterior no arquivo central.</p>
+<h4 id="historico-de-revisoes">Histórico de Revisões</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data</th>
+<th style="text-align: center;">Versão</th>
+<th style="text-align: center;">Descrição</th>
+<th style="text-align: center;">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2026-02-10</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">Elaboração inicial da visão do produto e projeto.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-02-24</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">Refinamento do escopo após reuniões de elicitação com o cliente.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-03-10</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">Definição da arquitetura documental e cadeia de autenticidade.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-03-25</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">Delimitação do escopo reduzido do MVP e revisão geral.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-04-11</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">Correções conforme revisão do professor; inclusão das seções 2.4 a 6.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-04-13</td>
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">Últimas revisões antes da primeira entrega.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -6,7 +6,7 @@ A partir da estratégia de desenvolvimento de software estabelecida, tem-se a se
 
 | Sprint | Início | Fim | Objetivo principal | Entregas esperadas | Validação do cliente |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Sprint 1 | 10/03/2026 | 23/03/2026 | Configuração e planejamento | Definição do backlog inicial. Configuração do ambiente de desenvolvimento. Definição da stack tecnológica. Arquitetura inicial do sistema. | Revisão do backlog e confirmação de prioridades com o cliente. |
+| Sprint 1 | 14/03/2026 | 23/03/2026 | Configuração e planejamento | Definição do backlog inicial. Configuração do ambiente de desenvolvimento. Definição da stack tecnológica. Arquitetura inicial do sistema. | Revisão do backlog e confirmação de prioridades com o cliente. |
 | Sprint 2 | 24/03/2026 | 06/04/2026 | Módulo de cadastro de pacientes (CP1 — fase 1) | Cadastro, edição e consulta de pacientes. Entrega parcial 1: módulo de cadastro funcional. | Validação do fluxo de cadastro pelo cliente (Dr. Rogério). |
 | Sprint 3 | 07/04/2026 | 20/04/2026 | Prontuário SOAP — estrutura (CP1 — fase 2) | Folha de rosto e estrutura do prontuário SOAP. Integração entre cadastro de pacientes e prontuário. | Feedback sobre estrutura do SOAP e campos clínicos. |
 | Sprint 4 | 21/04/2026 | 04/05/2026 | Prontuário SOAP — completo + entrega parcial 2 | Registro completo de atendimentos no formato SOAP. Entrega parcial 2: prontuário SOAP funcional e integrado. | Validação do prontuário SOAP completo com o cliente. |
@@ -21,3 +21,14 @@ A partir da estratégia de desenvolvimento de software estabelecida, tem-se a se
 - Cada sprint tem duração de duas semanas, de 10/03/2026 a 13/07/2026.
 - Ao final de cada sprint, haverá reunião de revisão com o cliente para validar funcionalidades entregues e coletar feedback.
 - As entregas parciais marcadas no cronograma serão disponibilizadas em ambiente funcional para validação pelo cliente.
+
+#### Histórico de Revisões
+
+| Data | Versão | Descrição | Autor |
+| :---: | :---: | :---: | :---: |
+| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
+| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
+| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
+| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
+| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
+| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |

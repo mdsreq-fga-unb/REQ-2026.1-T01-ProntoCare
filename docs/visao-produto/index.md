@@ -5,7 +5,7 @@ Sistema de Prontuário Eletrônico de Pacientes
 
 **VISÃO DO PRODUTO E PROJETO**
 
-**Versão 0.5**
+**Versão 0.6**
 
 ## Histórico de revisão
 
@@ -16,10 +16,7 @@ Sistema de Prontuário Eletrônico de Pacientes
 | 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
 | 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
 | 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
-
-> [Este artefato deve ser utilizado como guia para o registro das informações gerais do produto e projeto. Deve ser refinado e atualizado ao longo do ciclo de vida de desenvolvimento do produto].
-
-> O conteúdo deste documento deve estar registrado no **GitHub Pages** do repositório.
+| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
 
 ## Índice
 
@@ -31,3 +28,4 @@ Sistema de Prontuário Eletrônico de Pacientes
 - [Engenharia de requisitos](engenharia-de-requisitos.md) — seção 4
 - [Cronograma e entregas](cronograma-e-entregas.md) — seção 5
 - [Interação entre equipe e cliente](interacao-equipe-cliente.md) — seção 6
+- [Lições aprendidas](lições-aprendidas.md) — seção 10

@@ -29,4 +29,21 @@ O quadro a seguir apresenta características que podem ser relacionadas ao OpenU
 
 #### 3.3 Justificativa
 
-Com base nas características do projeto e nos desafios do ProntoCare, o ScrumXP é o processo mais adequado pelos seguintes motivos: (1) **Flexibilidade e entregas rápidas** — o prazo acadêmico exige sprints quinzenais com entregas incrementais e feedback constante do Dr. Rogério, único ponto de validação clínica do produto. (2) **Práticas de qualidade técnica** — a sensibilidade dos dados clínicos exige TDD e integração contínua para garantir que cada entrega não comprometa a integridade dos registros. (3) **Adaptação ao porte da equipe** — o ScrumXP é indicado para equipes pequenas e colaborativas, como os Prontuariantes (seis membros). (4) **Foco na entrega de valor** — ciclos curtos permitem que o médico valide funcionalidades do prontuário SOAP rapidamente, reduzindo retrabalho e garantindo aderência ao fluxo real do consultório.
+Com base nas características do projeto e nos desafios do ProntoCare, o ScrumXP é o processo mais adequado pelos seguintes motivos:
+
+- **Flexibilidade e entregas rápidas** — o prazo acadêmico exige sprints quinzenais com entregas incrementais e feedback constante do Dr. Rogério, único ponto de validação clínica do produto.
+- **Práticas de qualidade técnica** — a sensibilidade dos dados clínicos exige TDD e integração contínua para garantir que cada entrega não comprometa a integridade dos registros.
+- **Adaptação ao porte da equipe** — o ScrumXP é indicado para equipes pequenas e colaborativas, como os Prontuariantes (seis membros).
+- **Foco na entrega de valor** — ciclos curtos permitem que o médico valide funcionalidades do prontuário SOAP rapidamente, reduzindo retrabalho e garantindo aderência ao fluxo real do consultório.
+
+
+#### Histórico de Revisões
+
+| Data | Versão | Descrição | Autor |
+| :---: | :---: | :---: | :---: |
+| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
+| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
+| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
+| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
+| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
+| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |

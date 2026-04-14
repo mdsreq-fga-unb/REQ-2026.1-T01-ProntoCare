@@ -33,4 +33,3 @@ mkdocs build --strict
 A visão do produto está em `docs/visao-produto/`. Imagens: `docs/assets/visao-produto/`. Novas páginas: criar o `.md` em `docs/` ou nessa pasta e registar em `nav` no `mkdocs.yml`.
 
 **Uso local (não publicado no site):** `scripts/_visao_body.md` — texto agregado opcional para comparar com exportações do PDF; a fonte publicada é `docs/visao-produto/*.md`.
-

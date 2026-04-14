@@ -116,3 +116,14 @@ As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases
 | Planejamento da próxima release | Análise e consenso | Priorização estratégica | Priorização MoSCoW, mapeamento de valor | Requisitos priorizados para a próxima release. |
 | Planejamento da próxima release | Declaração | Épicos e user stories | Criação de épicos, user stories, INVEST | User stories para objetivos da próxima release. |
 | Planejamento da próxima release | Organização e atualização | Revisão do backlog | Revisão do backlog da release, DEEP | Backlog preparado para início da próxima fase. |
+
+#### Histórico de Revisões
+
+| Data | Versão | Descrição | Autor |
+| :---: | :---: | :---: | :---: |
+| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
+| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
+| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
+| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
+| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
+| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |

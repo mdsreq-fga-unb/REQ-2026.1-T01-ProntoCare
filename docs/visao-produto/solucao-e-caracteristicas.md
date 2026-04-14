@@ -4,44 +4,57 @@
 
 #### 2.1 Objetivo Geral do Produto
 
-O objetivo do ProntoCare é apoiar e simplificar o fluxo operacional clínico do consultório por meio da digitalização e centralização dos prontuários e documentos assistenciais, permitindo registro, consulta e recuperação rápida das informações do paciente durante o atendimento. A solução deve reduzir a dependência de arquivos físicos, preservar a continuidade assistencial e oferecer segurança, rastreabilidade e conformidade regulatória compatíveis com o contexto do consultório.
+Para solucionar a ineficiência operacional e os riscos de segurança gerados pela dependência exclusiva de registros em papel e fluxos manuais, o objetivo do ProntoCare é digitalizar e centralizar o fluxo assistencial do consultório. A solução visa substituir o arquivo físico por um sistema estruturado que permita o registro, a consulta e a recuperação imediata das informações clínicas durante o atendimento, assegurando a agilidade da consulta e a continuidade do cuidado ao paciente. Além de otimizar a rotina do médico, o produto deve garantir a integridade, a rastreabilidade e a conformidade regulatória dos dados sensíveis, mitigando as vulnerabilidades de segurança do cenário atual.
+
+- **CP1** — Gestão de Documentação Clínica Estruturada: Provê um ambiente de registro assistencial organizado que garante a organização lógica das informações e a continuidade do cuidado.
+- **CP2** — Jornada Assistencial Multicanal: Expansão para fluxos operacionais de alta complexidade, integrando plenamente as modalidades de teletriagem avançada e visitas domiciliares exaustivas.
+- **CP3** — Suporte Algorítmico à Decisão Clínica: Incorporação de inteligência para auxílio em diagnósticos e triagens baseadas em protocolos clínicos complexos.
+- **CP4** — Garantia de Integridade e Autoria Documental: Implementa mecanismos que asseguram a inviolabilidade dos registros clínicos e a verificação de autoria, garantindo segurança jurídica inicial.
+- **CP5** — Disponibilidade Operacional Ubíqua: Capacidade de operação contínua em diversos cenários de atendimento, garantindo que o médico não seja interrompido por instabilidades de infraestrutura externa.
+- **CP6** — Governança de Privacidade e Acesso: Camada de controle que gerencia a visibilidade de dados sensíveis conforme o papel do ator no ecossistema de saúde.
+
 
 #### 2.2 Objetivos Específicos (OE) do Produto
 
-**(OE1)** Disponibilizar um módulo de cadastro de pacientes que permita registrar, editar e consultar, de forma centralizada, os dados cadastrais e informações clínicas básicas necessárias ao atendimento, reduzindo a fragmentação das informações e facilitando sua recuperação no contexto do consultório.
+- **(OE1)** Reduzir a fragmentação e o tempo de recuperação de informações clínicas.  Em vez de focar no "módulo de cadastro", o foco é no ganho operacional de ter os dados centralizados para consulta imediata em qualquer cenário de atendimento.
 
-**(OE2)** Centralizar o registro clínico dos pacientes em prontuários eletrônicos individuais, contemplando anamneses, exames físicos, condutas e diagnósticos codificados pela CID-10, de modo que o histórico assistencial permaneça organizado, íntegro e disponível para consultas subsequentes.
+- **(OE2)** Qualificar a precisão e a padronização do registro assistencial.  O objetivo não é apenas ter um "prontuário eletrônico", mas garantir que o histórico utilize padrões (como SOAP e CID-10) que evitem erros de interpretação comuns no papel.
 
-**(OE3)** Permitir acesso rápido e estruturado ao histórico clínico do paciente durante o atendimento, apoiando a continuidade assistencial e favorecendo decisões médicas mais seguras, ágeis e contextualizadas.
+- **(OE3)** Mitigar riscos de segurança e garantir o compliance jurídico (LGPD/CFM).  O objetivo aqui é a proteção legal do médico, substituindo a vulnerabilidade do papel por um ambiente rastreável e auditável.
 
-**(OE4)** Automatizar a geração de documentos clínicos essenciais ao fluxo do consultório, como prescrições médicas e guias de encaminhamento, eliminando a redação manual, aumentando a legibilidade e promovendo maior padronização dos registros emitidos.
+- **(OE4)** Otimizar a continuidade do cuidado em atendimentos multiplataforma.  Garantir que o médico tenha o mesmo nível de informação no consultório, no atendimento domiciliar ou remoto, eliminando o "apagão" de dados entre um local e outro.
 
-**(OE5)** Garantir a proteção e a rastreabilidade dos dados clínicos por meio de autenticação por credenciais, controle de acesso e registro das ações relevantes realizadas no sistema, em conformidade com as exigências de segurança e responsabilização aplicáveis ao tratamento de dados pessoais sensíveis de saúde.
-
-**(OE6)** Viabilizar a transição do registro físico para o digital nas funcionalidades essenciais contempladas nesta versão do produto, reduzindo a dependência operacional de prontuários em papel e estabelecendo uma base tecnológica compatível com as exigências de guarda, integridade e conformidade aplicáveis ao prontuário médico.
+- **(OE5)** Eliminar o erro humano na emissão de documentos clínicos.  Substituir a redação manual por processos automatizados para garantir a legibilidade e a padronização de prescrições e encaminhamentos.
 
 ##### Arquitetura de autenticidade documental
 
-O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.
+    O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.
 
 #### 2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)
 
 A solução proposta deverá contemplar, de forma preliminar, as seguintes características:
 
-| Contribuição principal | Contribuição secundária | ID | Característica | Descrição resumida | Valor de negócio principal |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| OE1 | OE2 | CP1 | Prontuário SOAP e folha de rosto | Registro estruturado no formato SOAP com folha de rosto contendo identificação, histórico clínico e dados relevantes do paciente. | Padronização e rastreabilidade dos registros clínicos. |
-| OE2 | OE1 | CP2 | Fluxos assistenciais completos | Suporte ao ciclo: acolhimento, triagem, teletriagem, consulta SOAP, visita domiciliar e acompanhamento longitudinal. | Cobertura integral do ciclo assistencial. |
-| OE3 | OE2 | CP3 | Suporte inteligente à triagem | Módulo de apoio à decisão por protocolos clínicos determinísticos para doenças prevalentes. Aberto a outras técnicas de IA. | Agilidade e consistência nas decisões de triagem. |
-| OE4 | OE5 | CP4 | Cadeia de autenticidade documental | Cada registro contém hash do anterior e assinatura digital. Referências publicadas em índice verificável externamente. | Integridade, autoria e não repúdio dos documentos clínicos. |
-| OE5 | OE1 | CP5 | Operação híbrida (online/offline) | Armazenamento local com sincronização automática ao recuperar conectividade. | Continuidade do atendimento em ambientes sem internet. |
-| OE6 | OE4 | CP6 | Controle de acesso e compartilhamento | Perfis diferenciados: profissionais com acesso pleno; pacientes com acesso restrito e envio de dados a outros profissionais. | Privacidade, segurança e autonomia do paciente. |
-| OE5 | OE2 | CP7 | Trilha de auditoria (logs) | O sistema deve registrar as ações relevantes realizadas no prontuário, incluindo criação, edição, consulta e demais operações críticas, com identificação do usuário, data, hora e tipo de ação executada. | Rastreabilidade das operações, fortalecendo controle e responsabilização. |
-| OE6 | OE5 | CP8 | Conformidade regulatória aplicada | O sistema deve incorporar mecanismos compatíveis com as exigências da LGPD e da regulamentação aplicável ao prontuário médico, incluindo controle de acesso, proteção de dados, registro de atividades e preservação da integridade. | Aderência regulatória e redução de controles manuais para sustentação jurídica. |
+| ID | Característica do produto | Descrição resumida | ID | Valor de negócio principal | Contribuição principal | Contribuição secundária |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| CP1 | Gestão de Documentação Assistencial Estruturada | Provê uma estrutura lógica de registro clínico que organiza o pensamento médico e facilita a recuperação histórica. | VN1 | Padronização e rastreabilidade dos registros clínicos. | OE1 | OE3 |
+| CP2 | Ecossistema de Cuidado Multimodal | Suporte integrado às diversas frentes de atuação do médico, do acolhimento fixo ao atendimento itinerante. | VN2 | Cobertura integral do ciclo assistencial. | OE2 | OE6 |
+| CP3 | Apoio Algorítmico à Decisão | Guia o fluxo assistencial por meio de protocolos clínicos, garantindo consistência técnica nas triagens. | VN3 | Agilidade e consistência nas decisões de triagem. | OE3 | OE2 |
+| CP4 | Garantia de Fé Pública e Integridade Digital | Assegura que o prontuário seja nativamente inviolável e tenha autoria incontestável para fins legais. | VN4 | Integridade, autoria e não repúdio dos documentos clínicos. | OE3 | OE1 |
+| CP5 | Resiliência e Ubiquidade Operacional | Garante que a operação clínica não seja interrompida por falhas de conectividade ou infraestrutura externa. | VN5 | Continuidade do atendimento em ambientes sem internet. | OE4 | OE2 |
+| CP6 | Governança de Privacidade e Acesso | Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado. | VN6 | Privacidade, segurança e autonomia do paciente. | OE5 | OE6 |
+| CP7 | Monitoramento de Transparência Operacional | Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas. | VN7 | Rastreabilidade das operações, fortalecendo controle e responsabilização. | OE5 | OE2 |
+| CP8 | Framework de Conformidade Normativa | Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM. | VN8 | Aderência regulatória e redução de controles manuais para sustentação jurídica. | OE6 | OE5 |
+| CP6 | Governança de Privacidade e Acesso | Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado. | VN6 | Privacidade, segurança e autonomia do paciente. | OE5 | OE6 |
+| CP7 | Monitoramento de Transparência Operacional | Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas. | VN7 | Rastreabilidade das operações, fortalecendo controle e responsabilização. | OE5 | OE2 |
+| CP8 | Framework de Conformidade Normativa | Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM. | VN8 | Aderência regulatória e redução de controles manuais para sustentação jurídica. | OE6 | OE5 |
 
 #### 2.4 Tecnologias a Serem Utilizadas
 
-As tecnologias a serem utilizadas na construção do ProntoCare serão definidas pela equipe em alinhamento com o cliente e com os requisitos técnicos do produto, considerando os critérios de custo zero de licenciamento, suporte a operação offline, segurança de dados clínicos e viabilidade de implementação no prazo acadêmico estabelecido. A definição da stack tecnológica será formalizada ao término do Sprint 1, após análise de viabilidade técnica e acordo com o cliente.
+Para a construção da solução proposta para o ProntoCare , serão utilizadas tecnologias compatíveis com a necessidade de operação em ambientes sem conectividade , segurança de dados sensíveis e desenvolvimento iterativo do produto. No frontend, será utilizado React , para a construção de interfaces de alta usabilidade que facilitem a adaptação do médico ao sistema digital. No backend, será utilizado Node.js, favorecendo a implementação de serviços web e a lógica de autenticação manual necessária para o controle de acesso. Para persistência de dados, será utilizado PostgreSQL , considerando a estrutura necessária para gerenciar prontuários individuais , dados cadastrais e o histórico clínico dos pacientes.
+
+A integração entre o webapp e o servidor será realizada por meio de APIs RESTful , permitindo a sincronização de dados e atualização dos registros assim que a conectividade for recuperada. Para garantir a operação offline, serão adotadas tecnologias de PWA (Progressive Web App) e Dexie.js para armazenamento local no navegador. A integridade dos documentos será assegurada por uma cadeia de autenticidade criptográfica com hashes SHA-256 gerados via Web Crypto API. Para apoio ao desenvolvimento colaborativo, serão utilizados Git e GitHub , além de práticas de testes e integração contínua para garantir a qualidade técnica. Também serão considerados mecanismos de segurança, privacidade e conformidade com a LGPD , em alinhamento com as normas do CFM e os requisitos de rastreabilidade do prontuário médico.
+
+
 
 #### 2.5 Pesquisa de Mercado e Análise Competitiva
 
@@ -62,33 +75,14 @@ No mercado de prontuários eletrônicos para profissionais autônomos, as soluç
 
 #### 2.6 Viabilidade da Proposta
 
-A proposta é viável no contexto da disciplina, considerando o acesso ao cliente, o escopo definido e a possibilidade de entrega incremental de um MVP funcional ao final do semestre. Embora a equipe seja estudantil e o prazo seja de aproximadamente quatro meses, o projeto foi estruturado com priorização rigorosa das funcionalidades essenciais e validações frequentes com o cliente.
+A proposta é viável no contexto da disciplina, considerando o acesso ao cliente, o escopo definido e a possibilidade de entrega incremental de um MVP funcional ao final do semestre. Embora a equipe seja estudantil, possua recursos limitados e o prazo seja restrito a aproximadamente quatro meses, o projeto foi estruturado de forma compatível com essa realidade, com priorização rigorosa das funcionalidades essenciais e validações frequentes com o cliente.
 
-**Nota de escopo — MVP:** A visão descrita neste documento representa o cenário completo e de longo prazo do produto. Dado o contexto de desenvolvimento — equipe estudantil, prazo de 3–4 meses e recursos limitados — o escopo será reduzido a um subconjunto funcional e coerente. O MVP (produto mínimo viável) cobre as características essenciais que demonstram o valor central do sistema sem comprometer a viabilidade da entrega.
+O principal desafio frente à visão completa e de longo prazo do produto é o limite de tempo e recursos, mas esse risco é mitigado pela redução do escopo a um subconjunto funcional e coerente. O MVP (produto mínimo viável) garante a entrega das características essenciais que demonstram o valor central do sistema, sem comprometer a viabilidade da entrega.
 
-**Dentro do MVP (escopo reduzido para 3–4 meses)**
-
-- CP1 — Prontuário SOAP com folha de rosto (núcleo do produto, OE1)
-- CP4 — Autenticidade por hash criptográfico por registro (simplificado, sem rede pública — OE4 parcial)
-- CP5 — Operação offline com armazenamento local e sincronização básica (OE5 parcial)
-- CP6 — Controle de acesso básico: médico com acesso pleno, paciente com acesso restrito (OE6 parcial)
-
-**Fora do MVP (visão futura — fora do escopo acadêmico neste ciclo)**
-
-- CP2 — Fluxos assistenciais completos (teletriagem, visita domiciliar) — complexidade operacional
-- CP3 — Módulo de inteligência para triagem — complexidade técnica elevada para o prazo
-- Integração com rede pública certificada — requer parceiros e infraestrutura externos
-- Clínicas como clientes — fora do escopo acadêmico desta versão
-- Conformidade com LGPD — reconhecida como inviável neste ciclo pelo professor orientador
-
-**Principais riscos e mitigações**
-
-| Risco | Probabilidade | Mitigação |
-| :--- | :--- | :--- |
-| Sincronização offline/online | Alta | Implementação incremental; testes de integração com dados reais desde as primeiras sprints. |
-| Cadeia criptográfica por registro | Média | Uso de bibliotecas consolidadas; escopo limitado ao MVP sem rede pública certificada. |
-| Adaptação do médico ao sistema | Média | Interface de alta usabilidade; validações frequentes com o cliente ao longo das sprints. |
-| Conformidade com LGPD | Baixa (fora do MVP) | Excluída explicitamente do escopo por acordo com o professor orientador. |
+Assim, a proposta é considerada viável, desde que:
+- O escopo do MVP permaneça estritamente controlado;
+- As prioridades essenciais sejam mantidas; e
+- A equipe gerencie adequadamente os recursos e o escopo dentro do prazo de 3 a 4 meses.
 
 #### 2.7 Benefícios Esperados
 
@@ -106,3 +100,15 @@ A proposta é viável no contexto da disciplina, considerando o acesso ao client
 - Possibilidade de encaminhar registros clínicos a outros profissionais de saúde.
 - Registros padronizados no formato SOAP, favorecendo a continuidade do cuidado.
 - Maior confiança no armazenamento e na integridade dos dados clínicos pessoais.
+
+
+#### Histórico de Revisões
+
+| Data | Versão | Descrição | Autor |
+| :---: | :---: | :---: | :---: |
+| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
+| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
+| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
+| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
+| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
+| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |

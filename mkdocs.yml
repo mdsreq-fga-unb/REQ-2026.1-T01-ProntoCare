@@ -55,6 +55,8 @@ nav:
       - Cronograma e entregas: visao-produto/cronograma-e-entregas.md
       - Interação entre equipe e cliente: visao-produto/interacao-equipe-cliente.md
       - Lições aprendidas: visao-produto/lições-aprendidas.md
+  - Apresentações e Entregas:
+    - Entrega 1: entregas/entrega-1.md
 
 extra:
   social:

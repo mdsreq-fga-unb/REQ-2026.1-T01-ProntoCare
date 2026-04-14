@@ -6,13 +6,6 @@
 
 Para solucionar a ineficiência operacional e os riscos de segurança gerados pela dependência exclusiva de registros em papel e fluxos manuais, o objetivo do ProntoCare é digitalizar e centralizar o fluxo assistencial do consultório. A solução visa substituir o arquivo físico por um sistema estruturado que permita o registro, a consulta e a recuperação imediata das informações clínicas durante o atendimento, assegurando a agilidade da consulta e a continuidade do cuidado ao paciente. Além de otimizar a rotina do médico, o produto deve garantir a integridade, a rastreabilidade e a conformidade regulatória dos dados sensíveis, mitigando as vulnerabilidades de segurança do cenário atual.
 
-- **CP1** — Gestão de Documentação Clínica Estruturada: Provê um ambiente de registro assistencial organizado que garante a organização lógica das informações e a continuidade do cuidado.
-- **CP2** — Jornada Assistencial Multicanal: Expansão para fluxos operacionais de alta complexidade, integrando plenamente as modalidades de teletriagem avançada e visitas domiciliares exaustivas.
-- **CP3** — Suporte Algorítmico à Decisão Clínica: Incorporação de inteligência para auxílio em diagnósticos e triagens baseadas em protocolos clínicos complexos.
-- **CP4** — Garantia de Integridade e Autoria Documental: Implementa mecanismos que asseguram a inviolabilidade dos registros clínicos e a verificação de autoria, garantindo segurança jurídica inicial.
-- **CP5** — Disponibilidade Operacional Ubíqua: Capacidade de operação contínua em diversos cenários de atendimento, garantindo que o médico não seja interrompido por instabilidades de infraestrutura externa.
-- **CP6** — Governança de Privacidade e Acesso: Camada de controle que gerencia a visibilidade de dados sensíveis conforme o papel do ator no ecossistema de saúde.
-
 
 #### 2.2 Objetivos Específicos (OE) do Produto
 
@@ -28,7 +21,7 @@ Para solucionar a ineficiência operacional e os riscos de segurança gerados pe
 
 ##### Arquitetura de autenticidade documental
 
-    O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.
+O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.
 
 #### 2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)
 
@@ -41,9 +34,6 @@ A solução proposta deverá contemplar, de forma preliminar, as seguintes carac
 | CP3 | Apoio Algorítmico à Decisão | Guia o fluxo assistencial por meio de protocolos clínicos, garantindo consistência técnica nas triagens. | VN3 | Agilidade e consistência nas decisões de triagem. | OE3 | OE2 |
 | CP4 | Garantia de Fé Pública e Integridade Digital | Assegura que o prontuário seja nativamente inviolável e tenha autoria incontestável para fins legais. | VN4 | Integridade, autoria e não repúdio dos documentos clínicos. | OE3 | OE1 |
 | CP5 | Resiliência e Ubiquidade Operacional | Garante que a operação clínica não seja interrompida por falhas de conectividade ou infraestrutura externa. | VN5 | Continuidade do atendimento em ambientes sem internet. | OE4 | OE2 |
-| CP6 | Governança de Privacidade e Acesso | Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado. | VN6 | Privacidade, segurança e autonomia do paciente. | OE5 | OE6 |
-| CP7 | Monitoramento de Transparência Operacional | Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas. | VN7 | Rastreabilidade das operações, fortalecendo controle e responsabilização. | OE5 | OE2 |
-| CP8 | Framework de Conformidade Normativa | Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM. | VN8 | Aderência regulatória e redução de controles manuais para sustentação jurídica. | OE6 | OE5 |
 | CP6 | Governança de Privacidade e Acesso | Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado. | VN6 | Privacidade, segurança e autonomia do paciente. | OE5 | OE6 |
 | CP7 | Monitoramento de Transparência Operacional | Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas. | VN7 | Rastreabilidade das operações, fortalecendo controle e responsabilização. | OE5 | OE2 |
 | CP8 | Framework de Conformidade Normativa | Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM. | VN8 | Aderência regulatória e redução de controles manuais para sustentação jurídica. | OE6 | OE5 |

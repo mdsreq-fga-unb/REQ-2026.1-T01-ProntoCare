@@ -577,10 +577,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-justificativa" class="md-nav__link">
+  <a href="#33-composicao-do-scrumxp-no-prontocare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Justificativa
+        3.3 Composição do ScrumXP no ProntoCare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-justificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Justificativa
       
     </span>
   </a>
@@ -879,10 +890,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-justificativa" class="md-nav__link">
+  <a href="#33-composicao-do-scrumxp-no-prontocare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Justificativa
+        3.3 Composição do ScrumXP no ProntoCare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-justificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Justificativa
       
     </span>
   </a>
@@ -935,7 +957,7 @@
 <li><strong>Processo de engenharia de software:</strong> ScrumXP</li>
 </ul>
 <h4 id="32-quadro-comparativo">3.2 Quadro comparativo</h4>
-<p>O quadro a seguir apresenta características que podem ser relacionadas ao OpenUP e ao ScrumXP, visando auxiliar no entendimento e justificativa da escolha do processo mais adequado ao caso do ProntoCare.</p>
+<p>O quadro a seguir compara características do OpenUP e do ScrumXP relevantes para a escolha do processo do ProntoCare. Ambos são processos iterativos e incrementais; as diferenças residem na ênfase e na forma de organização do trabalho.</p>
 <table>
 <thead>
 <tr>
@@ -947,64 +969,135 @@
 <tbody>
 <tr>
 <td style="text-align: left;">Abordagem geral</td>
-<td style="text-align: left;">Iterativo, incremental e orientado a arquitetura sólida.</td>
-<td style="text-align: left;">Iterativo e incremental, com foco em entregas rápidas e feedback contínuo.</td>
+<td style="text-align: left;">Iterativo, incremental e orientado a arquitetura. Organiza o trabalho em fases (Iniciação, Elaboração, Construção, Transição) com marcos definidos.</td>
+<td style="text-align: left;">Iterativo e incremental, organizado em sprints curtos (2–4 semanas) com entregas frequentes e adaptação contínua.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Foco em arquitetura</td>
-<td style="text-align: left;">Forte ênfase em arquitetura flexível e bem definida desde o início do projeto.</td>
-<td style="text-align: left;">Arquitetura evolui ao longo do tempo, conforme a necessidade do produto.</td>
+<td style="text-align: left;">Forte ênfase em definir a arquitetura nas fases iniciais para mitigar riscos técnicos precocemente.</td>
+<td style="text-align: left;">Arquitetura evolui ao longo das sprints; decisões arquiteturais são tomadas conforme a necessidade emerge (design incremental).</td>
 </tr>
 <tr>
 <td style="text-align: left;">Estrutura de processos</td>
-<td style="text-align: left;">Fases claras: Iniciação, Elaboração, Construção, Transição. Mais estruturado.</td>
-<td style="text-align: left;">Sprints curtos (2–4 semanas) com entregas incrementais e adaptação contínua.</td>
+<td style="text-align: left;">Fases sequenciais com iterações internas; cada fase tem objetivos e critérios de saída específicos.</td>
+<td style="text-align: left;">Sprints uniformes com cerimônias fixas (planejamento, daily, revisão, retrospectiva) e práticas técnicas contínuas do XP.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Flexibilidade de requisitos</td>
-<td style="text-align: left;">Flexibilidade com adaptações iterativas; arquitetura principal definida nas fases iniciais.</td>
-<td style="text-align: left;">Alta flexibilidade para mudanças a cada sprint; adaptável a feedback frequente do cliente.</td>
+<td style="text-align: left;">Requisitos podem evoluir entre iterações, mas a arquitetura central é estabilizada na Elaboração.</td>
+<td style="text-align: left;">Alta flexibilidade para mudanças a cada sprint; backlog repriorizado continuamente com o cliente.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Colaboração com o cliente</td>
-<td style="text-align: left;">Envolvimento intenso nas fases iniciais e finais; menos frequente no decorrer do projeto.</td>
-<td style="text-align: left;">Envolvimento constante; feedback ao final de cada sprint, requisitos sempre atualizados.</td>
+<td style="text-align: left;">Envolvimento do cliente em todas as fases, com ênfase maior na Iniciação, Elaboração e Transição.</td>
+<td style="text-align: left;">Envolvimento constante e intenso; feedback ao final de cada sprint; cliente participa de priorização e validação contínuas.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Qualidade técnica</td>
-<td style="text-align: left;">Qualidade assegurada pela arquitetura e por validações incrementais.</td>
-<td style="text-align: left;">Alta ênfase em qualidade via TDD, pair programming e integração contínua.</td>
+<td style="text-align: left;">Qualidade assegurada por revisões de arquitetura, validações incrementais e testes ao longo das iterações.</td>
+<td style="text-align: left;">Práticas técnicas explícitas do XP: TDD, pair programming, refatoração contínua e integração contínua.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Práticas de desenvolvimento</td>
-<td style="text-align: left;">Estrutura formal com controle de progresso; menos práticas técnicas específicas.</td>
-<td style="text-align: left;">TDD, refatoração contínua, integração contínua e pair programming.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Adaptação ao ProntoCare</td>
-<td style="text-align: left;">Adequado para projetos que exigem arquitetura robusta definida desde o início.</td>
-<td style="text-align: left;">Ideal para equipe pequena, prazo curto e validação frequente com o cliente médico.</td>
+<td style="text-align: left;">Papéis bem definidos (analista, arquiteto, desenvolvedor, testador); práticas guiadas por disciplinas.</td>
+<td style="text-align: left;">Equipe multifuncional com práticas técnicas prescritas (TDD, CI, pair programming, refatoração).</td>
 </tr>
 <tr>
 <td style="text-align: left;">Documentação</td>
-<td style="text-align: left;">Documentação formal por fase, com ênfase em requisitos e arquitetura.</td>
-<td style="text-align: left;">Documentação mínima; foco em comunicação e feedback rápido entre equipe e cliente.</td>
+<td style="text-align: left;">Documentação formal por fase (visão, arquitetura, requisitos, plano de testes).</td>
+<td style="text-align: left;">Documentação direcionada ao que agrega valor. No ProntoCare, isso inclui documentação de requisitos de segurança, rastreabilidade e conformidade exigidos pelo domínio clínico.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Escalabilidade</td>
-<td style="text-align: left;">Aplicável a projetos maiores com equipes médias a grandes.</td>
+<td style="text-align: left;">Aplicável a projetos de portes variados; estrutura de fases facilita equipes maiores.</td>
 <td style="text-align: left;">Mais indicado para equipes pequenas e colaborativas.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Adaptação ao ProntoCare</td>
+<td style="text-align: left;">Adequado para projetos com requisitos arquiteturais complexos desde o início e equipes com papéis especializados.</td>
+<td style="text-align: left;">Ideal para equipe pequena (6 membros), prazo acadêmico curto e validação frequente com o cliente médico, combinando agilidade com práticas técnicas rigorosas.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="33-justificativa">3.3 Justificativa</h4>
+<h4 id="33-composicao-do-scrumxp-no-prontocare">3.3 Composição do ScrumXP no ProntoCare</h4>
+<p>O ScrumXP adotado no projeto combina o framework de gestão do <strong>Scrum</strong> com as práticas técnicas do <strong>Extreme Programming (XP)</strong>. A tabela a seguir explicita quais práticas vêm de cada origem:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Origem</th>
+<th style="text-align: left;">Prática</th>
+<th style="text-align: left;">Aplicação no ProntoCare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Scrum</strong></td>
+<td style="text-align: left;">Sprints (2 semanas)</td>
+<td style="text-align: left;">Ciclos quinzenais de entrega incremental com validação do Dr. Rogério.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scrum</strong></td>
+<td style="text-align: left;">Product Backlog e Sprint Backlog</td>
+<td style="text-align: left;">Backlog priorizado com o cliente; user stories rastreáveis aos OEs e CPs.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scrum</strong></td>
+<td style="text-align: left;">Planejamento da sprint</td>
+<td style="text-align: left;">Seleção e refinamento de user stories com validação clínica prévia.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scrum</strong></td>
+<td style="text-align: left;">Revisão da sprint</td>
+<td style="text-align: left;">Demonstração ao cliente e aprovação de funcionalidades, incluindo itens de segurança e privacidade.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scrum</strong></td>
+<td style="text-align: left;">Retrospectiva da sprint</td>
+<td style="text-align: left;">Avaliação do processo de ER e identificação de causas-raiz de defeitos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scrum</strong></td>
+<td style="text-align: left;">Daily standup</td>
+<td style="text-align: left;">Sincronização diária da equipe sobre progresso e impedimentos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XP</strong></td>
+<td style="text-align: left;">TDD (Test-Driven Development)</td>
+<td style="text-align: left;">Testes escritos antes do código para garantir cobertura de regras clínicas e critérios de aceitação.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XP</strong></td>
+<td style="text-align: left;">Integração contínua</td>
+<td style="text-align: left;">Build e testes automáticos a cada commit, prevenindo regressões em funcionalidades críticas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XP</strong></td>
+<td style="text-align: left;">Pair programming</td>
+<td style="text-align: left;">Revisão em tempo real, especialmente em módulos sensíveis (cadeia de hash, controle de acesso).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XP</strong></td>
+<td style="text-align: left;">Refatoração contínua</td>
+<td style="text-align: left;">Melhoria incremental do código sem alteração de comportamento, mantendo a base sustentável.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XP</strong></td>
+<td style="text-align: left;">Design simples / incremental</td>
+<td style="text-align: left;">Arquitetura evolui sprint a sprint; decisões de design tomadas no momento adequado.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="34-justificativa">3.4 Justificativa</h4>
 <p>Com base nas características do projeto e nos desafios do ProntoCare, o ScrumXP é o processo mais adequado pelos seguintes motivos:</p>
 <ul>
-<li><strong>Flexibilidade e entregas rápidas</strong> — o prazo acadêmico exige sprints quinzenais com entregas incrementais e feedback constante do Dr. Rogério, único ponto de validação clínica do produto.</li>
-<li><strong>Práticas de qualidade técnica</strong> — a sensibilidade dos dados clínicos exige TDD e integração contínua para garantir que cada entrega não comprometa a integridade dos registros.</li>
-<li><strong>Adaptação ao porte da equipe</strong> — o ScrumXP é indicado para equipes pequenas e colaborativas, como os Prontuariantes (seis membros).</li>
-<li><strong>Foco na entrega de valor</strong> — ciclos curtos permitem que o médico valide funcionalidades do prontuário SOAP rapidamente, reduzindo retrabalho e garantindo aderência ao fluxo real do consultório.</li>
+<li><strong>Flexibilidade com disciplina</strong> — o prazo acadêmico exige sprints quinzenais com entregas incrementais e feedback constante do Dr. Rogério, único ponto de validação clínica do produto. Ao mesmo tempo, o domínio clínico exige documentação direcionada (requisitos de segurança, rastreabilidade, conformidade) que vai além do mínimo típico de projetos ágeis.</li>
+<li><strong>Práticas técnicas complementares à segurança</strong> — TDD e integração contínua contribuem para a qualidade do código e a prevenção de regressões, mas a integridade clínica e documental do ProntoCare exige também requisitos explícitos de segurança, auditoria (logs de acesso), controle de acesso baseado em papéis, backup, criptografia (SHA-256, assinatura digital) e validação de regras de negócio clínicas. Essas garantias são tratadas como requisitos não-funcionais críticos na seção 4.</li>
+<li><strong>Adaptação ao porte da equipe</strong> — o ScrumXP é indicado para equipes pequenas e colaborativas, como os Prontuariantes (seis membros), onde a comunicação direta e o pair programming substituem processos burocráticos de coordenação.</li>
+<li><strong>Foco na entrega de valor com validação clínica</strong> — ciclos curtos permitem que o médico valide funcionalidades do prontuário SOAP rapidamente, reduzindo retrabalho e garantindo aderência ao fluxo real do consultório.</li>
 </ul>
+<blockquote>
+<p><strong>Nota:</strong> embora o ScrumXP favoreça documentação enxuta, o domínio clínico do ProntoCare impõe documentação complementar obrigatória: rastreabilidade de requisitos (OE → CP → US), registro de RNFs críticos, cadeia de autenticidade e evidências de conformidade com LGPD e normas do CFM. Essa documentação é detalhada na seção 4.</p>
+</blockquote>
 <h4 id="historico-de-revisoes">Histórico de Revisões</h4>
 <table>
 <thead>
@@ -1050,6 +1143,12 @@
 <td style="text-align: center;">2026-04-13</td>
 <td style="text-align: center;">0.6</td>
 <td style="text-align: center;">Últimas revisões antes da primeira entrega.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-05-03</td>
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">Correção do quadro comparativo, decomposição Scrum vs XP, ajuste de justificativa e documentação conforme domínio clínico.</td>
 <td style="text-align: center;">Prontuariantes</td>
 </tr>
 </tbody>

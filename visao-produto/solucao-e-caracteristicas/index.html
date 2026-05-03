@@ -546,23 +546,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 Objetivos Específicos (OE) do Produto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arquitetura-de-autenticidade-documental" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arquitetura de autenticidade documental
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -937,23 +920,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 Objetivos Específicos (OE) do Produto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arquitetura-de-autenticidade-documental" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arquitetura de autenticidade documental
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -1069,8 +1035,6 @@
 <p><strong>(OE5)</strong> Eliminar o erro humano na emissão de documentos clínicos.  Substituir a redação manual por processos automatizados para garantir a legibilidade e a padronização de prescrições e encaminhamentos.</p>
 </li>
 </ul>
-<h5 id="arquitetura-de-autenticidade-documental">Arquitetura de autenticidade documental</h5>
-<p>O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.</p>
 <h4 id="23-caracteristicas-de-produto-mapeadas-com-os-objetivos-especificos-do-produto">2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)</h4>
 <p>A solução proposta deverá contemplar, de forma preliminar, as seguintes características:</p>
 <table>
@@ -1088,35 +1052,35 @@
 <tbody>
 <tr>
 <td style="text-align: left;">CP1</td>
-<td style="text-align: left;">Gestão de Documentação Assistencial Estruturada</td>
-<td style="text-align: left;">Provê uma estrutura lógica de registro clínico que organiza o pensamento médico e facilita a recuperação histórica.</td>
+<td style="text-align: left;">Prontuário eletrônico estruturado (SOAP)</td>
+<td style="text-align: left;">Registro de atendimentos em campos padronizados (Subjetivo, Objetivo, Avaliação, Plano), com busca e recuperação do histórico clínico por paciente.</td>
 <td style="text-align: left;">VN1</td>
-<td style="text-align: left;">Padronização e rastreabilidade dos registros clínicos.</td>
+<td style="text-align: left;">Padronização e recuperação rápida dos registros clínicos.</td>
 <td style="text-align: left;">OE1</td>
-<td style="text-align: left;">OE3</td>
+<td style="text-align: left;">OE2</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP2</td>
-<td style="text-align: left;">Ecossistema de Cuidado Multimodal</td>
-<td style="text-align: left;">Suporte integrado às diversas frentes de atuação do médico, do acolhimento fixo ao atendimento itinerante.</td>
+<td style="text-align: left;">Atendimento em múltiplos contextos</td>
+<td style="text-align: left;">Acesso ao prontuário e registro de atendimentos no consultório, no domicílio ou remotamente, com a mesma base de dados unificada.</td>
 <td style="text-align: left;">VN2</td>
-<td style="text-align: left;">Cobertura integral do ciclo assistencial.</td>
-<td style="text-align: left;">OE2</td>
-<td style="text-align: left;">OE6</td>
+<td style="text-align: left;">Cobertura do ciclo assistencial em qualquer local de atendimento.</td>
+<td style="text-align: left;">OE4</td>
+<td style="text-align: left;">OE1</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP3</td>
-<td style="text-align: left;">Apoio Algorítmico à Decisão</td>
-<td style="text-align: left;">Guia o fluxo assistencial por meio de protocolos clínicos, garantindo consistência técnica nas triagens.</td>
+<td style="text-align: left;">Suporte a protocolos clínicos e triagem</td>
+<td style="text-align: left;">Campos e fluxos guiados por protocolos clínicos (ex.: classificação de risco, CID-10), auxiliando o médico na padronização das triagens.</td>
 <td style="text-align: left;">VN3</td>
-<td style="text-align: left;">Agilidade e consistência nas decisões de triagem.</td>
-<td style="text-align: left;">OE3</td>
+<td style="text-align: left;">Consistência e agilidade nas decisões de triagem.</td>
 <td style="text-align: left;">OE2</td>
+<td style="text-align: left;">OE1</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP4</td>
-<td style="text-align: left;">Garantia de Fé Pública e Integridade Digital</td>
-<td style="text-align: left;">Assegura que o prontuário seja nativamente inviolável e tenha autoria incontestável para fins legais.</td>
+<td style="text-align: left;">Integridade e autenticidade documental</td>
+<td style="text-align: left;">Cadeia de hash SHA-256 entre registros e assinatura digital por atendimento, garantindo que nenhum registro seja alterado após a assinatura e que a autoria seja verificável.</td>
 <td style="text-align: left;">VN4</td>
 <td style="text-align: left;">Integridade, autoria e não repúdio dos documentos clínicos.</td>
 <td style="text-align: left;">OE3</td>
@@ -1124,39 +1088,48 @@
 </tr>
 <tr>
 <td style="text-align: left;">CP5</td>
-<td style="text-align: left;">Resiliência e Ubiquidade Operacional</td>
-<td style="text-align: left;">Garante que a operação clínica não seja interrompida por falhas de conectividade ou infraestrutura externa.</td>
+<td style="text-align: left;">Operação offline e sincronização</td>
+<td style="text-align: left;">Funcionamento completo sem internet via PWA e armazenamento local (Dexie.js); sincronização automática com o servidor ao reconectar.</td>
 <td style="text-align: left;">VN5</td>
-<td style="text-align: left;">Continuidade do atendimento em ambientes sem internet.</td>
+<td style="text-align: left;">Continuidade do atendimento em ambientes sem conectividade.</td>
 <td style="text-align: left;">OE4</td>
-<td style="text-align: left;">OE2</td>
+<td style="text-align: left;">OE1</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP6</td>
-<td style="text-align: left;">Governança de Privacidade e Acesso</td>
-<td style="text-align: left;">Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado.</td>
+<td style="text-align: left;">Controle de acesso e privacidade</td>
+<td style="text-align: left;">Autenticação do médico, perfis de acesso diferenciados (médico, paciente) e restrição de visualização de dados sensíveis conforme o papel do usuário.</td>
 <td style="text-align: left;">VN6</td>
-<td style="text-align: left;">Privacidade, segurança e autonomia do paciente.</td>
-<td style="text-align: left;">OE5</td>
-<td style="text-align: left;">OE6</td>
+<td style="text-align: left;">Privacidade dos dados do paciente e segurança de acesso.</td>
+<td style="text-align: left;">OE3</td>
+<td style="text-align: left;">OE4</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP7</td>
-<td style="text-align: left;">Monitoramento de Transparência Operacional</td>
-<td style="text-align: left;">Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas.</td>
+<td style="text-align: left;">Auditoria e rastreabilidade de acessos</td>
+<td style="text-align: left;">Log automático de todas as operações sobre dados sensíveis (quem acessou, quando, qual registro, qual ação), consultável pelo médico.</td>
 <td style="text-align: left;">VN7</td>
-<td style="text-align: left;">Rastreabilidade das operações, fortalecendo controle e responsabilização.</td>
-<td style="text-align: left;">OE5</td>
+<td style="text-align: left;">Rastreabilidade das operações para responsabilização e auditoria.</td>
+<td style="text-align: left;">OE3</td>
 <td style="text-align: left;">OE2</td>
 </tr>
 <tr>
 <td style="text-align: left;">CP8</td>
-<td style="text-align: left;">Framework de Conformidade Normativa</td>
-<td style="text-align: left;">Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM.</td>
+<td style="text-align: left;">Conformidade regulatória (LGPD/CFM)</td>
+<td style="text-align: left;">Implementação dos controles exigidos pela LGPD (consentimento, direitos do titular, proteção de dados sensíveis) e pelas resoluções do CFM sobre prontuário eletrônico.</td>
 <td style="text-align: left;">VN8</td>
-<td style="text-align: left;">Aderência regulatória e redução de controles manuais para sustentação jurídica.</td>
-<td style="text-align: left;">OE6</td>
+<td style="text-align: left;">Aderência às normas de proteção de dados e do exercício médico.</td>
+<td style="text-align: left;">OE3</td>
 <td style="text-align: left;">OE5</td>
+</tr>
+<tr>
+<td style="text-align: left;">CP9</td>
+<td style="text-align: left;">Emissão padronizada de documentos clínicos</td>
+<td style="text-align: left;">Geração automatizada de prescrições, atestados, encaminhamentos e relatórios a partir dos dados do prontuário, com modelos padronizados que eliminam erros de redação manual.</td>
+<td style="text-align: left;">VN9</td>
+<td style="text-align: left;">Eliminação de erros e legibilidade garantida na emissão de documentos.</td>
+<td style="text-align: left;">OE5</td>
+<td style="text-align: left;">OE2</td>
 </tr>
 </tbody>
 </table>
@@ -1266,6 +1239,12 @@
 <td style="text-align: center;">2026-04-13</td>
 <td style="text-align: center;">0.6</td>
 <td style="text-align: center;">Últimas revisões antes da primeira entrega.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-05-03</td>
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">Correção de CPs: remoção de OE6 inexistente, renomeação com nomes diretos, descrições práticas, adição de CP9 (emissão de documentos).</td>
 <td style="text-align: center;">Prontuariantes</td>
 </tr>
 </tbody>

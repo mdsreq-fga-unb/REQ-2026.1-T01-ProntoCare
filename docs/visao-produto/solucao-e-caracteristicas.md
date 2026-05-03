@@ -19,24 +19,21 @@ Para solucionar a ineficiência operacional e os riscos de segurança gerados pe
 
 - **(OE5)** Eliminar o erro humano na emissão de documentos clínicos.  Substituir a redação manual por processos automatizados para garantir a legibilidade e a padronização de prescrições e encaminhamentos.
 
-##### Arquitetura de autenticidade documental
-
-O prontuário não é um único arquivo, mas uma sequência de pequenos arquivos — um por atendimento. Cada arquivo contém: resumo clínico, data, autor, hash do arquivo anterior (garantindo ordem) e assinatura digital do profissional. Os arquivos ficam em servidores de instituições de saúde; as referências (hash, assinatura, identificador) podem ser registradas em rede pública certificada para garantir autenticidade. O médico consulta o índice público, verifica assinaturas e baixa apenas arquivos autorizados, reconstruindo a linha do tempo clínica. Resultado: cadeia de documentos médicos assinados — fácil de verificar, difícil de falsificar, simples de compartilhar.
-
 #### 2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)
 
 A solução proposta deverá contemplar, de forma preliminar, as seguintes características:
 
 | ID | Característica do produto | Descrição resumida | ID | Valor de negócio principal | Contribuição principal | Contribuição secundária |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| CP1 | Gestão de Documentação Assistencial Estruturada | Provê uma estrutura lógica de registro clínico que organiza o pensamento médico e facilita a recuperação histórica. | VN1 | Padronização e rastreabilidade dos registros clínicos. | OE1 | OE3 |
-| CP2 | Ecossistema de Cuidado Multimodal | Suporte integrado às diversas frentes de atuação do médico, do acolhimento fixo ao atendimento itinerante. | VN2 | Cobertura integral do ciclo assistencial. | OE2 | OE6 |
-| CP3 | Apoio Algorítmico à Decisão | Guia o fluxo assistencial por meio de protocolos clínicos, garantindo consistência técnica nas triagens. | VN3 | Agilidade e consistência nas decisões de triagem. | OE3 | OE2 |
-| CP4 | Garantia de Fé Pública e Integridade Digital | Assegura que o prontuário seja nativamente inviolável e tenha autoria incontestável para fins legais. | VN4 | Integridade, autoria e não repúdio dos documentos clínicos. | OE3 | OE1 |
-| CP5 | Resiliência e Ubiquidade Operacional | Garante que a operação clínica não seja interrompida por falhas de conectividade ou infraestrutura externa. | VN5 | Continuidade do atendimento em ambientes sem internet. | OE4 | OE2 |
-| CP6 | Governança de Privacidade e Acesso | Gerencia a visibilidade de dados sensíveis e o compartilhamento seguro entre os atores do cuidado. | VN6 | Privacidade, segurança e autonomia do paciente. | OE5 | OE6 |
-| CP7 | Monitoramento de Transparência Operacional | Provê visibilidade total sobre quem, quando e como as informações sensíveis foram acessadas. | VN7 | Rastreabilidade das operações, fortalecendo controle e responsabilização. | OE5 | OE2 |
-| CP8 | Framework de Conformidade Normativa | Harmoniza os fluxos digitais às exigências de proteção de dados (LGPD) e normativas do CFM. | VN8 | Aderência regulatória e redução de controles manuais para sustentação jurídica. | OE6 | OE5 |
+| CP1 | Prontuário eletrônico estruturado (SOAP) | Registro de atendimentos em campos padronizados (Subjetivo, Objetivo, Avaliação, Plano), com busca e recuperação do histórico clínico por paciente. | VN1 | Padronização e recuperação rápida dos registros clínicos. | OE1 | OE2 |
+| CP2 | Atendimento em múltiplos contextos | Acesso ao prontuário e registro de atendimentos no consultório, no domicílio ou remotamente, com a mesma base de dados unificada. | VN2 | Cobertura do ciclo assistencial em qualquer local de atendimento. | OE4 | OE1 |
+| CP3 | Suporte a protocolos clínicos e triagem | Campos e fluxos guiados por protocolos clínicos (ex.: classificação de risco, CID-10), auxiliando o médico na padronização das triagens. | VN3 | Consistência e agilidade nas decisões de triagem. | OE2 | OE1 |
+| CP4 | Integridade e autenticidade documental | Cadeia de hash SHA-256 entre registros e assinatura digital por atendimento, garantindo que nenhum registro seja alterado após a assinatura e que a autoria seja verificável. | VN4 | Integridade, autoria e não repúdio dos documentos clínicos. | OE3 | OE1 |
+| CP5 | Operação offline e sincronização | Funcionamento completo sem internet via PWA e armazenamento local (Dexie.js); sincronização automática com o servidor ao reconectar. | VN5 | Continuidade do atendimento em ambientes sem conectividade. | OE4 | OE1 |
+| CP6 | Controle de acesso e privacidade | Autenticação do médico, perfis de acesso diferenciados (médico, paciente) e restrição de visualização de dados sensíveis conforme o papel do usuário. | VN6 | Privacidade dos dados do paciente e segurança de acesso. | OE3 | OE4 |
+| CP7 | Auditoria e rastreabilidade de acessos | Log automático de todas as operações sobre dados sensíveis (quem acessou, quando, qual registro, qual ação), consultável pelo médico. | VN7 | Rastreabilidade das operações para responsabilização e auditoria. | OE3 | OE2 |
+| CP8 | Conformidade regulatória (LGPD/CFM) | Implementação dos controles exigidos pela LGPD (consentimento, direitos do titular, proteção de dados sensíveis) e pelas resoluções do CFM sobre prontuário eletrônico. | VN8 | Aderência às normas de proteção de dados e do exercício médico. | OE3 | OE5 |
+| CP9 | Emissão padronizada de documentos clínicos | Geração automatizada de prescrições, atestados, encaminhamentos e relatórios a partir dos dados do prontuário, com modelos padronizados que eliminam erros de redação manual. | VN9 | Eliminação de erros e legibilidade garantida na emissão de documentos. | OE5 | OE2 |
 
 #### 2.4 Tecnologias a Serem Utilizadas
 
@@ -102,3 +99,4 @@ Assim, a proposta é considerada viável, desde que:
 | 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
 | 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
 | 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
+| 2026-05-03 | 0.7 | Correção de CPs: remoção de OE6 inexistente, renomeação com nomes diretos, descrições práticas, adição de CP9 (emissão de documentos). | Prontuariantes |

@@ -13,7 +13,7 @@ A equipe de desenvolvimento é composta pelos seguintes membros:
 | Desenvolvedor Backend | Implementa a lógica de negócios, integração com banco de dados e APIs. | Fabio A. Santos Vieira |
 | Desenvolvedor Backend | Implementa a lógica de negócios, integração com banco de dados e APIs. | Vinicius A. de B. Vieira |
 | Analista de QA | Garante a qualidade do produto, executando testes de funcionalidade, performance e usabilidade. | Eduardo Lobo Moreira |
-| Analista de requisitos | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos | Uires Carlos de Oliveira |
+| Desenvolvedor Frontend | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos | Uires Carlos de Oliveira |
 | Monitor | Apoia a equipe no processo de desenvolvimento e nas entregas da disciplina. | Willian |
 
 

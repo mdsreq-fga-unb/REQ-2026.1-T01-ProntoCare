@@ -6,3 +6,9 @@ __pycache__/
 *.pyc
 .DS_Store
 .pdf_extract_tmp.txt
+
+node_modules/
+*.env
+.env
+back/.env
+front/.env

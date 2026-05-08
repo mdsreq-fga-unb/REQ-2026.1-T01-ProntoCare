@@ -4,16 +4,16 @@
 
 #### 6.1 Composição da equipe
 
-A equipe de desenvolvimento é composta pelos seguintes membros:
+A equipe de desenvolvimento é composta pelos seguintes membros. Cabe destacar que, de acordo com o modelo de trabalho da equipe, todos os integrantes colaboram ativamente na elicitação, documentação e validação:
 
 | Papel | Descrição | Responsável |
 | :--- | :--- | :--- |
-| Gerente do projeto | Coordena o projeto, garante a comunicação entre cliente e equipe, controla prazos e entrega | Luciano A. B. S. Machado |
-| Desenvolvedor Frontend | Responsável pela interface do usuário, design e implementação das funcionalidades no lado do cliente. | Pedro Gonçalves Rocha |
-| Desenvolvedor Backend | Implementa a lógica de negócios, integração com banco de dados e APIs. | Fabio A. Santos Vieira |
-| Desenvolvedor Backend | Implementa a lógica de negócios, integração com banco de dados e APIs. | Vinicius A. de B. Vieira |
-| Analista de QA | Garante a qualidade do produto, executando testes de funcionalidade, performance e usabilidade. | Eduardo Lobo Moreira |
-| Desenvolvedor Frontend | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos | Uires Carlos de Oliveira |
+| Gerente do projeto / Analista de Requisitos | Coordena o projeto, garante a comunicação entre cliente e equipe, controla prazos e gerencia os requisitos. | Luciano A. B. S. Machado |
+| Desenvolvedor Frontend / Analista de Requisitos | Responsável pela interface do usuário, participando da análise e definição dos requisitos do sistema. | Pedro Gonçalves Rocha |
+| Desenvolvedor Frontend / Analista de Requisitos | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos no frontend. | Uires Carlos de Oliveira |
+| Desenvolvedor Backend / Analista de Requisitos | Implementa a lógica de negócios e APIs, auxiliando na documentação e modelagem das regras de negócio. | Fabio A. Santos Vieira |
+| Desenvolvedor Backend / Analista de Requisitos | Implementa a lógica de negócios e APIs, auxiliando na documentação e modelagem das regras de negócio. | Vinicius A. de B. Vieira |
+| Analista de QA / Analista de Requisitos | Garante a qualidade executando testes baseados nos requisitos estabelecidos e atua na sua validação contínua. | Eduardo Lobo Moreira |
 | Monitor | Apoia a equipe no processo de desenvolvimento e nas entregas da disciplina. | Willian |
 
 
@@ -33,11 +33,13 @@ A equipe de desenvolvimento é composta pelos seguintes membros:
 
 | Tipo | Frequência | Duração / participantes | Objetivo |
 | :--- | :--- | :--- | :--- |
-| Daily standup | Diária | 15 min — equipe interna. | Alinhamento do progresso e identificação de impedimentos. |
-| Planejamento de sprint | A cada 2 semanas (início) | 1–2 h — equipe + cliente se necessário. | Definição das user stories e tarefas da sprint. |
-| Revisão de sprint | A cada 2 semanas (fim) | 1 h — equipe e cliente. | Demonstração das funcionalidades e coleta de feedback. |
-| Retrospectiva | A cada 2 semanas (fim) | 45 min — equipe interna. | Análise do processo e definição de melhorias. |
-| Reunião com o cliente | Quinzenal | 30–60 min — videoconferência. | Validação de entregas e alinhamento de prioridades. |
+| Daily standup | Diária | 2 horas — equipe interna. | Alinhamento do progresso e identificação de impedimentos de maneira online segunda, quarta e sexta, e presencialmente nas terças e quintas na janela das 18h às 20h. |
+| Planejamento de sprint | Semanal (início da sprint)* | 1–2 h — equipe interna. | Definição das user stories e tarefas da sprint. |
+| Revisão de sprint | Semanal (fim da sprint)* | 1 h — equipe interna. | Demonstração das funcionalidades e coleta de feedback. |
+| Retrospectiva | Semanal (fim da sprint)* | 45 min — equipe interna. | Análise do processo e definição de melhorias. |
+| Reunião com o cliente | Semanal | 30–60 min — videoconferência. | Validação de entregas e alinhamento de prioridades. |
+
+_* Nota: A Sprint 0 possui duração de 2 semanas, com as reuniões adaptadas para esse período._
 
 #### 6.3 Processo de validação
 
@@ -53,3 +55,4 @@ O processo de validação da solução será realizado em três etapas principai
 | 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
 | 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
 | 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
+| 2026-05-04 | 0.7 | Ajuste das frequências de reuniões para sprints de 1 semana. | Prontuariantes |

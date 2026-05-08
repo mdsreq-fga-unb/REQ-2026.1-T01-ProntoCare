@@ -14,7 +14,7 @@ O Dr. Rogério Sampaio, cliente e médico responsável pelo consultório, partic
 | :--- | :--- |
 | **Elicitação** | Entrevistas individuais e workshops para levantar necessidades clínicas, fluxos SOAP, protocolos de atendimento e restrições operacionais do consultório. |
 | **Priorização** | Participa da priorização MoSCoW validando quais funcionalidades são clinicamente indispensáveis (Must have) e quais podem ser postergadas, com base em impacto assistencial. |
-| **Validação de critérios de aceitação** | Antes da sprint, revisa e aprova os critérios de aceitação de cada user story, garantindo que reflitam corretamente as regras clínicas e o fluxo SOAP esperado. |
+| **Validação de critérios de aceitação** | Antes de cada 2 sprints, revisa e aprova os critérios de aceitação de cada user story, garantindo que reflitam corretamente as regras clínicas e o fluxo SOAP esperado. |
 | **Revisão de RNFs clínicos** | Valida requisitos não-funcionais sensíveis ao domínio (ex.: tempo de resposta em consulta, legibilidade do prontuário, conformidade com normas do CFM e LGPD). |
 | **Gestão de mudanças** | Qualquer alteração em requisitos clínicos, fluxo SOAP ou regras de negócio passa por aprovação do Dr. Rogério antes de ser incorporada ao backlog. |
 | **Aprovação de segurança, privacidade e integridade documental** | Decisões que afetam a segurança do paciente, privacidade de dados (LGPD) e integridade da cadeia de autenticidade do prontuário requerem aprovação explícita do cliente. |

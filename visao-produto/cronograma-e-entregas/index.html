@@ -877,73 +877,123 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Sprint 1</td>
+<td style="text-align: left;">Sprint 0</td>
 <td style="text-align: left;">19/04/2026</td>
 <td style="text-align: left;">02/05/2026</td>
-<td style="text-align: left;">Configuração, arquitetura e cadastro de pacientes</td>
+<td style="text-align: left;">Configuração e arquitetura inicial</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Ambiente configurado. Arquitetura inicial.</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">N/A (Validação interna)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sprint 1</td>
+<td style="text-align: left;">03/05/2026</td>
+<td style="text-align: left;">09/05/2026</td>
+<td style="text-align: left;">Cadastro de pacientes</td>
 <td style="text-align: left;">CP1, CP6</td>
-<td style="text-align: left;">Ambiente configurado. Arquitetura inicial. Cadastro de pacientes com autenticação. <strong>Entrega parcial 1:</strong> módulo de cadastro funcional.</td>
+<td style="text-align: left;">Cadastro de pacientes com autenticação. <strong>Entrega parcial 1:</strong> módulo de cadastro funcional.</td>
 <td style="text-align: left;">Controle de acesso básico; dados sensíveis protegidos no cadastro.</td>
 <td style="text-align: left;">Validação do fluxo de cadastro e controle de acesso com o Dr. Rogério.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sprint 2</td>
-<td style="text-align: left;">03/05/2026</td>
+<td style="text-align: left;">10/05/2026</td>
 <td style="text-align: left;">16/05/2026</td>
-<td style="text-align: left;">Prontuário SOAP e histórico clínico</td>
-<td style="text-align: left;">CP1, CP3</td>
-<td style="text-align: left;">Estrutura SOAP. Integração com cadastro. Campos guiados por protocolos (CID-10). <strong>Entrega parcial 2:</strong> prontuário SOAP funcional.</td>
-<td style="text-align: left;">Privacidade (acesso restrito ao perfil autorizado); início da auditoria de acesso aos registros.</td>
-<td style="text-align: left;">Feedback sobre estrutura do SOAP, campos clínicos e fluxo de consulta.</td>
+<td style="text-align: left;">Prontuário SOAP (Estrutura base)</td>
+<td style="text-align: left;">CP1</td>
+<td style="text-align: left;">Estrutura SOAP inicial. Integração com cadastro.</td>
+<td style="text-align: left;">Privacidade (acesso restrito ao perfil autorizado).</td>
+<td style="text-align: left;">Feedback sobre estrutura base do SOAP.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sprint 3</td>
 <td style="text-align: left;">17/05/2026</td>
-<td style="text-align: left;">30/05/2026</td>
-<td style="text-align: left;">Integridade documental e exportação de dados</td>
-<td style="text-align: left;">CP4, CP7, CP9</td>
-<td style="text-align: left;">Cadeia de integridade criptográfica. Exportação de dados do prontuário (JSON, PDF). Log completo de auditoria.</td>
-<td style="text-align: left;">Integridade documental verificável; rastreabilidade completa de operações; não repúdio.</td>
-<td style="text-align: left;">Validação da verificação de integridade, logs de auditoria e exportação com o Dr. Rogério.</td>
+<td style="text-align: left;">23/05/2026</td>
+<td style="text-align: left;">Histórico clínico e protocolos</td>
+<td style="text-align: left;">CP3</td>
+<td style="text-align: left;">Campos guiados por protocolos (CID-10). <strong>Entrega parcial 2:</strong> prontuário SOAP funcional.</td>
+<td style="text-align: left;">Início da auditoria de acesso aos registros.</td>
+<td style="text-align: left;">Feedback sobre campos clínicos e fluxo de consulta.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sprint 4</td>
-<td style="text-align: left;">31/05/2026</td>
-<td style="text-align: left;">13/06/2026</td>
-<td style="text-align: left;">Operação offline e sincronização</td>
-<td style="text-align: left;">CP5, CP2</td>
-<td style="text-align: left;">Armazenamento local (PWA/Dexie.js). Sincronização automática. Acesso em múltiplos contextos. <strong>Entrega parcial 3:</strong> operação offline funcional.</td>
-<td style="text-align: left;">Integridade mantida offline; conflitos de sincronização tratados; privacidade no armazenamento local.</td>
-<td style="text-align: left;">Teste do fluxo offline → online com o Dr. Rogério; validação em cenário de atendimento domiciliar.</td>
+<td style="text-align: left;">24/05/2026</td>
+<td style="text-align: left;">30/05/2026</td>
+<td style="text-align: left;">Integridade documental (Cadeia criptográfica)</td>
+<td style="text-align: left;">CP4</td>
+<td style="text-align: left;">Cadeia de integridade criptográfica.</td>
+<td style="text-align: left;">Integridade documental verificável.</td>
+<td style="text-align: left;">Validação da verificação de integridade.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sprint 5</td>
-<td style="text-align: left;">14/06/2026</td>
-<td style="text-align: left;">27/06/2026</td>
-<td style="text-align: left;">Conformidade regulatória e emissão de documentos</td>
-<td style="text-align: left;">CP8, CP9, CP6</td>
-<td style="text-align: left;">Perfil paciente. Controles de conformidade LGPD (consentimento, proteção). Emissão padronizada de receitas. <strong>Entrega parcial 4:</strong> MVP com conformidade básica.</td>
-<td style="text-align: left;">Conformidade LGPD parcial aplicada; controle de acesso completo (médico + paciente); auditoria abrangente.</td>
-<td style="text-align: left;">Validação dos perfis de acesso, controles de privacidade e documentos emitidos.</td>
+<td style="text-align: left;">31/05/2026</td>
+<td style="text-align: left;">06/06/2026</td>
+<td style="text-align: left;">Exportação de dados e Auditoria</td>
+<td style="text-align: left;">CP7, CP9</td>
+<td style="text-align: left;">Exportação de dados do prontuário (JSON, PDF). Log completo de auditoria.</td>
+<td style="text-align: left;">Rastreabilidade completa de operações; não repúdio.</td>
+<td style="text-align: left;">Validação dos logs de auditoria e exportação com o Dr. Rogério.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sprint 6</td>
+<td style="text-align: left;">07/06/2026</td>
+<td style="text-align: left;">13/06/2026</td>
+<td style="text-align: left;">Operação offline (Armazenamento local)</td>
+<td style="text-align: left;">CP5</td>
+<td style="text-align: left;">Armazenamento local (PWA/Dexie.js).</td>
+<td style="text-align: left;">Privacidade no armazenamento local.</td>
+<td style="text-align: left;">Validação do funcionamento básico offline.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sprint 7</td>
+<td style="text-align: left;">14/06/2026</td>
+<td style="text-align: left;">20/06/2026</td>
+<td style="text-align: left;">Sincronização automática</td>
+<td style="text-align: left;">CP2</td>
+<td style="text-align: left;">Sincronização automática. Acesso em múltiplos contextos. <strong>Entrega parcial 3:</strong> operação offline funcional.</td>
+<td style="text-align: left;">Integridade mantida offline; conflitos de sincronização tratados.</td>
+<td style="text-align: left;">Teste do fluxo offline → online com o Dr. Rogério; validação em cenário de atendimento domiciliar.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sprint 8</td>
+<td style="text-align: left;">21/06/2026</td>
+<td style="text-align: left;">27/06/2026</td>
+<td style="text-align: left;">Conformidade LGPD (Consentimento)</td>
+<td style="text-align: left;">CP8</td>
+<td style="text-align: left;">Perfil paciente. Controles de conformidade LGPD (consentimento, proteção).</td>
+<td style="text-align: left;">Conformidade LGPD parcial aplicada; controle de acesso (paciente).</td>
+<td style="text-align: left;">Validação dos perfis de acesso e controles de privacidade.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sprint 9</td>
 <td style="text-align: left;">28/06/2026</td>
+<td style="text-align: left;">04/07/2026</td>
+<td style="text-align: left;">Emissão de documentos</td>
+<td style="text-align: left;">CP9, CP6</td>
+<td style="text-align: left;">Emissão padronizada de receitas. <strong>Entrega parcial 4:</strong> MVP com conformidade básica.</td>
+<td style="text-align: left;">Auditoria abrangente.</td>
+<td style="text-align: left;">Validação dos documentos emitidos.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sprint 10</td>
+<td style="text-align: left;">05/07/2026</td>
 <td style="text-align: left;">11/07/2026</td>
-<td style="text-align: left;">Homologação, testes de aceitação e entrega final</td>
+<td style="text-align: left;">Homologação, testes e entrega final</td>
 <td style="text-align: left;">Todas</td>
-<td style="text-align: left;">Revisão de todos os módulos. Testes de aceitação com o Dr. Rogério. Ajustes finais. <strong>Entrega final:</strong> MVP homologado (entrega acadêmica dia 13/07).</td>
-<td style="text-align: left;">Revisão transversal de todos os RNFs críticos; testes de segurança e integridade ponta a ponta.</td>
+<td style="text-align: left;">Revisão geral e ajustes finais. <strong>Entrega final:</strong> MVP homologado (entrega acadêmica dia 13/07).</td>
+<td style="text-align: left;">Validação final de segurança, integridade e todos os RNFs críticos.</td>
 <td style="text-align: left;">Homologação formal pelo Dr. Rogério e aprovação final do MVP.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Princípios do cronograma</strong></p>
 <ul>
-<li><strong>Duração padronizada</strong>: as sprints têm duração fixa de exatas 2 semanas, conforme o manual da equipe, iniciando em 19/04/2026 e finalizando a última sprint em 11/07/2026 (com a entrega acadêmica na segunda-feira, 13/07/2026).</li>
+<li><strong>Duração padronizada</strong>: a Sprint 0 tem duração de 2 semanas (para ambientação e infraestrutura inicial). As demais sprints (1 a 10) têm duração fixa de exata 1 semana, iniciando em 19/04/2026 e finalizando a última sprint em 11/07/2026 (com a entrega acadêmica na segunda-feira, 13/07/2026).</li>
 <li><strong>Integração contínua</strong>: cada sprint entrega código integrado ao sistema existente, testado e funcional — não há sprint de "integração de módulos".</li>
-<li><strong>Testes a cada sprint</strong>: TDD e testes de integração são executados em todas as sprints, não apenas ao final. A Sprint 6 foca em testes de aceitação com o cliente.</li>
-<li><strong>RNFs transversais</strong>: segurança, privacidade, auditoria, integridade e conformidade são incorporados em cada funcionalidade desde a Sprint 2. A coluna "RNFs transversais" explicita quais aspectos são tratados em cada sprint.</li>
+<li><strong>Testes a cada sprint</strong>: TDD e testes de integração são executados em todas as sprints, não apenas ao final. As Sprints 9 e 10 focam em testes de aceitação com o cliente.</li>
+<li><strong>RNFs transversais</strong>: segurança, privacidade, auditoria, integridade e conformidade são incorporados em cada funcionalidade desde a Sprint 1. A coluna "RNFs transversais" explicita quais aspectos são tratados em cada sprint.</li>
 <li><strong>Validação clínica contínua</strong>: o Dr. Rogério valida funcionalidades ao final de cada sprint, não apenas na homologação final.</li>
 <li><strong>Cobertura das CPs</strong>: todas as características de produto (CP1–CP9) estão mapeadas nas sprints, garantindo rastreabilidade entre o cronograma e a seção 2.3.</li>
 </ul>
@@ -1010,6 +1060,12 @@
 <td style="text-align: center;">2026-05-03</td>
 <td style="text-align: center;">0.9</td>
 <td style="text-align: center;">Condensação para 6 sprints de 2 semanas exatas, para manter consistência com as regras da equipe.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-05-04</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">Ajuste para sprints de 1 semana (exceto Sprint 0 com 2 semanas).</td>
 <td style="text-align: center;">Prontuariantes</td>
 </tr>
 </tbody>

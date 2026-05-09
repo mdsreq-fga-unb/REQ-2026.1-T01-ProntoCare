@@ -16,7 +16,7 @@ A partir da estratégia de desenvolvimento ScrumXP estabelecida, tem-se a seguin
 | Sprint 7 | 14/06/2026 | 20/06/2026 | Sincronização automática | CP2 | Sincronização automática. Acesso em múltiplos contextos. **Entrega parcial 3:** operação offline funcional. | Integridade mantida offline; conflitos de sincronização tratados. | Teste do fluxo offline → online com o Dr. Rogério; validação em cenário de atendimento domiciliar. |
 | Sprint 8 | 21/06/2026 | 27/06/2026 | Conformidade LGPD (Consentimento) | CP8 | Perfil paciente. Controles de conformidade LGPD (consentimento, proteção). | Conformidade LGPD parcial aplicada; controle de acesso (paciente). | Validação dos perfis de acesso e controles de privacidade. |
 | Sprint 9 | 28/06/2026 | 04/07/2026 | Emissão de documentos | CP9, CP6 | Emissão padronizada de receitas. **Entrega parcial 4:** MVP com conformidade básica. | Auditoria abrangente. | Validação dos documentos emitidos. |
-| Sprint 10 | 05/07/2026 | 11/07/2026 | Homologação, testes e entrega final | Todas | Revisão geral e ajustes finais. **Entrega final:** MVP homologado (entrega acadêmica dia 13/07). | Validação final de segurança, integridade e todos os RNFs críticos. | Homologação formal pelo Dr. Rogério e aprovação final do MVP. |
+| Sprint 10 | 05/07/2026 | 11/07/2026 | Homologação, e entrega final | Todas | Revisão geral e ajustes finais. **Entrega final:** MVP homologado (entrega acadêmica dia 13/07). | Validação final de segurança, integridade e todos os RNFs críticos. | Homologação formal pelo Dr. Rogério e aprovação final do MVP. |
 
 **Princípios do cronograma**
 

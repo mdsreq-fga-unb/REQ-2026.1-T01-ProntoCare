@@ -9,6 +9,7 @@ router.delete('/me', autenticar, autorizar('paciente'), ctrl.solicitarExclusao);
 router.get('/me/exportar', autenticar, autorizar('paciente'), ctrl.exportarDados);
 
 router.get('/', autenticar, autorizar('medico', 'admin'), ctrl.listar);
+router.get('/exportar', autenticar, autorizar('medico', 'admin'), ctrl.exportarTodos);
 router.get('/:id', autenticar, autorizar('medico', 'admin'), ctrl.buscarPorId);
 router.post('/', autenticar, autorizar('medico'), ctrl.criar);
 router.put('/:id', autenticar, autorizar('medico'), ctrl.atualizar);

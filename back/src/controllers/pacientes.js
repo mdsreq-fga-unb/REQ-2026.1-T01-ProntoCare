@@ -5,14 +5,28 @@ const SALT_ROUNDS = 10;
 
 async function listar(req, res) {
   try {
-    let query, params;
-    if (req.user.role === 'admin') {
-      query = `SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes ORDER BY nome`;
-      params = [];
-    } else {
-      query = `SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE medico_id = $1 ORDER BY nome`;
-      params = [req.user.id];
+    const { nome, cpf } = req.query;
+    let query = `SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE 1=1`;
+    let params = [];
+    let paramIndex = 1;
+
+    if (req.user.role !== 'admin') {
+      query += ` AND medico_id = $${paramIndex++}`;
+      params.push(req.user.id);
     }
+
+    if (nome) {
+      query += ` AND nome ILIKE $${paramIndex++}`;
+      params.push(`%${nome}%`);
+    }
+
+    if (cpf) {
+      query += ` AND cpf = $${paramIndex++}`;
+      params.push(cpf);
+    }
+
+    query += ` ORDER BY nome`;
+
     const { rows } = await pool.query(query, params);
     return res.json(rows);
   } catch (err) {
@@ -139,4 +153,26 @@ async function exportarDados(req, res) {
   }
 }
 
-module.exports = { listar, buscarPorId, criar, atualizar, excluir, minhasConta, solicitarExclusao, exportarDados };
+async function exportarTodos(req, res) {
+  try {
+    let query = `SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE 1=1`;
+    let params = [];
+    let paramIndex = 1;
+
+    // Se não for admin, exporta apenas os pacientes vinculados ao médico
+    if (req.user.role !== 'admin') {
+      query += ` AND medico_id = $${paramIndex++}`;
+      params.push(req.user.id);
+    }
+
+    const { rows } = await pool.query(query, params);
+
+    res.setHeader('Content-Disposition', `attachment; filename="exportacao_pacientes_${new Date().getTime()}.json"`);
+    res.setHeader('Content-Type', 'application/json');
+    return res.json({ exportado_em: new Date().toISOString(), total: rows.length, dados: rows });
+  } catch (err) {
+    return res.status(500).json({ erro: 'Erro interno.' });
+  }
+}
+
+module.exports = { listar, buscarPorId, criar, atualizar, excluir, minhasConta, solicitarExclusao, exportarDados, exportarTodos };

@@ -12,3 +12,4 @@ node_modules/
 .env
 back/.env
 front/.env
+back/clear-db.js

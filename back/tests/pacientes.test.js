@@ -63,4 +63,17 @@ describe('Pacientes', () => {
     const res = await request(app).delete('/api/pacientes/me').set('Authorization', `Bearer ${tokenPaciente}`);
     expect(res.status).toBe(200);
   });
+
+  it('200 medico/admin exportar', async () => {
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 10 }, { id: 11 }] });
+    const res = await request(app).get('/api/pacientes/exportar').set('Authorization', `Bearer ${tokenMedico1}`);
+    expect(res.status).toBe(200);
+    expect(res.body.total).toBe(2);
+  });
+
+  it('200 admin search filters', async () => {
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 10, nome: 'P', cpf: '123' }] });
+    const res = await request(app).get('/api/pacientes?nome=P&cpf=123').set('Authorization', `Bearer ${tokenAdmin}`);
+    expect(res.status).toBe(200);
+  });
 });

@@ -4,12 +4,18 @@ import { api } from '../api';
 export default function MedicoPanel({ onLogout }) {
   const [pacientes, setPacientes] = useState([]);
   const [form, setForm] = useState({ nome:'', cpf:'', email:'', senha:'' });
+  const [busca, setBusca] = useState({ nome: '', cpf: '' });
 
-  useEffect(() => { carregar(); }, []);
+  useEffect(() => { carregar(); }, [busca]);
 
   async function carregar() {
     try {
-      const data = await api.get('/pacientes');
+      const params = new URLSearchParams();
+      if (busca.nome) params.append('nome', busca.nome);
+      if (busca.cpf) params.append('cpf', busca.cpf);
+      
+      const query = params.toString() ? `?${params.toString()}` : '';
+      const data = await api.get(`/pacientes${query}`);
       setPacientes(data);
     } catch (e) { alert(e.message); }
   }
@@ -37,10 +43,34 @@ export default function MedicoPanel({ onLogout }) {
     } catch (e) { alert(e.message); }
   }
 
+  async function exportarDados() {
+    try {
+      const data = await api.get('/pacientes/exportar');
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `pacientes_exportacao.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e) { alert(e.message); }
+  }
+
+  function exportarPaciente(paciente) {
+    const blob = new Blob([JSON.stringify(paciente, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `paciente_${paciente.id}_${paciente.nome}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <div>
       <h2>Medico</h2>
       <button onClick={onLogout}>Sair</button>
+      <button onClick={exportarDados} style={{ marginLeft: '10px' }}>Exportar Todos Meus Pacientes</button>
       
       <form onSubmit={salvar}>
         <h3>Novo Paciente</h3>
@@ -51,14 +81,32 @@ export default function MedicoPanel({ onLogout }) {
         <button type="submit">Salvar</button>
       </form>
 
+      <hr style={{ margin: '20px 0' }} />
+
+      <div>
+        <h3>Buscar Pacientes</h3>
+        <input 
+          placeholder="Buscar por nome..." 
+          value={busca.nome} 
+          onChange={e => setBusca({ ...busca, nome: e.target.value })} 
+          style={{ marginRight: '10px' }}
+        />
+        <input 
+          placeholder="Buscar por CPF..." 
+          value={busca.cpf} 
+          onChange={e => setBusca({ ...busca, cpf: e.target.value })} 
+        />
+      </div>
+
       <ul>
         {pacientes.map(p => (
-          <li key={p.id}>
-            {p.nome} ({p.cpf}) - {p.ativo ? 'Ativo' : 'Inativo'}
+          <li key={p.id} style={{ marginBottom: '8px' }}>
+            {p.nome} ({p.cpf}) - {p.ativo ? 'Ativo' : 'Inativo'}{' '}
             {p.ativo 
               ? <button onClick={() => desativar(p.id)}>Desativar</button>
               : <button onClick={() => reativar(p.id)}>Reativar</button>
             }
+            <button onClick={() => exportarPaciente(p)} style={{ marginLeft: '10px' }}>Exportar</button>
           </li>
         ))}
       </ul>

@@ -22,6 +22,21 @@ function autenticar(req, res, next) {
   }
 }
 
+function autenticarOpcional(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return next();
+  }
+
+  const token = authHeader.split(' ')[1];
+  try {
+    req.user = jwt.verify(token, JWT_SECRET);
+    next();
+  } catch {
+    return next();
+  }
+}
+
 function autorizar(...roles) {
   return (req, res, next) => {
     if (!req.user || !roles.includes(req.user.role)) {
@@ -31,4 +46,4 @@ function autorizar(...roles) {
   };
 }
 
-module.exports = { gerarToken, autenticar, autorizar };
+module.exports = { gerarToken, autenticar, autorizar, autenticarOpcional };

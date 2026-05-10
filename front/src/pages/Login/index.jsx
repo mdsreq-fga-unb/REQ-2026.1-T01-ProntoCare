@@ -75,16 +75,7 @@ export default function Login({ onLogin }) {
           </button>
         </form>
 
-        <div className="links-rodape">
-          <p>
-            Ainda não tem conta?{' '}
-            <button type="button" onClick={() => navigate('/register')} className="btn-link">
-              Cadastre-se
-            </button>
-          </p>
-     
-     
-        </div> 
+        
 
       </div>
     </div>

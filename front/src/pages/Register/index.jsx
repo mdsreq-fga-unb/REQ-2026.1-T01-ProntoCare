@@ -20,6 +20,10 @@ export default function Register() {
 
     const [loading, setLoading] = useState(false);
 
+    const maskCPF = (v) => v.replace(/\D/g, '').slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    const maskCEP = (v) => v.replace(/\D/g, '').slice(0, 8).replace(/(\d{5})(\d)/, '$1-$2');
+    const maskTelefone = (v) => v.replace(/\D/g, '').slice(0, 11).replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{4,5})(\d{4})$/, '$1-$2');
+
     // Salva os dados do formulário
     async function handleSubmit(e) {
         e.preventDefault();
@@ -84,7 +88,7 @@ export default function Register() {
                         </div>
                         <div className="input-group">
                             <label>CPF</label>
-                            <input type="text" placeholder="ex: 000.000.000-00" value={form.cpf} onChange={e => setForm({ ...form, cpf: e.target.value })} required />
+                            <input type="text" placeholder="ex: 000.000.000-00" value={form.cpf} onChange={e => setForm({ ...form, cpf: maskCPF(e.target.value) })} pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite o CPF no formato 000.000.000-00" required />
                         </div>
                         </div>
                     </fieldset>
@@ -108,7 +112,7 @@ export default function Register() {
                         <div className="row-3">
                         <div className="input-group">
                             <label>CEP</label>
-                            <input type="text" placeholder="ex: 00000-000" value={form.cep} onChange={e => setForm({ ...form, cep: e.target.value })} required />
+                            <input type="text" placeholder="ex: 00000-000" value={form.cep} onChange={e => setForm({ ...form, cep: maskCEP(e.target.value) })} pattern="\d{5}-\d{3}" title="Digite o CEP no formato 00000-000" required />
                         </div>
                         <div className="input-group">
                             <label>Número/Complemento</label>
@@ -116,7 +120,7 @@ export default function Register() {
                         </div>
                         <div className="input-group">
                             <label>Telefone / WhatsApp</label>
-                            <input type="tel" placeholder="ex: (99) 99999-9999" value={form.telefone} onChange={e => setForm({ ...form, telefone: e.target.value })} required />
+                            <input type="tel" placeholder="ex: (99) 99999-9999" value={form.telefone} onChange={e => setForm({ ...form, telefone: maskTelefone(e.target.value) })} pattern="\(\d{2}\)\s\d{4,5}-\d{4}" title="Digite o telefone no formato (99) 99999-9999" required />
                         </div>
                         </div>
                     </fieldset>

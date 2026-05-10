@@ -62,7 +62,7 @@ async function atualizar(req, res) {
     if (especialidade !== undefined) { campos.push(`especialidade = $${idx++}`); valores.push(especialidade); }
     if (email !== undefined) { campos.push(`email = $${idx++}`); valores.push(email); }
     if (ativo !== undefined) { campos.push(`ativo = $${idx++}`); valores.push(ativo); }
-    if (senha !== undefined) {
+    if (senha) {
       const senha_hash = await bcrypt.hash(senha, SALT_ROUNDS);
       campos.push(`senha_hash = $${idx++}`);
       valores.push(senha_hash);

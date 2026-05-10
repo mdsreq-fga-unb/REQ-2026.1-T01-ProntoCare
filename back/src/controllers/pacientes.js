@@ -56,7 +56,7 @@ async function criar(req, res) {
 
   try {
     const senha_hash = await bcrypt.hash(senha, SALT_ROUNDS);
-    const medicoId = req.user.role === 'medico' ? req.user.id : null;
+    const medicoId = req.user && req.user.role === 'medico' ? req.user.id : null;
     const { rows } = await pool.query(
       `INSERT INTO pacientes (nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, senha_hash, medico_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, criado_em`,
       [nomeFinal, cpf, dataNascFinal || null, sexo || null, nomeMae || null, email, telefone || null, cep || null, numero || null, senha_hash, medicoId]
@@ -94,7 +94,7 @@ async function atualizar(req, res) {
     if (cep !== undefined) { campos.push(`cep = $${idx++}`); valores.push(cep); }
     if (numero !== undefined) { campos.push(`numero = $${idx++}`); valores.push(numero); }
     if (ativo !== undefined) { campos.push(`ativo = $${idx++}`); valores.push(ativo); }
-    if (senha !== undefined) {
+    if (senha) {
       const senha_hash = await bcrypt.hash(senha, SALT_ROUNDS);
       campos.push(`senha_hash = $${idx++}`);
       valores.push(senha_hash);

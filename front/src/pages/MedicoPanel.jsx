@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../api';
+import './Panel.css';
 
 export default function MedicoPanel({ onLogout }) {
+  const navigate = useNavigate();
   const [pacientes, setPacientes] = useState([]);
-  const [form, setForm] = useState({ nomeCompleto:'', cpf:'', dataNascimento: '', sexo: '', nomeMae: '', email:'', telefone: '', cep: '', numero: '', senha:'' });
   const [busca, setBusca] = useState({ nome: '', cpf: '' });
 
   useEffect(() => { carregar(); }, [busca]);
@@ -17,15 +19,6 @@ export default function MedicoPanel({ onLogout }) {
       const query = params.toString() ? `?${params.toString()}` : '';
       const data = await api.get(`/pacientes${query}`);
       setPacientes(data);
-    } catch (e) { alert(e.message); }
-  }
-
-  async function salvar(e) {
-    e.preventDefault();
-    try {
-      await api.post('/pacientes', form);
-      setForm({ nomeCompleto:'', cpf:'', dataNascimento: '', sexo: '', nomeMae: '', email:'', telefone: '', cep: '', numero: '', senha:'' });
-      carregar();
     } catch (e) { alert(e.message); }
   }
 
@@ -67,62 +60,61 @@ export default function MedicoPanel({ onLogout }) {
   }
 
   return (
-    <div>
-      <h2>Medico</h2>
-      <button onClick={onLogout}>Sair</button>
-      <button onClick={exportarDados} style={{ marginLeft: '10px' }}>Exportar Todos Meus Pacientes</button>
-      
-      <form onSubmit={salvar}>
-        <h3>Novo Paciente</h3>
-        <div><input placeholder="Nome Completo" value={form.nomeCompleto} onChange={e => setForm({...form, nomeCompleto: e.target.value})} /></div>
-        <div><input placeholder="Data de Nascimento" type="date" value={form.dataNascimento} onChange={e => setForm({...form, dataNascimento: e.target.value})} /></div>
-        <div>
-          <select value={form.sexo} onChange={e => setForm({...form, sexo: e.target.value})}>
-            <option value="">Selecione o Sexo</option>
-            <option value="M">Masculino</option>
-            <option value="F">Feminino</option>
-            <option value="O">Outro</option>
-          </select>
+    <div className="panel-container">
+      <div className="panel-card">
+        <header className="panel-header">
+          <h2>Painel do Médico</h2>
+          <div className="panel-actions">
+            <button className="btn-primario" onClick={() => navigate('/register')}>+ Novo Paciente</button>
+            <button className="btn-secundario" onClick={exportarDados}>Exportar Todos</button>
+            <button className="btn-danger" onClick={onLogout}>Sair</button>
+          </div>
+        </header>
+
+        <div className="panel-form">
+          <h3>Buscar Pacientes</h3>
+          <div className="row-2">
+            <div className="input-group">
+              <label>Buscar por Nome</label>
+              <input 
+                placeholder="Ex: João da Silva" 
+                value={busca.nome} 
+                onChange={e => setBusca({ ...busca, nome: e.target.value })} 
+              />
+            </div>
+            <div className="input-group">
+              <label>Buscar por CPF</label>
+              <input 
+                placeholder="Ex: 000.000.000-00" 
+                value={busca.cpf} 
+                onChange={e => setBusca({ ...busca, cpf: e.target.value })} 
+              />
+            </div>
+          </div>
         </div>
-        <div><input placeholder="CPF" value={form.cpf} onChange={e => setForm({...form, cpf: e.target.value})} /></div>
-        <div><input placeholder="Nome da Mãe" value={form.nomeMae} onChange={e => setForm({...form, nomeMae: e.target.value})} /></div>
-        <div><input placeholder="E-mail" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></div>
-        <div><input placeholder="Telefone" value={form.telefone} onChange={e => setForm({...form, telefone: e.target.value})} /></div>
-        <div><input placeholder="CEP" value={form.cep} onChange={e => setForm({...form, cep: e.target.value})} /></div>
-        <div><input placeholder="Número" value={form.numero} onChange={e => setForm({...form, numero: e.target.value})} /></div>
-        <div><input placeholder="Senha" type="password" value={form.senha} onChange={e => setForm({...form, senha: e.target.value})} /></div>
-        <button type="submit">Salvar</button>
-      </form>
 
-      <hr style={{ margin: '20px 0' }} />
-
-      <div>
-        <h3>Buscar Pacientes</h3>
-        <input 
-          placeholder="Buscar por nome..." 
-          value={busca.nome} 
-          onChange={e => setBusca({ ...busca, nome: e.target.value })} 
-          style={{ marginRight: '10px' }}
-        />
-        <input 
-          placeholder="Buscar por CPF..." 
-          value={busca.cpf} 
-          onChange={e => setBusca({ ...busca, cpf: e.target.value })} 
-        />
+        <div className="panel-form">
+          <h3>Meus Pacientes</h3>
+          <ul className="panel-list">
+            {pacientes.map(p => (
+              <li key={p.id}>
+                <div className="list-info">
+                  <span className="list-title">{p.nome}</span>
+                  <span className="list-subtitle">CPF: {p.cpf} • Status: {p.ativo ? 'Ativo' : 'Inativo'}</span>
+                </div>
+                <div className="list-actions">
+                  <button className="btn-primario" onClick={() => navigate(`/edit-paciente/${p.id}`)}>Editar</button>
+                  <button className="btn-secundario" onClick={() => exportarPaciente(p)}>Exportar</button>
+                  {p.ativo 
+                    ? <button className="btn-danger" onClick={() => desativar(p.id)}>Desativar</button>
+                    : <button className="btn-success" onClick={() => reativar(p.id)}>Reativar</button>
+                  }
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-      <ul>
-        {pacientes.map(p => (
-          <li key={p.id} style={{ marginBottom: '8px' }}>
-            {p.nome} ({p.cpf}) - {p.ativo ? 'Ativo' : 'Inativo'}{' '}
-            {p.ativo 
-              ? <button onClick={() => desativar(p.id)}>Desativar</button>
-              : <button onClick={() => reativar(p.id)}>Reativar</button>
-            }
-            <button onClick={() => exportarPaciente(p)} style={{ marginLeft: '10px' }}>Exportar</button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

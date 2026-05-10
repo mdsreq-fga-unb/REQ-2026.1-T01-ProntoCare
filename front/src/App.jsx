@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Register from './pages/Register';
 import Login       from './pages/Login';
+import EditPaciente from './pages/EditPaciente';
 import AdminPanel  from './pages/AdminPanel';
 import MedicoPanel from './pages/MedicoPanel';
 import PacientePanel from './pages/PacientePanel';
@@ -29,7 +30,11 @@ function App() {
         {/* 2 - Rota do Cadastro de Pacientes */}
         <Route 
           path="/register" 
-          element={<Register />} 
+          element={role === 'medico' ? <Register /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/edit-paciente/:id" 
+          element={role === 'medico' ? <EditPaciente /> : <Navigate to="/login" />} 
         />
 
         {/* 3 - Rota dos Perfis */}

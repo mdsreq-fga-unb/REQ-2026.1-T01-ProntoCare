@@ -1,0 +1,267 @@
+/* Container for panels */
+.panel-container {
+  min-height: 100vh;
+  background-color: #69bfc0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Card */
+.panel-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+/* Header */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f1f2f6;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel-header h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap; /* Permite quebrar linha caso falte espaço em telas menores */
+}
+
+/* Buttons */
+.btn-primario {
+  background-color: #2980b9;
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.btn-primario:hover {
+  background-color: #2471a3;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-success {
+  background-color: #27ae60;
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.btn-success:hover {
+  background-color: #219653;
+}
+
+.btn-secundario {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #bdc3c7;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.btn-secundario:hover {
+  background-color: #bdc3c7;
+}
+
+/* Forms and Inputs */
+.panel-form {
+  background-color: #fcfcfc;
+  border: 1px solid #f1f2f6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.panel-form h3 {
+  margin-top: 0;
+  color: #34495e;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 0.4rem;
+}
+
+.input-group input,
+.input-group select {
+  padding: 0.8rem;
+  border: 1px solid #dcdde1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 1rem; 
+}
+
+/* Lists */
+.panel-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.panel-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f2f6;
+  transition: background-color 0.2s;
+}
+
+.panel-list li:hover {
+  background-color: #f9f9f9;
+}
+
+.list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.list-title {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.list-subtitle {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.list-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Paciente Data */
+.dados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dado-item {
+  background-color: #fcfcfc;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #f1f2f6;
+}
+
+.dado-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #7f8c8d;
+  text-transform: uppercase;
+}
+
+.dado-valor {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+/* Tamanho uniforme para os botões do painel */
+.btn-primario, .btn-secundario, .btn-danger, .btn-success {
+  box-sizing: border-box;
+  height: 42px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* Botões do cabeçalho de ações: todos com a mesma largura */
+.panel-actions button {
+  width: 170px;
+  flex-shrink: 0;
+}
+
+/* Botões da lista: largura menor e fixa */
+.list-actions button {
+  width: 110px;
+  flex-shrink: 0;
+}

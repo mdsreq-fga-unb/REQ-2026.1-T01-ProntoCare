@@ -1,0 +1,156 @@
+/* 1. Variáveis de Cor */
+:root {
+  --primary-blue: #0056b3;
+  --hover-blue: #004494;
+  --bg-light: #f4f7f6;
+  --text-dark: #333333;
+  --text-muted: #666666;
+  --error-red: #d9534f;
+  --error-bg: #fdf7f7;
+  --border-color: #cccccc;
+  --white: #ffffff;
+}
+
+/* 2. O Fundo da Página e Centraliza o Card */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  /* Uma textura de pontinhos */
+  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 3. O Cartão Branco de Login */
+.login-card {
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px; /* Não deixa o card ficar gigante no PC */
+  text-align: center;
+}
+
+/* 4. Textos do Cabeçalho */
+.login-card header h2 {
+  color: var(--primary-blue);
+  font-size: 28px;
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.login-card header p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* 5. Organização dos Inputs */
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Garante que o padding não quebre o tamanho */
+}
+
+/* Efeito quando clica no input */
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+/* 6. Botão Principal */
+.btn-primario {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-primario:hover {
+  background-color: var(--hover-blue);
+}
+
+/* Estado de loading (Botão desativado) */
+.btn-primario:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+/* 7. Mensagem de Erro */
+.mensagem-erro {
+  background-color: var(--error-bg);
+  color: var(--error-red);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6CB;
+}
+
+.mensagem-erro p {
+  margin: 0;
+}
+
+/* 8. Rodapé e Link de Cadastro */
+.links-rodape {
+  margin-top: 25px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* 9. Responsividade (Se a tela for pequena como um celular) */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

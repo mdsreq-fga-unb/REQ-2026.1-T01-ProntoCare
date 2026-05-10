@@ -56,7 +56,13 @@ export default function PacientePanel({ onLogout }) {
         <div>
           <p>Nome: {dados.nome}</p>
           <p>CPF: {dados.cpf}</p>
+          <p>Data de Nascimento: {dados.data_nascimento}</p>
+          <p>Sexo: {dados.sexo}</p>
+          <p>Nome da Mãe: {dados.nome_mae}</p>
           <p>E-mail: {dados.email}</p>
+          <p>Telefone: {dados.telefone}</p>
+          <p>CEP: {dados.cep}</p>
+          <p>Número: {dados.numero}</p>
           <p>Ativo: {dados.ativo ? 'Sim' : 'Nao'}</p>
 
           <button onClick={exportar}>Exportar dados</button>

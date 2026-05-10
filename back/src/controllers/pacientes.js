@@ -6,7 +6,7 @@ const SALT_ROUNDS = 10;
 async function listar(req, res) {
   try {
     const { nome, cpf } = req.query;
-    let query = `SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE 1=1`;
+    let query = `SELECT id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE 1=1`;
     let params = [];
     let paramIndex = 1;
 
@@ -37,7 +37,7 @@ async function listar(req, res) {
 async function buscarPorId(req, res) {
   const { id } = req.params;
   try {
-    const { rows } = await pool.query(`SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE id = $1`, [id]);
+    const { rows } = await pool.query(`SELECT id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE id = $1`, [id]);
     if (rows.length === 0) return res.status(404).json({ erro: 'Nao encontrado.' });
     const paciente = rows[0];
     if (req.user.role === 'medico' && paciente.medico_id !== req.user.id) return res.status(403).json({ erro: 'Acesso negado.' });
@@ -48,15 +48,18 @@ async function buscarPorId(req, res) {
 }
 
 async function criar(req, res) {
-  const { nome, cpf, data_nascimento, email, telefone, senha } = req.body;
-  if (!nome || !cpf || !email || !senha) return res.status(400).json({ erro: 'Campos obrigatorios.' });
+  const { nome, nomeCompleto, cpf, data_nascimento, dataNascimento, sexo, nomeMae, email, telefone, cep, numero, senha } = req.body;
+  const nomeFinal = nomeCompleto || nome;
+  const dataNascFinal = dataNascimento || data_nascimento;
+
+  if (!nomeFinal || !cpf || !email || !senha) return res.status(400).json({ erro: 'Campos obrigatorios.' });
 
   try {
     const senha_hash = await bcrypt.hash(senha, SALT_ROUNDS);
     const medicoId = req.user.role === 'medico' ? req.user.id : null;
     const { rows } = await pool.query(
-      `INSERT INTO pacientes (nome, cpf, data_nascimento, email, telefone, senha_hash, medico_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em`,
-      [nome, cpf, data_nascimento || null, email, telefone || null, senha_hash, medicoId]
+      `INSERT INTO pacientes (nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, senha_hash, medico_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, criado_em`,
+      [nomeFinal, cpf, dataNascFinal || null, sexo || null, nomeMae || null, email, telefone || null, cep || null, numero || null, senha_hash, medicoId]
     );
     return res.status(201).json(rows[0]);
   } catch (err) {
@@ -67,7 +70,9 @@ async function criar(req, res) {
 
 async function atualizar(req, res) {
   const { id } = req.params;
-  const { nome, cpf, data_nascimento, email, telefone, senha, ativo } = req.body;
+  const { nome, nomeCompleto, cpf, data_nascimento, dataNascimento, sexo, nomeMae, email, telefone, cep, numero, senha, ativo } = req.body;
+  const nomeFinal = nomeCompleto || nome;
+  const dataNascFinal = dataNascimento || data_nascimento;
 
   try {
     const existe = await pool.query('SELECT id, medico_id FROM pacientes WHERE id = $1', [id]);
@@ -79,11 +84,15 @@ async function atualizar(req, res) {
     const valores = [];
     let idx = 1;
 
-    if (nome !== undefined) { campos.push(`nome = $${idx++}`); valores.push(nome); }
+    if (nomeFinal !== undefined) { campos.push(`nome = $${idx++}`); valores.push(nomeFinal); }
     if (cpf !== undefined) { campos.push(`cpf = $${idx++}`); valores.push(cpf); }
-    if (data_nascimento !== undefined) { campos.push(`data_nascimento = $${idx++}`); valores.push(data_nascimento); }
+    if (dataNascFinal !== undefined) { campos.push(`data_nascimento = $${idx++}`); valores.push(dataNascFinal); }
+    if (sexo !== undefined) { campos.push(`sexo = $${idx++}`); valores.push(sexo); }
+    if (nomeMae !== undefined) { campos.push(`nome_mae = $${idx++}`); valores.push(nomeMae); }
     if (email !== undefined) { campos.push(`email = $${idx++}`); valores.push(email); }
     if (telefone !== undefined) { campos.push(`telefone = $${idx++}`); valores.push(telefone); }
+    if (cep !== undefined) { campos.push(`cep = $${idx++}`); valores.push(cep); }
+    if (numero !== undefined) { campos.push(`numero = $${idx++}`); valores.push(numero); }
     if (ativo !== undefined) { campos.push(`ativo = $${idx++}`); valores.push(ativo); }
     if (senha !== undefined) {
       const senha_hash = await bcrypt.hash(senha, SALT_ROUNDS);
@@ -95,7 +104,7 @@ async function atualizar(req, res) {
 
     valores.push(id);
     const { rows } = await pool.query(
-      `UPDATE pacientes SET ${campos.join(', ')} WHERE id = $${idx} RETURNING id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, atualizado_em`,
+      `UPDATE pacientes SET ${campos.join(', ')} WHERE id = $${idx} RETURNING id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, atualizado_em`,
       valores
     );
     return res.json(rows[0]);
@@ -122,7 +131,7 @@ async function excluir(req, res) {
 
 async function minhasConta(req, res) {
   try {
-    const { rows } = await pool.query(`SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE id = $1`, [req.user.id]);
+    const { rows } = await pool.query(`SELECT id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE id = $1`, [req.user.id]);
     if (rows.length === 0) return res.status(404).json({ erro: 'Nao encontrado.' });
     return res.json(rows[0]);
   } catch (err) {
@@ -142,7 +151,7 @@ async function solicitarExclusao(req, res) {
 
 async function exportarDados(req, res) {
   try {
-    const { rows } = await pool.query(`SELECT id, nome, cpf, data_nascimento, email, telefone, criado_em, atualizado_em FROM pacientes WHERE id = $1`, [req.user.id]);
+    const { rows } = await pool.query(`SELECT id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, criado_em, atualizado_em FROM pacientes WHERE id = $1`, [req.user.id]);
     if (rows.length === 0) return res.status(404).json({ erro: 'Nao encontrado.' });
 
     res.setHeader('Content-Disposition', `attachment; filename="meus_dados_${req.user.id}.json"`);
@@ -155,7 +164,7 @@ async function exportarDados(req, res) {
 
 async function exportarTodos(req, res) {
   try {
-    let query = `SELECT id, nome, cpf, data_nascimento, email, telefone, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE 1=1`;
+    let query = `SELECT id, nome, cpf, data_nascimento, sexo, nome_mae, email, telefone, cep, numero, medico_id, ativo, criado_em, atualizado_em FROM pacientes WHERE 1=1`;
     let params = [];
     let paramIndex = 1;
 

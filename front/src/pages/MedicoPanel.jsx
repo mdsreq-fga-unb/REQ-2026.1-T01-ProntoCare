@@ -3,7 +3,7 @@ import { api } from '../api';
 
 export default function MedicoPanel({ onLogout }) {
   const [pacientes, setPacientes] = useState([]);
-  const [form, setForm] = useState({ nome:'', cpf:'', email:'', senha:'' });
+  const [form, setForm] = useState({ nomeCompleto:'', cpf:'', dataNascimento: '', sexo: '', nomeMae: '', email:'', telefone: '', cep: '', numero: '', senha:'' });
   const [busca, setBusca] = useState({ nome: '', cpf: '' });
 
   useEffect(() => { carregar(); }, [busca]);
@@ -24,7 +24,7 @@ export default function MedicoPanel({ onLogout }) {
     e.preventDefault();
     try {
       await api.post('/pacientes', form);
-      setForm({ nome:'', cpf:'', email:'', senha:'' });
+      setForm({ nomeCompleto:'', cpf:'', dataNascimento: '', sexo: '', nomeMae: '', email:'', telefone: '', cep: '', numero: '', senha:'' });
       carregar();
     } catch (e) { alert(e.message); }
   }
@@ -74,9 +74,22 @@ export default function MedicoPanel({ onLogout }) {
       
       <form onSubmit={salvar}>
         <h3>Novo Paciente</h3>
-        <div><input placeholder="Nome" value={form.nome} onChange={e => setForm({...form, nome: e.target.value})} /></div>
+        <div><input placeholder="Nome Completo" value={form.nomeCompleto} onChange={e => setForm({...form, nomeCompleto: e.target.value})} /></div>
+        <div><input placeholder="Data de Nascimento" type="date" value={form.dataNascimento} onChange={e => setForm({...form, dataNascimento: e.target.value})} /></div>
+        <div>
+          <select value={form.sexo} onChange={e => setForm({...form, sexo: e.target.value})}>
+            <option value="">Selecione o Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outro</option>
+          </select>
+        </div>
         <div><input placeholder="CPF" value={form.cpf} onChange={e => setForm({...form, cpf: e.target.value})} /></div>
+        <div><input placeholder="Nome da Mãe" value={form.nomeMae} onChange={e => setForm({...form, nomeMae: e.target.value})} /></div>
         <div><input placeholder="E-mail" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></div>
+        <div><input placeholder="Telefone" value={form.telefone} onChange={e => setForm({...form, telefone: e.target.value})} /></div>
+        <div><input placeholder="CEP" value={form.cep} onChange={e => setForm({...form, cep: e.target.value})} /></div>
+        <div><input placeholder="Número" value={form.numero} onChange={e => setForm({...form, numero: e.target.value})} /></div>
         <div><input placeholder="Senha" type="password" value={form.senha} onChange={e => setForm({...form, senha: e.target.value})} /></div>
         <button type="submit">Salvar</button>
       </form>

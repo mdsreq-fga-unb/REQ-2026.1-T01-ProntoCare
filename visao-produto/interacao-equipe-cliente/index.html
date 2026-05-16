@@ -672,6 +672,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#64-participacao-do-cliente-na-engenharia-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Participação do cliente na Engenharia de Requisitos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#historico-de-revisoes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -890,6 +901,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#64-participacao-do-cliente-na-engenharia-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Participação do cliente na Engenharia de Requisitos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#historico-de-revisoes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1042,13 +1064,84 @@
 <td style="text-align: left;">Reunião com o cliente</td>
 <td style="text-align: left;">Semanal</td>
 <td style="text-align: left;">30–60 min — videoconferência.</td>
-<td style="text-align: left;">Validação de entregas e alinhamento de prioridades.</td>
+<td style="text-align: left;">Validação de entregas, revisão de critérios de aceitação e alinhamento de prioridades clínicas.</td>
 </tr>
 </tbody>
 </table>
 <p><em>* Nota: A Sprint 0 possui duração de 2 semanas, com as reuniões adaptadas para esse período.</em></p>
 <h4 id="63-processo-de-validacao">6.3 Processo de validação</h4>
-<p>O processo de validação da solução será realizado em três etapas principais: (1) <strong>Definition of Ready (DoR)</strong> — antes do início do desenvolvimento de cada funcionalidade, verificar se os requisitos estão claramente definidos, se os critérios de aceitação foram estabelecidos e se não há impedimentos técnicos identificados. (2) <strong>Definition of Done (DoD)</strong> — a funcionalidade será considerada concluída apenas se passar por testes unitários e de integração, revisão de código por par, aprovação visual e funcional pela equipe e validação dos critérios de aceitação definidos no DoR. (3) <strong>Teste de aceitação com o cliente</strong> — ao final de cada sprint, o cliente (Dr. Rogério Duarte) verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Divergências resultam em ajustes no backlog da sprint seguinte.</p>
+<p>O processo de validação da solução é realizado em três etapas que envolvem a equipe e o cliente em momentos distintos:</p>
+<ol>
+<li>
+<p><strong>Definition of Ready (DoR)</strong> — antes do início do desenvolvimento de cada funcionalidade, a equipe verifica se os requisitos estão claramente definidos, se os critérios de aceitação foram estabelecidos e aprovados pelo Dr. Rogério (especialmente para fluxo SOAP, regras clínicas e RNFs sensíveis), e se não há impedimentos técnicos. Funcionalidades que envolvem segurança, privacidade ou integridade documental passam por revisão adicional do cliente.</p>
+</li>
+<li>
+<p><strong>Definition of Done (DoD)</strong> — a funcionalidade será considerada concluída apenas se atender a todos os seguintes critérios, aplicados <strong>a cada sprint</strong> (não apenas ao final do projeto):</p>
+</li>
+<li>Testes unitários e de integração executados e aprovados (TDD aplicado desde a Sprint 1, conforme o cronograma de integração contínua);</li>
+<li>Revisão de código por par (pair programming ou code review);</li>
+<li>Aprovação visual e funcional pela equipe;</li>
+<li>Validação dos critérios de aceitação definidos no DoR;</li>
+<li>
+<p>Para funcionalidades com RNFs sensíveis: verificação de segurança, auditoria e integridade documental.</p>
+</li>
+<li>
+<p><strong>Teste de aceitação com o cliente</strong> — ao final de cada sprint, o Dr. Rogério verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Além disso, <strong>antes do desenvolvimento</strong>, o cliente valida histórias, critérios de aceitação, fluxos SOAP e RNFs sensíveis (conforme detalhado na seção 6.3). Divergências identificadas na revisão resultam em ajustes no backlog da sprint seguinte.</p>
+</li>
+</ol>
+<h4 id="64-participacao-do-cliente-na-engenharia-de-requisitos">6.4 Participação do cliente na Engenharia de Requisitos</h4>
+<p>O Dr. Rogério Sampaio, cliente e médico responsável pelo consultório, participa ativamente de todas as atividades críticas de Engenharia de Requisitos ao longo do ciclo ScrumXP. Sua atuação <strong>não se restringe à validação ao final da sprint</strong>: ele é envolvido antes, durante e após o desenvolvimento. O detalhamento completo dessa participação está documentado na seção 4.1 (Atividades e técnicas de ER e ScrumXP). A tabela a seguir resume as formas de envolvimento:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Momento</th>
+<th style="text-align: left;">Atividade de ER</th>
+<th style="text-align: left;">Forma de participação do Dr. Rogério</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Antes da sprint</strong></td>
+<td style="text-align: left;">Elicitação</td>
+<td style="text-align: left;">Entrevistas estruturadas e workshops para levantar necessidades clínicas, fluxos SOAP, protocolos de atendimento e restrições operacionais.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Antes da sprint</strong></td>
+<td style="text-align: left;">Priorização</td>
+<td style="text-align: left;">Participa da priorização MoSCoW validando quais funcionalidades são clinicamente indispensáveis (Must have) e quais podem ser postergadas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Antes da sprint</strong></td>
+<td style="text-align: left;">Validação de critérios de aceitação</td>
+<td style="text-align: left;">Revisa e aprova os critérios de aceitação de cada user story, garantindo que reflitam corretamente as regras clínicas e o fluxo SOAP esperado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Antes da sprint</strong></td>
+<td style="text-align: left;">Revisão de RNFs clínicos</td>
+<td style="text-align: left;">Valida requisitos não-funcionais sensíveis ao domínio (ex.: tempo de resposta em consulta, legibilidade do prontuário, conformidade com normas do CFM e LGPD).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Durante a sprint</strong></td>
+<td style="text-align: left;">Validação clínica intermediária</td>
+<td style="text-align: left;">Consultado sobre protótipos e comportamentos de funcionalidades sensíveis (fluxo SOAP, segurança, privacidade) antes da entrega final.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Durante a sprint</strong></td>
+<td style="text-align: left;">Gestão de mudanças</td>
+<td style="text-align: left;">Qualquer alteração em requisitos clínicos, fluxo SOAP ou regras de negócio passa por sua aprovação antes de ser incorporada ao backlog.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ao final da sprint</strong></td>
+<td style="text-align: left;">Aprovação de segurança, privacidade e integridade</td>
+<td style="text-align: left;">Decisões que afetam a segurança do paciente, privacidade de dados (LGPD) e integridade da cadeia de autenticidade do prontuário requerem sua aprovação explícita.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ao final da sprint</strong></td>
+<td style="text-align: left;">Teste de aceitação</td>
+<td style="text-align: left;">Verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="historico-de-revisoes">Histórico de Revisões</h4>
 <table>
 <thead>
@@ -1100,6 +1193,12 @@
 <td style="text-align: center;">2026-05-04</td>
 <td style="text-align: center;">0.7</td>
 <td style="text-align: center;">Ajuste das frequências de reuniões para sprints de 1 semana.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-05-16</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">Adição da seção 6.3 (participação do cliente na ER); reformulação da seção 6.4 (DoR, DoD e teste de aceitação com participação antes, durante e após a sprint).</td>
 <td style="text-align: center;">Prontuariantes</td>
 </tr>
 </tbody>

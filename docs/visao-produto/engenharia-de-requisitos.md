@@ -58,6 +58,7 @@ Esses RNFs são elicitados, priorizados, verificados e validados com o Dr. Rogé
 *Elicitação e descoberta*
 
 - **Entrevistas com o cliente:** entrevistas estruturadas com o Dr. Rogério para identificar necessidades do fluxo assistencial, prioridades do consultório, restrições operacionais e expectativas quanto à segurança e privacidade dos dados clínicos.
+- **Brainstorming com a equipe:** sessões de brainstorming para explorar soluções técnicas e funcionais a partir das necessidades levantadas nas entrevistas, gerando alternativas de design e identificando requisitos complementares.
 - **Análise de domínio clínico:** estudo do fluxo SOAP, protocolos clínicos e referências como o eSUS PEC, para embasar os requisitos com o contexto médico real. O Dr. Rogério valida se a análise reflete fielmente a prática do consultório.
 
 *Análise e consenso*
@@ -166,11 +167,11 @@ Esses RNFs são elicitados, priorizados, verificados e validados com o Dr. Rogé
 
 #### 4.2 Engenharia de requisitos e o ScrumXP
 
-As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases do ScrumXP, conforme a tabela a seguir. A coluna **Participação do cliente** indica como o Dr. Rogério atua em cada atividade.
+As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases do ScrumXP, conforme a tabela a seguir. Esta tabela sintetiza o detalhamento apresentado na seção 4.1, incluindo a participação do Dr. Rogério (conforme a tabela de participação do cliente na ER), a cadeia de rastreabilidade OE → CP → requisito → US → critério de aceitação → teste → entrega, e os RNFs críticos definidos na tabela de requisitos não-funcionais. A coluna **Participação do cliente** indica como o Dr. Rogério atua em cada atividade.
 
 | Fases do ScrumXP | Atividades da ER | Prática | Técnica | Participação do cliente | Resultado esperado |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Planejamento da release | Elicitação e descoberta | Levantamento de requisitos | Entrevistas, brainstorming, análise de domínio clínico | Dr. Rogério é entrevistado e valida a análise de domínio | Requisitos de alto nível identificados; objetivos da release definidos. |
+| Planejamento da release | Elicitação e descoberta | Levantamento de requisitos | Entrevistas estruturadas com o cliente, brainstorming com a equipe, análise de domínio clínico (fluxo SOAP, protocolos, eSUS PEC) | Dr. Rogério é entrevistado para levantar necessidades clínicas e valida a análise de domínio | Requisitos de alto nível identificados e validados; objetivos da release definidos com base no domínio clínico. |
 | Planejamento da release | Análise e consenso | Priorização de requisitos | Priorização MoSCoW, análise custo/benefício | Participa da priorização validando impacto clínico; revisa RNFs clínicos | Escopo e funcionalidades críticas priorizadas. |
 | Planejamento da release | Declaração | Registro dos requisitos | Temas, épicos e user stories (com rastreabilidade OE → CP → requisito → US) | Valida se as user stories refletem as necessidades clínicas | User stories rastreáveis aos OEs e CPs. |
 | Planejamento da release | Verificação e validação | Revisão antecipada de requisitos | Revisão de clareza, consistência, completude; verificação de RNFs críticos | Valida RNFs de segurança, privacidade, integridade e conformidade | Requisitos verificados e validados antes das sprints. |
@@ -178,16 +179,16 @@ As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases
 | Planejamento da sprint | Elicitação e descoberta | Refinamento de requisitos | Entrevistas, análise documental | Refina detalhes de fluxo SOAP, regras clínicas e cenários de uso | Requisitos refinados para a sprint. |
 | Planejamento da sprint | Análise e consenso | Análise de dependências | Discussões em equipe, análise de tarefas | Consultado sobre dependências clínicas entre funcionalidades | Consenso sobre viabilidade e priorização. |
 | Planejamento da sprint | Declaração | Critérios de aceitação | Critérios detalhados, DoR | **Revisa e aprova critérios de aceitação** (fluxo SOAP, regras clínicas, RNFs sensíveis) | User stories com critérios de aceitação validados pelo cliente. |
-| Planejamento da sprint | Verificação e validação | Verificação pré-desenvolvimento | Revisão de clareza, consistência com RNFs, verificabilidade | Valida histórias, fluxos SOAP e RNFs sensíveis antes do desenvolvimento | User stories verificadas e aprovadas para desenvolvimento. |
+| Planejamento da sprint | Verificação e validação | Verificação pré-desenvolvimento e validação de requisitos | Revisão de clareza, consistência com RNFs, verificabilidade; checklist de critérios de aceitação | Valida histórias, fluxos SOAP e RNFs sensíveis antes do desenvolvimento; confirma critérios de aceitação | User stories verificadas, validadas e aprovadas para desenvolvimento. |
 | Planejamento da sprint | Organização e atualização | Refinamento do backlog | Grooming do backlog | Confirma prioridades clínicas; aprova mudanças de escopo | Backlog refinado e priorizado com aval clínico. |
 | Execução da sprint | Representação | Criação de protótipos | Protótipos, wireframes | Valida protótipos de fluxo SOAP e interfaces clínicas | Protótipos que orientam a implementação. |
-| Execução da sprint | Verificação e validação | Validação de requisitos | Checklist, revisão de critérios | Consultado para validação clínica intermediária em funcionalidades sensíveis | Requisitos validados conforme critérios acordados. |
+| Execução da sprint | Verificação e validação | Validação clínica intermediária | Consulta ao cliente sobre protótipos e comportamentos de funcionalidades sensíveis (fluxo SOAP, segurança, privacidade) | Consultado durante a sprint para validar protótipos e comportamentos antes da entrega final | Funcionalidades sensíveis validadas clinicamente antes da revisão da sprint. |
 | Execução da sprint | Verificação e validação | DEEP do backlog | DEEP (Detalhado, Estimado, Emergente, Priorizado) | Aprova mudanças em requisitos clínicos (gestão de mudanças) | Backlog verificado e atualizado conforme critérios DEEP. |
 | Execução da sprint | Organização e atualização | Revisão do backlog | Revisão do backlog da sprint | Informado de ajustes no backlog | Backlog atualizado e alinhado. |
 | Revisão da sprint | Verificação e validação | Demonstração ao cliente | Coleta de feedback, workshop de requisitos | Avalia funcionalidades entregues; **aprova decisões de segurança, privacidade e integridade documental** | Funcionalidades verificadas; feedback coletado; aprovação formal de itens sensíveis. |
 | Revisão da sprint | Declaração | Atualização de user stories | Incorporar feedback, negociação | Negocia ajustes e prioridades para o próximo ciclo | User stories ajustadas conforme feedback. |
 | Retrospectiva da sprint | Verificação e validação | Avaliação do processo de ER | Análise de causas-raiz, revisão de eficácia das práticas de ER | — (atividade interna da equipe) | Causas de defeitos e retrabalho identificadas; melhorias no processo de ER definidas. |
-| Planejamento da próxima release | Elicitação e descoberta | Identificação de novos requisitos | Workshops, análise de domínio clínico | Workshops com o Dr. Rogério para novos requisitos | Requisitos revisados com base no feedback. |
+| Planejamento da próxima release | Elicitação e descoberta | Identificação de novos requisitos | Workshops com o cliente, análise de domínio clínico | Workshops com o Dr. Rogério para identificar novos requisitos com base no produto entregue e nas necessidades emergentes do consultório | Novos requisitos identificados e validados com o cliente; backlog da próxima release alimentado. |
 | Planejamento da próxima release | Análise e consenso | Priorização estratégica | Priorização MoSCoW, mapeamento de valor | Valida prioridades clínicas da nova release | Requisitos priorizados para a próxima release. |
 | Planejamento da próxima release | Declaração | Épicos e user stories | Criação de épicos, user stories, INVEST | Valida épicos e user stories antes da declaração final | User stories para objetivos da próxima release. |
 | Planejamento da próxima release | Verificação e validação | DEEP do backlog da release | DEEP (Detalhado, Estimado, Emergente, Priorizado) | Valida que RNFs críticos são verificáveis | Backlog verificado conforme critérios DEEP. |
@@ -204,3 +205,4 @@ As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases
 | 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
 | 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
 | 2026-05-03 | 0.7 | Reestruturação da seção 4: rastreabilidade OE→CP→US, V&V antecipada, RNFs estruturados, correção de categorias (DEEP, retrospectiva), participação do cliente. | Prontuariantes |
+| 2026-05-16 | 0.8 | Correção da seção 4.2: precisão na elicitação da release, brainstorming na 4.1, validação de requisitos movida para planejamento da sprint, referências explícitas à 4.1. | Prontuariantes |

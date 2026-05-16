@@ -37,13 +37,39 @@ A equipe de desenvolvimento é composta pelos seguintes membros. Cabe destacar q
 | Planejamento de sprint | Semanal (início da sprint)* | 1–2 h — equipe interna. | Definição das user stories e tarefas da sprint. |
 | Revisão de sprint | Semanal (fim da sprint)* | 1 h — equipe interna. | Demonstração das funcionalidades e coleta de feedback. |
 | Retrospectiva | Semanal (fim da sprint)* | 45 min — equipe interna. | Análise do processo e definição de melhorias. |
-| Reunião com o cliente | Semanal | 30–60 min — videoconferência. | Validação de entregas e alinhamento de prioridades. |
+| Reunião com o cliente | Semanal | 30–60 min — videoconferência. | Validação de entregas, revisão de critérios de aceitação e alinhamento de prioridades clínicas. |
 
 _* Nota: A Sprint 0 possui duração de 2 semanas, com as reuniões adaptadas para esse período._
 
 #### 6.3 Processo de validação
 
-O processo de validação da solução será realizado em três etapas principais: (1) **Definition of Ready (DoR)** — antes do início do desenvolvimento de cada funcionalidade, verificar se os requisitos estão claramente definidos, se os critérios de aceitação foram estabelecidos e se não há impedimentos técnicos identificados. (2) **Definition of Done (DoD)** — a funcionalidade será considerada concluída apenas se passar por testes unitários e de integração, revisão de código por par, aprovação visual e funcional pela equipe e validação dos critérios de aceitação definidos no DoR. (3) **Teste de aceitação com o cliente** — ao final de cada sprint, o cliente (Dr. Rogério Duarte) verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Divergências resultam em ajustes no backlog da sprint seguinte.
+O processo de validação da solução é realizado em três etapas que envolvem a equipe e o cliente em momentos distintos:
+
+1. **Definition of Ready (DoR)** — antes do início do desenvolvimento de cada funcionalidade, a equipe verifica se os requisitos estão claramente definidos, se os critérios de aceitação foram estabelecidos e aprovados pelo Dr. Rogério (especialmente para fluxo SOAP, regras clínicas e RNFs sensíveis), e se não há impedimentos técnicos. Funcionalidades que envolvem segurança, privacidade ou integridade documental passam por revisão adicional do cliente.
+
+2. **Definition of Done (DoD)** — a funcionalidade será considerada concluída apenas se atender a todos os seguintes critérios, aplicados **a cada sprint** (não apenas ao final do projeto):
+   - Testes unitários e de integração executados e aprovados (TDD aplicado desde a Sprint 1, conforme o cronograma de integração contínua);
+   - Revisão de código por par (pair programming ou code review);
+   - Aprovação visual e funcional pela equipe;
+   - Validação dos critérios de aceitação definidos no DoR;
+   - Para funcionalidades com RNFs sensíveis: verificação de segurança, auditoria e integridade documental.
+
+3. **Teste de aceitação com o cliente** — ao final de cada sprint, o Dr. Rogério verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Além disso, **antes do desenvolvimento**, o cliente valida histórias, critérios de aceitação, fluxos SOAP e RNFs sensíveis (conforme detalhado na seção 6.3). Divergências identificadas na revisão resultam em ajustes no backlog da sprint seguinte.
+
+#### 6.4 Participação do cliente na Engenharia de Requisitos
+
+O Dr. Rogério Sampaio, cliente e médico responsável pelo consultório, participa ativamente de todas as atividades críticas de Engenharia de Requisitos ao longo do ciclo ScrumXP. Sua atuação **não se restringe à validação ao final da sprint**: ele é envolvido antes, durante e após o desenvolvimento. O detalhamento completo dessa participação está documentado na seção 4.1 (Atividades e técnicas de ER e ScrumXP). A tabela a seguir resume as formas de envolvimento:
+
+| Momento | Atividade de ER | Forma de participação do Dr. Rogério |
+| :--- | :--- | :--- |
+| **Antes da sprint** | Elicitação | Entrevistas estruturadas e workshops para levantar necessidades clínicas, fluxos SOAP, protocolos de atendimento e restrições operacionais. |
+| **Antes da sprint** | Priorização | Participa da priorização MoSCoW validando quais funcionalidades são clinicamente indispensáveis (Must have) e quais podem ser postergadas. |
+| **Antes da sprint** | Validação de critérios de aceitação | Revisa e aprova os critérios de aceitação de cada user story, garantindo que reflitam corretamente as regras clínicas e o fluxo SOAP esperado. |
+| **Antes da sprint** | Revisão de RNFs clínicos | Valida requisitos não-funcionais sensíveis ao domínio (ex.: tempo de resposta em consulta, legibilidade do prontuário, conformidade com normas do CFM e LGPD). |
+| **Durante a sprint** | Validação clínica intermediária | Consultado sobre protótipos e comportamentos de funcionalidades sensíveis (fluxo SOAP, segurança, privacidade) antes da entrega final. |
+| **Durante a sprint** | Gestão de mudanças | Qualquer alteração em requisitos clínicos, fluxo SOAP ou regras de negócio passa por sua aprovação antes de ser incorporada ao backlog. |
+| **Ao final da sprint** | Aprovação de segurança, privacidade e integridade | Decisões que afetam a segurança do paciente, privacidade de dados (LGPD) e integridade da cadeia de autenticidade do prontuário requerem sua aprovação explícita. |
+| **Ao final da sprint** | Teste de aceitação | Verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. |
 
 #### Histórico de Revisões
 
@@ -56,3 +82,4 @@ O processo de validação da solução será realizado em três etapas principai
 | 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
 | 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
 | 2026-05-04 | 0.7 | Ajuste das frequências de reuniões para sprints de 1 semana. | Prontuariantes |
+| 2026-05-16 | 0.8 | Adição da seção 6.3 (participação do cliente na ER); reformulação da seção 6.4 (DoR, DoD e teste de aceitação com participação antes, durante e após a sprint). | Prontuariantes |

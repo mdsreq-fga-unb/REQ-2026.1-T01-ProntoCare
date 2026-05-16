@@ -45,16 +45,11 @@ _* Nota: A Sprint 0 possui duração de 2 semanas, com as reuniões adaptadas pa
 
 O processo de validação da solução é realizado em três etapas que envolvem a equipe e o cliente em momentos distintos:
 
-1. **Definition of Ready (DoR)** — antes do início do desenvolvimento de cada funcionalidade, a equipe verifica se os requisitos estão claramente definidos, se os critérios de aceitação foram estabelecidos e aprovados pelo Dr. Rogério (especialmente para fluxo SOAP, regras clínicas e RNFs sensíveis), e se não há impedimentos técnicos. Funcionalidades que envolvem segurança, privacidade ou integridade documental passam por revisão adicional do cliente.
+1. **Definition of Ready (DoR)** — antes do início do desenvolvimento, a equipe assegura que cada funcionalidade possui requisitos claros e critérios de aceitação validados pelo Dr. Rogério, especialmente em itens sensíveis ao domínio clínico (fluxo SOAP, segurança, privacidade). Os critérios completos do DoR estão detalhados na seção 9.
 
-2. **Definition of Done (DoD)** — a funcionalidade será considerada concluída apenas se atender a todos os seguintes critérios, aplicados **a cada sprint** (não apenas ao final do projeto):
-   - Testes unitários e de integração executados e aprovados (TDD aplicado desde a Sprint 1, conforme o cronograma de integração contínua);
-   - Revisão de código por par (pair programming ou code review);
-   - Aprovação visual e funcional pela equipe;
-   - Validação dos critérios de aceitação definidos no DoR;
-   - Para funcionalidades com RNFs sensíveis: verificação de segurança, auditoria e integridade documental.
+2. **Definition of Done (DoD)** — uma funcionalidade só é considerada concluída quando atende a critérios de qualidade técnica e validação clínica aplicados **a cada sprint**, incluindo testes, revisão de código e aprovação do cliente. Os critérios completos do DoD estão detalhados na seção 9.
 
-3. **Teste de aceitação com o cliente** — ao final de cada sprint, o Dr. Rogério verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Além disso, **antes do desenvolvimento**, o cliente valida histórias, critérios de aceitação, fluxos SOAP e RNFs sensíveis (conforme detalhado na seção 6.3). Divergências identificadas na revisão resultam em ajustes no backlog da sprint seguinte.
+3. **Teste de aceitação com o cliente** — ao final de cada sprint, o Dr. Rogério verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Além disso, **antes do desenvolvimento**, o cliente valida histórias, critérios de aceitação, fluxos SOAP e RNFs sensíveis. Divergências identificadas na revisão resultam em ajustes no backlog da sprint seguinte.
 
 #### 6.4 Participação do cliente na Engenharia de Requisitos
 

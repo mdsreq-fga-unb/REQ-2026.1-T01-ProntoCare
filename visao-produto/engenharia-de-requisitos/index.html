@@ -591,45 +591,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.1 Atividades e técnicas de ER e ScrumXP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#participacao-do-cliente-na-engenharia-de-requisitos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Participação do cliente na Engenharia de Requisitos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cadeia-de-rastreabilidade" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cadeia de rastreabilidade
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#requisitos-nao-funcionais-rnfs-criticos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Requisitos não-funcionais (RNFs) críticos
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -893,45 +854,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.1 Atividades e técnicas de ER e ScrumXP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#participacao-do-cliente-na-engenharia-de-requisitos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Participação do cliente na Engenharia de Requisitos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cadeia-de-rastreabilidade" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cadeia de rastreabilidade
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#requisitos-nao-funcionais-rnfs-criticos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Requisitos não-funcionais (RNFs) críticos
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -985,135 +907,6 @@
 <h3 id="4-engenharia-de-requisitos">4 Engenharia de requisitos</h3>
 <p>A partir das informações apresentadas na seção 3, devem ser estabelecidas as atividades da Engenharia de Requisitos (ER), suas práticas e técnicas em alinhamento ao processo ScrumXP informado.</p>
 <h4 id="41-atividades-e-tecnicas-de-er-e-scrumxp">4.1 Atividades e técnicas de ER e ScrumXP</h4>
-<h5 id="participacao-do-cliente-na-engenharia-de-requisitos">Participação do cliente na Engenharia de Requisitos</h5>
-<p>O Dr. Rogério Sampaio, cliente e médico responsável pelo consultório, participa ativamente de todas as atividades críticas de ER ao longo do ciclo ScrumXP. Sua atuação não se restringe à validação ao final da sprint: ele é envolvido <strong>antes, durante e após o desenvolvimento</strong>, conforme detalhado abaixo.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Atividade de ER</th>
-<th style="text-align: left;">Forma de participação do Dr. Rogério</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Elicitação</strong></td>
-<td style="text-align: left;">Entrevistas individuais e workshops para levantar necessidades clínicas, fluxos SOAP, protocolos de atendimento e restrições operacionais do consultório.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Priorização</strong></td>
-<td style="text-align: left;">Participa da priorização MoSCoW validando quais funcionalidades são clinicamente indispensáveis (Must have) e quais podem ser postergadas, com base em impacto assistencial.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Validação de critérios de aceitação</strong></td>
-<td style="text-align: left;">Antes de cada 2 sprints, revisa e aprova os critérios de aceitação de cada user story, garantindo que reflitam corretamente as regras clínicas e o fluxo SOAP esperado.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Revisão de RNFs clínicos</strong></td>
-<td style="text-align: left;">Valida requisitos não-funcionais sensíveis ao domínio (ex.: tempo de resposta em consulta, legibilidade do prontuário, conformidade com normas do CFM e LGPD).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Gestão de mudanças</strong></td>
-<td style="text-align: left;">Qualquer alteração em requisitos clínicos, fluxo SOAP ou regras de negócio passa por aprovação do Dr. Rogério antes de ser incorporada ao backlog.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Aprovação de segurança, privacidade e integridade documental</strong></td>
-<td style="text-align: left;">Decisões que afetam a segurança do paciente, privacidade de dados (LGPD) e integridade da cadeia de autenticidade do prontuário requerem aprovação explícita do cliente.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="cadeia-de-rastreabilidade">Cadeia de rastreabilidade</h5>
-<p>Todos os requisitos do ProntoCare seguem uma cadeia de rastreabilidade que conecta os objetivos estratégicos à entrega verificável:</p>
-<blockquote>
-<p><strong>OE (Objetivo Específico) → CP (Característica do Produto) → Requisito (RF/RNF) → User Story → Critério de Aceitação → Teste → Entrega</strong></p>
-</blockquote>
-<p>Essa cadeia garante que cada funcionalidade entregue esteja justificada por um objetivo de negócio (OE), vinculada a uma característica do produto (CP) definida na seção 2.3, traduzida em requisitos funcionais ou não-funcionais, detalhada em user stories com critérios de aceitação verificáveis, coberta por testes e rastreável até a entrega na sprint correspondente. Por exemplo:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Nível</th>
-<th style="text-align: left;">Exemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">OE</td>
-<td style="text-align: left;">OE2 — Qualificar a precisão e a padronização do registro assistencial</td>
-</tr>
-<tr>
-<td style="text-align: left;">CP</td>
-<td style="text-align: left;">CP1 — Prontuário eletrônico estruturado (SOAP)</td>
-</tr>
-<tr>
-<td style="text-align: left;">Requisito</td>
-<td style="text-align: left;">RF: O sistema deve permitir o registro de atendimento no formato SOAP</td>
-</tr>
-<tr>
-<td style="text-align: left;">User Story</td>
-<td style="text-align: left;">Como médico, quero registrar o atendimento em campos S, O, A e P para padronizar o prontuário</td>
-</tr>
-<tr>
-<td style="text-align: left;">Critério de aceitação</td>
-<td style="text-align: left;">O registro só pode ser salvo se todos os quatro campos (S, O, A, P) estiverem preenchidos</td>
-</tr>
-<tr>
-<td style="text-align: left;">Teste</td>
-<td style="text-align: left;">Teste automatizado que verifica rejeição ao tentar salvar registro com campo vazio</td>
-</tr>
-<tr>
-<td style="text-align: left;">Entrega</td>
-<td style="text-align: left;">Sprint 2 — Módulo SOAP funcional</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requisitos-nao-funcionais-rnfs-criticos">Requisitos não-funcionais (RNFs) críticos</h5>
-<p>Dado o domínio clínico do ProntoCare, os seguintes RNFs são tratados como requisitos de primeira classe, analisados e validados desde o planejamento da release:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Categoria de RNF</th>
-<th style="text-align: left;">Descrição</th>
-<th style="text-align: left;">Referência normativa</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Segurança</strong></td>
-<td style="text-align: left;">Autenticação, controle de acesso baseado em papel, proteção contra acesso não autorizado a dados clínicos.</td>
-<td style="text-align: left;">LGPD Art. 46; CFM Res. 1.638/2002</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Privacidade</strong></td>
-<td style="text-align: left;">Dados pessoais e sensíveis do paciente acessíveis apenas por atores autorizados; consentimento rastreável.</td>
-<td style="text-align: left;">LGPD Arts. 7, 11 e 18</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Integridade documental</strong></td>
-<td style="text-align: left;">Cadeia de hash SHA-256 e assinatura digital garantindo que registros não sejam alterados após a assinatura.</td>
-<td style="text-align: left;">CFM Res. 2.218/2018; SBIS</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Auditoria e rastreabilidade</strong></td>
-<td style="text-align: left;">Log de todas as operações sobre dados sensíveis (quem, quando, o quê).</td>
-<td style="text-align: left;">LGPD Art. 37; CFM Res. 1.638/2002</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Disponibilidade e backup</strong></td>
-<td style="text-align: left;">Operação offline via PWA; sincronização ao reconectar; backup periódico dos dados.</td>
-<td style="text-align: left;">—</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Controle de acesso</strong></td>
-<td style="text-align: left;">Perfis de acesso diferenciados (médico, paciente); princípio do menor privilégio.</td>
-<td style="text-align: left;">LGPD Art. 46</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Conformidade (LGPD/CFM)</strong></td>
-<td style="text-align: left;">Aderência às normas de proteção de dados e exportação deles para outros sistemas e às resoluções do CFM sobre prontuário eletrônico.</td>
-<td style="text-align: left;">LGPD; CFM Res. 1.638/2002 e 2.218/2018</td>
-</tr>
-</tbody>
-</table>
-<p>Esses RNFs são elicitados, priorizados, verificados e validados com o Dr. Rogério ao longo de todo o ciclo, não apenas ao final da sprint.</p>
 <p><strong>Planejamento da release</strong></p>
 <p><em>Elicitação e descoberta</em></p>
 <ul>
@@ -1221,7 +1014,7 @@
 <li><strong>Revisão e baseline do backlog da release:</strong> backlog revisado, priorizado e preparado para o início do próximo ciclo de desenvolvimento, com rastreabilidade atualizada (OE → CP → requisito → US).</li>
 </ul>
 <h4 id="42-engenharia-de-requisitos-e-o-scrumxp">4.2 Engenharia de requisitos e o ScrumXP</h4>
-<p>As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases do ScrumXP, conforme a tabela a seguir. Esta tabela sintetiza o detalhamento apresentado na seção 4.1, incluindo a participação do Dr. Rogério (conforme a tabela de participação do cliente na ER), a cadeia de rastreabilidade OE → CP → requisito → US → critério de aceitação → teste → entrega, e os RNFs críticos definidos na tabela de requisitos não-funcionais. A coluna <strong>Participação do cliente</strong> indica como o Dr. Rogério atua em cada atividade.</p>
+<p>As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases do ScrumXP, conforme a tabela a seguir. Esta tabela sintetiza o detalhamento apresentado na seção 4.1.</p>
 <table>
 <thead>
 <tr>
@@ -1229,7 +1022,6 @@
 <th style="text-align: left;">Atividades da ER</th>
 <th style="text-align: left;">Prática</th>
 <th style="text-align: left;">Técnica</th>
-<th style="text-align: left;">Participação do cliente</th>
 <th style="text-align: left;">Resultado esperado</th>
 </tr>
 </thead>
@@ -1239,7 +1031,6 @@
 <td style="text-align: left;">Elicitação e descoberta</td>
 <td style="text-align: left;">Levantamento de requisitos</td>
 <td style="text-align: left;">Entrevistas estruturadas com o cliente, brainstorming com a equipe, análise de domínio clínico (fluxo SOAP, protocolos, eSUS PEC)</td>
-<td style="text-align: left;">Dr. Rogério é entrevistado para levantar necessidades clínicas e valida a análise de domínio</td>
 <td style="text-align: left;">Requisitos de alto nível identificados e validados; objetivos da release definidos com base no domínio clínico.</td>
 </tr>
 <tr>
@@ -1247,7 +1038,6 @@
 <td style="text-align: left;">Análise e consenso</td>
 <td style="text-align: left;">Priorização de requisitos</td>
 <td style="text-align: left;">Priorização MoSCoW, análise custo/benefício</td>
-<td style="text-align: left;">Participa da priorização validando impacto clínico; revisa RNFs clínicos</td>
 <td style="text-align: left;">Escopo e funcionalidades críticas priorizadas.</td>
 </tr>
 <tr>
@@ -1255,7 +1045,6 @@
 <td style="text-align: left;">Declaração</td>
 <td style="text-align: left;">Registro dos requisitos</td>
 <td style="text-align: left;">Temas, épicos e user stories (com rastreabilidade OE → CP → requisito → US)</td>
-<td style="text-align: left;">Valida se as user stories refletem as necessidades clínicas</td>
 <td style="text-align: left;">User stories rastreáveis aos OEs e CPs.</td>
 </tr>
 <tr>
@@ -1263,7 +1052,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">Revisão antecipada de requisitos</td>
 <td style="text-align: left;">Revisão de clareza, consistência, completude; verificação de RNFs críticos</td>
-<td style="text-align: left;">Valida RNFs de segurança, privacidade, integridade e conformidade</td>
 <td style="text-align: left;">Requisitos verificados e validados antes das sprints.</td>
 </tr>
 <tr>
@@ -1271,7 +1059,6 @@
 <td style="text-align: left;">Organização e atualização</td>
 <td style="text-align: left;">Estruturação do backlog</td>
 <td style="text-align: left;">Backlog inicial, baseline de RNFs</td>
-<td style="text-align: left;">Aprova baseline de RNFs clínicos</td>
 <td style="text-align: left;">Backlog estruturado com rastreabilidade e RNFs definidos.</td>
 </tr>
 <tr>
@@ -1279,7 +1066,6 @@
 <td style="text-align: left;">Elicitação e descoberta</td>
 <td style="text-align: left;">Refinamento de requisitos</td>
 <td style="text-align: left;">Entrevistas, análise documental</td>
-<td style="text-align: left;">Refina detalhes de fluxo SOAP, regras clínicas e cenários de uso</td>
 <td style="text-align: left;">Requisitos refinados para a sprint.</td>
 </tr>
 <tr>
@@ -1287,7 +1073,6 @@
 <td style="text-align: left;">Análise e consenso</td>
 <td style="text-align: left;">Análise de dependências</td>
 <td style="text-align: left;">Discussões em equipe, análise de tarefas</td>
-<td style="text-align: left;">Consultado sobre dependências clínicas entre funcionalidades</td>
 <td style="text-align: left;">Consenso sobre viabilidade e priorização.</td>
 </tr>
 <tr>
@@ -1295,7 +1080,6 @@
 <td style="text-align: left;">Declaração</td>
 <td style="text-align: left;">Critérios de aceitação</td>
 <td style="text-align: left;">Critérios detalhados, DoR</td>
-<td style="text-align: left;"><strong>Revisa e aprova critérios de aceitação</strong> (fluxo SOAP, regras clínicas, RNFs sensíveis)</td>
 <td style="text-align: left;">User stories com critérios de aceitação validados pelo cliente.</td>
 </tr>
 <tr>
@@ -1303,7 +1087,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">Verificação pré-desenvolvimento e validação de requisitos</td>
 <td style="text-align: left;">Revisão de clareza, consistência com RNFs, verificabilidade; checklist de critérios de aceitação</td>
-<td style="text-align: left;">Valida histórias, fluxos SOAP e RNFs sensíveis antes do desenvolvimento; confirma critérios de aceitação</td>
 <td style="text-align: left;">User stories verificadas, validadas e aprovadas para desenvolvimento.</td>
 </tr>
 <tr>
@@ -1311,7 +1094,6 @@
 <td style="text-align: left;">Organização e atualização</td>
 <td style="text-align: left;">Refinamento do backlog</td>
 <td style="text-align: left;">Grooming do backlog</td>
-<td style="text-align: left;">Confirma prioridades clínicas; aprova mudanças de escopo</td>
 <td style="text-align: left;">Backlog refinado e priorizado com aval clínico.</td>
 </tr>
 <tr>
@@ -1319,7 +1101,6 @@
 <td style="text-align: left;">Representação</td>
 <td style="text-align: left;">Criação de protótipos</td>
 <td style="text-align: left;">Protótipos, wireframes</td>
-<td style="text-align: left;">Valida protótipos de fluxo SOAP e interfaces clínicas</td>
 <td style="text-align: left;">Protótipos que orientam a implementação.</td>
 </tr>
 <tr>
@@ -1327,7 +1108,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">Validação clínica intermediária</td>
 <td style="text-align: left;">Consulta ao cliente sobre protótipos e comportamentos de funcionalidades sensíveis (fluxo SOAP, segurança, privacidade)</td>
-<td style="text-align: left;">Consultado durante a sprint para validar protótipos e comportamentos antes da entrega final</td>
 <td style="text-align: left;">Funcionalidades sensíveis validadas clinicamente antes da revisão da sprint.</td>
 </tr>
 <tr>
@@ -1335,7 +1115,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">DEEP do backlog</td>
 <td style="text-align: left;">DEEP (Detalhado, Estimado, Emergente, Priorizado)</td>
-<td style="text-align: left;">Aprova mudanças em requisitos clínicos (gestão de mudanças)</td>
 <td style="text-align: left;">Backlog verificado e atualizado conforme critérios DEEP.</td>
 </tr>
 <tr>
@@ -1343,7 +1122,6 @@
 <td style="text-align: left;">Organização e atualização</td>
 <td style="text-align: left;">Revisão do backlog</td>
 <td style="text-align: left;">Revisão do backlog da sprint</td>
-<td style="text-align: left;">Informado de ajustes no backlog</td>
 <td style="text-align: left;">Backlog atualizado e alinhado.</td>
 </tr>
 <tr>
@@ -1351,7 +1129,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">Demonstração ao cliente</td>
 <td style="text-align: left;">Coleta de feedback, workshop de requisitos</td>
-<td style="text-align: left;">Avalia funcionalidades entregues; <strong>aprova decisões de segurança, privacidade e integridade documental</strong></td>
 <td style="text-align: left;">Funcionalidades verificadas; feedback coletado; aprovação formal de itens sensíveis.</td>
 </tr>
 <tr>
@@ -1359,7 +1136,6 @@
 <td style="text-align: left;">Declaração</td>
 <td style="text-align: left;">Atualização de user stories</td>
 <td style="text-align: left;">Incorporar feedback, negociação</td>
-<td style="text-align: left;">Negocia ajustes e prioridades para o próximo ciclo</td>
 <td style="text-align: left;">User stories ajustadas conforme feedback.</td>
 </tr>
 <tr>
@@ -1367,7 +1143,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">Avaliação do processo de ER</td>
 <td style="text-align: left;">Análise de causas-raiz, revisão de eficácia das práticas de ER</td>
-<td style="text-align: left;">— (atividade interna da equipe)</td>
 <td style="text-align: left;">Causas de defeitos e retrabalho identificadas; melhorias no processo de ER definidas.</td>
 </tr>
 <tr>
@@ -1375,7 +1150,6 @@
 <td style="text-align: left;">Elicitação e descoberta</td>
 <td style="text-align: left;">Identificação de novos requisitos</td>
 <td style="text-align: left;">Workshops com o cliente, análise de domínio clínico</td>
-<td style="text-align: left;">Workshops com o Dr. Rogério para identificar novos requisitos com base no produto entregue e nas necessidades emergentes do consultório</td>
 <td style="text-align: left;">Novos requisitos identificados e validados com o cliente; backlog da próxima release alimentado.</td>
 </tr>
 <tr>
@@ -1383,7 +1157,6 @@
 <td style="text-align: left;">Análise e consenso</td>
 <td style="text-align: left;">Priorização estratégica</td>
 <td style="text-align: left;">Priorização MoSCoW, mapeamento de valor</td>
-<td style="text-align: left;">Valida prioridades clínicas da nova release</td>
 <td style="text-align: left;">Requisitos priorizados para a próxima release.</td>
 </tr>
 <tr>
@@ -1391,7 +1164,6 @@
 <td style="text-align: left;">Declaração</td>
 <td style="text-align: left;">Épicos e user stories</td>
 <td style="text-align: left;">Criação de épicos, user stories, INVEST</td>
-<td style="text-align: left;">Valida épicos e user stories antes da declaração final</td>
 <td style="text-align: left;">User stories para objetivos da próxima release.</td>
 </tr>
 <tr>
@@ -1399,7 +1171,6 @@
 <td style="text-align: left;">Verificação e validação</td>
 <td style="text-align: left;">DEEP do backlog da release</td>
 <td style="text-align: left;">DEEP (Detalhado, Estimado, Emergente, Priorizado)</td>
-<td style="text-align: left;">Valida que RNFs críticos são verificáveis</td>
 <td style="text-align: left;">Backlog verificado conforme critérios DEEP.</td>
 </tr>
 <tr>
@@ -1407,7 +1178,6 @@
 <td style="text-align: left;">Organização e atualização</td>
 <td style="text-align: left;">Revisão do backlog</td>
 <td style="text-align: left;">Revisão e baseline do backlog da release</td>
-<td style="text-align: left;">Aprova backlog revisado para o próximo ciclo</td>
 <td style="text-align: left;">Backlog preparado com rastreabilidade atualizada.</td>
 </tr>
 </tbody>

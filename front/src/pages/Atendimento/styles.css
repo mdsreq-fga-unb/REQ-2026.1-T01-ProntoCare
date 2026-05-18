@@ -1,0 +1,237 @@
+/* Layout Principal e Reset */
+body { 
+  margin: 0; 
+  padding: 0; 
+  background-color: #F4F7F6; 
+}
+
+.atendimento-layout {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+  overflow: hidden; /* Evita scroll duplo, permitindo rolagem apenas nas áreas de conteúdo */
+}
+
+/* --- Barra Lateral (Sidebar) --- */
+.historico-sidebar {
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease, min-width 0.3s ease;
+  z-index: 10;
+  border-right: 1px solid #E0E6ED;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+  overflow: hidden;
+  white-space: normal;
+}
+
+/* Classes dinâmicas para o Modo Foco */
+.historico-sidebar.aberta { width: 340px; min-width: 340px; }
+.historico-sidebar.fechada { width: 0; min-width: 0; border-right: none; }
+
+.sidebar-header {
+  background: #8ABEBF;
+  padding: 1.5rem;
+  color: white;
+}
+
+.btn-voltar {
+  background: none; 
+  border: none; 
+  color: white;
+  font-weight: 600; 
+  cursor: pointer; 
+  padding: 0;
+  margin-bottom: 1rem; 
+  font-size: 14px;
+}
+
+.btn-voltar:hover { text-decoration: underline; }
+.sidebar-header h3 { margin: 0; font-size: 20px; font-weight: 600; }
+
+/* Linha do tempo (Timeline) para o histórico de consultas */
+.historico-lista {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.historico-card {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid #E0E6ED; 
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -6px; 
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background: #2980B9;
+  border-radius: 50%;
+}
+
+.historico-data {
+  font-size: 12px;
+  color: #7F8C8D;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.historico-resumo { 
+  font-size: 14px; 
+  color: #2C3E50; 
+  margin: 0; 
+  line-height: 1.5; 
+}
+
+/* --- Área Principal de Digitação --- */
+.atendimento-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: #F4F7F6;
+}
+
+/* Cabeçalho fixo contendo os dados do paciente ativo */
+.patient-banner {
+  background: #FFFFFF;
+  padding: 1.2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E0E6ED;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.patient-info-container { display: flex; align-items: center; gap: 1rem; }
+
+.btn-toggle-sidebar {
+  width: 44px; height: 44px;
+  border-radius: 8px; border: 1px solid #DCDDE1;
+  background: #F1F2F6; color: #2C3E50;
+  font-size: 22px; cursor: pointer; transition: 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.btn-toggle-sidebar:hover { background: #E0E6ED; }
+
+.patient-info h2 { 
+  margin: 0 0 4px 0; 
+  font-size: 24px; 
+  color: #2C3E50; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+}
+
+.patient-info span { font-size: 14px; color: #7F8C8D; }
+
+.status-badge { 
+  background: #E8F4F8; 
+  color: #2980B9; 
+  padding: 6px 14px; 
+  border-radius: 20px; 
+  font-size: 13px; 
+  font-weight: 700; 
+}
+
+/* --- Formulário SOAP --- */
+.soap-form {
+  padding: 2rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-header h3 { font-size: 22px; color: #2C3E50; margin-bottom: 1.5rem; }
+
+/* Estrutura flexível para alinhar os campos textuais em quadrantes */
+.soap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.soap-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.soap-group label {
+  font-weight: 600; font-size: 16px; color: #2C3E50;
+  display: block; margin-bottom: 8px;
+}
+
+.soap-group label span { font-weight: 400; font-size: 13px; color: #7F8C8D; }
+
+.soap-group textarea {
+  width: 100%; min-height: 150px; padding: 1rem;
+  border: 1px solid #DCDDE1; border-radius: 8px;
+  font-family: inherit; font-size: 15px; color: #2C3E50;
+  resize: vertical; box-sizing: border-box;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+  flex: 1; /* Garante alinhamento das caixas de texto independentemente do tamanho do label */
+}
+
+.soap-group textarea:focus { 
+  outline: none; 
+  border-color: #2980B9; 
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15); 
+}
+
+/* Entradas estruturadas para sinais vitais (Peso e Altura) */
+.sinais-vitais-row { 
+  display: flex; 
+  gap: 1rem; 
+  margin-bottom: 0.8rem; 
+}
+
+.input-group-pequeno { flex: 1; }
+
+.input-group-pequeno input {
+  width: 100%; padding: 0.8rem; border: 1px solid #DCDDE1;
+  border-radius: 8px; font-size: 14px; box-sizing: border-box;
+  background-color: #F8FAFA; 
+}
+
+.input-group-pequeno input:focus { 
+  outline: none; 
+  border-color: #2980B9; 
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15); 
+  background-color: #FFFFFF;
+}
+
+/* Área de botões e finalização */
+.form-actions-bottom {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E0E6ED; 
+}
+
+.btn-finalizar {
+  background: #2980B9; color: white; border: none; border-radius: 8px;
+  padding: 1rem 2.5rem; font-weight: bold; font-size: 15px;
+  cursor: pointer; transition: 0.3s; white-space: nowrap;
+  box-shadow: 0 4px 6px rgba(41, 128, 185, 0.2);
+}
+
+.btn-finalizar:hover:not(:disabled) { 
+  background: #2471A3; 
+  transform: translateY(-1px); 
+  box-shadow: 0 6px 12px rgba(41, 128, 185, 0.3); 
+}
+
+.btn-finalizar:disabled { 
+  background: #95A5A6; 
+  cursor: not-allowed; 
+  box-shadow: none; 
+}

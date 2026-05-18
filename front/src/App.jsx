@@ -5,6 +5,7 @@ import EditPaciente from './pages/EditPaciente';
 import AdminPanel  from './pages/AdminPanel';
 import MedicoPanel from './pages/MedicoPanel';
 import PacientePanel from './pages/PacientePanel';
+import Atendimento from './pages/Atendimento';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
         <Route 
           path="/paciente" 
           element={role === 'paciente' ? <PacientePanel onLogout={handleLogout} /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/atendimento" 
+          element={role === 'medico' ? <Atendimento /> : <Navigate to="/login" />} 
         />
 
         {/* 3 - Rota Padrão */}

@@ -1,16 +1,16 @@
 # Estratégias de engenharia de software
 
-### 3 Estratégias de engenharia de software
+### 4 Estratégias de engenharia de software
 
 A partir das informações apresentadas nas seções 1 e 2, devem ser tomadas as decisões no que diz respeito às estratégias de engenharia de software a serem utilizadas.
 
-#### 3.1 Estratégia priorizada
+#### 4.1 Estratégia priorizada
 
 - **Abordagem de desenvolvimento de software:** Ágil
 - **Ciclo de vida:** Incremental e iterativo
 - **Processo de engenharia de software:** ScrumXP
 
-#### 3.2 Quadro comparativo
+#### 4.2 Quadro comparativo
 
 O quadro a seguir compara características do OpenUP e do ScrumXP relevantes para a escolha do processo do ProntoCare. Ambos são processos iterativos e incrementais; as diferenças residem na ênfase e na forma de organização do trabalho.
 
@@ -27,7 +27,7 @@ O quadro a seguir compara características do OpenUP e do ScrumXP relevantes par
 | Escalabilidade | Aplicável a projetos de portes variados; estrutura de fases facilita equipes maiores. | Mais indicado para equipes pequenas e colaborativas. |
 | Adaptação ao ProntoCare | Adequado para projetos com requisitos arquiteturais complexos desde o início e equipes com papéis especializados. | Ideal para equipe pequena (6 membros), prazo acadêmico curto e validação frequente com o cliente médico, combinando agilidade com práticas técnicas rigorosas. |
 
-#### 3.3 Composição do ScrumXP no ProntoCare
+#### 4.3 Composição do ScrumXP no ProntoCare
 
 O ScrumXP adotado no projeto combina o framework de gestão do **Scrum** com as práticas técnicas do **Extreme Programming (XP)**. A tabela a seguir explicita quais práticas vêm de cada origem:
 
@@ -45,7 +45,7 @@ O ScrumXP adotado no projeto combina o framework de gestão do **Scrum** com as 
 | **XP** | Refatoração contínua | Melhoria incremental do código sem alteração de comportamento, mantendo a base sustentável. |
 | **XP** | Design simples / incremental | Arquitetura evolui sprint a sprint; decisões de design tomadas no momento adequado. |
 
-#### 3.4 Justificativa
+#### 4.4 Justificativa
 
 Com base nas características do projeto e nos desafios do ProntoCare, o ScrumXP é o processo mais adequado pelos seguintes motivos:
 
@@ -56,15 +56,3 @@ Com base nas características do projeto e nos desafios do ProntoCare, o ScrumXP
 
 > **Nota:** embora o ScrumXP favoreça documentação enxuta, o domínio clínico do ProntoCare impõe documentação complementar obrigatória: rastreabilidade de requisitos (OE → CP → US), registro de RNFs críticos, cadeia de autenticidade e evidências de conformidade com LGPD e normas do CFM. Essa documentação é detalhada na subseção 8.2 (Lista de Requisitos Não Funcionais).
 
-
-#### Histórico de Revisões
-
-| Data | Versão | Descrição | Autor |
-| :---: | :---: | :---: | :---: |
-| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
-| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
-| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
-| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
-| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
-| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
-| 2026-05-03 | 0.7 | Correção do quadro comparativo, decomposição Scrum vs XP, ajuste de justificativa e documentação conforme domínio clínico. | Prontuariantes |

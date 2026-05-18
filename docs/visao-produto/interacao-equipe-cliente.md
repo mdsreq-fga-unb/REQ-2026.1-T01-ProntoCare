@@ -1,8 +1,8 @@
 # Interação entre equipe e cliente
 
-### 6 Interação entre equipe e cliente
+### 7 Interação entre equipe e cliente
 
-#### 6.1 Composição da equipe
+#### 7.1 Composição da equipe
 
 A equipe de desenvolvimento é composta pelos seguintes membros. Cabe destacar que, de acordo com o modelo de trabalho da equipe, todos os integrantes colaboram ativamente na elicitação, documentação e validação:
 
@@ -18,7 +18,7 @@ A equipe de desenvolvimento é composta pelos seguintes membros. Cabe destacar q
 
 
 
-#### 6.2 Comunicação
+#### 7.2 Comunicação
 
 **Ferramentas de comunicação**
 
@@ -41,7 +41,7 @@ A equipe de desenvolvimento é composta pelos seguintes membros. Cabe destacar q
 
 _* Nota: A Sprint 0 possui duração de 2 semanas, com as reuniões adaptadas para esse período._
 
-#### 6.3 Processo de validação
+#### 7.3 Processo de validação
 
 O processo de validação da solução é realizado em três etapas que envolvem a equipe e o cliente em momentos distintos:
 
@@ -51,7 +51,7 @@ O processo de validação da solução é realizado em três etapas que envolvem
 
 3. **Teste de aceitação com o cliente** — ao final de cada sprint, o Dr. Rogério verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. Além disso, **antes do desenvolvimento**, o cliente valida histórias, critérios de aceitação, fluxos SOAP e RNFs sensíveis. Divergências identificadas na revisão resultam em ajustes no backlog da sprint seguinte.
 
-#### 6.4 Participação do cliente na Engenharia de Requisitos
+#### 7.4 Participação do cliente na Engenharia de Requisitos
 
 O Dr. Rogério Sampaio, cliente e médico responsável pelo consultório, participa ativamente de todas as atividades críticas de Engenharia de Requisitos ao longo do ciclo ScrumXP. Sua atuação **não se restringe à validação ao final da sprint**: ele é envolvido antes, durante e após o desenvolvimento. O detalhamento completo dessa participação está documentado na seção 4.1 (Atividades e técnicas de ER e ScrumXP). A tabela a seguir resume as formas de envolvimento:
 
@@ -65,16 +65,3 @@ O Dr. Rogério Sampaio, cliente e médico responsável pelo consultório, partic
 | **Durante a sprint** | Gestão de mudanças | Qualquer alteração em requisitos clínicos, fluxo SOAP ou regras de negócio passa por sua aprovação antes de ser incorporada ao backlog. |
 | **Ao final da sprint** | Aprovação de segurança, privacidade e integridade | Decisões que afetam a segurança do paciente, privacidade de dados (LGPD) e integridade da cadeia de autenticidade do prontuário requerem sua aprovação explícita. |
 | **Ao final da sprint** | Teste de aceitação | Verifica as funcionalidades entregues e confirma se atendem aos requisitos clínicos e operacionais. |
-
-#### Histórico de Revisões
-
-| Data | Versão | Descrição | Autor |
-| :---: | :---: | :---: | :---: |
-| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
-| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
-| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
-| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
-| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
-| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
-| 2026-05-04 | 0.7 | Ajuste das frequências de reuniões para sprints de 1 semana. | Prontuariantes |
-| 2026-05-16 | 0.8 | Adição da seção 6.3 (participação do cliente na ER); reformulação da seção 6.4 (DoR, DoD e teste de aceitação com participação antes, durante e após a sprint). | Prontuariantes |

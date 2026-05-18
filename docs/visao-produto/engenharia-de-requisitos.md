@@ -1,10 +1,10 @@
 # Engenharia de requisitos
 
-### 4 Engenharia de requisitos
+### 5 Engenharia de requisitos
 
 A partir das informações apresentadas na seção 3, devem ser estabelecidas as atividades da Engenharia de Requisitos (ER), suas práticas e técnicas em alinhamento ao processo ScrumXP informado.
 
-#### 4.1 Atividades e técnicas de ER e ScrumXP
+#### 5.1 Atividades e técnicas de ER e ScrumXP
 
 **Planejamento da release**
 
@@ -118,7 +118,7 @@ A partir das informações apresentadas na seção 3, devem ser estabelecidas as
 
 - **Revisão e baseline do backlog da release:** backlog revisado, priorizado e preparado para o início do próximo ciclo de desenvolvimento, com rastreabilidade atualizada (OE → CP → requisito → US).
 
-#### 4.2 Engenharia de requisitos e o ScrumXP
+#### 5.2 Engenharia de requisitos e o ScrumXP
 
 As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases do ScrumXP, conforme a tabela a seguir. Esta tabela sintetiza o detalhamento apresentado na seção 4.1.
 
@@ -146,16 +146,3 @@ As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases
 | Planejamento da próxima release | Declaração | Épicos e user stories | Criação de épicos, user stories, INVEST | User stories para objetivos da próxima release. |
 | Planejamento da próxima release | Verificação e validação | DEEP do backlog da release | DEEP (Detalhado, Estimado, Emergente, Priorizado) | Backlog verificado conforme critérios DEEP. |
 | Planejamento da próxima release | Organização e atualização | Revisão do backlog | Revisão e baseline do backlog da release | Backlog preparado com rastreabilidade atualizada. |
-
-#### Histórico de Revisões
-
-| Data | Versão | Descrição | Autor |
-| :---: | :---: | :---: | :---: |
-| 2026-02-10 | 0.1 | Elaboração inicial da visão do produto e projeto. | Prontuariantes |
-| 2026-02-24 | 0.2 | Refinamento do escopo após reuniões de elicitação com o cliente. | Prontuariantes |
-| 2026-03-10 | 0.3 | Definição da arquitetura documental e cadeia de autenticidade. | Prontuariantes |
-| 2026-03-25 | 0.4 | Delimitação do escopo reduzido do MVP e revisão geral. | Prontuariantes |
-| 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
-| 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
-| 2026-05-03 | 0.7 | Reestruturação da seção 4: rastreabilidade OE→CP→US, V&V antecipada, RNFs estruturados, correção de categorias (DEEP, retrospectiva), participação do cliente. | Prontuariantes |
-| 2026-05-16 | 0.8 | Correção da seção 4.2: precisão na elicitação da release, brainstorming na 4.1, validação de requisitos movida para planejamento da sprint, referências explícitas à 4.1. | Prontuariantes |

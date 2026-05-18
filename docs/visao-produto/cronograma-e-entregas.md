@@ -1,6 +1,6 @@
 # Cronograma e entregas
 
-### 5 Cronograma e entregas
+### 6 Cronograma e entregas
 
 A partir da estratégia de desenvolvimento ScrumXP estabelecida, tem-se a seguinte proposta de cronograma. Cada sprint entrega um incremento funcional **integrado e testado** — não há sprints dedicadas exclusivamente a integração ou testes. Os RNFs críticos (segurança, privacidade, auditoria, integridade, conformidade) são tratados de forma **transversal** desde a Sprint 2, incorporados em cada funcionalidade à medida que são desenvolvidas.
 

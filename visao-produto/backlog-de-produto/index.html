@@ -816,6 +816,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="10.3 Definição do MVP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historico-de-revisoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisões
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1259,6 +1276,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="10.3 Definição do MVP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historico-de-revisoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisões
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1402,11 +1436,16 @@
 </tr>
 <tr>
 <td style="text-align: center;">RF21</td>
-<td style="text-align: center;">Como administrador, eu quero gerenciar os perfis de acesso do sistema, para definir as permissões de cada usuário e garantir a segurança e o controle das informações.</td>
+<td style="text-align: center;">Como administrador, eu quero gerenciar os perfis de acesso de administradores, para definir permissões e garantir o controle operacional seguro.</td>
 <td style="text-align: center;">RNF01, RNF02</td>
 </tr>
 <tr>
 <td style="text-align: center;">RF22</td>
+<td style="text-align: center;">Como administrador, eu quero gerenciar os perfis de acesso de médicos (incluindo ativar/inativar contas), para manter o controle sobre quem pode acessar o prontuário.</td>
+<td style="text-align: center;">RNF01, RNF02</td>
+</tr>
+<tr>
+<td style="text-align: center;">RF23</td>
 <td style="text-align: center;">Como médico ou administrador, eu quero visualizar, buscar e filtrar o histórico de logs de auditoria sobre dados sensíveis, para rastrear todas as operações e garantir a conformidade e segurança.</td>
 <td style="text-align: center;">RNF01</td>
 </tr>
@@ -1655,7 +1694,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">US21</td>
-<td style="text-align: center;">Gerenciar perfis de acesso</td>
+<td style="text-align: center;">Gerenciar perfis de admins</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">3</td>
@@ -1665,6 +1704,16 @@
 </tr>
 <tr>
 <td style="text-align: center;">US22</td>
+<td style="text-align: center;">Gerenciar perfis de médicos</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Média</td>
+</tr>
+<tr>
+<td style="text-align: center;">US23</td>
 <td style="text-align: center;">Consultar logs de auditoria</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">3</td>
@@ -1797,15 +1846,40 @@
 </tr>
 <tr>
 <td style="text-align: center;">US21</td>
-<td style="text-align: left;">Gerenciar perfis de acesso</td>
+<td style="text-align: left;">Gerenciar perfis de admins</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: left;">Requisito de segurança: garante que apenas usuários autorizados acessem funcionalidades sensíveis do sistema.</td>
+<td style="text-align: left;">Requisito de segurança: garante controle estrito sobre as contas administrativas.</td>
 </tr>
 <tr>
 <td style="text-align: center;">US22</td>
+<td style="text-align: left;">Gerenciar perfis de médicos</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Requisito de segurança: garante que apenas médicos autorizados acessem dados sensíveis.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US23</td>
 <td style="text-align: left;">Consultar logs de auditoria</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: left;">Requisito de conformidade: viabiliza a rastreabilidade das operações sobre dados sensíveis (LGPD/CFM).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="historico-de-revisoes">Histórico de Revisões</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data</th>
+<th style="text-align: center;">Versão</th>
+<th style="text-align: center;">Descrição</th>
+<th style="text-align: center;">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2026-05-18</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">Elaboração e revisão do backlog de produto, modelo de priorização por quadrantes e definição do MVP.</td>
+<td style="text-align: center;">Prontuariantes</td>
 </tr>
 </tbody>
 </table>

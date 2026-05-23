@@ -43,4 +43,32 @@ describe('Medicos', () => {
     const res = await request(app).delete('/api/medicos/1').set('Authorization', `Bearer ${tokenAdmin}`);
     expect(res.status).toBe(200);
   });
+
+  it('200 delete permanent success when documents are empty/old', async () => {
+    // 1st query: check doctor exists
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 1 }] });
+    // 2nd query: check atendimentos (return empty)
+    pool.query.mockResolvedValueOnce({ rows: [] });
+    // 3rd query: check anamneses (return empty)
+    pool.query.mockResolvedValueOnce({ rows: [] });
+    // 4th query: delete patients
+    pool.query.mockResolvedValueOnce({ rows: [] });
+    // 5th query: delete doctor
+    pool.query.mockResolvedValueOnce({ rows: [] });
+
+    const res = await request(app).delete('/api/medicos/1/permanente').set('Authorization', `Bearer ${tokenAdmin}`);
+    expect(res.status).toBe(200);
+    expect(res.body.mensagem).toContain('excluídos permanentemente');
+  });
+
+  it('403 delete permanent blocked when has recent documents', async () => {
+    // 1st query: check doctor exists
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 1 }] });
+    // 2nd query: check atendimentos (return a recent one)
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 100 }] });
+
+    const res = await request(app).delete('/api/medicos/1/permanente').set('Authorization', `Bearer ${tokenAdmin}`);
+    expect(res.status).toBe(403);
+    expect(res.body.erro).toContain('menos de 20 anos');
+  });
 });

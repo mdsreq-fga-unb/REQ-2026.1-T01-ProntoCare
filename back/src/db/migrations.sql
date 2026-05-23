@@ -45,3 +45,57 @@ DROP TRIGGER IF EXISTS trg_pacientes_atualizado ON pacientes;
 CREATE TRIGGER trg_pacientes_atualizado
   BEFORE UPDATE ON pacientes
   FOR EACH ROW EXECUTE FUNCTION set_atualizado_em();
+
+CREATE TABLE IF NOT EXISTS atendimentos (
+  id SERIAL PRIMARY KEY,
+  paciente_id INT NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
+  medico_id INT NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
+  peso NUMERIC(5,2),
+  altura NUMERIC(4,2),
+  imc NUMERIC(5,2),
+  subjetivo TEXT,
+  objetivo TEXT,
+  avaliacao TEXT,
+  plano TEXT,
+  finalizado BOOLEAN NOT NULL DEFAULT true,
+  criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  atualizado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+DROP TRIGGER IF EXISTS trg_atendimentos_atualizado ON atendimentos;
+CREATE TRIGGER trg_atendimentos_atualizado
+  BEFORE UPDATE ON atendimentos
+  FOR EACH ROW EXECUTE FUNCTION set_atualizado_em();
+
+-- Log de auditoria: registra cada alteração campo a campo
+CREATE TABLE IF NOT EXISTS log_alteracoes (
+  id SERIAL PRIMARY KEY,
+  paciente_id INT NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
+  entidade VARCHAR(30) NOT NULL,          -- 'paciente', 'atendimento'
+  entidade_id INT NOT NULL,               -- id do registro alterado
+  acao VARCHAR(20) NOT NULL,              -- 'criacao', 'edicao', 'exclusao', 'desativacao', 'reativacao'
+  campo VARCHAR(80),                      -- nome do campo alterado (null para criacao/exclusao)
+  valor_anterior TEXT,                    -- valor antigo (null para criacao)
+  valor_novo TEXT,                        -- valor novo (null para exclusao)
+  usuario_id INT,                         -- quem fez a alteração
+  usuario_nome VARCHAR(150),              -- nome legível de quem fez
+  usuario_role VARCHAR(20),               -- 'medico', 'admin'
+  criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_log_paciente ON log_alteracoes (paciente_id, criado_em DESC);
+
+-- Tabela de Anamnese
+CREATE TABLE IF NOT EXISTS anamneses (
+  id SERIAL PRIMARY KEY,
+  paciente_id INT NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
+  medico_id INT NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
+  conteudo TEXT NOT NULL,
+  criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  atualizado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+DROP TRIGGER IF EXISTS trg_anamneses_atualizado ON anamneses;
+CREATE TRIGGER trg_anamneses_atualizado
+  BEFORE UPDATE ON anamneses
+  FOR EACH ROW EXECUTE FUNCTION set_atualizado_em();

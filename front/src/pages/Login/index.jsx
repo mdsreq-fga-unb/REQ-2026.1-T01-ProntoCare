@@ -30,7 +30,9 @@ export default function Login({ onLogin }) {
 
   return (
     <div className='login-container'>
-      <div className='login-card'>
+      <div className='login-wrapper'>
+        <img src="/MASCOTE.png" alt="Mascote ProntoCare" className="login-mascote" />
+        <div className='login-card'>
         <header>
           <h2>Entrar no ProntoCare</h2>
           <p>Acesse seu prontuário eletrônico e consultas de telemedicina</p>
@@ -77,6 +79,7 @@ export default function Login({ onLogin }) {
 
         
 
+      </div>
       </div>
     </div>
   );

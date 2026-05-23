@@ -5,7 +5,9 @@ import EditPaciente from './pages/EditPaciente';
 import AdminPanel  from './pages/AdminPanel';
 import MedicoPanel from './pages/MedicoPanel';
 import PacientePanel from './pages/PacientePanel';
+import PacienteDetalhe from './pages/PacienteDetalhe';
 import Atendimento from './pages/Atendimento';
+import Anamnese from './pages/Anamnese';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
@@ -51,12 +53,22 @@ function App() {
           path="/paciente" 
           element={role === 'paciente' ? <PacientePanel onLogout={handleLogout} /> : <Navigate to="/login" />} 
         />
+
+        {/* 4 - Detalhes do Paciente e Atendimento */}
         <Route 
-          path="/atendimento" 
+          path="/paciente-detalhe/:id" 
+          element={role === 'medico' ? <PacienteDetalhe /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/atendimento/:pacienteId" 
           element={role === 'medico' ? <Atendimento /> : <Navigate to="/login" />} 
         />
+        <Route 
+          path="/anamnese/:pacienteId" 
+          element={role === 'medico' ? <Anamnese /> : <Navigate to="/login" />} 
+        />
 
-        {/* 3 - Rota Padrão */}
+        {/* 5 - Rota Padrão */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>

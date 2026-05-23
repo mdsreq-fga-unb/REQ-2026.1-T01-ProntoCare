@@ -1,153 +1,168 @@
-/* 1. Variáveis de Cor */
-:root {
-  --primary-blue: #0056b3;
-  --hover-blue: #004494;
-  --bg-light: #f4f7f6;
-  --text-dark: #333333;
-  --text-muted: #666666;
-  --error-red: #d9534f;
-  --error-bg: #fdf7f7;
-  --border-color: #cccccc;
-  --white: #ffffff;
-}
-
-/* 2. O Fundo da Página e Centraliza o Card */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--bg-light);
-  /* Uma textura de pontinhos */
-  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-  background-size: 20px 20px;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: transparent;
 }
 
-/* 3. O Cartão Branco de Login */
-.login-card {
-  background-color: var(--white);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: 400px; /* Não deixa o card ficar gigante no PC */
-  text-align: center;
+  max-width: 440px; /* Limita o tamanho do card no wrapper */
+  margin: 0 auto;
 }
 
-/* 4. Textos do Cabeçalho */
+.login-mascote {
+  height: 240px; /* Aumentado para melhor visibilidade */
+  width: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* O Cartão Branco de Login */
+.login-card {
+  position: relative;
+  z-index: 1; /* Fica acima do mascote */
+  margin-top: -60px; /* Puxa o card para cima, cobrindo 25% do mascote (60px de 240px) */
+  background-color: var(--bg-card);
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+/* Textos do Cabeçalho */
 .login-card header h2 {
-  color: var(--primary-blue);
-  font-size: 28px;
-  margin-bottom: 5px;
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
   margin-top: 0;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .login-card header p {
   color: var(--text-muted);
-  font-size: 14px;
-  margin-bottom: 30px;
+  font-size: 0.95rem;
+  margin-bottom: 2.25rem;
 }
 
-/* 5. Organização dos Inputs */
+/* Organização dos Inputs */
 .input-group {
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .input-group label {
   display: block;
-  font-size: 14px;
-  color: var(--text-dark);
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
   font-weight: 600;
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px 15px;
+  height: var(--input-height);
+  padding: 0 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 14px;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  transition: var(--transition);
   box-sizing: border-box; /* Garante que o padding não quebre o tamanho */
+  background-color: var(--bg-card);
+  color: var(--text-main);
 }
 
 /* Efeito quando clica no input */
 .input-group input:focus {
   outline: none;
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-/* 6. Botão Principal */
+/* Botão Principal */
 .btn-primario {
   width: 100%;
-  padding: 14px;
-  background-color: var(--primary-blue);
+  height: var(--btn-height);
+  background-color: var(--primary);
   color: var(--white);
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
   margin-top: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--sans);
 }
 
-.btn-primario:hover {
-  background-color: var(--hover-blue);
+.btn-primario:hover:not(:disabled) {
+  background-color: var(--primary-hover);
 }
 
 /* Estado de loading (Botão desativado) */
 .btn-primario:disabled {
   background-color: var(--border-color);
+  color: var(--text-muted);
   cursor: not-allowed;
 }
 
-/* 7. Mensagem de Erro */
+/* Mensagem de Erro */
 .mensagem-erro {
-  background-color: var(--error-bg);
-  color: var(--error-red);
-  padding: 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  margin-bottom: 15px;
-  border: 1px solid #f5c6CB;
+  background-color: var(--danger-light);
+  color: var(--danger);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--danger);
+  text-align: left;
 }
 
 .mensagem-erro p {
   margin: 0;
+  font-weight: 500;
 }
 
-/* 8. Rodapé e Link de Cadastro */
+/* Rodapé e Link de Cadastro */
 .links-rodape {
-  margin-top: 25px;
-  font-size: 14px;
+  margin-top: 2rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
 }
 
 .btn-link {
   background: none;
   border: none;
-  color: var(--primary-blue);
-  font-weight: bold;
+  color: var(--primary);
+  font-weight: 600;
   cursor: pointer;
   padding: 0;
-  font-size: 14px;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  font-family: var(--sans);
+  transition: var(--transition);
 }
 
 .btn-link:hover {
-  text-decoration: underline;
+  color: var(--primary-hover);
 }
 
-/* 9. Responsividade (Se a tela for pequena como um celular) */
+/* Responsividade (Se a tela for pequena como um celular) */
 @media (max-width: 480px) {
   .login-card {
-    padding: 20px;
+    padding: 2.5rem 1.5rem;
     box-shadow: none;
     border-radius: 0;
+    border: none;
     height: 100vh;
     display: flex;
     flex-direction: column;

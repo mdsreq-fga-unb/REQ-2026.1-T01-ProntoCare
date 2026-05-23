@@ -1,27 +1,84 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { api } from '../../api';
 import './styles.css';
 
 export default function Atendimento() {
   const navigate = useNavigate();
+  const { pacienteId } = useParams();
+  const [searchParams] = useSearchParams();
+  const editarId = searchParams.get('editar');
 
   // Controla a visibilidade da barra lateral para expandir a área de digitação (Modo Foco)
   const [sidebarAberto, setSidebarAberto] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [carregando, setCarregando] = useState(true);
 
-  // Mock de dados de visualização. 
-  // TODO: Substituir por chamadas reais à API ao montar o componente (useEffect)
-  const pacienteMock = { nome: 'MARIA DA SILVA', idade: 34, sexo: 'Feminino', imcAnterior: '23.8' };
-  const historicoMock = [
-    { id: 1, data: '15/01/2026', resumo: 'Consulta de rotina. Hipótese de Amigdalite. Prescrita Amoxicilina.' },
-    { id: 2, data: '14/01/2026', resumo: 'Retorno para avaliação de tosse produtiva.' },
-    { id: 3, data: '10/01/2026', resumo: 'Paciente queixa-se de dores leves na garganta.' }
-  ];
+  const [paciente, setPaciente] = useState(null);
+  const [historico, setHistorico] = useState([]);
 
   // Armazena os dados do atendimento clínico atual baseados na metodologia SOAP
   const [soap, setSoap] = useState({
     peso: '', altura: '', subjetivo: '', objetivo: '', avaliacao: '', plano: ''
   });
+
+  useEffect(() => {
+    carregarDados();
+  }, [pacienteId, editarId]);
+
+  async function carregarDados() {
+    try {
+      const [pac, hist] = await Promise.all([
+        api.get(`/pacientes/${pacienteId}`),
+        api.get(`/atendimentos/paciente/${pacienteId}`)
+      ]);
+      setPaciente(pac);
+      setHistorico(hist);
+
+      // Se estiver editando, carrega os dados do atendimento existente
+      if (editarId) {
+        const atendimento = await api.get(`/atendimentos/${editarId}`);
+        setSoap({
+          peso: atendimento.peso || '',
+          altura: atendimento.altura || '',
+          subjetivo: atendimento.subjetivo || '',
+          objetivo: atendimento.objetivo || '',
+          avaliacao: atendimento.avaliacao || '',
+          plano: atendimento.plano || ''
+        });
+      }
+    } catch (err) {
+      alert('Erro ao carregar dados do paciente.');
+      navigate('/medico');
+    } finally {
+      setCarregando(false);
+    }
+  }
+
+  function calcularIdade(dataNasc) {
+    if (!dataNasc) return '—';
+    const nascimento = new Date(dataNasc);
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const m = hoje.getMonth() - nascimento.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) idade--;
+    return idade;
+  }
+
+  function mapSexo(s) {
+    if (s === 'M') return 'Masculino';
+    if (s === 'F') return 'Feminino';
+    if (s === 'O') return 'Outro';
+    return '—';
+  }
+
+  function formatarDataHora(dateStr) {
+    if (!dateStr) return '—';
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      + ' às '
+      + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  }
 
   async function handleFinalizar(e) {
     e.preventDefault();
@@ -33,13 +90,41 @@ export default function Atendimento() {
     }
 
     setLoading(true);
-    
-    // TODO: Implementar o envio do payload 'soap' para a API
-    setTimeout(() => { 
-      alert('Prontuário assinado e salvo com sucesso!');
-      navigate('/medico'); 
-    }, 1000);
+
+    try {
+      const payload = {
+        paciente_id: parseInt(pacienteId),
+        peso: soap.peso || null,
+        altura: soap.altura || null,
+        subjetivo: soap.subjetivo || null,
+        objetivo: soap.objetivo || null,
+        avaliacao: soap.avaliacao || null,
+        plano: soap.plano || null
+      };
+
+      if (editarId) {
+        await api.put(`/atendimentos/${editarId}`, payload);
+        alert('Prontuário atualizado com sucesso!');
+      } else {
+        await api.post('/atendimentos', payload);
+        alert('Prontuário assinado e salvo com sucesso!');
+      }
+      navigate(`/paciente-detalhe/${pacienteId}`);
+    } catch (err) {
+      alert(err.message || 'Erro ao salvar prontuário.');
+    } finally {
+      setLoading(false);
+    }
   }
+
+  if (carregando) {
+    return <div style={{ textAlign: 'center', marginTop: '50px', fontFamily: 'sans-serif' }}>Carregando...</div>;
+  }
+
+  if (!paciente) return null;
+
+  // Último IMC registrado
+  const ultimoImc = historico.find(a => a.imc)?.imc;
 
   return (
     <div className="atendimento-layout">
@@ -47,20 +132,30 @@ export default function Atendimento() {
       {/* Barra Lateral: Exibe o histórico de consultas passadas para contexto do médico */}
       <aside className={`historico-sidebar ${sidebarAberto ? 'aberta' : 'fechada'}`}>
         <div className="sidebar-header">
-          <button onClick={() => navigate('/medico')} className="btn-voltar">
-            ← Sair do Atendimento
+          <button onClick={() => navigate(`/paciente-detalhe/${pacienteId}`)} className="btn-voltar">
+            ← Voltar ao Perfil
           </button>
           <h3>Histórico Clínico</h3>
         </div>
         
         <div className="historico-lista">
-          {historicoMock.map(consulta => (
-            <div key={consulta.id} className="historico-card">
-              <div className="timeline-dot"></div>
-              <span className="historico-data">{consulta.data}</span>
-              <p className="historico-resumo">{consulta.resumo}</p>
-            </div>
-          ))}
+          {historico.length === 0 ? (
+            <p style={{ color: '#7f8c8d', fontSize: 14 }}>Nenhum registro anterior.</p>
+          ) : (
+            historico.map(consulta => (
+              <div key={consulta.id} className="historico-card">
+                <div className="timeline-dot"></div>
+                <span className="historico-data">{formatarDataHora(consulta.criado_em)}</span>
+                <p className="historico-resumo">
+                  {consulta.avaliacao
+                    ? consulta.avaliacao.substring(0, 100) + (consulta.avaliacao.length > 100 ? '...' : '')
+                    : consulta.subjetivo
+                      ? consulta.subjetivo.substring(0, 100) + (consulta.subjetivo.length > 100 ? '...' : '')
+                      : 'Registro clínico'}
+                </p>
+              </div>
+            ))
+          )}
         </div>
       </aside>
 
@@ -78,16 +173,19 @@ export default function Atendimento() {
               ☰
             </button>
             <div className="patient-info">
-              <h2>{pacienteMock.nome}</h2>
-              <span>{pacienteMock.idade} anos • Sexo {pacienteMock.sexo} • IMC Ant: {pacienteMock.imcAnterior}</span>
+              <h2>{paciente.nome}</h2>
+              <span>
+                {calcularIdade(paciente.data_nascimento)} anos • Sexo {mapSexo(paciente.sexo)}
+                {ultimoImc && ` • IMC Ant: ${ultimoImc}`}
+              </span>
             </div>
           </div>
-          <div className="status-badge">Em Atendimento</div>
+          <div className="status-badge">{editarId ? 'Editando Prontuário' : 'Novo Atendimento'}</div>
         </header>
 
         <form onSubmit={handleFinalizar} className="soap-form">
           <div className="form-header">
-            <h3>REGISTRO DE EVOLUÇÃO (SOAP)</h3>
+            <h3>{editarId ? 'EDITAR PRONTUÁRIO (SOAP)' : 'REGISTRO DE EVOLUÇÃO (SOAP)'}</h3>
           </div>
 
           {/* O layout grid 2x2 distribui os 4 blocos principais do SOAP uniformemente */}
@@ -139,8 +237,11 @@ export default function Atendimento() {
           </div>
 
           <div className="form-actions-bottom">
+            <button type="button" className="btn-cancelar" onClick={() => navigate(`/paciente-detalhe/${pacienteId}`)}>
+              Cancelar
+            </button>
             <button type="submit" disabled={loading} className="btn-finalizar">
-              {loading ? 'SALVANDO...' : 'FINALIZAR ATENDIMENTO'}
+              {loading ? 'SALVANDO...' : (editarId ? 'SALVAR ALTERAÇÕES' : 'FINALIZAR ATENDIMENTO')}
             </button>
           </div>
         </form>

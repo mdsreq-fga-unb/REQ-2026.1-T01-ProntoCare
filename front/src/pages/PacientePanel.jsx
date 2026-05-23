@@ -208,7 +208,6 @@ export default function PacientePanel({ onLogout }) {
         <aside className="pd-sidebar-dados">
           <div className="pd-card">
             <h3 className="pd-card-title">
-              <span className="pd-card-icon">📋</span>
               Meus Dados
             </h3>
             <div className="pd-dados-lista">
@@ -269,13 +268,13 @@ export default function PacientePanel({ onLogout }) {
               className={`pd-tab ${abaAtiva === 'prontuarios' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('prontuarios')}
             >
-              🩺 Meu Histórico ({atendimentos.length})
+              Meu Histórico ({atendimentos.length})
             </button>
             <button 
               className={`pd-tab ${abaAtiva === 'logs' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('logs')}
             >
-              📝 Histórico de Alterações ({logs.length})
+              Histórico de Alterações ({logs.length})
             </button>
           </div>
 
@@ -284,7 +283,6 @@ export default function PacientePanel({ onLogout }) {
             <div className="pd-card">
               <div className="pd-card-header-row">
                 <h3 className="pd-card-title">
-                  <span className="pd-card-icon">🩺</span>
                   Meu Histórico Clínico
                 </h3>
                 <span className="pd-contagem">{atendimentos.length} consulta{atendimentos.length !== 1 ? 's' : ''}</span>
@@ -292,7 +290,6 @@ export default function PacientePanel({ onLogout }) {
 
               {atendimentos.length === 0 ? (
                 <div className="pd-vazio">
-                  <p className="pd-vazio-icon">📄</p>
                   <p>Nenhum registro clínico encontrado em seu histórico.</p>
                 </div>
               ) : (
@@ -323,9 +320,9 @@ export default function PacientePanel({ onLogout }) {
                         {/* Sinais vitais (sempre visíveis se existirem) */}
                         {(at.peso || at.altura || at.imc) && (
                           <div className="pd-sinais-vitais">
-                            {at.peso && <span className="pd-sinal">⚖️ Peso: {at.peso} kg</span>}
-                            {at.altura && <span className="pd-sinal">📏 Altura: {at.altura} m</span>}
-                            {at.imc && <span className="pd-sinal">📊 IMC: {at.imc}</span>}
+                            {at.peso && <span className="pd-sinal">Peso: {at.peso} kg</span>}
+                            {at.altura && <span className="pd-sinal">Altura: {at.altura} m</span>}
+                            {at.imc && <span className="pd-sinal">IMC: {at.imc}</span>}
                           </div>
                         )}
 
@@ -374,7 +371,6 @@ export default function PacientePanel({ onLogout }) {
             <div className="pd-card">
               <div className="pd-card-header-row">
                 <h3 className="pd-card-title">
-                  <span className="pd-card-icon">📝</span>
                   Histórico de Alterações de Dados e Prontuários
                 </h3>
                 <span className="pd-contagem">{gruposLog.length} evento{gruposLog.length !== 1 ? 's' : ''}</span>
@@ -382,7 +378,6 @@ export default function PacientePanel({ onLogout }) {
 
               {gruposLog.length === 0 ? (
                 <div className="pd-vazio">
-                  <p className="pd-vazio-icon">📝</p>
                   <p>Nenhuma alteração registrada em seus dados ou prontuários.</p>
                 </div>
               ) : (

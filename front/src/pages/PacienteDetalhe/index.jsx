@@ -280,19 +280,19 @@ export default function PacienteDetalhe() {
               className={`pd-tab ${abaAtiva === 'prontuarios' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('prontuarios')}
             >
-              🩺 Prontuários ({atendimentos.length})
+              Prontuários ({atendimentos.length})
             </button>
             <button 
               className={`pd-tab ${abaAtiva === 'anamneses' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('anamneses')}
             >
-              📋 Anamneses ({anamneses.length})
+              Anamneses ({anamneses.length})
             </button>
             <button 
               className={`pd-tab ${abaAtiva === 'logs' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('logs')}
             >
-              📝 Log de Alterações ({logs.length})
+              Log de Alterações ({logs.length})
             </button>
           </div>
 
@@ -301,7 +301,6 @@ export default function PacienteDetalhe() {
             <div className="pd-card">
               <div className="pd-card-header-row">
                 <h3 className="pd-card-title">
-                  <span className="pd-card-icon">🩺</span>
                   Histórico de Prontuários
                 </h3>
                 <span className="pd-contagem">{atendimentos.length} registro{atendimentos.length !== 1 ? 's' : ''}</span>
@@ -309,7 +308,6 @@ export default function PacienteDetalhe() {
 
               {atendimentos.length === 0 ? (
                 <div className="pd-vazio">
-                  <p className="pd-vazio-icon">📄</p>
                   <p>Nenhum prontuário registrado para este paciente.</p>
                   <button className="pd-btn-primario" onClick={() => navigate(`/atendimento/${id}`)}>
                     Criar Primeiro Prontuário
@@ -339,7 +337,7 @@ export default function PacienteDetalhe() {
                                 onClick={(e) => excluirAtendimento(at.id, e)}
                                 title="Excluir este prontuário permanentemente (Legislação de 20 anos)"
                               >
-                                🗑️ Excluir
+                                Excluir
                               </button>
                             )}
                             <button 
@@ -347,7 +345,7 @@ export default function PacienteDetalhe() {
                               onClick={(e) => { e.stopPropagation(); navigate(`/atendimento/${id}?editar=${at.id}`); }}
                               title="Editar este prontuário"
                             >
-                              ✏️ Editar
+                              Editar
                             </button>
                             <span className="pd-expand-icon">{expandido === at.id ? '▲' : '▼'}</span>
                           </div>
@@ -359,9 +357,9 @@ export default function PacienteDetalhe() {
                         {/* Sinais vitais (sempre visíveis se existirem) */}
                         {(at.peso || at.altura || at.imc) && (
                           <div className="pd-sinais-vitais">
-                            {at.peso && <span className="pd-sinal">⚖️ {at.peso} kg</span>}
-                            {at.altura && <span className="pd-sinal">📏 {at.altura} m</span>}
-                            {at.imc && <span className="pd-sinal">📊 IMC: {at.imc}</span>}
+                            {at.peso && <span className="pd-sinal">Peso: {at.peso} kg</span>}
+                            {at.altura && <span className="pd-sinal">Altura: {at.altura} m</span>}
+                            {at.imc && <span className="pd-sinal">IMC: {at.imc}</span>}
                           </div>
                         )}
 
@@ -410,7 +408,6 @@ export default function PacienteDetalhe() {
             <div className="pd-card">
               <div className="pd-card-header-row">
                 <h3 className="pd-card-title">
-                  <span className="pd-card-icon">📋</span>
                   Histórico de Anamneses
                 </h3>
                 <span className="pd-contagem">{anamneses.length} registro{anamneses.length !== 1 ? 's' : ''}</span>
@@ -418,7 +415,6 @@ export default function PacienteDetalhe() {
 
               {anamneses.length === 0 ? (
                 <div className="pd-vazio">
-                  <p className="pd-vazio-icon">📄</p>
                   <p>Nenhuma anamnese registrada para este paciente.</p>
                   <button className="pd-btn-primario" onClick={() => navigate(`/anamnese/${id}`)}>
                     Criar Primeira Anamnese
@@ -448,7 +444,7 @@ export default function PacienteDetalhe() {
                                 onClick={(e) => excluirAnamnese(anam.id, e)}
                                 title="Excluir esta anamnese permanentemente (Legislação de 20 anos)"
                               >
-                                🗑️ Excluir
+                                Excluir
                               </button>
                             )}
                             <button 
@@ -456,7 +452,7 @@ export default function PacienteDetalhe() {
                               onClick={(e) => { e.stopPropagation(); navigate(`/anamnese/${id}?editar=${anam.id}`); }}
                               title="Editar esta anamnese"
                             >
-                              ✏️ Editar
+                              Editar
                             </button>
                             <span className="pd-expand-icon">{expandido === 'anam_' + anam.id ? '▲' : '▼'}</span>
                           </div>
@@ -485,7 +481,6 @@ export default function PacienteDetalhe() {
             <div className="pd-card">
               <div className="pd-card-header-row">
                 <h3 className="pd-card-title">
-                  <span className="pd-card-icon">📝</span>
                   Log de Alterações
                 </h3>
                 <span className="pd-contagem">{gruposLog.length} evento{gruposLog.length !== 1 ? 's' : ''}</span>
@@ -493,7 +488,6 @@ export default function PacienteDetalhe() {
 
               {gruposLog.length === 0 ? (
                 <div className="pd-vazio">
-                  <p className="pd-vazio-icon">📝</p>
                   <p>Nenhuma alteração registrada ainda.</p>
                 </div>
               ) : (

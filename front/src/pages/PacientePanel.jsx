@@ -5,6 +5,7 @@ import './PacienteDetalhe/styles.css';
 export default function PacientePanel({ onLogout }) {
   const [paciente, setPaciente] = useState(null);
   const [atendimentos, setAtendimentos] = useState([]);
+  const [anamneses, setAnamneses] = useState([]);
   const [logs, setLogs] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [excluido, setExcluido] = useState(false);
@@ -17,12 +18,14 @@ export default function PacientePanel({ onLogout }) {
         const dadosPaciente = await api.get('/pacientes/me');
         setPaciente(dadosPaciente);
         
-        const [historico, logsData] = await Promise.all([
+        const [historico, anams, logsData] = await Promise.all([
           api.get(`/atendimentos/paciente/${dadosPaciente.id}`),
+          api.get(`/anamneses/paciente/${dadosPaciente.id}`),
           api.get(`/logs/paciente/${dadosPaciente.id}`)
         ]);
         
         setAtendimentos(historico);
+        setAnamneses(anams);
         setLogs(logsData);
       } catch (e) {
         alert(e.message);
@@ -121,7 +124,10 @@ export default function PacientePanel({ onLogout }) {
   }
 
   function mapEntidade(ent) {
-    return ent === 'paciente' ? 'Cadastro' : 'Prontuário';
+    if (ent === 'paciente') return 'Cadastro';
+    if (ent === 'atendimento') return 'Prontuário';
+    if (ent === 'anamnese') return 'Anamnese';
+    return ent;
   }
 
   function truncar(val, max = 60) {
@@ -173,6 +179,11 @@ export default function PacientePanel({ onLogout }) {
 
   const ultimoImc = atendimentos.find(a => a.imc)?.imc;
   const gruposLog = agruparLogs(logs);
+
+  const historicoClinico = [
+    ...atendimentos.map(at => ({ ...at, tipoItem: 'atendimento' })),
+    ...anamneses.map(an => ({ ...an, tipoItem: 'anamnese' }))
+  ].sort((a, b) => new Date(b.criado_em) - new Date(a.criado_em));
 
   return (
     <div className="pd-container">
@@ -268,7 +279,7 @@ export default function PacientePanel({ onLogout }) {
               className={`pd-tab ${abaAtiva === 'prontuarios' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('prontuarios')}
             >
-              Meu Histórico ({atendimentos.length})
+              Meu Histórico ({historicoClinico.length})
             </button>
             <button 
               className={`pd-tab ${abaAtiva === 'logs' ? 'ativa' : ''}`}
@@ -285,82 +296,121 @@ export default function PacientePanel({ onLogout }) {
                 <h3 className="pd-card-title">
                   Meu Histórico Clínico
                 </h3>
-                <span className="pd-contagem">{atendimentos.length} consulta{atendimentos.length !== 1 ? 's' : ''}</span>
+                <span className="pd-contagem">
+                  {historicoClinico.length} registro{historicoClinico.length !== 1 ? 's' : ''}
+                </span>
               </div>
 
-              {atendimentos.length === 0 ? (
+              {historicoClinico.length === 0 ? (
                 <div className="pd-vazio">
                   <p>Nenhum registro clínico encontrado em seu histórico.</p>
                 </div>
               ) : (
                 <div className="pd-timeline">
-                  {atendimentos.map((at, index) => (
-                    <div key={at.id} className={`pd-timeline-item ${expandido === at.id ? 'expandido' : ''}`}>
-                      {/* Linha da timeline */}
-                      <div className="pd-timeline-marker">
-                        <div className={`pd-timeline-dot ${index === 0 ? 'recente' : ''}`}></div>
-                        {index < atendimentos.length - 1 && <div className="pd-timeline-line"></div>}
-                      </div>
+                  {historicoClinico.map((item, index) => {
+                    const isAtendimento = item.tipoItem === 'atendimento';
+                    const itemKey = isAtendimento ? `at_${item.id}` : `anam_${item.id}`;
+                    const isExpandido = expandido === itemKey;
 
-                      {/* Conteúdo do atendimento */}
-                      <div className="pd-timeline-content" onClick={() => setExpandido(expandido === at.id ? null : at.id)}>
-                        <div className="pd-timeline-header">
-                          <div className="pd-timeline-info">
-                            <span className="pd-timeline-data">{formatarDataHora(at.criado_em)}</span>
-                            <span className="pd-timeline-medico">Médico Responsável: Dr(a). {at.medico_nome}</span>
-                          </div>
-                          <div className="pd-timeline-acoes">
-                            <span className="pd-expand-icon">{expandido === at.id ? '▲' : '▼'}</span>
-                          </div>
+                    return (
+                      <div key={itemKey} className={`pd-timeline-item ${isExpandido ? 'expandido' : ''}`}>
+                        {/* Linha da timeline */}
+                        <div className="pd-timeline-marker">
+                          <div className={`pd-timeline-dot ${index === 0 ? 'recente' : ''}`}></div>
+                          {index < historicoClinico.length - 1 && <div className="pd-timeline-line"></div>}
                         </div>
 
-                        {/* Resumo (sempre visível) */}
-                        <p className="pd-timeline-resumo">{gerarResumo(at)}</p>
-
-                        {/* Sinais vitais (sempre visíveis se existirem) */}
-                        {(at.peso || at.altura || at.imc) && (
-                          <div className="pd-sinais-vitais">
-                            {at.peso && <span className="pd-sinal">Peso: {at.peso} kg</span>}
-                            {at.altura && <span className="pd-sinal">Altura: {at.altura} m</span>}
-                            {at.imc && <span className="pd-sinal">IMC: {at.imc}</span>}
-                          </div>
-                        )}
-
-                        {/* Detalhes SOAP (expandido) */}
-                        {expandido === at.id && (
-                          <div className="pd-soap-detalhes">
-                            {at.subjetivo && (
-                              <div className="pd-soap-bloco">
-                                <h4>S — Subjetivo</h4>
-                                <p>{at.subjetivo}</p>
+                        {/* Conteúdo do item */}
+                        <div className="pd-timeline-content" onClick={() => setExpandido(isExpandido ? null : itemKey)}>
+                          <div className="pd-timeline-header">
+                            <div className="pd-timeline-info">
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                <span className="pd-timeline-data">{formatarDataHora(item.criado_em)}</span>
+                                <span className="pd-log-badge" style={{
+                                  backgroundColor: 'var(--primary-light)',
+                                  color: 'var(--primary)',
+                                  borderColor: 'var(--primary)',
+                                  fontSize: '0.75rem',
+                                  padding: '2px 8px',
+                                  textTransform: 'uppercase',
+                                  fontWeight: '700',
+                                  borderRadius: 'var(--radius-sm)'
+                                }}>
+                                  {isAtendimento ? 'Prontuário' : 'Anamnese'}
+                                </span>
                               </div>
-                            )}
-                            {at.objetivo && (
-                              <div className="pd-soap-bloco">
-                                <h4>O — Objetivo</h4>
-                                <p>{at.objetivo}</p>
-                              </div>
-                            )}
-                            {at.avaliacao && (
-                              <div className="pd-soap-bloco">
-                                <h4>A — Avaliação</h4>
-                                <p>{at.avaliacao}</p>
-                              </div>
-                            )}
-                            {at.plano && (
-                              <div className="pd-soap-bloco">
-                                <h4>P — Plano</h4>
-                                <p>{at.plano}</p>
-                              </div>
-                            )}
-                            <div className="pd-soap-meta">
-                              Registro finalizado em: {formatarDataHora(at.criado_em)}
+                              <span className="pd-timeline-medico">Médico Responsável: Dr(a). {item.medico_nome}</span>
+                            </div>
+                            <div className="pd-timeline-acoes">
+                              <span className="pd-expand-icon">{isExpandido ? '▲' : '▼'}</span>
                             </div>
                           </div>
-                        )}
+
+                          {isAtendimento ? (
+                            <>
+                              {/* Resumo (sempre visível) */}
+                              <p className="pd-timeline-resumo">{gerarResumo(item)}</p>
+
+                              {/* Sinais vitais (sempre visíveis se existirem) */}
+                              {(item.peso || item.altura || item.imc) && (
+                                <div className="pd-sinais-vitais">
+                                  {item.peso && <span className="pd-sinal">Peso: {item.peso} kg</span>}
+                                  {item.altura && <span className="pd-sinal">Altura: {item.altura} m</span>}
+                                  {item.imc && <span className="pd-sinal">IMC: {item.imc}</span>}
+                                </div>
+                              )}
+
+                              {/* Detalhes SOAP (expandido) */}
+                              {isExpandido && (
+                                <div className="pd-soap-detalhes">
+                                  {item.subjetivo && (
+                                    <div className="pd-soap-bloco">
+                                      <h4>S — Subjetivo</h4>
+                                      <p>{item.subjetivo}</p>
+                                    </div>
+                                  )}
+                                  {item.objetivo && (
+                                    <div className="pd-soap-bloco">
+                                      <h4>O — Objetivo</h4>
+                                      <p>{item.objetivo}</p>
+                                    </div>
+                                  )}
+                                  {item.avaliacao && (
+                                    <div className="pd-soap-bloco">
+                                      <h4>A — Avaliação</h4>
+                                      <p>{item.avaliacao}</p>
+                                    </div>
+                                  )}
+                                  {item.plano && (
+                                    <div className="pd-soap-bloco">
+                                      <h4>P — Plano</h4>
+                                      <p>{item.plano}</p>
+                                    </div>
+                                  )}
+                                  <div className="pd-soap-meta">
+                                    Registro finalizado em: {formatarDataHora(item.criado_em)}
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {/* Conteúdo resumido/completo da anamnese */}
+                              <p className="pd-timeline-resumo" style={{ whiteSpace: 'pre-wrap' }}>
+                                {isExpandido ? item.conteudo : (item.conteudo.substring(0, 120) + (item.conteudo.length > 120 ? '...' : ''))}
+                              </p>
+                              
+                              {isExpandido && (
+                                <div className="pd-soap-meta" style={{ marginTop: '1rem', paddingTop: '0.6rem' }}>
+                                  Registro finalizado em: {formatarDataHora(item.criado_em)}
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

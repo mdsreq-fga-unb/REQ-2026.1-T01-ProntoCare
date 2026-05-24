@@ -156,7 +156,7 @@ export default function Anamnese() {
 
         <form onSubmit={handleFinalizar} className="soap-form">
           <div className="form-header">
-            <h3>{editarId ? 'EDITAR ANAMNESE' : 'REGISTRO DE ANAMNESE'}</h3>
+            <h3>{editarId ? 'Editar Anamnese' : 'Registro de Anamnese'}</h3>
           </div>
 
           <div className="anamnese-textarea-group">

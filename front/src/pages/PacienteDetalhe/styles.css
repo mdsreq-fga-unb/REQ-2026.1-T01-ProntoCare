@@ -613,7 +613,6 @@
 .pd-log-badge {
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 3px 8px;
   border-radius: var(--radius-sm);

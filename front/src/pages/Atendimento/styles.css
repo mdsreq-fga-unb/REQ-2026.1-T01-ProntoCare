@@ -178,10 +178,10 @@
   letter-spacing: -0.5px;
 }
 
-/* Estrutura flexível para alinhar os campos textuais em quadrantes */
+/* Estrutura flexível para alinhar os campos textuais em uma única coluna (um em cima do outro) */
 .soap-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 

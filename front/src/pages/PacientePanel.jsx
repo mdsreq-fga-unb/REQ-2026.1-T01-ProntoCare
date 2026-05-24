@@ -55,17 +55,7 @@ export default function PacientePanel({ onLogout }) {
     }
   }
 
-  async function solicitarExclusao() {
-    if (!window.confirm('Tem certeza de que deseja solicitar a desativação da sua conta? Esta ação não pode ser desfeita.')) {
-      return;
-    }
-    try {
-      await api.delete('/pacientes/me');
-      setExcluido(true);
-    } catch (e) {
-      alert(e.message);
-    }
-  }
+
 
   function calcularIdade(dataNasc) {
     if (!dataNasc) return '';
@@ -259,16 +249,7 @@ export default function PacientePanel({ onLogout }) {
                 <span className="pd-dado-valor">{paciente.numero || '—'}</span>
               </div>
             </div>
-            
-            <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
-              <button 
-                className="pd-btn-primario pd-btn-danger" 
-                onClick={solicitarExclusao} 
-                style={{ width: '100%' }}
-              >
-                Solicitar Exclusão da Conta
-              </button>
-            </div>
+
           </div>
         </aside>
 

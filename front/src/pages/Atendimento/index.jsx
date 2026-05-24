@@ -82,7 +82,7 @@ export default function Atendimento() {
 
   async function handleFinalizar(e) {
     e.preventDefault();
-    
+
     // Impede o envio de prontuários inteiramente em branco para a base de dados
     if (!soap.subjetivo && !soap.objetivo && !soap.avaliacao && !soap.plano) {
       alert("Preencha pelo menos um campo clínico para salvar o prontuário.");
@@ -128,7 +128,7 @@ export default function Atendimento() {
 
   return (
     <div className="atendimento-layout">
-      
+
       {/* Barra Lateral: Exibe o histórico de consultas passadas para contexto do médico */}
       <aside className={`historico-sidebar ${sidebarAberto ? 'aberta' : 'fechada'}`}>
         <div className="sidebar-header">
@@ -137,7 +137,7 @@ export default function Atendimento() {
           </button>
           <h3>Histórico Clínico</h3>
         </div>
-        
+
         <div className="historico-lista">
           {historico.length === 0 ? (
             <p style={{ color: '#7f8c8d', fontSize: 14 }}>Nenhum registro anterior.</p>
@@ -160,13 +160,13 @@ export default function Atendimento() {
       </aside>
 
       <main className="atendimento-main">
-        
+
         {/* Cabeçalho Fixo: Mantém os dados demográficos vitais visíveis durante a rolagem */}
         <header className="patient-banner">
           <div className="patient-info-container">
-            <button 
+            <button
               type="button"
-              className="btn-toggle-sidebar" 
+              className="btn-toggle-sidebar"
               onClick={() => setSidebarAberto(!sidebarAberto)}
               title="Alternar Histórico"
             >
@@ -185,51 +185,51 @@ export default function Atendimento() {
 
         <form onSubmit={handleFinalizar} className="soap-form">
           <div className="form-header">
-            <h3>{editarId ? 'EDITAR PRONTUÁRIO (SOAP)' : 'REGISTRO DE EVOLUÇÃO (SOAP)'}</h3>
+            <h3>{editarId ? 'Editar Prontuário (SOAP)' : 'Registro de Evolução (SOAP)'}</h3>
           </div>
 
           {/* O layout grid 2x2 distribui os 4 blocos principais do SOAP uniformemente */}
           <div className="soap-grid">
-            
+
             <div className="soap-group">
               <label>S - Subjetivo <span>(Queixas e histórico relatado)</span></label>
-              <textarea 
-                value={soap.subjetivo} onChange={e => setSoap({...soap, subjetivo: e.target.value})}
+              <textarea
+                value={soap.subjetivo} onChange={e => setSoap({ ...soap, subjetivo: e.target.value })}
                 placeholder="Ex: Paciente queixa-se de tosse produtiva e febre há 3 dias..."
               />
             </div>
 
             <div className="soap-group">
               <label>O - Objetivo <span>(Sinais Vitais e Exame Físico)</span></label>
-              
+
               {/* Entradas estruturadas para facilitar cálculos de IMC ou gráficos no futuro */}
               <div className="sinais-vitais-row">
                 <div className="input-group-pequeno">
-                  <input type="number" step="0.1" value={soap.peso} onChange={e => setSoap({...soap, peso: e.target.value})} placeholder="Peso (kg)" />
+                  <input type="number" step="0.1" value={soap.peso} onChange={e => setSoap({ ...soap, peso: e.target.value })} placeholder="Peso (kg)" />
                 </div>
                 <div className="input-group-pequeno">
-                  <input type="number" step="0.01" value={soap.altura} onChange={e => setSoap({...soap, altura: e.target.value})} placeholder="Altura (m)" />
+                  <input type="number" step="0.01" value={soap.altura} onChange={e => setSoap({ ...soap, altura: e.target.value })} placeholder="Altura (m)" />
                 </div>
               </div>
 
-              <textarea 
-                value={soap.objetivo} onChange={e => setSoap({...soap, objetivo: e.target.value})}
+              <textarea
+                value={soap.objetivo} onChange={e => setSoap({ ...soap, objetivo: e.target.value })}
                 placeholder="Ex: FEBRE: 38.5°C. PULSO: 92 bpm. Garganta hiperemiada..."
               />
             </div>
 
             <div className="soap-group">
               <label>A - Avaliação <span>(Hipótese Diagnóstica)</span></label>
-              <textarea 
-                value={soap.avaliacao} onChange={e => setSoap({...soap, avaliacao: e.target.value})}
+              <textarea
+                value={soap.avaliacao} onChange={e => setSoap({ ...soap, avaliacao: e.target.value })}
                 placeholder="Ex: Hipótese: Amigdalite Bacteriana Aguda..."
               />
             </div>
 
             <div className="soap-group">
               <label>P - Plano <span>(Conduta, Exames e Prescrições)</span></label>
-              <textarea 
-                value={soap.plano} onChange={e => setSoap({...soap, plano: e.target.value})}
+              <textarea
+                value={soap.plano} onChange={e => setSoap({ ...soap, plano: e.target.value })}
                 placeholder="Ex: Prescrito Amoxicilina 500mg. Repouso..."
               />
             </div>
@@ -241,7 +241,7 @@ export default function Atendimento() {
               Cancelar
             </button>
             <button type="submit" disabled={loading} className="btn-finalizar">
-              {loading ? 'SALVANDO...' : (editarId ? 'SALVAR ALTERAÇÕES' : 'FINALIZAR ATENDIMENTO')}
+              {loading ? 'Salvando...' : (editarId ? 'Salvar Alterações' : 'Finalizar Atendimento')}
             </button>
           </div>
         </form>

@@ -1,0 +1,691 @@
+/**
+ * pdfExportService.js — RNF08
+ * Serviço de exportação de prontuários em PDF com hash de integridade SHA-256.
+ * 
+ * Gera o PDF inteiramente no lado do cliente usando a API nativa de impressão 
+ * do navegador (window.print via iframe oculto) para evitar dependências externas.
+ * 
+ * Após a geração, calcula o hash SHA-256 do conteúdo via Web Crypto API.
+ */
+
+import { hashTexto } from './hashService';
+
+/**
+ * Formata uma data ISO para dd/mm/aaaa.
+ */
+function formatarData(dateStr) {
+  if (!dateStr) return '—';
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+/**
+ * Formata uma data ISO para dd/mm/aaaa às HH:MM.
+ */
+function formatarDataHora(dateStr) {
+  if (!dateStr) return '—';
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
+    + ' às '
+    + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+}
+
+/**
+ * Gera o HTML de um prontuário (atendimento) para exportação em PDF.
+ * @param {object} atendimento - Dados do atendimento
+ * @param {object} paciente - Dados do paciente
+ * @param {string} hashIntegridade - Hash SHA-256 de integridade do prontuário
+ * @param {object|null} blocoBlockchain - Informações do bloco na blockchain (se houver)
+ * @returns {string} HTML formatado para impressão
+ */
+export function gerarHtmlProntuario(atendimento, paciente, hashIntegridade, blocoBlockchain = null) {
+  const mapSexo = (s) => {
+    if (s === 'M') return 'Masculino';
+    if (s === 'F') return 'Feminino';
+    if (s === 'O') return 'Outro';
+    return '—';
+  };
+
+  return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Prontuário #${atendimento.id} — ${paciente.nome}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pdf-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid #0d9488;
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .pdf-header-logo h1 {
+      font-size: 1.6rem;
+      color: #0d9488;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .pdf-header-logo p {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .pdf-header-meta {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .pdf-header-meta strong {
+      color: #0f172a;
+    }
+
+    .pdf-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .pdf-section-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0d9488;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+
+    .pdf-field {
+      margin-bottom: 0.5rem;
+    }
+
+    .pdf-field-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .pdf-field-value {
+      font-size: 0.95rem;
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+    .pdf-soap-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .pdf-soap-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0d9488;
+      margin-bottom: 0.4rem;
+    }
+
+    .pdf-soap-content {
+      font-size: 0.9rem;
+      color: #334155;
+      background: #f8fafc;
+      border-left: 4px solid #0d9488;
+      padding: 0.75rem 1rem;
+      border-radius: 0 6px 6px 0;
+      white-space: pre-wrap;
+    }
+
+    .pdf-vitals {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .pdf-vital-badge {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0d9488;
+    }
+
+    .pdf-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .pdf-hash-section {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .pdf-hash-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pdf-hash-value {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.75rem;
+      color: #0d9488;
+      word-break: break-all;
+      font-weight: 600;
+    }
+
+    .pdf-blockchain-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .pdf-blockchain-info strong {
+      color: #0f172a;
+    }
+
+    @media print {
+      body { padding: 1rem; }
+      .pdf-hash-section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="pdf-header">
+    <div class="pdf-header-logo">
+      <h1>☉ ProntoCare</h1>
+      <p>Prontuário Eletrônico do Paciente</p>
+    </div>
+    <div class="pdf-header-meta">
+      <p><strong>Prontuário #${atendimento.id}</strong></p>
+      <p>Emitido em: ${formatarDataHora(new Date().toISOString())}</p>
+      <p>Médico: Dr(a). ${atendimento.medico_nome || '—'}</p>
+    </div>
+  </div>
+
+  <div class="pdf-section">
+    <div class="pdf-section-title">Dados do Paciente</div>
+    <div class="pdf-grid">
+      <div class="pdf-field">
+        <div class="pdf-field-label">Nome Completo</div>
+        <div class="pdf-field-value">${paciente.nome}</div>
+      </div>
+      <div class="pdf-field">
+        <div class="pdf-field-label">CPF</div>
+        <div class="pdf-field-value">${paciente.cpf}</div>
+      </div>
+      <div class="pdf-field">
+        <div class="pdf-field-label">Data de Nascimento</div>
+        <div class="pdf-field-value">${formatarData(paciente.data_nascimento)}</div>
+      </div>
+      <div class="pdf-field">
+        <div class="pdf-field-label">Sexo</div>
+        <div class="pdf-field-value">${mapSexo(paciente.sexo)}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-section">
+    <div class="pdf-section-title">Registro Clínico (SOAP)</div>
+    <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+      Data do atendimento: ${formatarDataHora(atendimento.criado_em)}
+      ${atendimento.atualizado_em && atendimento.atualizado_em !== atendimento.criado_em
+        ? ' | Última atualização: ' + formatarDataHora(atendimento.atualizado_em)
+        : ''
+      }
+    </p>
+
+    ${(atendimento.peso || atendimento.altura || atendimento.imc) ? `
+    <div class="pdf-vitals">
+      ${atendimento.peso ? `<span class="pdf-vital-badge">Peso: ${atendimento.peso} kg</span>` : ''}
+      ${atendimento.altura ? `<span class="pdf-vital-badge">Altura: ${atendimento.altura} m</span>` : ''}
+      ${atendimento.imc ? `<span class="pdf-vital-badge">IMC: ${atendimento.imc}</span>` : ''}
+    </div>` : ''}
+
+    ${atendimento.subjetivo ? `
+    <div class="pdf-soap-section">
+      <div class="pdf-soap-title">S — Subjetivo</div>
+      <div class="pdf-soap-content">${atendimento.subjetivo}</div>
+    </div>` : ''}
+
+    ${atendimento.objetivo ? `
+    <div class="pdf-soap-section">
+      <div class="pdf-soap-title">O — Objetivo</div>
+      <div class="pdf-soap-content">${atendimento.objetivo}</div>
+    </div>` : ''}
+
+    ${atendimento.avaliacao ? `
+    <div class="pdf-soap-section">
+      <div class="pdf-soap-title">A — Avaliação</div>
+      <div class="pdf-soap-content">${atendimento.avaliacao}</div>
+    </div>` : ''}
+
+    ${atendimento.plano ? `
+    <div class="pdf-soap-section">
+      <div class="pdf-soap-title">P — Plano</div>
+      <div class="pdf-soap-content">${atendimento.plano}</div>
+    </div>` : ''}
+  </div>
+
+  <div class="pdf-footer">
+    <div class="pdf-hash-section">
+      <div class="pdf-hash-title">
+        🜔 Hash de Integridade SHA-256 (Web Crypto API)
+      </div>
+      <div class="pdf-hash-value">${hashIntegridade}</div>
+
+      ${blocoBlockchain ? `
+      <div class="pdf-blockchain-info">
+        <div>
+          <span>Bloco #</span>
+          <strong>${blocoBlockchain.indice}</strong>
+        </div>
+        <div>
+          <span>Versão:</span>
+          <strong>${blocoBlockchain.versao}</strong>
+        </div>
+        <div>
+          <span>Tipo:</span>
+          <strong>${blocoBlockchain.tipo === 'exportacao' ? 'Exportação' : blocoBlockchain.tipo === 'edicao' ? 'Edição' : blocoBlockchain.tipo}</strong>
+        </div>
+        <div>
+          <span>Registrado em:</span>
+          <strong>${formatarDataHora(blocoBlockchain.timestamp)}</strong>
+        </div>
+      </div>
+      <div style="margin-top: 0.5rem;">
+        <div class="pdf-hash-title" style="margin-bottom: 0.25rem;">
+          🜍 Hash do Bloco Anterior
+        </div>
+        <div class="pdf-hash-value" style="font-size: 0.7rem; color: #94a3b8;">${blocoBlockchain.hash_anterior}</div>
+      </div>
+      ` : ''}
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+/**
+ * Exporta um prontuário como PDF usando a API de impressão do navegador.
+ * Abre um iframe oculto com o HTML formatado e aciona window.print().
+ * 
+ * @param {string} html - HTML completo do prontuário
+ * @param {string} nomeArquivo - Nome do arquivo PDF (sem extensão)
+ */
+export function imprimirPDF(html, nomeArquivo) {
+  const iframe = document.createElement('iframe');
+  iframe.style.position = 'fixed';
+  iframe.style.right = '0';
+  iframe.style.bottom = '0';
+  iframe.style.width = '0';
+  iframe.style.height = '0';
+  iframe.style.border = 'none';
+  
+  document.body.appendChild(iframe);
+  
+  const doc = iframe.contentWindow.document;
+  doc.open();
+  doc.write(html);
+  doc.close();
+  
+  // Aguarda fontes e estilos carregarem antes de imprimir
+  iframe.contentWindow.onload = () => {
+    setTimeout(() => {
+      iframe.contentWindow.document.title = nomeArquivo;
+      iframe.contentWindow.print();
+      // Remove o iframe após fechar a janela de impressão
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 1000);
+    }, 500);
+  };
+}
+
+/**
+ * Pipeline completo: gera hash do prontuário + registra na blockchain + abre PDF para download.
+ * @param {object} params
+ * @param {object} params.atendimento - Dados do atendimento
+ * @param {object} params.paciente - Dados do paciente
+ * @param {object|null} params.blocoBlockchain - Dados do bloco da blockchain
+ * @returns {Promise<{hashIntegridade: string, html: string}>}
+ */
+export async function exportarProntuarioPDF({ atendimento, paciente, blocoBlockchain }) {
+  // 1. Gerar o hash de integridade a partir do conteúdo canônico do prontuário
+  const dadosCanonicos = JSON.stringify({
+    id: atendimento.id,
+    paciente_id: atendimento.paciente_id,
+    medico_id: atendimento.medico_id,
+    peso: atendimento.peso,
+    altura: atendimento.altura,
+    imc: atendimento.imc,
+    subjetivo: atendimento.subjetivo,
+    objetivo: atendimento.objetivo,
+    avaliacao: atendimento.avaliacao,
+    plano: atendimento.plano,
+    criado_em: atendimento.criado_em,
+    atualizado_em: atendimento.atualizado_em,
+  });
+  
+  const hashIntegridade = await hashTexto(dadosCanonicos);
+  
+  // 2. Gerar o HTML do prontuário
+  const html = gerarHtmlProntuario(atendimento, paciente, hashIntegridade, blocoBlockchain);
+  
+  // 3. Abrir para impressão/download via browser print API
+  const nomeArquivo = `prontuario_${atendimento.id}_${paciente.nome.replace(/\s+/g, '_')}`;
+  imprimirPDF(html, nomeArquivo);
+  
+  return { hashIntegridade, html };
+}
+
+/**
+ * Gera o HTML de uma anamnese para exportação em PDF.
+ */
+export function gerarHtmlAnamnese(anamnese, paciente, hashIntegridade, blocoBlockchain = null) {
+  const mapSexo = (s) => {
+    if (s === 'M') return 'Masculino';
+    if (s === 'F') return 'Feminino';
+    if (s === 'O') return 'Outro';
+    return '—';
+  };
+
+  return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Anamnese #${anamnese.id} — ${paciente.nome}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pdf-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid #0d9488;
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .pdf-header-logo h1 {
+      font-size: 1.6rem;
+      color: #0d9488;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .pdf-header-logo p {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .pdf-header-meta {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .pdf-header-meta strong {
+      color: #0f172a;
+    }
+
+    .pdf-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .pdf-section-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0d9488;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+
+    .pdf-field {
+      margin-bottom: 0.5rem;
+    }
+
+    .pdf-field-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .pdf-field-value {
+      font-size: 0.95rem;
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+    .pdf-content-box {
+      font-size: 0.9rem;
+      color: #334155;
+      background: #f8fafc;
+      border-left: 4px solid #0d9488;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      white-space: pre-wrap;
+      margin-top: 0.5rem;
+    }
+
+    .pdf-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .pdf-hash-section {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .pdf-hash-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pdf-hash-value {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.75rem;
+      color: #0d9488;
+      word-break: break-all;
+      font-weight: 600;
+    }
+
+    .pdf-blockchain-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .pdf-blockchain-info strong {
+      color: #0f172a;
+    }
+
+    @media print {
+      body { padding: 1rem; }
+      .pdf-hash-section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="pdf-header">
+    <div class="pdf-header-logo">
+      <h1>☉ ProntoCare</h1>
+      <p>Anamnese Clínica do Paciente</p>
+    </div>
+    <div class="pdf-header-meta">
+      <p><strong>Anamnese #${anamnese.id}</strong></p>
+      <p>Emitido em: ${formatarDataHora(new Date().toISOString())}</p>
+      <p>Médico: Dr(a). ${anamnese.medico_nome || '—'}</p>
+    </div>
+  </div>
+
+  <div class="pdf-section">
+    <div class="pdf-section-title">Dados do Paciente</div>
+    <div class="pdf-grid">
+      <div class="pdf-field">
+        <div class="pdf-field-label">Nome Completo</div>
+        <div class="pdf-field-value">${paciente.nome}</div>
+      </div>
+      <div class="pdf-field">
+        <div class="pdf-field-label">CPF</div>
+        <div class="pdf-field-value">${paciente.cpf}</div>
+      </div>
+      <div class="pdf-field">
+        <div class="pdf-field-label">Data de Nascimento</div>
+        <div class="pdf-field-value">${formatarData(paciente.data_nascimento)}</div>
+      </div>
+      <div class="pdf-field">
+        <div class="pdf-field-label">Sexo</div>
+        <div class="pdf-field-value">${mapSexo(paciente.sexo)}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-section">
+    <div class="pdf-section-title">Conteúdo da Anamnese</div>
+    <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+      Data de criação: ${formatarDataHora(anamnese.criado_em)}
+      ${anamnese.atualizado_em && anamnese.atualizado_em !== anamnese.criado_em
+        ? ' | Última atualização: ' + formatarDataHora(anamnese.atualizado_em)
+        : ''
+      }
+    </p>
+    <div class="pdf-content-box">${anamnese.conteudo}</div>
+  </div>
+
+  <div class="pdf-footer">
+    <div class="pdf-hash-section">
+      <div class="pdf-hash-title">
+        🜔 Hash de Integridade SHA-256 (Web Crypto API)
+      </div>
+      <div class="pdf-hash-value">${hashIntegridade}</div>
+
+      ${blocoBlockchain ? `
+      <div class="pdf-blockchain-info">
+        <div>
+          <span>Bloco #</span>
+          <strong>${blocoBlockchain.indice}</strong>
+        </div>
+        <div>
+          <span>Versão:</span>
+          <strong>${blocoBlockchain.versao}</strong>
+        </div>
+        <div>
+          <span>Tipo:</span>
+          <strong>${blocoBlockchain.tipo === 'exportacao' ? 'Exportação' : blocoBlockchain.tipo === 'edicao' ? 'Edição' : blocoBlockchain.tipo}</strong>
+        </div>
+        <div>
+          <span>Registrado em:</span>
+          <strong>${formatarDataHora(blocoBlockchain.timestamp)}</strong>
+        </div>
+      </div>
+      <div style="margin-top: 0.5rem;">
+        <div class="pdf-hash-title" style="margin-bottom: 0.25rem;">
+          🜍 Hash do Bloco Anterior
+        </div>
+        <div class="pdf-hash-value" style="font-size: 0.7rem; color: #94a3b8;">${blocoBlockchain.hash_anterior}</div>
+      </div>
+      ` : ''}
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+/**
+ * Pipeline completo: gera hash da anamnese + registra na blockchain + abre PDF para download.
+ */
+export async function exportarAnamnesePDF({ anamnese, paciente, blocoBlockchain }) {
+  // 1. Gerar o hash de integridade a partir do conteúdo canônico da anamnese
+  const dadosCanonicos = JSON.stringify({
+    id: anamnese.id,
+    paciente_id: anamnese.paciente_id,
+    medico_id: anamnese.medico_id,
+    conteudo: anamnese.conteudo,
+    criado_em: anamnese.criado_em,
+    atualizado_em: anamnese.atualizado_em,
+  });
+  
+  const hashIntegridade = await hashTexto(dadosCanonicos);
+  
+  // 2. Gerar o HTML da anamnese
+  const html = gerarHtmlAnamnese(anamnese, paciente, hashIntegridade, blocoBlockchain);
+  
+  // 3. Abrir para impressão/download via browser print API
+  const nomeArquivo = `anamnese_${anamnese.id}_${paciente.nome.replace(/\s+/g, '_')}`;
+  imprimirPDF(html, nomeArquivo);
+  
+  return { hashIntegridade, html };
+}

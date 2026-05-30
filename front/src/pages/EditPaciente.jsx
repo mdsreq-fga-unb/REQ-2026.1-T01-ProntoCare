@@ -44,6 +44,7 @@ export default function EditPaciente() {
           senha: ''
         });
       } catch (err) {
+        console.error(err);
         alert('Erro ao carregar dados do paciente.');
         navigate('/medico');
       } finally {
@@ -66,6 +67,7 @@ export default function EditPaciente() {
       alert('Paciente atualizado com sucesso!');
       navigate('/medico');
     } catch (err) {
+      console.error(err);
       alert(err.message || 'Erro ao atualizar paciente. Verifique os dados.');
     } finally {
       setLoading(false);

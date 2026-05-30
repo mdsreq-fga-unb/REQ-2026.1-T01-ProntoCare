@@ -23,37 +23,38 @@ export default function Atendimento() {
   });
 
   useEffect(() => {
-    carregarDados();
-  }, [pacienteId, editarId]);
+    async function carregarDados() {
+      try {
+        const [pac, hist] = await Promise.all([
+          api.get(`/pacientes/${pacienteId}`),
+          api.get(`/atendimentos/paciente/${pacienteId}`)
+        ]);
+        setPaciente(pac);
+        setHistorico(hist);
 
-  async function carregarDados() {
-    try {
-      const [pac, hist] = await Promise.all([
-        api.get(`/pacientes/${pacienteId}`),
-        api.get(`/atendimentos/paciente/${pacienteId}`)
-      ]);
-      setPaciente(pac);
-      setHistorico(hist);
-
-      // Se estiver editando, carrega os dados do atendimento existente
-      if (editarId) {
-        const atendimento = await api.get(`/atendimentos/${editarId}`);
-        setSoap({
-          peso: atendimento.peso || '',
-          altura: atendimento.altura || '',
-          subjetivo: atendimento.subjetivo || '',
-          objetivo: atendimento.objetivo || '',
-          avaliacao: atendimento.avaliacao || '',
-          plano: atendimento.plano || ''
-        });
+        // Se estiver editando, carrega os dados do atendimento existente
+        if (editarId) {
+          const atendimento = await api.get(`/atendimentos/${editarId}`);
+          setSoap({
+            peso: atendimento.peso || '',
+            altura: atendimento.altura || '',
+            subjetivo: atendimento.subjetivo || '',
+            objetivo: atendimento.objetivo || '',
+            avaliacao: atendimento.avaliacao || '',
+            plano: atendimento.plano || ''
+          });
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao carregar dados do paciente.');
+        navigate('/medico');
+      } finally {
+        setCarregando(false);
       }
-    } catch (err) {
-      alert('Erro ao carregar dados do paciente.');
-      navigate('/medico');
-    } finally {
-      setCarregando(false);
     }
-  }
+    carregarDados();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pacienteId, editarId]);
 
   function calcularIdade(dataNasc) {
     if (!dataNasc) return '—';

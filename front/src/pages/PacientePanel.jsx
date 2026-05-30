@@ -18,6 +18,7 @@ export default function PacientePanel({ onLogout }) {
   const [integridadeResultado, setIntegridadeResultado] = useState(null);
   const [exportandoPdf, setExportandoPdf] = useState(null);
   const [carregando, setCarregando] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [excluido, setExcluido] = useState(false);
   const [expandido, setExpandido] = useState(null);
   const [abaAtiva, setAbaAtiva] = useState('prontuarios');
@@ -58,6 +59,7 @@ export default function PacientePanel({ onLogout }) {
       }
     }
     carregar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function exportar() {

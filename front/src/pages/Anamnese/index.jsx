@@ -18,29 +18,30 @@ export default function Anamnese() {
   const [conteudo, setConteudo] = useState('');
 
   useEffect(() => {
-    carregarDados();
-  }, [pacienteId, editarId]);
+    async function carregarDados() {
+      try {
+        const [pac, hist] = await Promise.all([
+          api.get(`/pacientes/${pacienteId}`),
+          api.get(`/anamneses/paciente/${pacienteId}`)
+        ]);
+        setPaciente(pac);
+        setHistorico(hist);
 
-  async function carregarDados() {
-    try {
-      const [pac, hist] = await Promise.all([
-        api.get(`/pacientes/${pacienteId}`),
-        api.get(`/anamneses/paciente/${pacienteId}`)
-      ]);
-      setPaciente(pac);
-      setHistorico(hist);
-
-      if (editarId) {
-        const anamnese = await api.get(`/anamneses/${editarId}`);
-        setConteudo(anamnese.conteudo || '');
+        if (editarId) {
+          const anamnese = await api.get(`/anamneses/${editarId}`);
+          setConteudo(anamnese.conteudo || '');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao carregar dados do paciente ou anamnese.');
+        navigate('/medico');
+      } finally {
+        setCarregando(false);
       }
-    } catch (err) {
-      alert('Erro ao carregar dados do paciente ou anamnese.');
-      navigate('/medico');
-    } finally {
-      setCarregando(false);
     }
-  }
+    carregarDados();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pacienteId, editarId]);
 
   function calcularIdade(dataNasc) {
     if (!dataNasc) return '—';

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../api';
-import { hashTexto } from '../../services/hashService';
-import { criarBlocoGenesis, criarBlocoExportacao, validarCadeia, canonicalizar } from '../../services/blockchainService';
+import { criarBlocoGenesis, criarBlocoExportacao, validarCadeia } from '../../services/blockchainService';
 import { exportarProntuarioPDF, exportarAnamnesePDF } from '../../services/pdfExportService';
 import './styles.css';
 
@@ -41,6 +40,7 @@ export default function PacienteDetalhe() {
 
   useEffect(() => {
     carregarDados();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   async function carregarDados() {
@@ -58,6 +58,7 @@ export default function PacienteDetalhe() {
       setLogs(logData);
       setBlockchain(chain || []);
     } catch (err) {
+      console.error(err);
       alert('Erro ao carregar dados do paciente.');
       navigate('/medico');
     } finally {

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import './styles.css';
 
@@ -8,8 +7,6 @@ export default function Login({ onLogin }) {
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();

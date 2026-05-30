@@ -8,6 +8,7 @@ export default function MedicoPanel({ onLogout }) {
   const [pacientes, setPacientes] = useState([]);
   const [busca, setBusca] = useState({ nome: '', cpf: '' });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { carregar(); }, [busca]);
 
   async function carregar() {

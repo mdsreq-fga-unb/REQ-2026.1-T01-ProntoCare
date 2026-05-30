@@ -1,16 +1,37 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api';
 import './PacienteDetalhe/styles.css';
+import { exportarProntuarioPDF, exportarAnamnesePDF } from '../services/pdfExportService';
+import { 
+  criarBlocoGenesis, 
+  criarBlocoExportacao, 
+  validarCadeia 
+} from '../services/blockchainService';
 
 export default function PacientePanel({ onLogout }) {
   const [paciente, setPaciente] = useState(null);
   const [atendimentos, setAtendimentos] = useState([]);
   const [anamneses, setAnamneses] = useState([]);
   const [logs, setLogs] = useState([]);
+  const [blockchain, setBlockchain] = useState([]);
+  const [verificando, setVerificando] = useState(false);
+  const [integridadeResultado, setIntegridadeResultado] = useState(null);
+  const [exportandoPdf, setExportandoPdf] = useState(null);
   const [carregando, setCarregando] = useState(true);
   const [excluido, setExcluido] = useState(false);
   const [expandido, setExpandido] = useState(null);
   const [abaAtiva, setAbaAtiva] = useState('prontuarios');
+  const [mostrarVisualizacoes, setMostrarVisualizacoes] = useState(false);
+  const [logsExpandidos, setLogsExpandidos] = useState({});
+  const [blocosExpandidos, setBlocosExpandidos] = useState({});
+
+  const alternarLogExpandido = (idx) => {
+    setLogsExpandidos(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
+  const alternarBlocoExpandido = (idx) => {
+    setBlocosExpandidos(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
 
   useEffect(() => {
     async function carregar() {
@@ -18,17 +39,20 @@ export default function PacientePanel({ onLogout }) {
         const dadosPaciente = await api.get('/pacientes/me');
         setPaciente(dadosPaciente);
         
-        const [historico, anams, logsData] = await Promise.all([
+        const [historico, anams, logsData, cadeia] = await Promise.all([
           api.get(`/atendimentos/paciente/${dadosPaciente.id}`),
           api.get(`/anamneses/paciente/${dadosPaciente.id}`),
-          api.get(`/logs/paciente/${dadosPaciente.id}`)
+          api.get(`/logs/paciente/${dadosPaciente.id}`),
+          api.get(`/blockchain/paciente/${dadosPaciente.id}`)
         ]);
         
         setAtendimentos(historico);
         setAnamneses(anams);
         setLogs(logsData);
+        setBlockchain(cadeia || []);
       } catch (e) {
-        alert(e.message);
+        alert(e.message || 'Erro ao carregar dados do paciente.');
+        onLogout();
       } finally {
         setCarregando(false);
       }
@@ -52,6 +76,214 @@ export default function PacientePanel({ onLogout }) {
       URL.revokeObjectURL(url);
     } catch (e) {
       alert(e.message);
+    }
+  }
+
+  // RNF08: Exportar prontuário como PDF com hash SHA-256 e registro na blockchain
+  async function exportarPDF(atendimento) {
+    const itemKey = `at_${atendimento.id}`;
+    if (exportandoPdf) return;
+    setExportandoPdf(itemKey);
+
+    try {
+      // 1. Buscar último bloco da cadeia (ou criar gênesis)
+      let ultimoBlocoResp = await api.get(`/blockchain/paciente/${paciente.id}/ultimo`);
+      
+      if (!ultimoBlocoResp) {
+        // Criar bloco gênesis
+        const genesis = await criarBlocoGenesis();
+        ultimoBlocoResp = await api.post('/blockchain', {
+          paciente_id: parseInt(paciente.id),
+          ...genesis,
+        });
+      }
+
+      // 2. Determinar versão do documento
+      const blocosDoDoc = (blockchain || []).filter(
+        b => b.entidade === 'atendimento' && b.entidade_id === atendimento.id
+      );
+      const versao = blocosDoDoc.length + 1;
+
+      // 3. Gerar dados canônicos para hash
+      const dadosProntuario = {
+        id: atendimento.id,
+        paciente_id: atendimento.paciente_id,
+        medico_id: atendimento.medico_id,
+        peso: atendimento.peso,
+        altura: atendimento.altura,
+        imc: atendimento.imc,
+        subjetivo: atendimento.subjetivo,
+        objetivo: atendimento.objetivo,
+        avaliacao: atendimento.avaliacao,
+        plano: atendimento.plano,
+        criado_em: atendimento.criado_em,
+        atualizado_em: atendimento.atualizado_em,
+      };
+
+      // 4. Criar novo bloco na blockchain
+      const novoBloco = await criarBlocoExportacao({
+        blocoAnterior: ultimoBlocoResp,
+        entidade: 'atendimento',
+        entidade_id: atendimento.id,
+        versao,
+        dadosProntuario,
+        pdfHash: null,
+        usuario: {
+          id: paciente.id,
+          nome: paciente.nome,
+          role: 'paciente',
+        },
+      });
+
+      // 5. Salvar na blockchain da API
+      const blocoSalvo = await api.post('/blockchain', {
+        paciente_id: parseInt(paciente.id),
+        ...novoBloco,
+      });
+
+      // 6. Exportar o PDF com hash de integridade
+      await exportarProntuarioPDF({
+        atendimento,
+        paciente,
+        blocoBlockchain: blocoSalvo,
+      });
+
+      // 7. Atualizar cadeia e logs localmente
+      const novaCadeia = await api.get(`/blockchain/paciente/${paciente.id}`);
+      setBlockchain(novaCadeia || []);
+      const logsData = await api.get(`/logs/paciente/${paciente.id}`);
+      setLogs(logsData);
+    } catch (err) {
+      console.error('Erro ao exportar PDF:', err);
+      alert('Erro ao exportar PDF: ' + (err.message || 'Erro desconhecido'));
+    } finally {
+      setExportandoPdf(null);
+    }
+  }
+
+  // RNF08: Exportar anamnese como PDF com hash SHA-256 e registro na blockchain
+  async function exportarAnamnese(anamnese) {
+    const itemKey = `anam_${anamnese.id}`;
+    if (exportandoPdf) return;
+    setExportandoPdf(itemKey);
+
+    try {
+      // 1. Buscar último bloco da cadeia (ou criar gênesis)
+      let ultimoBlocoResp = await api.get(`/blockchain/paciente/${paciente.id}/ultimo`);
+      
+      if (!ultimoBlocoResp) {
+        // Criar bloco gênesis
+        const genesis = await criarBlocoGenesis();
+        ultimoBlocoResp = await api.post('/blockchain', {
+          paciente_id: parseInt(paciente.id),
+          ...genesis,
+        });
+      }
+
+      // 2. Determinar versão do documento
+      const blocosDoDoc = (blockchain || []).filter(
+        b => b.entidade === 'anamnese' && b.entidade_id === anamnese.id
+      );
+      const versao = blocosDoDoc.length + 1;
+
+      // 3. Gerar dados canônicos para hash
+      const dadosAnamnese = {
+        id: anamnese.id,
+        paciente_id: anamnese.paciente_id,
+        medico_id: anamnese.medico_id,
+        conteudo: anamnese.conteudo,
+        criado_em: anamnese.criado_em,
+        atualizado_em: anamnese.atualizado_em,
+      };
+
+      // 4. Criar novo bloco na blockchain
+      const novoBloco = await criarBlocoExportacao({
+        blocoAnterior: ultimoBlocoResp,
+        entidade: 'anamnese',
+        entidade_id: anamnese.id,
+        versao,
+        dadosAnamnese,
+        pdfHash: null,
+        usuario: {
+          id: paciente.id,
+          nome: paciente.nome,
+          role: 'paciente',
+        },
+      });
+
+      // 5. Salvar na blockchain da API
+      const blocoSalvo = await api.post('/blockchain', {
+        paciente_id: parseInt(paciente.id),
+        ...novoBloco,
+      });
+
+      // 6. Exportar o PDF com hash de integridade
+      await exportarAnamnesePDF({
+        anamnese,
+        paciente,
+        blocoBlockchain: blocoSalvo,
+      });
+
+      // 7. Atualizar cadeia e logs localmente
+      const novaCadeia = await api.get(`/blockchain/paciente/${paciente.id}`);
+      setBlockchain(novaCadeia || []);
+      const logsData = await api.get(`/logs/paciente/${paciente.id}`);
+      setLogs(logsData);
+    } catch (err) {
+      console.error('Erro ao exportar PDF da Anamnese:', err);
+      alert('Erro ao exportar PDF: ' + (err.message || 'Erro desconhecido'));
+    } finally {
+      setExportandoPdf(null);
+    }
+  }
+
+  // RNF08: Verificar integridade da blockchain
+  async function verificarIntegridade() {
+    setVerificando(true);
+
+    try {
+      // Verificação do lado do servidor
+      const resultado = await api.get(`/blockchain/paciente/${paciente.id}/verificar`);
+      
+      // Verificação do lado do cliente (double-check via Web Crypto API)
+      const cadeia = await api.get(`/blockchain/paciente/${paciente.id}`);
+      const resultadoCliente = await validarCadeia(cadeia || []);
+
+      const dataHoraFormatada = formatarDataHora(new Date().toISOString());
+      const valida = resultado.valida && resultadoCliente.valida;
+
+      // Salva resultado para exibição no log expandido
+      setIntegridadeResultado({
+        valida,
+        servidor: resultado.valida ? 'Cadeia validada.' : (resultado.mensagem || 'Cadeia inválida.'),
+        cliente: resultadoCliente.valida ? 'Cadeia validada.' : (resultadoCliente.erro || 'Cadeia inválida.'),
+        timestamp: dataHoraFormatada,
+      });
+
+      if (valida) {
+        alert(`Status: ✓ Cadeia Íntegra\nServidor: ✓ Cadeia validada.\nCliente: ✓ Cadeia validada.`);
+      } else {
+        const msgServidor = resultado.valida ? 'Cadeia validada.' : (resultado.mensagem || 'Cadeia inválida.');
+        const msgCliente = resultadoCliente.valida ? 'Cadeia validada.' : (resultadoCliente.erro || 'Cadeia inválida.');
+        alert(`Status: ✗ Integridade Comprometida\nServidor: ✗ ${msgServidor}\nCliente: ✗ ${msgCliente}`);
+      }
+
+      setBlockchain(cadeia || []);
+
+      // Atualiza logs para exibir o novo log de verificação imediatamente
+      const logData = await api.get(`/logs/paciente/${paciente.id}`);
+      setLogs(logData);
+    } catch (err) {
+      const dataHoraFormatada = formatarDataHora(new Date().toISOString());
+      setIntegridadeResultado({
+        valida: false,
+        servidor: 'Erro ao verificar: ' + err.message,
+        cliente: 'Erro ao verificar: ' + err.message,
+        timestamp: dataHoraFormatada,
+      });
+      alert(`Status: ✗ Integridade Comprometida\nServidor: ✗ Erro ao verificar: ${err.message}\nCliente: ✗ Erro ao verificar: ${err.message}`);
+    } finally {
+      setVerificando(false);
     }
   }
 
@@ -104,20 +336,57 @@ export default function PacientePanel({ onLogout }) {
 
   function mapAcao(acao) {
     const map = {
-      criacao: { icon: '🟢', label: 'Criação', cor: 'log-criacao' },
-      edicao: { icon: '🟡', label: 'Edição', cor: 'log-edicao' },
-      exclusao: { icon: '🔴', label: 'Exclusão', cor: 'log-exclusao' },
-      desativacao: { icon: '⚫', label: 'Desativação', cor: 'log-desativacao' },
-      reativacao: { icon: '🟢', label: 'Reativação', cor: 'log-criacao' },
+      criacao: { icon: '🜔', label: 'Criação', cor: 'log-criacao' },
+      edicao: { icon: '☿', label: 'Edição', cor: 'log-edicao' },
+      exclusao: { icon: '🜍', label: 'Exclusão', cor: 'log-exclusao' },
+      desativacao: { icon: '♄', label: 'Desativação', cor: 'log-desativacao' },
+      reativacao: { icon: '☉', label: 'Reativação', cor: 'log-criacao' },
+      visualizacao: { icon: '☽', label: 'Visualização', cor: 'log-visualizacao' },
+      verificacao: { icon: '♁', label: 'Integridade', cor: 'log-verificacao' },
     };
-    return map[acao] || { icon: '⚪', label: acao, cor: '' };
+    return map[acao] || { icon: '🜔', label: acao, cor: '' };
+  }
+
+  function obterIconClass(simbolo) {
+    if (simbolo === '🜔') return 'icon-sal';
+    if (simbolo === '☿') return 'icon-mercurio';
+    if (simbolo === '🜍') return 'icon-chofre';
+    if (simbolo === '♄') return 'icon-saturno';
+    if (simbolo === '☉') return 'icon-sol';
+    if (simbolo === '☽') return 'icon-lua';
+    if (simbolo === '♁') return 'icon-antimonio';
+    return '';
+  }
+
+  function detectarBrowser(userAgent) {
+    if (!userAgent) return 'Desconhecido';
+    const ua = userAgent.toLowerCase();
+    if (ua.includes('firefox')) return 'Firefox';
+    if (ua.includes('chrome') && !ua.includes('chromium') && !ua.includes('edg')) return 'Chrome';
+    if (ua.includes('safari') && !ua.includes('chrome')) return 'Safari';
+    if (ua.includes('edg')) return 'Edge';
+    if (ua.includes('opera') || ua.includes('opr')) return 'Opera';
+    if (ua.includes('msie') || ua.includes('trident')) return 'Internet Explorer';
+    return 'Outro / API';
+  }
+
+  function formatarIp(ip) {
+    if (!ip) return 'Desconhecido';
+    if (ip === '::1') return '127.0.0.1';
+    if (ip === '::ffff:127.0.0.1') return '127.0.0.1';
+    return ip;
   }
 
   function mapEntidade(ent) {
     if (ent === 'paciente') return 'Cadastro';
     if (ent === 'atendimento') return 'Prontuário';
     if (ent === 'anamnese') return 'Anamnese';
+    if (ent === 'blockchain') return 'Blockchain';
     return ent;
+  }
+
+  function formatarContagem(n) {
+    return n > 99 ? '99+' : n;
   }
 
   function truncar(val, max = 60) {
@@ -168,7 +437,8 @@ export default function PacientePanel({ onLogout }) {
   if (!paciente) return null;
 
   const ultimoImc = atendimentos.find(a => a.imc)?.imc;
-  const gruposLog = agruparLogs(logs);
+  const logsFiltrados = logs.filter(l => mostrarVisualizacoes || l.acao !== 'visualizacao');
+  const gruposLog = agruparLogs(logsFiltrados);
 
   const historicoClinico = [
     ...atendimentos.map(at => ({ ...at, tipoItem: 'atendimento' })),
@@ -268,6 +538,12 @@ export default function PacientePanel({ onLogout }) {
             >
               Histórico de Alterações ({logs.length})
             </button>
+            <button 
+              className={`pd-tab ${abaAtiva === 'integridade' ? 'ativa' : ''}`}
+              onClick={() => setAbaAtiva('integridade')}
+            >
+              Integridade
+            </button>
           </div>
 
           {/* === ABA: MEU HISTÓRICO CLÍNICO === */}
@@ -297,12 +573,14 @@ export default function PacientePanel({ onLogout }) {
                       <div key={itemKey} className={`pd-timeline-item ${isExpandido ? 'expandido' : ''}`}>
                         {/* Linha da timeline */}
                         <div className="pd-timeline-marker">
-                          <div className={`pd-timeline-dot ${index === 0 ? 'recente' : ''}`}></div>
+                          <div className={`pd-timeline-dot log-icon-container ${isAtendimento ? 'prontuario' : 'anamnese'} ${index === 0 ? 'recente' : ''}`}>
+                            <span className={`pd-log-icon ${isAtendimento ? 'icon-sal' : 'icon-mercurio'}`}>{isAtendimento ? '🜔' : '☿'}</span>
+                          </div>
                           {index < historicoClinico.length - 1 && <div className="pd-timeline-line"></div>}
                         </div>
 
                         {/* Conteúdo do item */}
-                        <div className="pd-timeline-content" onClick={() => setExpandido(isExpandido ? null : itemKey)}>
+                        <div className={`pd-timeline-content ${isAtendimento ? 'prontuario' : 'anamnese'}`} onClick={() => setExpandido(isExpandido ? null : itemKey)}>
                           <div className="pd-timeline-header">
                             <div className="pd-timeline-info">
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -323,6 +601,22 @@ export default function PacientePanel({ onLogout }) {
                               <span className="pd-timeline-medico">Médico Responsável: Dr(a). {item.medico_nome}</span>
                             </div>
                             <div className="pd-timeline-acoes">
+                              <button 
+                                className="pd-btn-pdf"
+                                onClick={(e) => { 
+                                  e.stopPropagation(); 
+                                  if (isAtendimento) {
+                                    exportarPDF(item);
+                                  } else {
+                                    exportarAnamnese(item);
+                                  }
+                                }}
+                                disabled={exportandoPdf === itemKey}
+                                title={isAtendimento ? "Exportar prontuário como PDF com hash SHA-256" : "Exportar anamnese como PDF com hash SHA-256"}
+                                style={{ marginRight: '0.5rem' }}
+                              >
+                                {exportandoPdf === itemKey ? 'Exportando...' : 'PDF'}
+                              </button>
                               <span className="pd-expand-icon">{isExpandido ? '▲' : '▼'}</span>
                             </div>
                           </div>
@@ -404,7 +698,17 @@ export default function PacientePanel({ onLogout }) {
                 <h3 className="pd-card-title">
                   Histórico de Alterações de Dados e Prontuários
                 </h3>
-                <span className="pd-contagem">{gruposLog.length} evento{gruposLog.length !== 1 ? 's' : ''}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', cursor: 'pointer' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={mostrarVisualizacoes} 
+                      onChange={e => setMostrarVisualizacoes(e.target.checked)} 
+                    />
+                    Mostrar acessos de leitura
+                  </label>
+                  <span className="pd-contagem">{formatarContagem(gruposLog.length)} evento{gruposLog.length !== 1 ? 's' : ''}</span>
+                </div>
               </div>
 
               {gruposLog.length === 0 ? (
@@ -412,55 +716,202 @@ export default function PacientePanel({ onLogout }) {
                   <p>Nenhuma alteração registrada em seus dados ou prontuários.</p>
                 </div>
               ) : (
-                <div className="pd-log-lista">
+                <div className="pd-timeline">
                   {gruposLog.map((grupo, index) => {
                     const p = grupo.principal;
                     const acaoInfo = mapAcao(p.acao);
                     const isEdicao = p.acao === 'edicao';
+                    const isLogExpandido = !!logsExpandidos[index];
 
                     return (
-                      <div key={index} className={`pd-log-item ${acaoInfo.cor}`}>
-                        <div className="pd-log-marker">
-                          <span className="pd-log-icon">{acaoInfo.icon}</span>
-                          {index < gruposLog.length - 1 && <div className="pd-log-line"></div>}
+                      <div key={index} className={`pd-timeline-item ${isLogExpandido ? 'expandido' : ''}`}>
+                        <div className="pd-timeline-marker">
+                          <div className={`pd-timeline-dot log-icon-container ${acaoInfo.cor} ${index === 0 ? 'recente' : ''}`}>
+                            <span className={`pd-log-icon ${obterIconClass(acaoInfo.icon)}`}>{acaoInfo.icon}</span>
+                          </div>
+                          {index < gruposLog.length - 1 && <div className="pd-timeline-line"></div>}
                         </div>
 
-                        <div className="pd-log-content">
-                          <div className="pd-log-header">
-                            <div className="pd-log-titulo">
-                              <span className="pd-log-badge">{acaoInfo.label}</span>
-                              <span className="pd-log-entidade">{mapEntidade(p.entidade)} #{p.entidade_id}</span>
+                        <div 
+                          className={`pd-timeline-content pd-log-content ${acaoInfo.cor}`}
+                          onClick={() => alternarLogExpandido(index)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <div className="pd-timeline-header">
+                            <div className="pd-timeline-info" style={{ flexDirection: 'row', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                              <span className="pd-log-badge" style={{ margin: 0 }}>{acaoInfo.label}</span>
+                              <span className="pd-log-entidade" style={{ fontSize: '0.9rem' }}>{mapEntidade(p.entidade)} #{p.entidade_id}</span>
                             </div>
-                            <span className="pd-log-data">{formatarDataHora(p.criado_em)}</span>
+                            <div className="pd-timeline-acoes" style={{ gap: '1rem' }}>
+                              <span className="pd-log-data">{formatarDataHora(p.criado_em)}</span>
+                              <span className="pd-expand-icon">{isLogExpandido ? '▲' : '▼'}</span>
+                            </div>
                           </div>
 
-                          <div className="pd-log-autor">
-                            Modificado por <strong>{p.usuario_nome}</strong> ({p.usuario_role === 'medico' ? 'Médico' : p.usuario_role === 'admin' ? 'Administrador' : 'Paciente'})
-                          </div>
+                          {isLogExpandido && (
+                            <div className="pd-soap-detalhes">
+                              <div className="pd-log-autor" style={{ margin: 0 }}>
+                                Modificado por <strong>{p.usuario_nome}</strong> ({p.usuario_role === 'medico' ? 'Médico' : p.usuario_role === 'admin' ? 'Administrador' : 'Paciente'})
+                                {p.ip && <span className="pd-log-meta-item" title="Endereço IP de origem"> • IP: <code>{formatarIp(p.ip)}</code></span>}
+                                {p.user_agent && (
+                                  <span className="pd-log-meta-item" title={p.user_agent}>
+                                     • Navegador: <em>{detectarBrowser(p.user_agent)}</em>
+                                  </span>
+                                )}
+                              </div>
 
-                          {/* Detalhes de campos alterados (somente para edições) */}
-                          {isEdicao && grupo.itens.length > 0 && (
-                            <div className="pd-log-campos">
-                              {grupo.itens.map((item, i) => (
-                                <div key={i} className="pd-log-campo">
-                                  <span className="pd-log-campo-nome">{item.campo}</span>
-                                  <div className="pd-log-diff">
-                                    <span className="pd-log-antigo" title={item.valor_anterior || '(vazio)'}>
-                                      {truncar(item.valor_anterior)}
+                              {/* Detalhes de campos alterados (somente para edições) */}
+                              {isEdicao && grupo.itens.length > 0 && (
+                                <div className="pd-log-campos" style={{ marginTop: '0.75rem' }}>
+                                  {grupo.itens.map((item, i) => (
+                                    <div key={i} className="pd-log-campo">
+                                      <span className="pd-log-campo-nome">{item.campo}</span>
+                                      <div className="pd-log-diff">
+                                        <span className="pd-log-antigo" title={item.valor_anterior || '(vazio)'}>
+                                          {truncar(item.valor_anterior)}
+                                        </span>
+                                        <span className="pd-log-seta">→</span>
+                                        <span className="pd-log-novo" title={item.valor_novo || '(vazio)'}>
+                                          {truncar(item.valor_novo)}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+
+                              {/* Resultado da verificação de integridade */}
+                              {p.acao === 'verificacao' && integridadeResultado && (
+                                <div className="pd-log-campos" style={{ marginTop: '0.75rem' }}>
+                                  <div className="pd-log-campo">
+                                    <span className="pd-log-campo-nome">Status</span>
+                                    <span style={{ fontWeight: 'bold', color: integridadeResultado.valida ? 'var(--success)' : 'var(--danger)' }}>
+                                      {integridadeResultado.valida ? '✓ Cadeia Íntegra' : '✗ Integridade Comprometida'}
                                     </span>
-                                    <span className="pd-log-seta">→</span>
-                                    <span className="pd-log-novo" title={item.valor_novo || '(vazio)'}>
-                                      {truncar(item.valor_novo)}
+                                  </div>
+                                  <div className="pd-log-campo">
+                                    <span className="pd-log-campo-nome">Servidor</span>
+                                    <span style={{ color: 'var(--text-main)' }}>
+                                      {integridadeResultado.valida ? '✓ ' : '✗ '} {integridadeResultado.servidor}
+                                    </span>
+                                  </div>
+                                  <div className="pd-log-campo">
+                                    <span className="pd-log-campo-nome">Cliente</span>
+                                    <span style={{ color: 'var(--text-main)' }}>
+                                      {integridadeResultado.valida ? '✓ ' : '✗ '} {integridadeResultado.cliente}
                                     </span>
                                   </div>
                                 </div>
-                              ))}
+                              )}
                             </div>
                           )}
                         </div>
                       </div>
                     );
                   })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* === ABA: INTEGRIDADE (BLOCKCHAIN) === */}
+          {abaAtiva === 'integridade' && (
+            <div className="pd-card">
+              <div className="pd-card-header-row">
+                <h3 className="pd-card-title">
+                  Blockchain de Integridade
+                </h3>
+                <button
+                  className="pd-btn-primario"
+                  onClick={verificarIntegridade}
+                  disabled={verificando}
+                  style={{
+                    fontSize: '0.85rem',
+                    padding: '4px 12px',
+                    borderRadius: 'var(--radius-full)',
+                    border: '1px solid var(--primary)',
+                    fontWeight: '600',
+                    lineHeight: '1.4',
+                    cursor: 'pointer',
+                    height: 'auto'
+                  }}
+                >
+                  {verificando ? 'Verificando...' : 'Verificar Integridade'}
+                </button>
+              </div>
+
+              {/* Lista de blocos */}
+              {blockchain.length === 0 ? (
+                <div className="pd-vazio">
+                  <p>Nenhum bloco na blockchain. Exporte um prontuário como PDF para iniciar a cadeia.</p>
+                </div>
+              ) : (
+                <div className="pd-timeline">
+                  {[...blockchain].reverse().map((bloco, index) => (
+                    <div key={bloco.id || index} className={`pd-timeline-item ${blocosExpandidos[bloco.indice] ? 'expandido' : ''}`}>
+                      <div className="pd-timeline-marker">
+                        <div className={`pd-timeline-dot log-icon-container ${bloco.tipo} ${index === 0 ? 'recente' : ''}`}>
+                          <span className={`pd-log-icon ${bloco.tipo === 'genesis' ? 'icon-sol' : bloco.tipo === 'exportacao' ? 'icon-sal' : 'icon-mercurio'}`}>
+                            {bloco.tipo === 'genesis' ? '☉' : bloco.tipo === 'exportacao' ? '🜔' : '☿'}
+                          </span>
+                        </div>
+                        {index < blockchain.length - 1 && <div className="pd-timeline-line"></div>}
+                      </div>
+                      <div 
+                        className={`pd-timeline-content pd-blockchain-bloco ${bloco.tipo}`}
+                        onClick={() => alternarBlocoExpandido(bloco.indice)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <div className="pd-blockchain-bloco-header">
+                          <div className="pd-blockchain-bloco-titulo">
+                            <span className="pd-blockchain-bloco-indice">#{bloco.indice}</span>
+                            <span className={`pd-blockchain-tipo-badge ${bloco.tipo}`}>
+                              {bloco.tipo === 'genesis' ? 'Gênesis' : bloco.tipo === 'exportacao' ? 'Exportação' : 'Edição'}
+                            </span>
+                            {bloco.entidade && (
+                              <span className="pd-blockchain-entidade">
+                                {bloco.entidade === 'atendimento' ? 'Prontuário' : 'Anamnese'} #{bloco.entidade_id}
+                                {bloco.versao > 0 && ` (v${bloco.versao})`}
+                              </span>
+                            )}
+                          </div>
+                          <div className="pd-timeline-acoes" style={{ gap: '1rem' }}>
+                            <span className="pd-blockchain-data">{formatarDataHora(bloco.timestamp || bloco.criado_em)}</span>
+                            <span className="pd-expand-icon">{blocosExpandidos[bloco.indice] ? '▲' : '▼'}</span>
+                          </div>
+                        </div>
+
+                        {blocosExpandidos[bloco.indice] && (
+                          <div style={{ marginTop: '1rem', borderTop: '1px solid var(--border-color)', paddingTop: '1rem', animation: 'pd-fadeIn 0.25s ease' }}>
+                            <div className="pd-blockchain-hashes">
+                              <div className="pd-blockchain-hash-row">
+                                <span className="pd-blockchain-hash-label">Hash:</span>
+                                <code className="pd-blockchain-hash-value">{bloco.hash}</code>
+                              </div>
+                              <div className="pd-blockchain-hash-row">
+                                <span className="pd-blockchain-hash-label">Anterior:</span>
+                                <code className="pd-blockchain-hash-value anterior">
+                                  {bloco.hash_anterior === '0' ? '(gênesis)' : bloco.hash_anterior}
+                                </code>
+                              </div>
+                              {bloco.dados_hash && bloco.dados_hash !== '0' && (
+                                <div className="pd-blockchain-hash-row">
+                                  <span className="pd-blockchain-hash-label">Dados:</span>
+                                  <code className="pd-blockchain-hash-value dados">{bloco.dados_hash}</code>
+                                </div>
+                              )}
+                            </div>
+
+                            {bloco.usuario_nome && (
+                              <div className="pd-blockchain-autor" style={{ marginTop: '0.75rem', marginBottom: 0 }}>
+                                por <strong>{bloco.usuario_nome}</strong> ({bloco.usuario_role === 'medico' ? 'Médico' : bloco.usuario_role === 'admin' ? 'Administrador' : 'Paciente'})
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

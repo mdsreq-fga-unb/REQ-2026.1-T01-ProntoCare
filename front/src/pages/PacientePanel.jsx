@@ -341,7 +341,7 @@ export default function PacientePanel({ onLogout }) {
       exclusao: { icon: '🜍', label: 'Exclusão', cor: 'log-exclusao' },
       desativacao: { icon: '♄', label: 'Desativação', cor: 'log-desativacao' },
       reativacao: { icon: '☉', label: 'Reativação', cor: 'log-criacao' },
-      verificacao: { icon: '🜓', label: 'Integridade', cor: 'log-verificacao' },
+      verificacao: { icon: '♃', label: 'Integridade', cor: 'log-verificacao' },
     };
     return map[acao] || { icon: '🜔', label: acao, cor: '' };
   }
@@ -353,7 +353,7 @@ export default function PacientePanel({ onLogout }) {
     if (simbolo === '♄') return 'icon-saturno';
     if (simbolo === '☉') return 'icon-sol';
     if (simbolo === '☽') return 'icon-lua';
-    if (simbolo === '🜓') return 'icon-vitriolo';
+    if (simbolo === '♃') return 'icon-jupiter';
     return '';
   }
 

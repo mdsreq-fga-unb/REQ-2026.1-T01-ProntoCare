@@ -606,28 +606,28 @@
 
 /* Micro-nudge for vertical alignment since unicode glyph shapes differ */
 .pd-log-icon.icon-sol {
-  transform: translate(-50%, -43%);
+  transform: translate(-50%, -50%);
 }
 .pd-log-icon.icon-mercurio {
-  transform: translate(-50%, -46%);
+  transform: translate(-50%, -50%);
 }
 .pd-log-icon.icon-sal {
   transform: translate(-50%, -50%);
 }
 .pd-log-icon.icon-chofre {
-  transform: translate(-50%, -48%);
+  transform: translate(-50%, -50%);
 }
 .pd-log-icon.icon-saturno {
-  transform: translate(-50%, -52%);
+  transform: translate(-50%, -50%);
 }
 .pd-log-icon.icon-lua {
-  transform: translate(-50%, -52%);
+  transform: translate(-50%, -50%);
 }
 .pd-log-icon.icon-enxofre {
   transform: translate(-50%, -50%);
   font-size: 1rem;
 }
-.pd-log-icon.icon-vitriolo {
+.pd-log-icon.icon-jupiter {
   transform: translate(-50%, -50%);
   font-size: 1rem;
 }

@@ -402,12 +402,14 @@
   box-shadow: var(--shadow-sm);
 }
 
-.pd-timeline-content.prontuario {
-  border-left: 4px solid var(--primary);
+.pd-timeline-content.prontuario,
+.pd-timeline-content.anamnese {
+  border-left: 4px solid #94a3b8;
 }
 
-.pd-timeline-content.anamnese {
-  border-left: 4px solid var(--secondary);
+.pd-timeline-content.prontuario.recente,
+.pd-timeline-content.anamnese.recente {
+  border-left: 4px solid var(--primary);
 }
 
 .pd-timeline-item.expandido .pd-timeline-content {
@@ -415,15 +417,38 @@
   box-shadow: var(--shadow-md);
 }
 
-.pd-timeline-item.expandido .pd-timeline-content.prontuario { border-left-color: var(--primary); }
-.pd-timeline-item.expandido .pd-timeline-content.anamnese { border-left-color: var(--secondary); }
+.pd-timeline-item.expandido .pd-timeline-content.prontuario,
+.pd-timeline-item.expandido .pd-timeline-content.prontuario:hover,
+.pd-timeline-item.expandido .pd-timeline-content.anamnese,
+.pd-timeline-item.expandido .pd-timeline-content.anamnese:hover {
+  border-left: 4px solid #94a3b8;
+}
+
+.pd-timeline-item.expandido .pd-timeline-content.prontuario.recente,
+.pd-timeline-item.expandido .pd-timeline-content.prontuario.recente:hover,
+.pd-timeline-item.expandido .pd-timeline-content.anamnese.recente,
+.pd-timeline-item.expandido .pd-timeline-content.anamnese.recente:hover {
+  border-left: 4px solid var(--primary);
+}
+
+.pd-timeline-item.expandido .pd-blockchain-bloco.genesis,
+.pd-timeline-item.expandido .pd-blockchain-bloco.genesis:hover {
+  border-left: 4px solid #94a3b8;
+}
+
+.pd-timeline-item.expandido .pd-blockchain-bloco.exportacao,
+.pd-timeline-item.expandido .pd-blockchain-bloco.exportacao:hover {
+  border-left: 4px solid var(--primary);
+}
+
+.pd-timeline-item.expandido .pd-blockchain-bloco.edicao,
+.pd-timeline-item.expandido .pd-blockchain-bloco.edicao:hover {
+  border-left: 4px solid var(--warning);
+}
 
 .pd-timeline-item.expandido .pd-timeline-content:hover {
   border-color: var(--border-hover);
 }
-
-.pd-timeline-item.expandido .pd-timeline-content.prontuario:hover { border-left-color: var(--primary); }
-.pd-timeline-item.expandido .pd-timeline-content.anamnese:hover { border-left-color: var(--secondary); }
 
 .pd-timeline-header {
   display: flex;
@@ -639,13 +664,14 @@
   height: 24px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--secondary-border);
+  color: var(--secondary);
   z-index: 2;
   flex-shrink: 0;
   box-shadow: var(--shadow-sm);
   box-sizing: border-box;
   margin-top: 8px;
-  --pulse-color: rgba(13, 148, 136, 0.2);
+  --pulse-color: rgba(100, 116, 139, 0.2);
 }
 
 .pd-timeline-dot.log-icon-container.prontuario {
@@ -655,9 +681,9 @@
 }
 
 .pd-timeline-dot.log-icon-container.anamnese {
-  color: var(--secondary);
-  border-color: var(--secondary-border);
-  --pulse-color: rgba(100, 116, 139, 0.2);
+  color: var(--primary);
+  border-color: var(--primary-border);
+  --pulse-color: rgba(13, 148, 136, 0.2);
 }
 
 .pd-timeline-dot.log-icon-container.log-criacao { color: var(--success); border-color: rgba(16, 185, 129, 0.4); --pulse-color: rgba(16, 185, 129, 0.2); }

@@ -132,3 +132,30 @@ CREATE INDEX IF NOT EXISTS idx_blockchain_entidade ON prontuario_blockchain (ent
 -- Alterações para o RNF05: Garante colunas de IP e navegador em bancos existentes
 ALTER TABLE log_alteracoes ADD COLUMN IF NOT EXISTS ip VARCHAR(45);
 ALTER TABLE log_alteracoes ADD COLUMN IF NOT EXISTS user_agent TEXT;
+
+-- RF08: Tabela de anexos ao histórico clínico
+CREATE TABLE IF NOT EXISTS anexos (
+  id SERIAL PRIMARY KEY,
+  paciente_id INT NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
+  atendimento_id INT REFERENCES atendimentos(id) ON DELETE SET NULL,
+  medico_id INT NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
+  nome_arquivo VARCHAR(255) NOT NULL,
+  mime_type VARCHAR(100) NOT NULL,
+  tamanho_bytes INT NOT NULL,
+  dados_base64 TEXT NOT NULL,
+  criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_anexos_paciente ON anexos (paciente_id, criado_em DESC);
+
+-- RF15: Tabela de receitas médicas digitais
+CREATE TABLE IF NOT EXISTS receitas (
+  id SERIAL PRIMARY KEY,
+  paciente_id INT NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
+  medico_id INT NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
+  medicamentos TEXT NOT NULL,
+  observacoes TEXT,
+  criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_receitas_paciente ON receitas (paciente_id, criado_em DESC);

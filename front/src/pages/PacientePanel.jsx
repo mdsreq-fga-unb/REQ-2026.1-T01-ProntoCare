@@ -341,9 +341,10 @@ export default function PacientePanel({ onLogout }) {
       criacao: { icon: '🜔', label: 'Criação', cor: 'log-criacao' },
       edicao: { icon: '☿', label: 'Edição', cor: 'log-edicao' },
       exclusao: { icon: '🜍', label: 'Exclusão', cor: 'log-exclusao' },
-      desativacao: { icon: '♄', label: 'Desativação', cor: 'log-desativacao' },
-      reativacao: { icon: '☉', label: 'Reativação', cor: 'log-criacao' },
-      verificacao: { icon: '♃', label: 'Integridade', cor: 'log-verificacao' },
+      desativacao: { icon: '☽', label: 'Desativação', cor: 'log-desativacao' },
+      reativacao: { icon: '☉', label: 'Reativação', cor: 'log-reativacao' },
+      visualizacao: { icon: '♃', label: 'Visualização', cor: 'log-visualizacao' },
+      verificacao: { icon: '♄', label: 'Integridade', cor: 'log-verificacao' },
     };
     return map[acao] || { icon: '🜔', label: acao, cor: '' };
   }
@@ -378,8 +379,11 @@ export default function PacientePanel({ onLogout }) {
     return ip;
   }
 
-  function mapEntidade(ent) {
-    if (ent === 'paciente') return 'Cadastro';
+  function mapEntidade(ent, acao) {
+    if (ent === 'paciente') {
+      if (acao === 'visualizacao') return 'Login';
+      return 'Cadastro';
+    }
     if (ent === 'atendimento') return 'Prontuário';
     if (ent === 'anamnese') return 'Anamnese';
     if (ent === 'blockchain') return 'Blockchain';
@@ -438,7 +442,17 @@ export default function PacientePanel({ onLogout }) {
   if (!paciente) return null;
 
   const ultimoImc = atendimentos.find(a => a.imc)?.imc;
-  const logsFiltrados = logs.filter(l => mostrarVisualizacoes || l.acao !== 'visualizacao');
+
+  let countVis = 0;
+  const logsComIndex = [...logs].reverse().map(log => {
+    if (log.acao === 'visualizacao') {
+      countVis++;
+      return { ...log, visualizacao_indice: countVis };
+    }
+    return log;
+  }).reverse();
+
+  const logsFiltrados = logsComIndex.filter(l => mostrarVisualizacoes || l.acao !== 'visualizacao');
   const gruposLog = agruparLogs(logsFiltrados);
 
   const historicoClinico = [
@@ -586,16 +600,7 @@ export default function PacientePanel({ onLogout }) {
                             <div className="pd-timeline-info">
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                                 <span className="pd-timeline-data">{formatarDataHora(item.criado_em)}</span>
-                                <span className="pd-log-badge" style={{
-                                  backgroundColor: 'var(--primary-light)',
-                                  color: 'var(--primary)',
-                                  borderColor: 'var(--primary)',
-                                  fontSize: '0.75rem',
-                                  padding: '2px 8px',
-                                  textTransform: 'uppercase',
-                                  fontWeight: '700',
-                                  borderRadius: 'var(--radius-sm)'
-                                }}>
+                                <span className={`pd-log-badge ${isAtendimento ? 'prontuario' : 'anamnese'} ${index === 0 ? 'recente' : ''}`}>
                                   {isAtendimento ? 'Prontuário' : 'Anamnese'}
                                 </span>
                               </div>
@@ -721,7 +726,7 @@ export default function PacientePanel({ onLogout }) {
                   {gruposLog.map((grupo, index) => {
                     const p = grupo.principal;
                     const acaoInfo = mapAcao(p.acao);
-                    const isEdicao = p.acao === 'edicao';
+                    const isEdicao = p.acao === 'edicao' || p.acao === 'reativacao' || p.acao === 'desativacao';
                     const isLogExpandido = !!logsExpandidos[index];
 
                     return (
@@ -741,7 +746,7 @@ export default function PacientePanel({ onLogout }) {
                           <div className="pd-timeline-header">
                             <div className="pd-timeline-info" style={{ flexDirection: 'row', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                               <span className="pd-log-badge" style={{ margin: 0 }}>{acaoInfo.label}</span>
-                              <span className="pd-log-entidade" style={{ fontSize: '0.9rem' }}>{mapEntidade(p.entidade)} #{p.entidade_id}</span>
+                              <span className="pd-log-entidade" style={{ fontSize: '0.9rem' }}>{mapEntidade(p.entidade, p.acao)} #{p.acao === 'visualizacao' ? p.visualizacao_indice : p.entidade_id}</span>
                             </div>
                             <div className="pd-timeline-acoes" style={{ gap: '1rem' }}>
                               <span className="pd-log-data">{formatarDataHora(p.criado_em)}</span>

@@ -433,16 +433,23 @@
 
 .pd-timeline-item.expandido .pd-blockchain-bloco.genesis,
 .pd-timeline-item.expandido .pd-blockchain-bloco.genesis:hover {
-  border-left: 4px solid #94a3b8;
+  border-left: 4px solid #cbd5e1;
 }
 
 .pd-timeline-item.expandido .pd-blockchain-bloco.exportacao,
-.pd-timeline-item.expandido .pd-blockchain-bloco.exportacao:hover {
+.pd-timeline-item.expandido .pd-blockchain-bloco.exportacao:hover,
+.pd-timeline-item.expandido .pd-blockchain-bloco.edicao,
+.pd-timeline-item.expandido .pd-blockchain-bloco.edicao:hover {
+  border-left: 4px solid #94a3b8;
+}
+
+.pd-timeline-item.expandido .pd-blockchain-bloco.exportacao.recente,
+.pd-timeline-item.expandido .pd-blockchain-bloco.exportacao.recente:hover {
   border-left: 4px solid var(--primary);
 }
 
-.pd-timeline-item.expandido .pd-blockchain-bloco.edicao,
-.pd-timeline-item.expandido .pd-blockchain-bloco.edicao:hover {
+.pd-timeline-item.expandido .pd-blockchain-bloco.edicao.recente,
+.pd-timeline-item.expandido .pd-blockchain-bloco.edicao.recente:hover {
   border-left: 4px solid var(--warning);
 }
 
@@ -674,13 +681,15 @@
   --pulse-color: rgba(100, 116, 139, 0.2);
 }
 
-.pd-timeline-dot.log-icon-container.prontuario {
-  color: var(--primary);
-  border-color: var(--primary-border);
-  --pulse-color: rgba(13, 148, 136, 0.2);
+.pd-timeline-dot.log-icon-container.prontuario,
+.pd-timeline-dot.log-icon-container.anamnese {
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.4);
+  --pulse-color: rgba(148, 163, 184, 0.2);
 }
 
-.pd-timeline-dot.log-icon-container.anamnese {
+.pd-timeline-dot.log-icon-container.prontuario.recente,
+.pd-timeline-dot.log-icon-container.anamnese.recente {
   color: var(--primary);
   border-color: var(--primary-border);
   --pulse-color: rgba(13, 148, 136, 0.2);
@@ -689,13 +698,20 @@
 .pd-timeline-dot.log-icon-container.log-criacao { color: var(--success); border-color: rgba(16, 185, 129, 0.4); --pulse-color: rgba(16, 185, 129, 0.2); }
 .pd-timeline-dot.log-icon-container.log-edicao { color: var(--warning); border-color: rgba(245, 158, 11, 0.4); --pulse-color: rgba(245, 158, 11, 0.2); }
 .pd-timeline-dot.log-icon-container.log-exclusao { color: var(--danger); border-color: rgba(239, 68, 68, 0.4); --pulse-color: rgba(239, 68, 68, 0.2); }
-.pd-timeline-dot.log-icon-container.log-desativacao { color: var(--secondary); border-color: var(--secondary-border); --pulse-color: rgba(100, 116, 139, 0.2); }
+.pd-timeline-dot.log-icon-container.log-desativacao { color: #0f172a; border-color: rgba(15, 23, 42, 0.4); --pulse-color: rgba(15, 23, 42, 0.2); }
+.pd-timeline-dot.log-icon-container.log-reativacao { color: #cbd5e1; border-color: rgba(203, 213, 225, 0.8); --pulse-color: rgba(203, 213, 225, 0.4); }
 .pd-timeline-dot.log-icon-container.log-visualizacao { color: #0ea5e9; border-color: rgba(14, 165, 233, 0.4); --pulse-color: rgba(14, 165, 233, 0.2); }
 .pd-timeline-dot.log-icon-container.log-verificacao { color: #a78bfa; border-color: rgba(167, 139, 250, 0.4); --pulse-color: rgba(167, 139, 250, 0.2); }
 
-.pd-timeline-dot.log-icon-container.genesis { color: var(--secondary); border-color: var(--secondary-border); --pulse-color: rgba(100, 116, 139, 0.2); }
-.pd-timeline-dot.log-icon-container.exportacao { color: var(--primary); border-color: var(--primary-border); --pulse-color: rgba(13, 148, 136, 0.2); }
-.pd-timeline-dot.log-icon-container.edicao { color: var(--warning); border-color: rgba(245, 158, 11, 0.4); --pulse-color: rgba(245, 158, 11, 0.2); }
+.pd-timeline-dot.log-icon-container.genesis { color: #cbd5e1; border-color: rgba(203, 213, 225, 0.8); --pulse-color: rgba(203, 213, 225, 0.4); }
+.pd-timeline-dot.log-icon-container.exportacao,
+.pd-timeline-dot.log-icon-container.edicao {
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.4);
+  --pulse-color: rgba(148, 163, 184, 0.2);
+}
+.pd-timeline-dot.log-icon-container.exportacao.recente { color: var(--primary); border-color: var(--primary-border); --pulse-color: rgba(13, 148, 136, 0.2); }
+.pd-timeline-dot.log-icon-container.edicao.recente { color: var(--warning); border-color: rgba(245, 158, 11, 0.4); --pulse-color: rgba(245, 158, 11, 0.2); }
 
 /* Pulse animation for alchemical icon containers */
 .pd-timeline-dot.log-icon-container.recente {
@@ -713,7 +729,8 @@
 .pd-timeline-item.expandido .pd-log-content.log-criacao { border-left-color: var(--success); }
 .pd-timeline-item.expandido .pd-log-content.log-edicao { border-left-color: var(--warning); }
 .pd-timeline-item.expandido .pd-log-content.log-exclusao { border-left-color: var(--danger); }
-.pd-timeline-item.expandido .pd-log-content.log-desativacao { border-left-color: var(--secondary); }
+.pd-timeline-item.expandido .pd-log-content.log-desativacao { border-left-color: #0f172a; }
+.pd-timeline-item.expandido .pd-log-content.log-reativacao { border-left-color: #cbd5e1; }
 .pd-timeline-item.expandido .pd-log-content.log-visualizacao { border-left-color: #0ea5e9; }
 .pd-timeline-item.expandido .pd-log-content.log-verificacao { border-left-color: #a78bfa; }
 
@@ -723,7 +740,8 @@
 .pd-timeline-item.expandido .pd-log-content.log-criacao:hover { border-left-color: var(--success); }
 .pd-timeline-item.expandido .pd-log-content.log-edicao:hover { border-left-color: var(--warning); }
 .pd-timeline-item.expandido .pd-log-content.log-exclusao:hover { border-left-color: var(--danger); }
-.pd-timeline-item.expandido .pd-log-content.log-desativacao:hover { border-left-color: var(--secondary); }
+.pd-timeline-item.expandido .pd-log-content.log-desativacao:hover { border-left-color: #0f172a; }
+.pd-timeline-item.expandido .pd-log-content.log-reativacao:hover { border-left-color: #cbd5e1; }
 .pd-timeline-item.expandido .pd-log-content.log-visualizacao:hover { border-left-color: #0ea5e9; }
 .pd-timeline-item.expandido .pd-log-content.log-verificacao:hover { border-left-color: #a78bfa; }
 
@@ -731,7 +749,8 @@
 .pd-log-content.log-criacao { border-left: 4px solid var(--success); }
 .pd-log-content.log-edicao { border-left: 4px solid var(--warning); }
 .pd-log-content.log-exclusao { border-left: 4px solid var(--danger); }
-.pd-log-content.log-desativacao { border-left: 4px solid var(--secondary); }
+.pd-log-content.log-desativacao { border-left: 4px solid #0f172a; }
+.pd-log-content.log-reativacao { border-left: 4px solid #cbd5e1; }
 .pd-log-content.log-visualizacao { border-left: 4px solid #0ea5e9; }
 .pd-log-content.log-verificacao { border-left: 4px solid #a78bfa; }
 
@@ -764,7 +783,8 @@
 .log-criacao .pd-log-badge { background: var(--success-light); color: var(--success); border-color: var(--success); }
 .log-edicao .pd-log-badge { background: var(--warning-light); color: var(--warning); border-color: var(--warning); }
 .log-exclusao .pd-log-badge { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
-.log-desativacao .pd-log-badge { background: var(--secondary-light); color: var(--secondary); border-color: var(--secondary-border); }
+.log-desativacao .pd-log-badge { background: #f1f5f9; color: #0f172a; border-color: #0f172a; }
+.log-reativacao .pd-log-badge { background: #f8fafc; color: #475569; border-color: #cbd5e1; }
 .log-visualizacao .pd-log-badge { background: #e0f2fe; color: #0369a1; border-color: #7dd3fc; }
 .log-verificacao .pd-log-badge { background: #ede9fe; color: #7c3aed; border-color: #a78bfa; }
 
@@ -1061,14 +1081,19 @@
 }
 
 .pd-blockchain-bloco.genesis {
+  border-left: 4px solid #cbd5e1;
+}
+
+.pd-blockchain-bloco.exportacao,
+.pd-blockchain-bloco.edicao {
   border-left: 4px solid #94a3b8;
 }
 
-.pd-blockchain-bloco.exportacao {
+.pd-blockchain-bloco.exportacao.recente {
   border-left: 4px solid var(--primary);
 }
 
-.pd-blockchain-bloco.edicao {
+.pd-blockchain-bloco.edicao.recente {
   border-left: 4px solid var(--warning);
 }
 
@@ -1106,21 +1131,42 @@
 }
 
 .pd-blockchain-tipo-badge.genesis {
+  background: #f8fafc;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.pd-blockchain-tipo-badge.exportacao,
+.pd-blockchain-tipo-badge.edicao {
   background: #f1f5f9;
   color: #64748b;
   border-color: #94a3b8;
 }
 
-.pd-blockchain-tipo-badge.exportacao {
+.pd-blockchain-tipo-badge.exportacao.recente {
   background: var(--primary-light);
   color: var(--primary);
   border-color: var(--primary-border);
 }
 
-.pd-blockchain-tipo-badge.edicao {
+.pd-blockchain-tipo-badge.edicao.recente {
   background: var(--warning-light);
   color: var(--warning);
   border-color: var(--warning);
+}
+
+.pd-log-badge.prontuario,
+.pd-log-badge.anamnese {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #94a3b8;
+}
+
+.pd-log-badge.prontuario.recente,
+.pd-log-badge.anamnese.recente {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-border);
 }
 
 .pd-blockchain-entidade {
@@ -1214,5 +1260,53 @@
   z-index: 1;
   background: var(--bg-card);
   padding: 0 4px;
+}
+
+/* --- Cores Pastéis Inéditas e Ícones de Alquimia para Anexos --- */
+
+.pd-timeline-dot.log-icon-container.anxo-doc {
+  background-color: #fff0f5 !important; /* Pastel Pink / LavenderBlush */
+  color: #c2185b !important;
+  border-color: #f8bbd0 !important;
+  --pulse-color: rgba(244, 143, 177, 0.25);
+}
+
+.pd-timeline-dot.log-icon-container.anxo-img {
+  background-color: #e8eaf6 !important; /* Pastel Indigo */
+  color: #3f51b5 !important;
+  border-color: #c5cae9 !important;
+  --pulse-color: rgba(159, 168, 218, 0.25);
+}
+
+.pd-timeline-dot.log-icon-container.anxo-other {
+  background-color: #efebe9 !important; /* Pastel Clay Brown */
+  color: #5d4037 !important;
+  border-color: #d7ccc8 !important;
+  --pulse-color: rgba(188, 170, 164, 0.25);
+}
+
+.pd-timeline-content.anxo-card-doc {
+  border-left: 4px solid #e91e63 !important;
+}
+
+.pd-timeline-content.anxo-card-img {
+  border-left: 4px solid #5c6bc0 !important;
+}
+
+.pd-timeline-content.anxo-card-other {
+  border-left: 4px solid #8d6e63 !important;
+}
+
+/* Specific micro-nudge alignments for the new alchemy symbols */
+.pd-log-icon.icon-ar {
+  transform: translate(-50%, -50%);
+}
+
+.pd-log-icon.icon-fosforo {
+  transform: translate(-50%, -50%);
+}
+
+.pd-log-icon.icon-antimonio {
+  transform: translate(-50%, -50%);
 }
 

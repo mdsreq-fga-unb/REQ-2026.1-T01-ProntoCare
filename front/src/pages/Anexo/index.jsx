@@ -208,7 +208,7 @@ export default function Anexo() {
             </div>
 
             <div className="soap-group">
-              <label>Escolher Arquivo (PDF, PNG, JPG, JPEG, GIF - Limite: 5MB) *</label>
+              <label>Escolher Arquivo (Qualquer tipo - Limite: 5MB) *</label>
               <div style={{ marginTop: '8px' }}>
                 <label htmlFor="file-upload" className="btn-primario" style={{
                   display: 'inline-block',
@@ -230,7 +230,6 @@ export default function Anexo() {
                   type="file" 
                   onChange={handleFileChange} 
                   disabled={loading} 
-                  accept="application/pdf,image/*" 
                   style={{ display: 'none' }} 
                 />
               </div>

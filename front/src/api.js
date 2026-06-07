@@ -67,6 +67,18 @@ async function req(method, path, body) {
     // Se a chamada GET foi bem sucedida online, atualizamos o cache local
     if (method === 'GET') {
       await cacheGetRequest(path, data);
+      
+      // Auto-cache individual items to support offline editing
+      if (Array.isArray(data)) {
+        const resource = path.split('/')[1]; // ex: 'atendimentos', 'pacientes'
+        if (resource) {
+          for (const item of data) {
+            if (item && item.id) {
+              await cacheGetRequest(`/${resource}/${item.id}`, item);
+            }
+          }
+        }
+      }
     }
 
     return data;

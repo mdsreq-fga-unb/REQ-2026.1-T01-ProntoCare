@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../api';
 import { criarBlocoGenesis, criarBlocoExportacao, validarCadeia } from '../../services/blockchainService';
 import { exportarProntuarioPDF, exportarAnamnesePDF, exportarReceitaPDF } from '../../services/pdfExportService';
+import OfflineStatusBar from '../../components/OfflineStatusBar';
 import './styles.css';
 
 export default function PacienteDetalhe() {
@@ -87,7 +88,7 @@ export default function PacienteDetalhe() {
     try {
       // 1. Buscar último bloco da cadeia (ou criar gênesis)
       let ultimoBlocoResp = await api.get(`/blockchain/paciente/${id}/ultimo`);
-      
+
       if (!ultimoBlocoResp) {
         // Criar bloco gênesis
         const genesis = await criarBlocoGenesis();
@@ -167,7 +168,7 @@ export default function PacienteDetalhe() {
     try {
       // 1. Buscar último bloco da cadeia (ou criar gênesis)
       let ultimoBlocoResp = await api.get(`/blockchain/paciente/${id}/ultimo`);
-      
+
       if (!ultimoBlocoResp) {
         // Criar bloco gênesis
         const genesis = await criarBlocoGenesis();
@@ -240,7 +241,7 @@ export default function PacienteDetalhe() {
     try {
       // Verificação do lado do servidor
       const resultado = await api.get(`/blockchain/paciente/${id}/verificar`);
-      
+
       // Verificação do lado do cliente (double-check via Web Crypto API)
       const cadeia = await api.get(`/blockchain/paciente/${id}`);
       const resultadoCliente = await validarCadeia(cadeia || []);
@@ -367,7 +368,7 @@ export default function PacienteDetalhe() {
 
       // 1. Buscar último bloco da cadeia (ou criar gênesis)
       let ultimoBlocoResp = await api.get(`/blockchain/paciente/${id}/ultimo`);
-      
+
       if (!ultimoBlocoResp) {
         const genesis = await criarBlocoGenesis();
         ultimoBlocoResp = await api.post('/blockchain', {
@@ -486,8 +487,8 @@ export default function PacienteDetalhe() {
   function formatarDataHora(dateStr) {
     if (!dateStr) return '—';
     const d = new Date(dateStr);
-    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) 
-      + ' às ' 
+    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      + ' às '
       + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   }
 
@@ -555,10 +556,10 @@ export default function PacienteDetalhe() {
       criacao: { icon: '🜔', label: 'Criação', cor: 'log-criacao' },
       edicao: { icon: '☿', label: 'Edição', cor: 'log-edicao' },
       exclusao: { icon: '🜍', label: 'Exclusão', cor: 'log-exclusao' },
-      desativacao: { icon: '♄', label: 'Desativação', cor: 'log-desativacao' },
-      reativacao: { icon: '☉', label: 'Reativação', cor: 'log-criacao' },
-      visualizacao: { icon: '☽', label: 'Visualização', cor: 'log-visualizacao' },
-      verificacao: { icon: '♃', label: 'Integridade', cor: 'log-verificacao' },
+      desativacao: { icon: '☽', label: 'Desativação', cor: 'log-desativacao' },
+      reativacao: { icon: '☉', label: 'Reativação', cor: 'log-reativacao' },
+      visualizacao: { icon: '♃', label: 'Visualização', cor: 'log-visualizacao' },
+      verificacao: { icon: '♄', label: 'Integridade', cor: 'log-verificacao' },
     };
     return map[acao] || { icon: '🜔', label: acao, cor: '' };
   }
@@ -574,8 +575,11 @@ export default function PacienteDetalhe() {
     return '';
   }
 
-  function mapEntidade(ent) {
-    if (ent === 'paciente') return 'Cadastro';
+  function mapEntidade(ent, acao) {
+    if (ent === 'paciente') {
+      if (acao === 'visualizacao') return 'Login';
+      return 'Cadastro';
+    }
     if (ent === 'atendimento') return 'Prontuário';
     if (ent === 'anamnese') return 'Anamnese';
     if (ent === 'blockchain') return 'Blockchain';
@@ -620,7 +624,7 @@ export default function PacienteDetalhe() {
 
     for (const log of logsList) {
       const chave = `${log.criado_em}-${log.acao}-${log.entidade}-${log.entidade_id}-${log.usuario_id}`;
-      
+
       if (grupoAtual && grupoAtual.chave === chave) {
         grupoAtual.itens.push(log);
       } else {
@@ -645,7 +649,17 @@ export default function PacienteDetalhe() {
 
   // Último IMC registrado para exibir no banner
   const ultimoImc = atendimentos.find(a => a.imc)?.imc;
-  const logsFiltrados = logs.filter(l => mostrarVisualizacoes || l.acao !== 'visualizacao');
+
+  let countVis = 0;
+  const logsComIndex = [...logs].reverse().map(log => {
+    if (log.acao === 'visualizacao') {
+      countVis++;
+      return { ...log, visualizacao_indice: countVis };
+    }
+    return log;
+  }).reverse();
+
+  const logsFiltrados = logsComIndex.filter(l => mostrarVisualizacoes || l.acao !== 'visualizacao');
   const gruposLog = agruparLogs(logsFiltrados);
 
   return (
@@ -653,9 +667,12 @@ export default function PacienteDetalhe() {
       {/* Cabeçalho com dados vitais */}
       <header className="pd-header">
         <div className="pd-header-left">
-          <button className="pd-btn-voltar" onClick={() => navigate('/medico')}>
-            ← Voltar ao Painel
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <button className="pd-btn-voltar" onClick={() => navigate('/medico')}>
+              ← Voltar ao Painel
+            </button>
+            <OfflineStatusBar />
+          </div>
           <div className="pd-header-info">
             <h1>{paciente.nome}</h1>
             <div className="pd-header-tags">
@@ -747,37 +764,37 @@ export default function PacienteDetalhe() {
         {/* Coluna Direita: Abas (Prontuários / Log) */}
         <main className="pd-main-historico">
           <div className="pd-tabs">
-            <button 
+            <button
               className={`pd-tab ${abaAtiva === 'prontuarios' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('prontuarios')}
             >
               Prontuários ({atendimentos.length})
             </button>
-            <button 
+            <button
               className={`pd-tab ${abaAtiva === 'anamneses' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('anamneses')}
             >
               Anamneses ({anamneses.length})
             </button>
-            <button 
+            <button
               className={`pd-tab ${abaAtiva === 'receitas' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('receitas')}
             >
               Prescrições ({receitas.length})
             </button>
-            <button 
+            <button
               className={`pd-tab ${abaAtiva === 'anexos' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('anexos')}
             >
               Anexos ({anexos.length})
             </button>
-            <button 
+            <button
               className={`pd-tab ${abaAtiva === 'integridade' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('integridade')}
             >
               Integridade ({blockchain.length})
             </button>
-            <button 
+            <button
               className={`pd-tab ${abaAtiva === 'logs' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('logs')}
             >
@@ -831,7 +848,7 @@ export default function PacienteDetalhe() {
                               {exportandoPdf === at.id ? 'Exportando...' : 'PDF'}
                             </button>
                             {podeExcluir(at.criado_em) && (
-                              <button 
+                              <button
                                 className="pd-btn-excluir"
                                 onClick={(e) => excluirAtendimento(at.id, e)}
                                 title="Excluir este prontuário permanentemente (Legislação de 20 anos)"
@@ -839,7 +856,7 @@ export default function PacienteDetalhe() {
                                 Excluir
                               </button>
                             )}
-                            <button 
+                            <button
                               className="pd-btn-editar"
                               onClick={(e) => { e.stopPropagation(); navigate(`/atendimento/${id}?editar=${at.id}`); }}
                               title="Editar este prontuário"
@@ -939,7 +956,7 @@ export default function PacienteDetalhe() {
                             <span className="pd-timeline-medico">Dr(a). {anam.medico_nome}</span>
                           </div>
                           <div className="pd-timeline-acoes">
-                            <button 
+                            <button
                               className="pd-btn-pdf"
                               onClick={(e) => { e.stopPropagation(); exportarAnamnese(anam); }}
                               disabled={exportandoPdf === 'anam_' + anam.id}
@@ -948,7 +965,7 @@ export default function PacienteDetalhe() {
                               {exportandoPdf === 'anam_' + anam.id ? 'Exportando...' : 'PDF'}
                             </button>
                             {localStorage.getItem('role') === 'medico' && (
-                              <button 
+                              <button
                                 className="pd-btn-editar"
                                 onClick={(e) => { e.stopPropagation(); navigate(`/anamnese/${id}?editar=${anam.id}`); }}
                                 title="Editar esta anamnese"
@@ -957,7 +974,7 @@ export default function PacienteDetalhe() {
                               </button>
                             )}
                             {localStorage.getItem('role') === 'medico' && podeExcluir(anam.criado_em) && (
-                              <button 
+                              <button
                                 className="pd-btn-excluir"
                                 onClick={(e) => { e.stopPropagation(); excluirAnamnese(anam.id, e); }}
                                 title="Excluir esta anamnese permanentemente (Legislação de 20 anos)"
@@ -973,7 +990,7 @@ export default function PacienteDetalhe() {
                         <p className="pd-timeline-resumo" style={{ whiteSpace: 'pre-wrap' }}>
                           {expandido === 'anam_' + anam.id ? anam.conteudo : (anam.conteudo.substring(0, 120) + (anam.conteudo.length > 120 ? '...' : ''))}
                         </p>
-                        
+
                         {expandido === 'anam_' + anam.id && (
                           <div className="pd-soap-meta">
                             Última atualização: {formatarDataHora(anam.atualizado_em)}
@@ -996,9 +1013,9 @@ export default function PacienteDetalhe() {
                 </h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                   <label style={{ fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', color: '#64748b', fontWeight: 'normal' }}>
-                    <input 
-                      type="checkbox" 
-                      checked={mostrarVisualizacoes} 
+                    <input
+                      type="checkbox"
+                      checked={mostrarVisualizacoes}
                       onChange={(e) => setMostrarVisualizacoes(e.target.checked)}
                       style={{ cursor: 'pointer' }}
                     />
@@ -1017,7 +1034,7 @@ export default function PacienteDetalhe() {
                   {gruposLog.map((grupo, index) => {
                     const p = grupo.principal;
                     const acaoInfo = mapAcao(p.acao);
-                    const isEdicao = p.acao === 'edicao';
+                    const isEdicao = p.acao === 'edicao' || p.acao === 'reativacao' || p.acao === 'desativacao';
                     const isLogExpandido = !!logsExpandidos[index];
 
                     return (
@@ -1029,7 +1046,7 @@ export default function PacienteDetalhe() {
                           {index < gruposLog.length - 1 && <div className="pd-timeline-line"></div>}
                         </div>
 
-                        <div 
+                        <div
                           className={`pd-timeline-content pd-log-content ${acaoInfo.cor}`}
                           onClick={() => alternarLogExpandido(index)}
                           style={{ cursor: 'pointer' }}
@@ -1037,7 +1054,7 @@ export default function PacienteDetalhe() {
                           <div className="pd-timeline-header">
                             <div className="pd-timeline-info" style={{ flexDirection: 'row', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                               <span className="pd-log-badge" style={{ margin: 0 }}>{acaoInfo.label}</span>
-                              <span className="pd-log-entidade" style={{ fontSize: '0.9rem' }}>{mapEntidade(p.entidade)} #{p.entidade_id}</span>
+                              <span className="pd-log-entidade" style={{ fontSize: '0.9rem' }}>{mapEntidade(p.entidade, p.acao)} #{p.acao === 'visualizacao' ? p.visualizacao_indice : p.entidade_id}</span>
                             </div>
                             <div className="pd-timeline-acoes" style={{ gap: '1rem' }}>
                               <span className="pd-log-data">{formatarDataHora(p.criado_em)}</span>
@@ -1052,7 +1069,7 @@ export default function PacienteDetalhe() {
                                 {p.ip && <span className="pd-log-meta-item" title="Endereço IP de origem"> • IP: <code>{formatarIp(p.ip)}</code></span>}
                                 {p.user_agent && (
                                   <span className="pd-log-meta-item" title={p.user_agent}>
-                                     • Navegador: <em>{detectarBrowser(p.user_agent)}</em>
+                                    • Navegador: <em>{detectarBrowser(p.user_agent)}</em>
                                   </span>
                                 )}
                               </div>
@@ -1157,15 +1174,15 @@ export default function PacienteDetalhe() {
                         </div>
                         {index < blockchain.length - 1 && <div className="pd-timeline-line"></div>}
                       </div>
-                      <div 
-                        className={`pd-timeline-content pd-blockchain-bloco ${bloco.tipo}`}
+                      <div
+                        className={`pd-timeline-content pd-blockchain-bloco ${bloco.tipo} ${index === 0 ? 'recente' : ''}`}
                         onClick={() => alternarBlocoExpandido(bloco.indice)}
                         style={{ cursor: 'pointer' }}
                       >
                         <div className="pd-blockchain-bloco-header">
                           <div className="pd-blockchain-bloco-titulo">
                             <span className="pd-blockchain-bloco-indice">#{bloco.indice}</span>
-                            <span className={`pd-blockchain-tipo-badge ${bloco.tipo}`}>
+                            <span className={`pd-blockchain-tipo-badge ${bloco.tipo} ${index === 0 ? 'recente' : ''}`}>
                               {bloco.tipo === 'genesis' ? 'Gênesis' : bloco.tipo === 'exportacao' ? 'Exportação' : 'Edição'}
                             </span>
                             {bloco.entidade && (
@@ -1237,19 +1254,39 @@ export default function PacienteDetalhe() {
               ) : (
                 <div className="pd-timeline">
                   {anexos.map((anx, index) => {
-                    const isPDF = anx.mime_type.includes('pdf');
+                    const mime = (anx.mime_type || '').toLowerCase();
+                    const ext = (anx.nome_arquivo || '').split('.').pop().toLowerCase();
                     const tamanhoKB = (anx.tamanho_bytes / 1024).toFixed(1);
+
+                    let anxClass = 'anxo-other';
+                    let anxSymbol = '🝱';
+                    let anxSymbolClass = 'icon-antimonio';
+
+                    const isDoc = mime.includes('pdf') || mime.includes('word') || mime.includes('text') ||
+                      ['pdf', 'docx', 'doc', 'txt', 'odt', 'rtf', 'xls', 'xlsx', 'csv', 'ppt', 'pptx'].includes(ext);
+                    const isImg = mime.includes('image') || mime.includes('video') ||
+                      ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'bmp', 'mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'].includes(ext);
+
+                    if (isDoc) {
+                      anxClass = 'anxo-doc';
+                      anxSymbol = '🝰';
+                      anxSymbolClass = 'icon-ar';
+                    } else if (isImg) {
+                      anxClass = 'anxo-img';
+                      anxSymbol = '🝮';
+                      anxSymbolClass = 'icon-fosforo';
+                    }
 
                     return (
                       <div key={anx.id} className="pd-timeline-item">
                         <div className="pd-timeline-marker">
-                          <div className={`pd-timeline-dot log-icon-container ${isPDF ? 'log-exclusao' : 'log-visualizacao'} ${index === 0 ? 'recente' : ''}`}>
-                            <span className={`pd-log-icon ${isPDF ? 'icon-chofre' : 'icon-lua'}`}>{isPDF ? '🜍' : '☽'}</span>
+                          <div className={`pd-timeline-dot log-icon-container ${anxClass} ${index === 0 ? 'recente' : ''}`}>
+                            <span className={`pd-log-icon ${anxSymbolClass}`}>{anxSymbol}</span>
                           </div>
                           {index < anexos.length - 1 && <div className="pd-timeline-line"></div>}
                         </div>
 
-                        <div className={`pd-timeline-content prontuario ${index === 0 ? 'recente' : ''}`} style={{ padding: '12px 16px' }}>
+                        <div className={`pd-timeline-content anxo-card-${anxClass === 'anxo-doc' ? 'doc' : anxClass === 'anxo-img' ? 'img' : 'other'} ${index === 0 ? 'recente' : ''}`} style={{ padding: '12px 16px' }}>
                           <div className="pd-timeline-header" style={{ marginBottom: 0 }}>
                             <div className="pd-timeline-info">
                               <span className="pd-timeline-data" style={{ fontWeight: '600', color: 'var(--text-heading)', fontSize: '14.5px' }}>
@@ -1265,8 +1302,8 @@ export default function PacienteDetalhe() {
                               </span>
                             </div>
                             <div className="pd-timeline-acoes" style={{ gap: '8px' }}>
-                              <button 
-                                className="pd-btn-pdf" 
+                              <button
+                                className="pd-btn-pdf"
                                 onClick={() => baixarAnexo(anx.id, anx.nome_arquivo)}
                                 disabled={carregandoArquivo}
                                 title="Baixar este anexo"
@@ -1274,7 +1311,7 @@ export default function PacienteDetalhe() {
                                 {carregandoArquivo ? 'Baixando...' : 'Baixar'}
                               </button>
                               {podeExcluir(anx.criado_em) && (
-                                <button 
+                                <button
                                   className="pd-btn-excluir"
                                   onClick={() => excluirAnexo(anx.id)}
                                   title="Excluir este anexo permanentemente (Legislação de 20 anos)"
@@ -1282,8 +1319,8 @@ export default function PacienteDetalhe() {
                                   Excluir
                                 </button>
                               )}
-                              <button 
-                                className="pd-btn-editar" 
+                              <button
+                                className="pd-btn-editar"
                                 onClick={() => visualizarAnexo(anx.id)}
                                 disabled={carregandoArquivo}
                                 title="Visualizar este anexo"
@@ -1332,8 +1369,8 @@ export default function PacienteDetalhe() {
                       justifyContent: 'space-between'
                     }}>
                       <h3 style={{ margin: 0 }}>Visualizando: {visualizandoAnexo.nome_arquivo}</h3>
-                      <button 
-                        className="btn-danger" 
+                      <button
+                        className="btn-danger"
                         onClick={() => setVisualizandoAnexo(null)}
                         style={{ height: '32px', padding: '0 12px' }}
                       >
@@ -1342,15 +1379,21 @@ export default function PacienteDetalhe() {
                     </header>
                     <div style={{ flex: 1, overflow: 'auto', padding: '16px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#f8fafc' }}>
                       {visualizandoAnexo.mime_type.includes('pdf') ? (
-                        <iframe 
-                          src={`data:${visualizandoAnexo.mime_type};base64,${visualizandoAnexo.dados_base64}`} 
-                          title={visualizandoAnexo.nome_arquivo} 
+                        <iframe
+                          src={`data:${visualizandoAnexo.mime_type};base64,${visualizandoAnexo.dados_base64}`}
+                          title={visualizandoAnexo.nome_arquivo}
                           style={{ width: '100%', height: '100%', border: 'none' }}
                         />
+                      ) : visualizandoAnexo.mime_type.includes('video') || ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'].includes(visualizandoAnexo.nome_arquivo.split('.').pop().toLowerCase()) ? (
+                        <video
+                          src={`data:${visualizandoAnexo.mime_type};base64,${visualizandoAnexo.dados_base64}`}
+                          controls
+                          style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: 'var(--radius-sm)' }}
+                        />
                       ) : (
-                        <img 
-                          src={`data:${visualizandoAnexo.mime_type};base64,${visualizandoAnexo.dados_base64}`} 
-                          alt={visualizandoAnexo.nome_arquivo} 
+                        <img
+                          src={`data:${visualizandoAnexo.mime_type};base64,${visualizandoAnexo.dados_base64}`}
+                          alt={visualizandoAnexo.nome_arquivo}
                           style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 'var(--radius-sm)' }}
                         />
                       )}

@@ -16,15 +16,12 @@ export default function OfflineStatusBar() {
   const [statusMessage, setStatusMessage] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
   const fileInputRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const updateQueueSize = useCallback(async () => {
     try {
       const size = await getQueueSize();
       setQueueSize(size);
-      if (size > 0) {
-        // Auto-expande se tiver itens pendentes
-        setIsExpanded(true);
-      }
     } catch (e) {
       console.error('Erro ao ler tamanho da fila offline:', e);
     }
@@ -46,7 +43,6 @@ export default function OfflineStatusBar() {
         setStatusMessage(result.count > 0 ? 'Sincronização concluída!' : '');
         setSyncProgress('');
         
-        // Se houve itens sincronizados, recarrega a página para atualizar os IDs e dados
         if (result.count > 0) {
           setTimeout(() => {
             window.location.reload();
@@ -71,20 +67,15 @@ export default function OfflineStatusBar() {
   }, [isSyncing, handleSync]);
 
   useEffect(() => {
-    // Atualiza o tamanho inicial da fila
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     updateQueueSize();
 
     const handleOnline = () => {
       setIsOnline(true);
-      // Sincroniza automaticamente ao reconectar
       triggerAutoSync();
     };
 
     const handleOffline = () => {
       setIsOnline(false);
-      // Auto-expande para alertar o usuário sobre o modo offline
-      setIsExpanded(true);
     };
 
     const handleQueueChanged = () => {
@@ -95,17 +86,14 @@ export default function OfflineStatusBar() {
     window.addEventListener('offline', handleOffline);
     window.addEventListener('offline-queue-changed', handleQueueChanged);
 
-    // Periodicamente verifica a fila e conectividade
     const interval = setInterval(() => {
       updateQueueSize();
-      // Se a conexão voltou mas o evento não disparou
       if (navigator.onLine !== isOnline) {
         setIsOnline(navigator.onLine);
         if (navigator.onLine) triggerAutoSync();
       }
     }, 5000);
 
-    // Se iniciar online com fila pendente, tenta sincronizar
     if (navigator.onLine) {
       triggerAutoSync();
     }
@@ -117,6 +105,20 @@ export default function OfflineStatusBar() {
       clearInterval(interval);
     };
   }, [isOnline, updateQueueSize, triggerAutoSync]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsExpanded(false);
+      }
+    }
+    if (isExpanded) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isExpanded]);
 
   const handleExportBackup = async () => {
     try {
@@ -164,80 +166,61 @@ export default function OfflineStatusBar() {
     reader.readAsText(file);
   };
 
-  // Se estiver online e sem alterações pendentes, renderiza um botão minimalista expansível
-  if (!isExpanded && isOnline && queueSize === 0) {
-    return (
-      <div 
-        className="offline-status-pill online" 
-        onClick={() => setIsExpanded(true)}
-        title="Clique para ver opções de backup offline"
-      >
-        <span className="dot online-dot"></span>
-        <span className="pill-text">Online</span>
-      </div>
-    );
-  }
-
   return (
-    <div className={`offline-status-bar ${isOnline ? 'online' : 'offline'}`}>
-      <div className="status-bar-header">
-        <div className="status-indicator" onClick={() => queueSize === 0 && isOnline && setIsExpanded(false)}>
-          <span className={`dot ${isOnline ? 'online-dot' : 'offline-dot'}`}></span>
-          <span className="status-title">
-            {isOnline ? 'Conectado ao Servidor' : 'Trabalhando Offline (Sem Conexão)'}
-          </span>
-        </div>
-        
-        {isOnline && queueSize === 0 && (
-          <button className="btn-minimize" onClick={() => setIsExpanded(false)}>
-            Recolher
-          </button>
-        )}
+    <div className="offline-status-container" ref={dropdownRef}>
+      <div 
+        className={`offline-status-badge ${isOnline ? 'online' : 'offline'}`}
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {isOnline ? '● Conectado' : '● Offline'}
       </div>
 
-      <div className="status-bar-body">
-        {queueSize > 0 ? (
-          <div className="sync-section">
-            <span className="sync-count-text">
-              Existem <strong>{queueSize}</strong> alteração(ões) pendente(s) localmente.
-            </span>
-            {isOnline ? (
-              <button 
-                className="btn-sync" 
-                onClick={handleSync} 
-                disabled={isSyncing}
-              >
-                {isSyncing ? 'Sincronizando...' : 'Sincronizar Agora'}
-              </button>
+      {isExpanded && (
+        <div className="offline-dropdown-card">
+          <div className="offline-dropdown-header">
+            <h3 className="offline-dropdown-title">
+              {isOnline ? 'Conectado ao Servidor' : 'Trabalhando Offline'}
+            </h3>
+            {queueSize === 0 ? (
+              <p className="offline-dropdown-subtitle">Todos os dados locais estão sincronizados.</p>
             ) : (
-              <span className="sync-waiting-text">Aguardando conexão para sincronizar...</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '6px' }}>
+                <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-main)' }}>
+                  Existem <strong>{queueSize}</strong> alteração(ões) pendente(s) localmente.
+                </p>
+                {isOnline ? (
+                  <button className="btn-offline-sync" onClick={handleSync} disabled={isSyncing}>
+                    {isSyncing ? 'Sincronizando...' : 'Sincronizar Agora'}
+                  </button>
+                ) : (
+                  <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--danger)', fontStyle: 'italic' }}>
+                    Aguardando conexão para sincronizar...
+                  </p>
+                )}
+              </div>
             )}
+
+            {isSyncing && <p className="offline-dropdown-msg">{syncProgress}</p>}
+            {statusMessage && <p className="offline-dropdown-msg">{statusMessage}</p>}
           </div>
-        ) : (
-          <span className="sync-ok-text">Todos os dados locais estão sincronizados.</span>
-        )}
 
-        {isSyncing && <div className="sync-progress">{syncProgress}</div>}
-        {statusMessage && <div className="status-feedback">{statusMessage}</div>}
-
-        <div className="backup-actions">
-          <button className="btn-backup-action" onClick={handleExportBackup} title="Exporta todo o cache e fila atual como JSON">
-            Baixar Backup Offline
-          </button>
-          
-          <button className="btn-backup-action" onClick={() => fileInputRef.current?.click()} title="Importa dados de cache de um arquivo JSON">
-            Restaurar Backup Offline
-          </button>
-          
-          <input 
-            type="file" 
-            ref={fileInputRef} 
-            onChange={handleImportBackup} 
-            accept=".json" 
-            style={{ display: 'none' }} 
-          />
+          <div className="offline-dropdown-footer">
+            <button className="btn-offline-secundario" onClick={handleExportBackup}>
+              Baixar Backup Offline
+            </button>
+            <button className="btn-offline-secundario" onClick={() => fileInputRef.current?.click()}>
+              Restaurar Backup Offline
+            </button>
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              onChange={handleImportBackup} 
+              accept=".json" 
+              style={{ display: 'none' }} 
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

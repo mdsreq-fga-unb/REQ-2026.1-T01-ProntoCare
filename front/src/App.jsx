@@ -11,7 +11,6 @@ import Anamnese from './pages/Anamnese';
 import Prescricao from './pages/Prescricao';
 import Anexo from './pages/Anexo';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import OfflineStatusBar from './components/OfflineStatusBar';
 
 function App() {
   const [role, setRole] = useState(() => localStorage.getItem('role'));
@@ -84,7 +83,6 @@ function App() {
         {/* 5 - Rota Padrão */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
-      <OfflineStatusBar />
     </BrowserRouter>
   );
 }

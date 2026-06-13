@@ -1,0 +1,193 @@
+/* Estilos customizados para tabelas largas */
+.backlog-table-container {
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 20px 0;
+}
+
+.backlog-table-container table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse;
+}
+
+.backlog-table-container th,
+.backlog-table-container td {
+  padding: 10px 8px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  vertical-align: middle !important;
+}
+
+/* Largura das colunas da tabela de backlog */
+.backlog-table-container th:nth-child(1),
+.backlog-table-container td:nth-child(1) {
+  width: 11% !important;
+  /* ID (US / RF) */
+  font-weight: bold;
+}
+
+.backlog-table-container th:nth-child(2),
+.backlog-table-container td:nth-child(2) {
+  width: 44% !important;
+  /* User Story Derivada */
+  text-align: left !important;
+}
+
+.backlog-table-container th:nth-child(3),
+.backlog-table-container td:nth-child(3) {
+  width: 13% !important;
+  /* RNFs relacionados */
+}
+
+.backlog-table-container th:nth-child(4),
+.backlog-table-container td:nth-child(4),
+.backlog-table-container th:nth-child(5),
+.backlog-table-container td:nth-child(5),
+.backlog-table-container th:nth-child(6),
+.backlog-table-container td:nth-child(6),
+.backlog-table-container th:nth-child(7),
+.backlog-table-container td:nth-child(7) {
+  width: 4.5% !important;
+  /* VB, CX, ES, PT */
+  text-align: center !important;
+}
+
+.backlog-table-container th:nth-child(8),
+.backlog-table-container td:nth-child(8) {
+  width: 8% !important;
+  /* Quadrante */
+  text-align: center !important;
+}
+
+.backlog-table-container th:nth-child(9),
+.backlog-table-container td:nth-child(9) {
+  width: 6.5% !important;
+  /* MVP? */
+  text-align: center !important;
+}
+
+/* Custom responsive iframe adjustments to prevent screen shifting */
+iframe {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+/* Cronograma Table Container */
+.cronograma-table-container {
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 20px 0;
+}
+
+.cronograma-table-container table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse;
+}
+
+.cronograma-table-container th,
+.cronograma-table-container td {
+  padding: 8px 6px !important;
+  font-size: 0.82em !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  vertical-align: middle !important;
+}
+
+/* Column widths for cronograma table (8 columns) */
+.cronograma-table-container th:nth-child(1),
+.cronograma-table-container td:nth-child(1) { width: 9% !important; font-weight: bold; } /* Sprint */
+.cronograma-table-container th:nth-child(2),
+.cronograma-table-container td:nth-child(2) { width: 9% !important; } /* Início */
+.cronograma-table-container th:nth-child(3),
+.cronograma-table-container td:nth-child(3) { width: 9% !important; } /* Fim */
+.cronograma-table-container th:nth-child(4),
+.cronograma-table-container td:nth-child(4) { width: 17% !important; } /* Objetivo principal */
+.cronograma-table-container th:nth-child(5),
+.cronograma-table-container td:nth-child(5) { width: 8% !important; } /* CPs */
+.cronograma-table-container th:nth-child(6),
+.cronograma-table-container td:nth-child(6) { width: 22% !important; } /* Entregas esperadas */
+.cronograma-table-container th:nth-child(7),
+.cronograma-table-container td:nth-child(7) { width: 16% !important; } /* RNFs transversais */
+.cronograma-table-container th:nth-child(8),
+.cronograma-table-container td:nth-child(8) { width: 10% !important; } /* Validação */
+
+/* Rastreabilidade Table Container */
+.rastreabilidade-table-container {
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 20px 0;
+}
+
+.rastreabilidade-table-container table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse;
+}
+
+.rastreabilidade-table-container th,
+.rastreabilidade-table-container td {
+  padding: 8px 6px !important;
+  font-size: 0.82em !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  vertical-align: middle !important;
+}
+
+/* Column widths for rastreabilidade table (6 columns) */
+.rastreabilidade-table-container th:nth-child(1),
+.rastreabilidade-table-container td:nth-child(1) { width: 16% !important; } /* Contribuição principal */
+.rastreabilidade-table-container th:nth-child(2),
+.rastreabilidade-table-container td:nth-child(2) { width: 16% !important; } /* Contribuição secundária */
+.rastreabilidade-table-container th:nth-child(3),
+.rastreabilidade-table-container td:nth-child(3) { width: 10% !important; } /* CP */
+.rastreabilidade-table-container th:nth-child(4),
+.rastreabilidade-table-container td:nth-child(4) { width: 10% !important; } /* VN */
+.rastreabilidade-table-container th:nth-child(5),
+.rastreabilidade-table-container td:nth-child(5) { width: 24% !important; } /* RFs relacionados */
+.rastreabilidade-table-container th:nth-child(6),
+.rastreabilidade-table-container td:nth-child(6) { width: 24% !important; } /* RNFs relacionados */
+
+/* ScrumXP Table Container */
+.scrumxp-table-container {
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 20px 0;
+}
+
+.scrumxp-table-container table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse;
+}
+
+.scrumxp-table-container th,
+.scrumxp-table-container td {
+  padding: 8px 6px !important;
+  font-size: 0.82em !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  vertical-align: middle !important;
+}
+
+/* Column widths for ScrumXP table (5 columns) */
+.scrumxp-table-container th:nth-child(1),
+.scrumxp-table-container td:nth-child(1) { width: 15% !important; font-weight: bold; } /* Fases */
+.scrumxp-table-container th:nth-child(2),
+.scrumxp-table-container td:nth-child(2) { width: 15% !important; } /* Atividades */
+.scrumxp-table-container th:nth-child(3),
+.scrumxp-table-container td:nth-child(3) { width: 15% !important; } /* Prática */
+.scrumxp-table-container th:nth-child(4),
+.scrumxp-table-container td:nth-child(4) { width: 30% !important; } /* Técnica */
+.scrumxp-table-container th:nth-child(5),
+.scrumxp-table-container td:nth-child(5) { width: 25% !important; } /* Resultado */

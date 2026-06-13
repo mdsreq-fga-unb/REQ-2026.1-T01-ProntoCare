@@ -5,21 +5,25 @@
 
 ---
 
-## Reunião Planning — 16/05/2026 - 21h
+## Reunião Planning — 16/05/2026 - 21h & Reunião Review — 23/05/2026 - 21h
 
-| Participante | Planning |
-| :--- | :---: |
-| Pedro | ✅ |
-| Eduardo | ✅ |
-| Luciano | ✅ |
-| Fábio | ✅ |
-| Uires | ✅ |
+| Participante | Planning | Review |
+| :--- | :---: | :---: |
+| Pedro | ✅ | ❌ |
+| Eduardo | ✅ | ✅ |
+| Luciano | ✅ | ✅ |
+| Fábio | ✅ | ❌ |
+| Uires | ✅ | ✅ |
 
 - **Pontos principais:**
     - Planning:
         - Estudo de arquitetura de softwares de prontuários
         - Estudo sobre o protocolo SOAP
         - Preparação para entrega da Unidade 2
+    - Review:
+        - Documentação
+        - Validação dos documentos médicos
+        - Entrega da Unidade 2
 
 ## Vídeos
 
@@ -27,6 +31,20 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hed-WqOa3yY?si=CCyZ2m5NVvPWKmFS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 acesse diretamente pelo link: [https://youtu.be/hed-WqOa3yY](https://youtu.be/hed-WqOa3yY)
+
+### Sprint 3 Review & Sprint 4 Planning
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pgax0OPZzBo?si=VWZ_7eZY1i3sMhl8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+acesse diretamente pelo link: [https://youtu.be/pgax0OPZzBo](https://youtu.be/pgax0OPZzBo)
+
+## Entrega Parcial 2 - 23/05/2026
+
+| Verificado? | Validado? |
+| --- | --- |
+| ✅ | ✅ |
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m2k1x8eOyTU?si=tErukUCaafVM3-Jt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+acesse diretamente pelo link: [https://youtu.be/m2k1x8eOyTU](https://youtu.be/m2k1x8eOyTU)
 
 #### Histórico de Revisões
 

@@ -1,13 +1,72 @@
+---
+icon: material/file-document-outline
+---
 # Visão geral e revisões
 
-**ProntoCare**  
-Sistema de Prontuário Eletrônico de Pacientes
+**ProntoCare** — Sistema de Prontuário Eletrônico de Pacientes  
+**VISÃO DO PRODUTO E PROJETO** (Versão 0.8)
 
-**VISÃO DO PRODUTO E PROJETO**
+---
 
-**Versão 0.8**
+## :material-sitemap: Índice do Produto e Projeto
 
-## Histórico de revisão
+Acesse os documentos de planejamento do projeto organizados de acordo com sua categoria:
+
+<div class="grid cards" markdown>
+
+-   __O Negócio e o Problema__
+
+    ---
+
+    Entenda o contexto de negócios, os desafios do cliente e a segmentação de stakeholders.
+
+    :material-office-building: [Cliente e Negócio](cliente-e-negocio.md)<br>
+    :material-alert-circle-outline: [Cenário, Problema e Desafios](cenario-problema-e-desafios.md)<br>
+    :material-account-group-outline: [Stakeholders e Segmentação](stakeholders-e-segmentacao.md)
+
+-   __A Solução e o Impacto__
+
+    ---
+
+    Conheça as características da proposta de solução e o impacto da intervenção social.
+
+    :material-lightbulb-on-outline: [Solução e Características](solucao-e-caracteristicas.md)<br>
+    :material-account-heart-outline: [Intervenção Social](intervencao-social.md)
+
+-   __Estratégia e Engenharia__
+
+    ---
+
+    Compreenda a estratégia de engenharia de software e os métodos de elicitação e ER.
+
+    :material-cog-outline: [Estratégias de Engenharia](estrategias-engenharia-de-software.md)<br>
+    :material-file-document-edit-outline: [Engenharia de Requisitos](engenharia-de-requisitos.md)
+
+-   __Planejamento e Alinhamento__
+
+    ---
+
+    Consulte o cronograma de sprints e a dinâmica de relacionamento com o Dr. Rogério.
+
+    :material-calendar-month-outline: [Cronograma e Entregas](cronograma-e-entregas.md)<br>
+    :material-comment-text-multiple-outline: [Interação Equipe-Cliente](interacao-equipe-cliente.md)
+
+-   __Especificação e Backlog__
+
+    ---
+
+    Veja os requisitos de software, critérios de aceitação (DoR/DoD), backlog do MVP e lições aprendidas.
+
+    :material-file-code-outline: [Requisitos de Software](requisitos-de-software.md)<br>
+    :material-check-decagram-outline: [DoR e DoD](DoR-DoD.md)<br>
+    :material-format-list-bulleted-type: [Backlog de Produto](backlog-de-produto.md)<br>
+    :material-school-outline: [Lições Aprendidas](lições-aprendidas.md)
+
+</div>
+
+---
+
+## :material-history: Histórico de revisão
 
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
@@ -19,19 +78,3 @@ Sistema de Prontuário Eletrônico de Pacientes
 | 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
 | 2026-05-18 | 0.7 | Gravação e publicação do vídeo de apresentação da Entrega 2. | Prontuariantes |
 | 2026-05-18 | 0.8 | Atualização do índice para alinhar com a nova estruturação dos documentos. | Prontuariantes |
-
-## Índice
-
-- [Cliente e negócio](cliente-e-negocio.md) — seções 1.1 e 1.2
-- [Cenário, problema e desafios](cenario-problema-e-desafios.md) — seções 1.3 a 1.5
-- [Stakeholders e segmentação](stakeholders-e-segmentacao.md) — seções 1.6 e 1.7
-- [Solução e características](solucao-e-caracteristicas.md) — seção 2
-- [Intervenção Social](intervencao-social.md) — seção 3
-- [Estratégias de engenharia de software](estrategias-engenharia-de-software.md) — seção 4
-- [Engenharia de requisitos](engenharia-de-requisitos.md) — seção 5
-- [Cronograma e entregas](cronograma-e-entregas.md) — seção 6
-- [Interação entre equipe e cliente](interacao-equipe-cliente.md) — seção 7
-- [Requisitos de software](requisitos-de-software.md) — seção 8
-- [DoR e DoD](DoR-DoD.md) — seção 9
-- [Backlog](backlog-de-produto.md) — seção 10
-- [Lições aprendidas](lições-aprendidas.md) — seção 11

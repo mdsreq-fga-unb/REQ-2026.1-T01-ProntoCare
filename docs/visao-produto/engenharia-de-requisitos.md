@@ -122,6 +122,8 @@ A partir das informações apresentadas na seção 3, devem ser estabelecidas as
 
 As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases do ScrumXP, conforme a tabela a seguir. Esta tabela sintetiza o detalhamento apresentado na seção 4.1.
 
+<div class="scrumxp-table-container" markdown="1">
+
 | Fases do ScrumXP | Atividades da ER | Prática | Técnica | Resultado esperado |
 | :--- | :--- | :--- | :--- | :--- |
 | Planejamento da release | Elicitação e descoberta | Levantamento de requisitos | Entrevistas estruturadas com o cliente, brainstorming com a equipe, análise de domínio clínico (fluxo SOAP, protocolos, eSUS PEC) | Requisitos de alto nível identificados e validados; objetivos da release definidos com base no domínio clínico. |
@@ -147,9 +149,10 @@ As atividades da ER, suas práticas e técnicas são mapeadas a partir das fases
 | Planejamento da próxima release | Verificação e validação | DEEP do backlog da release | DEEP (Detalhado, Estimado, Emergente, Priorizado) | Backlog verificado conforme critérios DEEP. |
 | Planejamento da próxima release | Organização e atualização | Revisão do backlog | Revisão e baseline do backlog da release | Backlog preparado com rastreabilidade atualizada. |
 
+</div>
+
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-05-18 | 0.1 | Elaboração e revisão das atividades e técnicas de ER mapeadas ao ScrumXP. | Prontuariantes |
-

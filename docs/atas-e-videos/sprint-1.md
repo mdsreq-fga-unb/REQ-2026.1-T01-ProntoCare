@@ -46,6 +46,14 @@ acesse diretamente pelo link: [https://youtu.be/7K0HL413Y08](https://youtu.be/7K
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kuSMW1pVD9A?si=EEmKKii4jKpG5AHP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 acesse diretamente pelo link: [https://youtu.be/kuSMW1pVD9A](https://youtu.be/kuSMW1pVD9A)
 
+## Entrega Parcial 1 - 09/05/2026
+
+| Verificado? | Validado? |
+| --- | --- |
+| ✅ | ✅ |
+
+Infelizmente a entrega não foi gravada e sim confirmada com prints da plataforma que estão disponíveis na reunião de review da Sprint 1.
+
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |

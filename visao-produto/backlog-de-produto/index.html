@@ -1247,10 +1247,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-valor-de-negocio-vb" class="md-nav__link">
+  <a href="#1-valor-de-negocio-vn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Valor de Negócio (VB)
+        1. Valor de Negócio (VN)
       
     </span>
   </a>
@@ -1258,10 +1258,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-complexidade-tecnica-cx" class="md-nav__link">
+  <a href="#2-complexidade-tecnica-ct" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Complexidade Técnica (CX)
+        2. Complexidade Técnica (CT)
       
     </span>
   </a>
@@ -1269,10 +1269,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-esforco-de-implementacao-es" class="md-nav__link">
+  <a href="#3-esforco-de-implementacao-ei" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Esforço de Implementação (ES)
+        3. Esforço de Implementação (EI)
       
     </span>
   </a>
@@ -1925,10 +1925,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-valor-de-negocio-vb" class="md-nav__link">
+  <a href="#1-valor-de-negocio-vn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Valor de Negócio (VB)
+        1. Valor de Negócio (VN)
       
     </span>
   </a>
@@ -1936,10 +1936,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-complexidade-tecnica-cx" class="md-nav__link">
+  <a href="#2-complexidade-tecnica-ct" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Complexidade Técnica (CX)
+        2. Complexidade Técnica (CT)
       
     </span>
   </a>
@@ -1947,10 +1947,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-esforco-de-implementacao-es" class="md-nav__link">
+  <a href="#3-esforco-de-implementacao-ei" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Esforço de Implementação (ES)
+        3. Esforço de Implementação (EI)
       
     </span>
   </a>
@@ -2066,7 +2066,7 @@
 <h3 id="101-backlog-geral-e-priorizacao"><strong>10.1 Backlog Geral e Priorização</strong></h3>
 <p>Para a priorização do backlog, a equipe definiu escalas numéricas de 1 a 5 para avaliar cada User Story de forma consistente e objetiva, minimizando a subjetividade na atribuição de notas.</p>
 <h4 id="criterios-de-avaliacao-e-escalas"><strong>Critérios de Avaliação e Escalas</strong></h4>
-<h5 id="1-valor-de-negocio-vb"><strong>1. Valor de Negócio (VB)</strong></h5>
+<h5 id="1-valor-de-negocio-vn"><strong>1. Valor de Negócio (VN)</strong></h5>
 <p>Mapeia a relevância e criticidade da funcionalidade sob a ótica assistencial, operacional e regulatória do consultório médico.</p>
 <table>
 <thead>
@@ -2110,7 +2110,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="2-complexidade-tecnica-cx"><strong>2. Complexidade Técnica (CX)</strong></h5>
+<h5 id="2-complexidade-tecnica-ct"><strong>2. Complexidade Técnica (CT)</strong></h5>
 <p>Mapeia o nível de desafio de desenvolvimento associado à infraestrutura de código, lógica de negócio, integrações e segurança.</p>
 <table>
 <thead>
@@ -2154,7 +2154,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="3-esforco-de-implementacao-es"><strong>3. Esforço de Implementação (ES)</strong></h5>
+<h5 id="3-esforco-de-implementacao-ei"><strong>3. Esforço de Implementação (EI)</strong></h5>
 <p>Mapeia a estimativa de tempo e recursos humanos dedicados ao desenvolvimento de código, testes automatizados e homologação.</p>
 <table>
 <thead>
@@ -2200,18 +2200,18 @@
 </table>
 <hr />
 <h4 id="pontuacao-tecnica-pt-e-limiares-de-priorizacao"><strong>Pontuação Técnica (PT) e Limiares de Priorização</strong></h4>
-<p>A <strong>Pontuação Técnica (PT)</strong> de cada história é obtida pela média aritmética simples entre a Complexidade Técnica (CX) e o Esforço de Implementação (ES):</p>
-<p>$$\text{PT} = \frac{\text{CX} + \text{ES}}{2}$$</p>
-<p>A partir do cruzamento de VB e PT, as User Stories são classificadas em um <strong>gráfico de quadrantes</strong> que define objetivamente a prioridade e a elegibilidade para o MVP:</p>
+<p>A <strong>Pontuação Técnica (PT)</strong> de cada história é obtida pela média aritmética simples entre a Complexidade Técnica (CT) e o Esforço de Implementação (EI):</p>
+<p>$$\text{PT} = \frac{\text{CT} + \text{EI}}{2}$$</p>
+<p>A partir do cruzamento de VN e PT, as User Stories são classificadas em um <strong>gráfico de quadrantes</strong> que define objetivamente a prioridade e a elegibilidade para o MVP:</p>
 <ul>
-<li><strong>Quadrante 1 — Alto valor, Baixo esforço</strong> (VB &gt;= 4 e PT &lt;= 2.5): <strong>Alta prioridade</strong>. Itens indispensáveis para o consultório que possuem desenvolvimento previsível e rápido. <strong>Devem compor o MVP</strong>.</li>
-<li><strong>Quadrante 2 — Alto valor, Alto esforço</strong> (VB &gt;= 4 e PT &gt; 2.5): <strong>Média-alta prioridade</strong>. Itens fundamentais para o negócio, mas com alto custo técnico de desenvolvimento. Podem compor o MVP, exigindo fatiamento ou acompanhamento rigoroso.</li>
-<li><strong>Quadrante 3 — Baixo valor, Baixo esforço</strong> (VB &lt; 4 e PT &lt;= 2.5): <strong>Média-baixa prioridade</strong>. Itens de conveniência secundária simples de implementar. Candidatos a inclusão caso haja margem de cronograma.</li>
-<li><strong>Quadrante 4 — Baixo valor, Alto esforço</strong> (VB &lt; 4 e PT &gt; 2.5): <strong>Baixa prioridade</strong>. Recursos secundários com alto custo técnico. <strong>Não devem compor o MVP</strong>.</li>
+<li><strong>Quadrante 1 — Alto valor, Baixo esforço</strong> (VN &gt;= 4 e PT &lt;= 2.5): <strong>Alta prioridade</strong>. Itens indispensáveis para o consultório que possuem desenvolvimento previsível e rápido. <strong>Devem compor o MVP</strong>.</li>
+<li><strong>Quadrante 2 — Alto valor, Alto esforço</strong> (VN &gt;= 4 e PT &gt; 2.5): <strong>Média-alta prioridade</strong>. Itens fundamentais para o negócio, mas com alto custo técnico de desenvolvimento. Podem compor o MVP, exigindo fatiamento ou acompanhamento rigoroso.</li>
+<li><strong>Quadrante 3 — Baixo valor, Baixo esforço</strong> (VN &lt; 4 e PT &lt;= 2.5): <strong>Média-baixa prioridade</strong>. Itens de conveniência secundária simples de implementar. Candidatos a inclusão caso haja margem de cronograma.</li>
+<li><strong>Quadrante 4 — Baixo valor, Alto esforço</strong> (VN &lt; 4 e PT &gt; 2.5): <strong>Baixa prioridade</strong>. Recursos secundários com alto custo técnico. <strong>Não devem compor o MVP</strong>.</li>
 </ul>
 <h5 id="justificativa-dos-limiares-pontos-de-corte"><strong>Justificativa dos Limiares (Pontos de Corte)</strong></h5>
 <ul>
-<li><strong>Origem do Limiar de Valor de Negócio (VB &gt;= 4)</strong>: O corte em 4 garante que apenas funcionalidades classificadas como "Altas" ou "Críticas" entrem no MVP. Isso ocorre porque recursos com VB de 1 a 3 (como análises automáticas por IA ou termos secundários) representam ótimas conveniências assistenciais ou de automação, mas sua ausência não impede o médico de atender o paciente e cumprir os regulamentos básicos e mandatórios da LGPD e do CFM.</li>
+<li><strong>Origem do Limiar de Valor de Negócio (VN &gt;= 4)</strong>: O corte em 4 garante que apenas funcionalidades classificadas como "Altas" ou "Críticas" entrem no MVP. Isso ocorre porque recursos com VN de 1 a 3 (como análises automáticas por IA ou termos secundários) representam ótimas conveniências assistenciais ou de automação, mas sua ausência não impede o médico de atender o paciente e cumprir os regulamentos básicos e mandatórios da LGPD e do CFM.</li>
 <li><strong>Origem do Limiar de Pontuação Técnica (PT &lt;= 2.5)</strong>: O corte de 2.5 é o ponto médio matemático exato da escala de complexidade e esforço (1 a 5). User stories com PT &gt; 2.5 representam tarefas que exigem alta complexidade técnica (como criptografia e processamento de assinaturas) ou que ocupam mais de metade de uma sprint inteira de desenvolvimento, configurando maior risco de atraso para o curto cronograma letivo da equipe. Apenas itens com PT &lt;= 2.5 possuem risco técnico baixo e previsibilidade compatível com entregas rápidas.</li>
 </ul>
 <h4 id="matriz-de-priorizacao-disponivel-no-figma-jamboard-do-projeto">Matriz de Priorização disponivel no Figma JamBoard do projeto</h4>
@@ -2227,9 +2227,9 @@
 <th style="text-align: center;"><strong>ID (US / RF)</strong></th>
 <th style="text-align: left;"><strong>User Story Derivada</strong></th>
 <th style="text-align: center;"><strong>RNFs relacionados</strong></th>
-<th style="text-align: center;"><strong>VB</strong></th>
-<th style="text-align: center;"><strong>CX</strong></th>
-<th style="text-align: center;"><strong>ES</strong></th>
+<th style="text-align: center;"><strong>VN</strong></th>
+<th style="text-align: center;"><strong>CT</strong></th>
+<th style="text-align: center;"><strong>EI</strong></th>
 <th style="text-align: center;"><strong>PT</strong></th>
 <th style="text-align: center;"><strong>Quadrante</strong></th>
 <th style="text-align: center;"><strong>MVP?</strong></th>

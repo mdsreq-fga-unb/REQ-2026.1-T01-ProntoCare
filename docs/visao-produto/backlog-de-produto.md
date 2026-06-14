@@ -8,7 +8,7 @@ Para a priorização do backlog, a equipe definiu escalas numéricas de 1 a 5 pa
 
 #### **Critérios de Avaliação e Escalas**
 
-##### **1. Valor de Negócio (VB)**
+##### **1. Valor de Negócio (VN)**
 Mapeia a relevância e criticidade da funcionalidade sob a ótica assistencial, operacional e regulatória do consultório médico.
 
 | Nível | Classificação | Critério Objetivo | Exemplos de Aplicação |
@@ -19,7 +19,7 @@ Mapeia a relevância e criticidade da funcionalidade sob a ótica assistencial, 
 | **4** | Alto | Essencial à operação diária ou segurança assistencial. A ausência gera gargalo operacional severo ou descontinuidade no cuidado do paciente. | Calendário de consultas, histórico de receitas, logs de auditoria. |
 | **5** | Crítico | Bloqueador absoluto da operação básica ou requisito regulatório compulsório (normas obrigatórias do CFM, LGPD ou assinatura digital ICP-Brasil). | Registro de prontuário SOAP, assinatura digital, cadastro básico de pacientes. |
 
-##### **2. Complexidade Técnica (CX)**
+##### **2. Complexidade Técnica (CT)**
 Mapeia o nível de desafio de desenvolvimento associado à infraestrutura de código, lógica de negócio, integrações e segurança.
 
 | Nível | Classificação | Critério Objetivo | Exemplos de Aplicação |
@@ -30,7 +30,7 @@ Mapeia o nível de desafio de desenvolvimento associado à infraestrutura de có
 | **4** | Alta | Requer integrações complexas com APIs externas (IA) ou aplicação de algoritmos de segurança (Web Crypto API, assinaturas ICP-Brasil). | Assinatura digital do prontuário, análise de prescrições por IA. |
 | **5** | Muito Alta | Exige soluções complexas de arquitetura distribuída, sincronização offline de banco local com resolução automática de conflitos. | Sincronização offline-first bidirecional em segundo plano. |
 
-##### **3. Esforço de Implementação (ES)**
+##### **3. Esforço de Implementação (EI)**
 Mapeia a estimativa de tempo e recursos humanos dedicados ao desenvolvimento de código, testes automatizados e homologação.
 
 | Nível | Classificação | Estimativa de Tempo de Desenvolvimento | Recursos / Dependências |
@@ -45,19 +45,19 @@ Mapeia a estimativa de tempo e recursos humanos dedicados ao desenvolvimento de 
 
 #### **Pontuação Técnica (PT) e Limiares de Priorização**
 
-A **Pontuação Técnica (PT)** de cada história é obtida pela média aritmética simples entre a Complexidade Técnica (CX) e o Esforço de Implementação (ES):
+A **Pontuação Técnica (PT)** de cada história é obtida pela média aritmética simples entre a Complexidade Técnica (CT) e o Esforço de Implementação (EI):
 
-$$\text{PT} = \frac{\text{CX} + \text{ES}}{2}$$
+$$\text{PT} = \frac{\text{CT} + \text{EI}}{2}$$
 
-A partir do cruzamento de VB e PT, as User Stories são classificadas em um **gráfico de quadrantes** que define objetivamente a prioridade e a elegibilidade para o MVP:
+A partir do cruzamento de VN e PT, as User Stories são classificadas em um **gráfico de quadrantes** que define objetivamente a prioridade e a elegibilidade para o MVP:
 
-* **Quadrante 1 — Alto valor, Baixo esforço** (VB >= 4 e PT <= 2.5): **Alta prioridade**. Itens indispensáveis para o consultório que possuem desenvolvimento previsível e rápido. **Devem compor o MVP**.
-* **Quadrante 2 — Alto valor, Alto esforço** (VB >= 4 e PT > 2.5): **Média-alta prioridade**. Itens fundamentais para o negócio, mas com alto custo técnico de desenvolvimento. Podem compor o MVP, exigindo fatiamento ou acompanhamento rigoroso.
-* **Quadrante 3 — Baixo valor, Baixo esforço** (VB < 4 e PT <= 2.5): **Média-baixa prioridade**. Itens de conveniência secundária simples de implementar. Candidatos a inclusão caso haja margem de cronograma.
-* **Quadrante 4 — Baixo valor, Alto esforço** (VB < 4 e PT > 2.5): **Baixa prioridade**. Recursos secundários com alto custo técnico. **Não devem compor o MVP**.
+* **Quadrante 1 — Alto valor, Baixo esforço** (VN >= 4 e PT <= 2.5): **Alta prioridade**. Itens indispensáveis para o consultório que possuem desenvolvimento previsível e rápido. **Devem compor o MVP**.
+* **Quadrante 2 — Alto valor, Alto esforço** (VN >= 4 e PT > 2.5): **Média-alta prioridade**. Itens fundamentais para o negócio, mas com alto custo técnico de desenvolvimento. Podem compor o MVP, exigindo fatiamento ou acompanhamento rigoroso.
+* **Quadrante 3 — Baixo valor, Baixo esforço** (VN < 4 e PT <= 2.5): **Média-baixa prioridade**. Itens de conveniência secundária simples de implementar. Candidatos a inclusão caso haja margem de cronograma.
+* **Quadrante 4 — Baixo valor, Alto esforço** (VN < 4 e PT > 2.5): **Baixa prioridade**. Recursos secundários com alto custo técnico. **Não devem compor o MVP**.
 
 ##### **Justificativa dos Limiares (Pontos de Corte)**
-- **Origem do Limiar de Valor de Negócio (VB >= 4)**: O corte em 4 garante que apenas funcionalidades classificadas como "Altas" ou "Críticas" entrem no MVP. Isso ocorre porque recursos com VB de 1 a 3 (como análises automáticas por IA ou termos secundários) representam ótimas conveniências assistenciais ou de automação, mas sua ausência não impede o médico de atender o paciente e cumprir os regulamentos básicos e mandatórios da LGPD e do CFM.
+- **Origem do Limiar de Valor de Negócio (VN >= 4)**: O corte em 4 garante que apenas funcionalidades classificadas como "Altas" ou "Críticas" entrem no MVP. Isso ocorre porque recursos com VN de 1 a 3 (como análises automáticas por IA ou termos secundários) representam ótimas conveniências assistenciais ou de automação, mas sua ausência não impede o médico de atender o paciente e cumprir os regulamentos básicos e mandatórios da LGPD e do CFM.
 - **Origem do Limiar de Pontuação Técnica (PT <= 2.5)**: O corte de 2.5 é o ponto médio matemático exato da escala de complexidade e esforço (1 a 5). User stories com PT > 2.5 representam tarefas que exigem alta complexidade técnica (como criptografia e processamento de assinaturas) ou que ocupam mais de metade de uma sprint inteira de desenvolvimento, configurando maior risco de atraso para o curto cronograma letivo da equipe. Apenas itens com PT <= 2.5 possuem risco técnico baixo e previsibilidade compatível com entregas rápidas.
 
 #### Matriz de Priorização disponivel no Figma JamBoard do projeto
@@ -68,7 +68,7 @@ A partir do cruzamento de VB e PT, as User Stories são classificadas em um **gr
 
 <div class="backlog-table-container" markdown="1">
 
-| **ID (US / RF)** | **User Story Derivada** | **RNFs relacionados** | **VB** | **CX** | **ES** | **PT** | **Quadrante** | **MVP?** |
+| **ID (US / RF)** | **User Story Derivada** | **RNFs relacionados** | **VN** | **CT** | **EI** | **PT** | **Quadrante** | **MVP?** |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **US01 / RF01** | Como médico, eu quero registrar novos pacientes com seus dados cadastrais básicos e credenciais de acesso, para que eu possa iniciar o acompanhamento de histórico clínico e conceder acesso a eles no sistema. | RNF01, RNF02 | 5 | 2 | 2 | 2.0 | 1 | Sim |
 | **US02 / RF02** | Como médico, eu quero atualizar os dados cadastrais e credenciais de acesso dos pacientes, para manter a base de dados e perfis sempre corretos e atualizados. | RNF01, RNF02 | 5 | 2 | 2 | 2.0 | 1 | Sim |

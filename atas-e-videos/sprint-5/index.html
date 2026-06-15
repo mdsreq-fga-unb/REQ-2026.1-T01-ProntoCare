@@ -1226,6 +1226,8 @@
       
         
       
+        
+      
     
     
     
@@ -1534,7 +1536,23 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Sprint 5 Review &amp; Sprint 6 Planning">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-parcial-exportacao-e-auditoria-06062026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entrega Parcial (Exportação e Auditoria) - 06/06/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrega Parcial (Exportação e Auditoria) - 06/06/2026">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1545,11 +1563,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1582,6 +1595,34 @@
     
   
     Sprint 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sprint 7
   
 
     
@@ -1836,7 +1877,23 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Sprint 5 Review &amp; Sprint 6 Planning">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-parcial-exportacao-e-auditoria-06062026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entrega Parcial (Exportação e Auditoria) - 06/06/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrega Parcial (Exportação e Auditoria) - 06/06/2026">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1847,11 +1904,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1882,7 +1934,7 @@
 
 <h1 id="sprint-5-atas-e-videos">Sprint 5 — Atas e Vídeos</h1>
 <p><strong>Período:</strong> 31/05/2026 – 06/06/2026<br />
-<strong>Objetivo:</strong> Operação Offline</p>
+<strong>Objetivo:</strong> Exportação de dados e Auditoria</p>
 <hr />
 <h2 id="reuniao-planning-30052026-21h-reuniao-review-06062026-21h">Reunião Planning — 30/05/2026 - 21h &amp; Reunião Review — 06/06/2026 - 21h</h2>
 <table>
@@ -1922,17 +1974,28 @@
 </tbody>
 </table>
 <ul>
-<li><strong>Pontos principais:</strong><ul>
-<li>Planning:<ul>
-<li>Discussão sobre arquitetura</li>
-<li>Discussão sobre a implementação do de operações offline</li>
-<li>Definição de entregáveis para a aula e para a entrega da unidade 3</li>
+<li>
+<p><strong>Histórias de Usuário (US) Mapeadas:</strong></p>
+<ul>
+<li><strong>[US05 / RF05]</strong>: Geração e exportação completa do banco de dados de pacientes em JSON.</li>
+<li><strong>[US09 / RF09] (Completo)</strong>: Geração e exportação de arquivo PDF contendo o prontuário SOAP e hash SHA-256 de integridade.</li>
+<li><strong>[US24 / RF24]</strong>: Rastreamento e visualização de logs de auditoria de acessos e operações a dados sensíveis.</li>
 </ul>
 </li>
-<li>Review:<ul>
-<li>Discussão sobre arquitetura</li>
-<li>Apresentação do estado atual do sistema</li>
-<li>Definição de entregáveis</li>
+<li>
+<p><strong>Pontos principais:</strong></p>
+<ul>
+<li><strong>Planning:</strong><ul>
+<li><strong>Validação Prévia de Requisitos com o Cliente:</strong> Fica registrado que as User Stories de exportação e auditoria (<code>US05</code>, <code>US09</code> e <code>US24</code>), bem como os requisitos transversais de conformidade com LGPD (<code>RNF01</code> - logs de auditoria), foram formalmente apresentados e validados junto ao cliente (Dr. Rogério Duarte) no início desta sprint, antes de iniciar o desenvolvimento, definindo a estrutura do relatório de logs e formato de PDF e JSON.</li>
+<li>Discussão sobre arquitetura de dados e integridade de exportações.</li>
+<li>Definição técnica dos schemas JSON e layout de PDF.</li>
+<li>Planejamento prévio da implementação de operação offline (Dexie.js) e PWA.</li>
+</ul>
+</li>
+<li><strong>Review:</strong><ul>
+<li>Verificação e alinhamento sobre a estrutura de dados gerada nos PDFs e JSON.</li>
+<li>Homologação da interface de logs de auditoria.</li>
+<li>Preparação dos entregáveis e relatórios para a Unidade Acadêmica 3.</li>
 </ul>
 </li>
 </ul>
@@ -1944,6 +2007,34 @@
 <p>acesse diretamente pelo link: <a href="https://youtu.be/cl_W_ZMp95g">https://youtu.be/cl_W_ZMp95g</a></p>
 <h3 id="sprint-5-review-sprint-6-planning">Sprint 5 Review &amp; Sprint 6 Planning</h3>
 <p>Infelizmente, a gravação da reunião Sprint 5 Review &amp; Sprint 6 Planning foi corrompida, resultando na perda do arquivo.</p>
+<h2 id="entrega-parcial-exportacao-e-auditoria-06062026">Entrega Parcial (Exportação e Auditoria) - 06/06/2026</h2>
+<table>
+<thead>
+<tr>
+<th>Funcionalidade / História de Usuário</th>
+<th style="text-align: center;">Verificado? (Equipe)</th>
+<th style="text-align: center;">Validado? (Cliente)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[US05 / RF05]</strong> - Exportação de dados do paciente em JSON</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>[US09 / RF09]</strong> - Geração de PDF estruturado com hash de integridade</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>[US24 / RF24]</strong> - Logs de auditoria para conformidade LGPD</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota de Validação Clínica:</strong> Os relatórios de auditoria e a saída estruturada em PDF foram homologados e validados anteriormente com o cliente Dr. Rogério Duarte na Review, atestando conformidade com as regras de sigilo e necessidades do consultório.</p>
 <h4 id="historico-de-revisoes">Histórico de Revisões</h4>
 <table>
 <thead>
@@ -1956,7 +2047,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">2026-06-01</td>
+<td style="text-align: center;">2026-06-08</td>
 <td style="text-align: center;">0.1</td>
 <td style="text-align: center;">Elaboração das atas e vídeos da Sprint 5.</td>
 <td style="text-align: center;">Prontuariantes</td>

@@ -47,7 +47,10 @@ Mapeia a estimativa de tempo e recursos humanos dedicados ao desenvolvimento de 
 
 A **Pontuação Técnica (PT)** de cada história é obtida pela média aritmética simples entre a Complexidade Técnica (CT) e o Esforço de Implementação (EI):
 
-$$\text{PT} = \frac{\text{CT} + \text{EI}}{2}$$
+
+$$
+\text{PT} = \frac{\text{CT} + \text{EI}}{2}
+$$
 
 A partir do cruzamento de VN e PT, as User Stories são classificadas em um **gráfico de quadrantes** que define objetivamente a prioridade e a elegibilidade para o MVP:
 

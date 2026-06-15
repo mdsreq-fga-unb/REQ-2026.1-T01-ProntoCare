@@ -8,6 +8,9 @@ edit_uri: edit/main/docs/
 extra_css:
   - assets/stylesheets/custom.css
 
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js
+
 theme:
   name: material
   language: pt
@@ -49,6 +52,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
 
 nav:
   - Início: index.md
@@ -90,5 +95,4 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare
       link: https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare

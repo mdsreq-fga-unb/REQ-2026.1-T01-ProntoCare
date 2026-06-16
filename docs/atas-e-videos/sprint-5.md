@@ -31,6 +31,15 @@
         - Homologação da interface de logs de auditoria.
         - Preparação dos entregáveis e relatórios para a Unidade Acadêmica 3.
 
+## Daily Scrum
+
+- Durante o período, foram conduzidas as seguintes reuniões Daily Scrum:
+    - **31/05/2026** - 20h as 22h
+    - **01/06/2026** - 10h as 10h15
+    - **02/06/2026** - 20h as 22h
+    - **03/06/2026** - 10h as 10h15
+    - **05/06/2026** - 20h as 22h
+
 ## Vídeos
 
 ### Sprint 4 Review & Sprint 5 Planning

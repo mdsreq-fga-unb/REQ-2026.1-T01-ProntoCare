@@ -55,9 +55,9 @@ Durante o desenvolvimento inicial do projeto do ProntoCare, várias lições imp
 
 2. **Verificação e validação dos requisitos**
 
-    - **Desafio:** Validar tecnicamente e clinicamente os requisitos não-funcionais (RNFs) de segurança e usabilidade de baixo nível (como a integridade por hash SHA-256 na exportação de PDFs, logs de auditoria detalhados e persistência resiliente em IndexedDB via Dexie.js) com um cliente médico de forma a garantir que as decisões de arquitetura atendam perfeitamente aos fluxos clínicos diários e exigências legais.
+    - **Desafio:** Validar tecnicamente e clinicamente os requisitos não-funcionais (RNFs) de segurança e usabilidade de baixo nível (como a integridade por hash SHA-256 na exportação de PDFs, logs de auditoria detalhados e persistência resiliente em IndexedDB via Dexie.js) com um cliente médico de forma a garantir que as decisões de arquitetura atendam perfeitamente aos fluxos clínicos diários e exigências legais e também tivemos problemas de granularidade na definição de alguns RFs principalmente na parte de criação de documentos e de permissões de login.
 
-    - **Ação de Melhoria:** Adotou-se de forma sistemática a prática de **Validação Prévia de Requisitos com o Cliente** no início de cada ciclo (sprints 4, 5, 6 e 7) para o alinhamento e homologação individualizada dos critérios de aceitação (DoR/DoD). Complementarmente, foram elaborados cenários de testes práticos e interativos durante a Review (como a simulação de perda de conexão para testar o banco local Dexie.js), permitindo ao cliente atestar diretamente a conformidade e a robustez das soluções sem a necessidade de conhecimento técnico aprofundado.
+    - **Ação de Melhoria:** Os requisitos foram corrigidos de acordo com as issues abertas e também com os critérios de aceitação (DoR/DoD) que foram revisados. Complementarmente, foram elaborados cenários de testes práticos e interativos durante a Review e entregas parciais com o cliente (como a simulação de perda de conexão para testar o banco local Dexie.js), permitindo ao cliente atestar diretamente a conformidade e a robustez das soluções sem a necessidade de conhecimento técnico aprofundado.
 
 
 

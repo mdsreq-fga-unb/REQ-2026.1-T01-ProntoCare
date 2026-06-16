@@ -30,6 +30,15 @@
         - Validação dos campos de documentos médicos.
         - Entrega e apresentação final da Unidade 2.
 
+## Daily Scrum
+
+- Durante o período, foram conduzidas as seguintes reuniões Daily Scrum:
+    - **17/05/2026** - 20h as 22h
+    - **18/05/2026** - 10h as 10h15
+    - **19/05/2026** - 20h as 22h
+    - **20/05/2026** - 10h as 10h15
+    - **22/05/2026** - 20h as 22h
+
 ## Vídeos
 
 ### Sprint 2 Review & Sprint 3 Planning

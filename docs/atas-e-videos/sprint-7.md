@@ -26,6 +26,15 @@
         - Atribuição de responsabilidade para auditoria e verificação de conformidade LGPD local/remota.
         - Preparação e validação interna do Github Pages da equipe para a apresentação final da Unidade 3.
 
+## Daily Scrum
+
+- Durante o período, foram conduzidas as seguintes reuniões Daily Scrum:
+    - **15/06/2026** - 20h as 22h
+    - **16/06/2026** - 10h as 10h15
+    - **17/06/2026** - 20h as 22h
+    - **18/06/2026** - 10h as 10h15
+    - **20/06/2026** - 20h as 22h
+
 ## Vídeos
 
 ### Sprint 6 Review & Sprint 7 Planning

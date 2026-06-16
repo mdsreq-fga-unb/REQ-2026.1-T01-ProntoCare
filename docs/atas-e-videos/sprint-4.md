@@ -30,6 +30,15 @@
         - Discussão sobre o algoritmo de hashing SHA-256 (Web Crypto API) para garantir integridade.
         - Apresentação do estado atual do sistema com a funcionalidade de geração de hash.
 
+## Daily Scrum
+
+- Durante o período, foram conduzidas as seguintes reuniões Daily Scrum:
+    - **24/05/2026** - 20h as 22h
+    - **25/05/2026** - 10h as 10h15
+    - **26/05/2026** - 20h as 22h
+    - **27/05/2026** - 10h as 10h15
+    - **29/05/2026** - 20h as 22h
+
 ## Vídeos
 
 ### Sprint 3 Review & Sprint 4 Planning

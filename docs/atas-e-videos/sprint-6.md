@@ -31,6 +31,15 @@
         - Preparação dos relatórios e slides para a apresentação da Unidade 3.
         - Alinhamento sobre as exigências de privacidade locais (criptografia local e LGPD).
 
+## Daily Scrum
+
+- Durante o período, foram conduzidas as seguintes reuniões Daily Scrum:
+    - **08/06/2026** - 10h as 10h15
+    - **09/06/2026** - 10h as 10h15
+    - **10/06/2026** - 10h as 10h15
+    - **11/06/2026** - 10h as 10h15
+    - **13/06/2026** - 10h as 10h15
+
 ## Vídeos
 
 ### Sprint 5 Review & Sprint 6 Planning

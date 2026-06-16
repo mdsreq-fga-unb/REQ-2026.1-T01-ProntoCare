@@ -45,6 +45,22 @@ Durante o desenvolvimento inicial do projeto do ProntoCare, várias lições imp
 
     - **Ação de Melhoria:** Instituiu-se uma etapa de **revisão cruzada de rastreabilidade** como parte do Definition of Done de entregas documentais: qualquer alteração em um RF, US ou na matriz de rastreabilidade exige verificação de consistência em todos os artefatos relacionados antes de ser considerada concluída. A equipe também passou a utilizar a numeração idêntica entre RFs e USs (US01 = RF01, US02 = RF02, ...) para facilitar a detecção de inconsistências.
 
+#### 11.3 Unidade 3
+
+1. **Manutenção dos rituais ágeis**
+
+    - **Desafio:** A perda de artefatos de comunicação nas dailys somada à ausência de membros-chave em cerimônias síncronas importantes (como o Planning da Sprint 6) dificultou o alinhamento completo do time quanto à distribuição e execução de tarefas de infraestrutura complexas de fim de ciclo.
+
+    - **Ação de Melhoria:** A equipe instituiu a redundância de gravação de reuniões, delegando a gravação a múltiplos membros (anfitrião e co-anfitrião). Além disso, formalizou-se um fluxo assíncrono obrigatório de alinhamento pelo canal de comunicação oficial do grupo, garantindo que as decisões de planejamento e a escolha de atividades no backlog sejam validadas por todos os membros nas primeiras 24 horas de cada sprint.
+
+2. **Verificação e validação dos requisitos**
+
+    - **Desafio:** Validar tecnicamente e clinicamente os requisitos não-funcionais (RNFs) de segurança e usabilidade de baixo nível (como a integridade por hash SHA-256 na exportação de PDFs, logs de auditoria detalhados e persistência resiliente em IndexedDB via Dexie.js) com um cliente médico de forma a garantir que as decisões de arquitetura atendam perfeitamente aos fluxos clínicos diários e exigências legais.
+
+    - **Ação de Melhoria:** Adotou-se de forma sistemática a prática de **Validação Prévia de Requisitos com o Cliente** no início de cada ciclo (sprints 4, 5, 6 e 7) para o alinhamento e homologação individualizada dos critérios de aceitação (DoR/DoD). Complementarmente, foram elaborados cenários de testes práticos e interativos durante a Review (como a simulação de perda de conexão para testar o banco local Dexie.js), permitindo ao cliente atestar diretamente a conformidade e a robustez das soluções sem a necessidade de conhecimento técnico aprofundado.
+
+
+
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |
@@ -56,3 +72,4 @@ Durante o desenvolvimento inicial do projeto do ProntoCare, várias lições imp
 | 2026-04-11 | 0.5 | Correções conforme revisão do professor; inclusão das seções 2.4 a 6. | Prontuariantes |
 | 2026-04-13 | 0.6 | Últimas revisões antes da primeira entrega. | Prontuariantes |
 | 2026-05-03 | 0.7 | Inclusão de lição aprendida sobre a adequação e reestruturação do cronograma com base em feedback e prazo letivo. | Prontuariantes |
+| 2026-06-15 | 0.8 | Inclusão de lições aprendidas sobre a granularidade e qualidade dos requisitos, integridade da cadeia de rastreabilidade e validação prévia de requisitos com o cliente. | Prontuariantes |

@@ -12,6 +12,7 @@ const logsRoutes = require('./src/routes/logs');
 const blockchainRoutes = require('./src/routes/blockchain');
 const anexosRoutes = require('./src/routes/anexos');
 const receitasRoutes = require('./src/routes/receitas');
+const consultasRoutes = require('./src/routes/consultas');
 
 const app = express();
 
@@ -32,6 +33,8 @@ app.use('/api/logs', logsRoutes);
 app.use('/api/blockchain', blockchainRoutes);
 app.use('/api/anexos', anexosRoutes);
 app.use('/api/receitas', receitasRoutes);
+app.use('/api/consultas', consultasRoutes);
+
 
 
 app.use((req, res) => {

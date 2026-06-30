@@ -25,7 +25,7 @@ A partir da estratégia de desenvolvimento ScrumXP estabelecida, tem-se a seguin
 
 - **Duração padronizada**: a Sprint 0 tem duração de 2 semanas (para ambientação e infraestrutura inicial). As sprints 1 a 8 têm duração fixa de exata 1 semana, e a Sprint 9 possui duração reduzida de 5 dias devido ao encerramento da disciplina em 02/07/26, data da entrega final do MVP homologado.
 - **Integração contínua**: cada sprint entrega código integrado ao sistema existente, testado e funcional — não há sprint de "integração de módulos".
-- **Testes a cada sprint**: TDD e testes de integração são executados em todas as sprints, não apenas ao final. As Sprints 9 e 10 focam em testes de aceitação com o cliente.
+- **Testes a cada sprint**: TDD e testes de integração são executados em todas as sprints, não apenas ao final. A Sprint 9 foca em testes, validação de segurança e de aceitação com o cliente.
 - **RNFs transversais**: segurança, privacidade, auditoria, integridade e conformidade são incorporados em cada funcionalidade desde a Sprint 1. A coluna "RNFs transversais" explicita quais aspectos são tratados em cada sprint.
 - **Validação clínica contínua**: o Dr. Rogério valida funcionalidades ao final de cada sprint, não apenas na homologação final.
 - **Cobertura das CPs**: todas as características de produto (CP1–CP9) estão mapeadas nas sprints, garantindo rastreabilidade entre o cronograma e a seção 2.3.

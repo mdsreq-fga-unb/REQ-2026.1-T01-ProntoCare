@@ -142,34 +142,6 @@ O MVP (Produto Mínimo Viável) do ProntoCare foi definido com base nos requisit
 | **US23** | **Sim** | **Fatiamento de Escopo (Q2):** Busca e listagem de profissionais limitada aos filtros essenciais para o controle administrativo inicial. |
 | **US24** | **Sim** | **Restrição de Compliance (Q2):** Registro de trilha de auditoria complexo (PT=3.0), mas compulsório para conformidade legal imediata com a LGPD. |
 
-### **10.3 Critérios de Aceitação Detalhados e Ajustes pós-Feedback**
-
-Com base nas sessões de validação e feedback com o Dr. Rogério Duarte, os critérios de aceitação e especificações de determinadas User Stories foram atualizados para garantir a conformidade clínica, operacional e de privacidade (LGPD):
-
-- **US01 / RF01 (Cadastro de pacientes):**
-    - *Critérios de Aceitação (Gherkin):*
-        - **Dado que** sou um médico na tela de cadastro, **Quando** insiro um CPF com formato ou dígito verificador inválido, **Então** o sistema impede o salvamento e exibe um erro de validação.
-        - **Dado que** sou um médico na tela de cadastro, **Quando** preencho os dados do paciente, **Então** o sistema exige obrigatoriamente os campos de telefone e contato de emergência.
-        - **Dado que** sou um médico salvando um cadastro, **Quando** defino o status de acesso do paciente, **Então** o sistema permite selecionar entre "Ativo" ou "Inativo" no fluxo de criação.
-- **US04 / RF04 (Busca de pacientes):**
-    - *Critérios de Aceitação (Gherkin):*
-        - **Dado que** sou um médico na tela de busca, **Quando** pesquiso por nome parcial, nome completo ou CPF exato, **Então** o sistema retorna a listagem de pacientes correspondentes.
-        - **Dado que** sou um médico visualizando a listagem de busca, **Quando** o sistema carrega os resultados, **Então** ele exibe claramente o status de acesso (Ativo/Inativo) de cada paciente no grid principal.
-- **US06 / RF06 (Prontuário SOAP estruturado):**
-    - *Critérios de Aceitação (Gherkin):*
-        - **Dado que** sou um médico acessando um prontuário assinado, **Quando** tento editar ou excluir o documento diretamente, **Então** o sistema bloqueia a ação para garantir a imutabilidade do registro original.
-        - **Dado que** sou um médico necessitando retificar um prontuário já assinado, **Quando** gravo uma alteração, **Então** o sistema cria uma nova versão/aditivo vinculada, mantendo o histórico de versões anteriores intacto no banco de dados.
-- **US08 / RF08 (Assinatura digital do prontuário):**
-    - *Critérios de Aceitação (Gherkin):*
-        - **Dado que** sou um médico acionando a assinatura de um prontuário, **Quando** clico em assinar, **Então** o sistema apresenta um modal de confirmação com a visualização estruturada dos dados clínicos antes de solicitar o acionamento da senha do certificado.
-        - **Dado que** sou um médico assinando o documento, **Quando** submeto o certificado ICP-Brasil, **Então** o sistema valida sua vigência e recusa a assinatura se o certificado estiver expirado ou revogado.
-- **US20 & US21 / RF20 & RF21 (Cadastro e Edição de médicos):**
-    - *Critérios de Aceitação (Gherkin):*
-        - **Dado que** sou um administrador cadastrando ou editando um médico, **Quando** insiro os dados do conselho, **Então** o sistema exige obrigatoriamente o número de registro de classe no formato `CRM-UF` (ex: CRM-DF).
-- **US24 / RF24 (Logs de auditoria):**
-    - *Critérios de Aceitação (Gherkin):*
-        - **Dado que** sou um administrador visualizando logs de auditoria, **Quando** o sistema exibe o histórico, **Então** todas as informações clínicas confidenciais e CPFs de pacientes aparecem mascarados, exibindo apenas metadados técnicos de acesso.
-
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |

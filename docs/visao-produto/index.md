@@ -4,7 +4,7 @@ icon: material/file-document-outline
 # Visão geral e revisões
 
 **ProntoCare** — Sistema de Prontuário Eletrônico de Pacientes  
-**VISÃO DO PRODUTO E PROJETO** (Versão 0.8)
+**VISÃO DO PRODUTO E PROJETO** (Versão 1.0)
 
 ---
 

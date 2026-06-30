@@ -261,4 +261,52 @@ describe('Receitas', () => {
       expect(res.body.observacoes).toBe('New Obs');
     });
   });
+
+  describe('POST /api/receitas/:id/assinar', () => {
+    it('401 when not authenticated', async () => {
+      const res = await request(app).post('/api/receitas/50/assinar');
+      expect(res.status).toBe(401);
+    });
+
+    it('400 when missing signature fields', async () => {
+      const res = await request(app)
+        .post('/api/receitas/50/assinar')
+        .set('Authorization', `Bearer ${tokenMedico1}`)
+        .send({ provedor: 'birdid' }); // missing cpf, pin, otp
+      expect(res.status).toBe(400);
+      expect(res.body.erro).toContain('obrigatórios');
+    });
+
+    it('200 signs prescription successfully', async () => {
+      // 1. Fetch recipe mock
+      pool.query.mockResolvedValueOnce({
+        rows: [{ id: 50, paciente_id: 10, medico_id: 1, medicamentos: 'Dipirona' }]
+      });
+      // 2. Update query mock
+      pool.query.mockResolvedValueOnce({
+        rows: [{
+          id: 50,
+          paciente_id: 10,
+          medico_id: 1,
+          medicamentos: 'Dipirona',
+          assinado: true,
+          assinatura_provedor: 'birdid',
+          assinatura_nome: 'Dr1',
+          assinatura_cpf: '123.456.789-00',
+          assinatura_data: new Date().toISOString()
+        }]
+      });
+      // 3. Audit log query mock
+      pool.query.mockResolvedValueOnce({ rows: [] });
+
+      const res = await request(app)
+        .post('/api/receitas/50/assinar')
+        .set('Authorization', `Bearer ${tokenMedico1}`)
+        .send({ provedor: 'birdid', cpf: '123.456.789-00', pin: '1234', otp: '999999' });
+
+      expect(res.status).toBe(200);
+      expect(res.body.assinado).toBe(true);
+      expect(res.body.assinatura_provedor).toBe('birdid');
+    });
+  });
 });

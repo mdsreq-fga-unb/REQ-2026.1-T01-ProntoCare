@@ -219,4 +219,55 @@ describe('Blockchain', () => {
       expect(res.status).toBe(500);
     });
   });
+
+  describe('POST /api/blockchain/:id/assinar', () => {
+    it('401 when not authenticated', async () => {
+      const res = await request(app).post('/api/blockchain/50/assinar');
+      expect(res.status).toBe(401);
+    });
+
+    it('400 when missing signature fields', async () => {
+      const res = await request(app)
+        .post('/api/blockchain/50/assinar')
+        .set('Authorization', `Bearer ${tokenMedico}`)
+        .send({ provedor: 'vida' }); // missing cpf, pin, otp
+      expect(res.status).toBe(400);
+      expect(res.body.erro).toContain('obrigatórios');
+    });
+
+    it('200 signs blockchain block successfully', async () => {
+      // 1. Fetch block mock
+      pool.query.mockResolvedValueOnce({
+        rows: [{ id: 50, paciente_id: 10, hash: 'bloco_hash' }]
+      });
+      // 2. Fetch paciente mock to verify doctor owns patient
+      pool.query.mockResolvedValueOnce({
+        rows: [{ id: 10, medico_id: 1 }]
+      });
+      // 3. Update query mock
+      pool.query.mockResolvedValueOnce({
+        rows: [{
+          id: 50,
+          paciente_id: 10,
+          hash: 'bloco_hash',
+          assinado: true,
+          assinatura_provedor: 'vida',
+          assinatura_nome: 'Dr',
+          assinatura_cpf: '123.456.789-00',
+          assinatura_data: new Date().toISOString()
+        }]
+      });
+      // 4. Audit log query mock
+      pool.query.mockResolvedValueOnce({ rows: [] });
+
+      const res = await request(app)
+        .post('/api/blockchain/50/assinar')
+        .set('Authorization', `Bearer ${tokenMedico}`)
+        .send({ provedor: 'vida', cpf: '123.456.789-00', pin: '1234', otp: '999999' });
+
+      expect(res.status).toBe(200);
+      expect(res.body.assinado).toBe(true);
+      expect(res.body.assinatura_provedor).toBe('vida');
+    });
+  });
 });

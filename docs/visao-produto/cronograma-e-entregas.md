@@ -16,15 +16,14 @@ A partir da estratégia de desenvolvimento ScrumXP estabelecida, tem-se a seguin
 | Sprint 5 | 31/05/26 | 06/06/26 | Exportação de dados e Auditoria | CP7, CP9 | Exportação de dados do prontuário (JSON, PDF). Log completo de auditoria. | Rastreabilidade completa de operações; não repúdio. | Validação dos logs de auditoria e exportação com o Dr. Rogério. |
 | Sprint 6 | 07/06/26 | 13/06/26 | Operação offline (Armazenamento local) | CP5 | Armazenamento local (PWA/Dexie.js). | Privacidade no armazenamento local. | Validação do funcionamento básico offline. |
 | Sprint 7 | 14/06/26 | 20/06/26 | Sincronização automática | CP2 | Sincronização automática. Acesso em múltiplos contextos. **Entrega parcial 3:** operação offline funcional. | Integridade mantida offline; conflitos de sincronização tratados. | Teste do fluxo offline → online com o Dr. Rogério; validação em cenário de atendimento domiciliar. |
-| Sprint 8 | 21/06/26 | 27/06/26 | Conformidade LGPD (Consentimento) | CP8 | Perfil paciente. Controles de conformidade LGPD (consentimento, proteção). | Conformidade LGPD parcial aplicada; controle de acesso (paciente). | Validação dos perfis de acesso e controles de privacidade. |
-| Sprint 9 | 28/06/26 | 04/07/26 | Emissão de documentos | CP9, CP6 | Emissão padronizada de receitas. **Entrega parcial 4:** MVP com conformidade básica. | Auditoria abrangente. | Validação dos documentos emitidos. |
-| Sprint 10 | 05/07/26 | 11/07/26 | Homologação, e entrega final | Todas | Revisão geral e ajustes finais. **Entrega final:** MVP homologado (entrega acadêmica dia 13/07). | Validação final de segurança, integridade e todos os RNFs críticos. | Homologação formal pelo Dr. Rogério e aprovação final do MVP. |
+| Sprint 8 | 21/06/26 | 27/06/26 | Agenda, Consultas e Segurança | CP2, CP6 | Interface de calendário semanal (RF10), agendamento (RF11), painel diário (RF12), status de consultas (RF13), criptografia bcrypt (RNF02) e conformidade CFM/SBIS (RNF05). **Entrega parcial 4:** Módulo de consultas e segurança funcional. | RNF02, RNF05 | Validação do fluxo de agendamento e controles de privacidade com o Dr. Rogério. |
+| Sprint 9 | 28/06/26 | 02/07/26 | Emissão de documentos, Homologação e Entrega Final | Todas | Emissão e assinatura digital de receitas (RF15) e prontuários (RF08) com ICP-Brasil. Homologação formal e encerramento do MVP. **Entrega final:** MVP homologado e integrado (Encerramento da disciplina dia 02/07). | RNF09, RNF05, RNF08 | Homologação final e termo de aceite de entrega com o Dr. Rogério. |
 
 </div>
 
 **Princípios do cronograma**
 
-- **Duração padronizada**: a Sprint 0 tem duração de 2 semanas (para ambientação e infraestrutura inicial). As demais sprints (1 a 10) têm duração fixa de exata 1 semana, iniciando em 19/04/26 e finalizando a última sprint em 11/07/26 (com a entrega acadêmica na segunda-feira, 13/07/26).
+- **Duração padronizada**: a Sprint 0 tem duração de 2 semanas (para ambientação e infraestrutura inicial). As sprints 1 a 8 têm duração fixa de exata 1 semana, e a Sprint 9 possui duração reduzida de 5 dias devido ao encerramento da disciplina em 02/07/26, data da entrega final do MVP homologado.
 - **Integração contínua**: cada sprint entrega código integrado ao sistema existente, testado e funcional — não há sprint de "integração de módulos".
 - **Testes a cada sprint**: TDD e testes de integração são executados em todas as sprints, não apenas ao final. As Sprints 9 e 10 focam em testes de aceitação com o cliente.
 - **RNFs transversais**: segurança, privacidade, auditoria, integridade e conformidade são incorporados em cada funcionalidade desde a Sprint 1. A coluna "RNFs transversais" explicita quais aspectos são tratados em cada sprint.
@@ -44,4 +43,5 @@ A partir da estratégia de desenvolvimento ScrumXP estabelecida, tem-se a seguin
 | 26-05-03 | 0.7 | Reestruturação do cronograma: cobertura de todas as CPs, RNFs transversais, eliminação de mini-cascata, integração e testes contínuos. | Prontuariantes |
 | 26-05-03 | 0.8 | Ajuste de datas das sprints (19/04 a 13/07) para se adequar ao semestre letivo atual. | Prontuariantes |
 | 26-05-03 | 0.9 | Condensação para 6 sprints de 2 semanas exatas, para manter consistência com as regras da equipe. | Prontuariantes |
-| 26-05-04 | 1.0 | Ajuste para sprints de 1 semana (exceto Sprint 0 com 2 semanas). | Prontuariantes |
+| 2026-05-04 | 1.0 | Ajuste para sprints de 1 semana (exceto Sprint 0 com 2 semanas). | Prontuariantes |
+| 2026-06-29 | 1.1 | Ajuste do cronograma para encerramento da disciplina em 02/07/26 (redução para 9 Sprints). | Prontuariantes |

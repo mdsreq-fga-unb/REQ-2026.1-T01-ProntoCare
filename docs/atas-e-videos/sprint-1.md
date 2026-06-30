@@ -17,9 +17,11 @@
 
 - **Histórias de Usuário (US) Mapeadas:**
     - **[US01 / RF01]**: Cadastro de novos pacientes com dados cadastrais básicos e credenciais de acesso.
-    - **[US02 / RF02]**: Atualização de dados cadastrais e credenciais de acesso.
+    - **[US02 / RF02]**: Atualização de dados cadastrais e credenciais de acesso de pacientes.
     - **[US03 / RF03]**: Inativação lógica do registro e perfil de acesso dos pacientes.
-    - **[US04 / RF04]**: Busca e listagem de pacientes utilizando filtros (nome, CPF, status).
+    - **[US21 / RF21]**: Edição de perfis de acesso de médicos do sistema.
+    - **[US22 / RF22]**: Inativação lógica de perfis de acesso de médicos do sistema.
+    - **[US23 / RF23]**: Busca e listagem de perfis de acesso de médicos do sistema.
 
 - **Pontos principais:**
     - **Planning:**
@@ -60,7 +62,9 @@ acesse diretamente pelo link: [https://youtu.be/kuSMW1pVD9A](https://youtu.be/ku
 | **[US01 / RF01]** - Cadastro de pacientes (dados cadastrais básicos) | ✅ | ✅ |
 | **[US02 / RF02]** - Edição e atualização cadastral de pacientes | ✅ | ✅ |
 | **[US03 / RF03]** - Inativação lógica do registro de pacientes | ✅ | ✅ |
-| **[US04 / RF04]** - Busca e filtragem de pacientes | ✅ | ✅ |
+| **[US21 / RF21]** - Edição de perfis de acesso de médicos | ✅ | ✅ |
+| **[US22 / RF22]** - Inativação lógica de perfis de médicos | ✅ | ✅ |
+| **[US23 / RF23]** - Busca e listagem de perfis de médicos | ✅ | ✅ |
 
 **Nota de Validação Clínica:** Os incrementos referentes às funcionalidades desta sprint foram validados anteriormente quanto ao escopo com o cliente Dr. Rogério Duarte, e a entrega do software foi formalmente homologada por ele através de prints e discussões na reunião de Review da Sprint 1, atestando conformidade com as regras de negócio clínicas.
 
@@ -69,3 +73,4 @@ acesse diretamente pelo link: [https://youtu.be/kuSMW1pVD9A](https://youtu.be/ku
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-05-18 | 0.1 | Elaboração das atas e vídeos da Sprint 1. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos funcionais de perfis de médicos. | Prontuariantes |

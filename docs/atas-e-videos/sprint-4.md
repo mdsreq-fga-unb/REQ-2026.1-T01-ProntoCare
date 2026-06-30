@@ -15,9 +15,9 @@
 | Fábio | ✅ | ✅ |
 | Uires | ✅ | ✅ |
 
-- **Histórias de Usuário (US) Mapeadas:**
-    - **[US08 / RF08]**: Assinatura digital do prontuário médico utilizando certificado padrão ICP-Brasil para garantir autoria, integridade e validade jurídica.
-    - **[US09 / RF09] (Parcial)**: Modelagem estruturada do PDF do prontuário e geração de hash SHA-256 local para garantia de não adulteração.
+- **User Stories / Requisitos Mapeados:**
+    - **[RNF05]**: Segurança e Conformidade CFM/SBIS (Exigências para a certificação SBIS e resoluções do CFM).
+    - **[RNF09]**: Assinatura digital utilizando certificado padrão ICP-Brasil (Não-repúdio e autoria).
 
 - **Pontos principais:**
     - **Planning:**
@@ -51,12 +51,12 @@ acesse diretamente pelo link: [https://youtu.be/pgax0OPZzBo](https://youtu.be/pg
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cl_W_ZMp95g?si=zdoS123dwDSSb2Ri" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 acesse diretamente pelo link: [https://youtu.be/cl_W_ZMp95g](https://youtu.be/cl_W_ZMp95g)
 
-## Entrega Parcial (Homologação de Cadeia Criptográfica) - 30/05/2026
+## Entrega Parcial (Homologação de Requisitos Não Funcionais) - 30/05/2026
 
-| Funcionalidade / História de Usuário | Verificado? (Equipe) | Validado? (Cliente) |
+| Requisito Não Funcional / Conformidade | Verificado? (Equipe) | Validado? (Cliente) |
 | --- | :---: | :---: |
-| **[US08 / RF08]** - Lógica e infraestrutura de assinatura digital (ICP-Brasil) | ✅ | ✅ |
-| **[US09 / RF09]** - Geração de hash SHA-256 para integridade do prontuário | ✅ | ✅ |
+| **[RNF05]** - Estrutura de conformidade CFM/SBIS para documentos | ✅ | ✅ |
+| **[RNF09]** - Lógica e infraestrutura de assinatura digital (ICP-Brasil) | ✅ | ✅ |
 
 **Nota de Validação Clínica:** Os mecanismos de segurança, integridade com hash SHA-256 e fluxo de assinatura foram validados anteriormente quanto ao escopo assistencial e legal com o cliente Dr. Rogério Duarte, e homologados na reunião de Review através de testes com certificados simulados.
 
@@ -65,3 +65,4 @@ acesse diretamente pelo link: [https://youtu.be/cl_W_ZMp95g](https://youtu.be/cl
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-06-01 | 0.1 | Elaboração das atas e vídeos da Sprint 4. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos de segurança e conformidade. | Prontuariantes |

@@ -13,6 +13,15 @@ Acompanhe os rituais ágeis e o andamento do projeto por meio das sprints conclu
 
 <div class="grid cards" markdown>
 
+-   **:material-comment-quote-outline: Consolidação de Feedback**
+    *Todos os Ciclos / USs*
+
+    ---
+
+    Consolidação de feedbacks clínicos e de conformidade legal de todas as Sprints validadas com o Dr. Rogério.
+
+    :octicons-link-external-16: [Acessar Tabela de Feedback](consolidacao-feedback.md)
+
 -   __Sprint 0__
     *19/04/2026 – 02/05/2026*
 
@@ -85,6 +94,24 @@ Acompanhe os rituais ágeis e o andamento do projeto por meio das sprints conclu
 
     :material-sync: [Ata e Vídeos da Sprint 7](sprint-7.md)
 
+-   __Sprint 8__
+    *21/06/2026 – 27/06/2026*
+
+    ---
+
+    Conformidade LGPD, criptografia de credenciais com bcrypt e proteção de dados clínicos.
+
+    :material-shield-key-outline: [Ata e Vídeos da Sprint 8](sprint-8.md)
+
+-   __Sprint 9__
+    *28/06/2026 – 04/07/2026*
+
+    ---
+
+    Emissão padronizada de receitas médicas e teleconsultas assinadas com certificado padrão ICP-Brasil.
+
+    :material-file-sign: [Ata e Vídeos da Sprint 9](sprint-9.md)
+
 </div>
 
 ---
@@ -94,3 +121,4 @@ Acompanhe os rituais ágeis e o andamento do projeto por meio das sprints conclu
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-05-18 | 0.1 | Criação do índice de atas e vídeos de sprints. | Prontuariantes |
+| 2026-06-29 | 0.2 | Adição das Sprints 8 e 9 ao índice. | Prontuariantes |

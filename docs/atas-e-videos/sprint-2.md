@@ -16,8 +16,9 @@
 | Uires | ✅ | ✅ |
 
 - **Histórias de Usuário (US) Mapeadas:**
-    - **[US06 / RF06] (Parcial)**: Registro de prontuários estruturados no padrão SOAP (Modelagem de campos subjetivos/objetivos).
-    - **[US07 / RF07] (Parcial)**: Linha do tempo cronológica com o histórico clínico do paciente (Estrutura visual inicial).
+    - **[US04 / RF04]**: Busca e listagem de pacientes utilizando filtros (nome, CPF, status).
+    - **[US20 / RF20]**: Cadastro de novos perfis de acesso de médicos do sistema.
+    - **[US08 / RF08] (Parcial)**: Assinatura digital do prontuário médico utilizando certificado padrão ICP-Brasil (lógica inicial).
 
 - **Pontos principais:**
     - **Planning:**
@@ -51,18 +52,19 @@ acesse diretamente pelo link: [https://youtu.be/kuSMW1pVD9A](https://youtu.be/ku
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hed-WqOa3yY?si=CCyZ2m5NVvPWKmFS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 acesse diretamente pelo link: [https://youtu.be/hed-WqOa3yY](https://youtu.be/hed-WqOa3yY)
 
-## Entrega Parcial (Homologação de Protótipo e Estrutura SOAP) - 16/05/2026
+## Entrega Parcial (Homologação de Protótipos e Estrutura de Perfis) - 16/05/2026
 
 | Funcionalidade / Artefato | Verificado? (Equipe) | Validado? (Cliente) |
 | --- | :---: | :---: |
-| **Protótipo de Alta Fidelidade** - Fluxo do Prontuário SOAP | ✅ | ✅ |
-| **Estrutura base da base de dados** - Prontuários (SOAP) | ✅ | ✅ |
-| **Integração Visual** - Layout inicial integrado com o cadastro | ✅ | ✅ |
+| **[US04 / RF04]** - Protótipo e listagem de busca de pacientes | ✅ | ✅ |
+| **[US20 / RF20]** - Cadastro de novos médicos | ✅ | ✅ |
+| **[US08 / RF08]** - Lógica inicial de assinatura digital | ✅ | ✅ |
 
-**Nota de Validação Clínica:** Os incrementos de interface (alta fidelidade) e o esquema de dados do prontuário foram validados anteriormente com o cliente Dr. Rogério Duarte durante reuniões síncronas de refinamento, atestando que a estrutura SOAP proposta reflete seu fluxo diário de atendimento no consultório.
+**Nota de Validação Clínica:** Os incrementos de interface (alta fidelidade) e o esquema de dados da busca de pacientes e perfis médicos foram validados anteriormente com o cliente Dr. Rogério Duarte durante reuniões síncronas de refinamento, atestando que o design e fluxo propostos refletem o esperado para o consultório.
 
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-05-18 | 0.1 | Elaboração das atas e vídeos da Sprint 2. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos funcionais de busca e médicos. | Prontuariantes |

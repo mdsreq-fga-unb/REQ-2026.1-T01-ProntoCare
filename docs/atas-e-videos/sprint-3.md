@@ -16,8 +16,9 @@
 | Uires | ✅ | ✅ |
 
 - **Histórias de Usuário (US) Mapeadas:**
-    - **[US06 / RF06] (Completo)**: Registro de prontuários estruturados no padrão SOAP (incluindo anamnese em texto livre e anexação de exames/documentos em PDF/imagem).
-    - **[US07 / RF07] (Completo)**: Linha do tempo cronológica com o histórico clínico completo do paciente para apoio à decisão clínica.
+    - **[US04 / RF04]**: Busca e listagem de pacientes utilizando filtros (nome, CPF, status).
+    - **[US20 / RF20]**: Cadastro de novos perfis de acesso de médicos do sistema.
+    - **[US08 / RF08]**: Assinatura digital do prontuário médico utilizando certificado padrão ICP-Brasil (assinatura e validação).
 
 - **Pontos principais:**
     - **Planning:**
@@ -55,8 +56,9 @@ acesse diretamente pelo link: [https://youtu.be/pgax0OPZzBo](https://youtu.be/pg
 
 | Funcionalidade / História de Usuário | Verificado? (Equipe) | Validado? (Cliente) |
 | --- | :---: | :---: |
-| **[US06 / RF06]** - Prontuário SOAP estruturado com anexação de exames | ✅ | ✅ |
-| **[US07 / RF07]** - Linha do tempo cronológica do histórico clínico | ✅ | ✅ |
+| **[US04 / RF04]** - Busca e filtragem de pacientes | ✅ | ✅ |
+| **[US20 / RF20]** - Cadastro de perfis de médicos | ✅ | ✅ |
+| **[US08 / RF08]** - Assinatura digital de prontuário (ICP-Brasil) | ✅ | ✅ |
 
 **Nota de Validação Clínica:** Os incrementos referentes ao prontuário SOAP finalizado e à linha do tempo foram anteriormente validados com o Dr. Rogério Duarte e testados na Review, atestando conformidade com as regras de preenchimento clínico e visualização rápida do histórico.
 
@@ -68,3 +70,4 @@ acesse diretamente pelo link: [https://youtu.be/m2k1x8eOyTU](https://youtu.be/m2
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-05-18 | 0.1 | Elaboração das atas e vídeos da Sprint 3. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos funcionais de busca e médicos. | Prontuariantes |

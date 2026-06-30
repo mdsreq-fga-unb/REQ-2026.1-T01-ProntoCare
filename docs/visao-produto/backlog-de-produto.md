@@ -84,14 +84,14 @@ A partir do cruzamento de VN e PT, as User Stories são classificadas em um **gr
 | **US05 / RF05** | Como médico ou administrador da clínica, eu quero exportar a base de dados completa dos pacientes em formato JSON, para garantir a portabilidade das informações e evitar o aprisionamento tecnológico (vendor lock-in). | \- | 4 | 3 | 2 | 2.5 | 1 |
 | **US06 / RF06** | Como médico, eu quero registrar prontuários estruturados no padrão SOAP no histórico clínico do paciente (preenchendo dados subjetivos, objetivos, avaliação e plano, incluindo anamnese em texto livre e a anexação de exames/documentos), para centralizar e manter o registro completo das informações de atendimento. | RNF01, RNF05 | 5 | 3 | 3 | 3.0 | 2 |
 | **US07 / RF07** | Como médico, eu quero visualizar uma linha do tempo cronológica com todo o histórico clínico do paciente, para compreender rapidamente a evolução do quadro de saúde e os tratamentos anteriores durante a consulta. | \- | 5 | 3 | 3 | 3.0 | 2 |
-| **US08 / RF08** | Como médico, eu quero assinar digitalmente o prontuário utilizando um certificado padrão ICP-Brasil, para garantir a autoria, a integridade e a validade jurídica do atendimento médico realizado. | RNF01, RNF05 | 4 | 3 | 4 | 3.5 | 2 |
+| **US08 / RF08** | Como médico, eu quero assinar digitalmente o prontuário utilizando um certificado padrão ICP-Brasil, para garantir a autoria, a integridade e a validade jurídica do atendimento médico realizado. | RNF01, RNF05, RNF09 | 4 | 3 | 4 | 3.5 | 2 |
 | **US09 / RF09** | Como médico, eu quero gerar e exportar um arquivo PDF contendo o prontuário completo do paciente, para facilitar o compartilhamento físico, arquivamento ou a entrega do documento ao próprio paciente quando solicitado. | RNF08 | 4 | 3 | 3 | 3.0 | 2 |
 | **US10 / RF10** | Como médico, eu quero visualizar um calendário semanal das minhas consultas, para ter uma visão clara e organizada da minha agenda e planejar meu dia de trabalho. | \- | 5 | 2 | 2 | 2.0 | 1 |
 | **US11 / RF11** | Como médico, eu quero agendar novas consultas e/ou teleconsultas, vinculando paciente, data e horário, para gerenciar a marcação de atendimentos de forma eficiente. | RNF01 | 5 | 3 | 3 | 3.0 | 2 |
 | **US12 / RF12** | Como médico, eu quero visualizar a listagem de consultas agendadas para o dia atual, para acompanhar meu fluxo de trabalho. | \- | 5 | 2 | 2 | 2.0 | 1 |
 | **US13 / RF13** | Como médico, eu quero alterar o status de uma consulta do dia atual (ex: Agendado, Em atendimento, Finalizado), para atualizar o andamento do atendimento em tempo real. | RNF01 | 5 | 2 | 2 | 2.0 | 1 |
 | **US14 / RF14** | Como médico, eu quero elaborar receitas médicas digitais no sistema, para formalizar a prescrição de medicamentos de forma clara e padronizada. | RNF01 | 5 | 3 | 3 | 3.0 | 2 |
-| **US15 / RF15** | Como médico, eu quero assinar digitalmente a receita utilizando um certificado padrão ICP-Brasil, para garantir a autenticidade e a validade legal da prescrição. | RNF01, RNF05 | 4 | 3 | 3 | 3.0 | 2 |
+| **US15 / RF15** | Como médico, eu quero assinar digitalmente a receita utilizando um certificado padrão ICP-Brasil, para garantir a autenticidade e a validade legal da prescrição. | RNF01, RNF05, RNF09 | 4 | 3 | 3 | 3.0 | 2 |
 | **US16 / RF16** | Como médico, eu quero salvar a receita gerada em formato PDF, para imprimi-la ou enviá-la ao paciente de forma segura. | \- | 5 | 3 | 2 | 2.5 | 1 |
 | **US17 / RF17** | Como médico, eu quero que o sistema analise a prescrição em tempo real, utilizando IA para alertar sobre interações medicamentosas, garantindo a segurança do paciente. | RNF07 | 3 | 4 | 4 | 4.0 | 4 |
 | **US18 / RF18** | Como médico, eu quero manter um log visível de todas as receitas anteriormente prescritas ao paciente, para consultar o histórico de tratamentos ao longo do tempo. | \- | 4 | 3 | 2 | 2.5 | 1 |
@@ -142,6 +142,34 @@ O MVP (Produto Mínimo Viável) do ProntoCare foi definido com base nos requisit
 | **US23** | **Sim** | **Fatiamento de Escopo (Q2):** Busca e listagem de profissionais limitada aos filtros essenciais para o controle administrativo inicial. |
 | **US24** | **Sim** | **Restrição de Compliance (Q2):** Registro de trilha de auditoria complexo (PT=3.0), mas compulsório para conformidade legal imediata com a LGPD. |
 
+### **10.3 Critérios de Aceitação Detalhados e Ajustes pós-Feedback**
+
+Com base nas sessões de validação e feedback com o Dr. Rogério Duarte, os critérios de aceitação e especificações de determinadas User Stories foram atualizados para garantir a conformidade clínica, operacional e de privacidade (LGPD):
+
+- **US01 / RF01 (Cadastro de pacientes):**
+    - *Critérios de Aceitação (Gherkin):*
+        - **Dado que** sou um médico na tela de cadastro, **Quando** insiro um CPF com formato ou dígito verificador inválido, **Então** o sistema impede o salvamento e exibe um erro de validação.
+        - **Dado que** sou um médico na tela de cadastro, **Quando** preencho os dados do paciente, **Então** o sistema exige obrigatoriamente os campos de telefone e contato de emergência.
+        - **Dado que** sou um médico salvando um cadastro, **Quando** defino o status de acesso do paciente, **Então** o sistema permite selecionar entre "Ativo" ou "Inativo" no fluxo de criação.
+- **US04 / RF04 (Busca de pacientes):**
+    - *Critérios de Aceitação (Gherkin):*
+        - **Dado que** sou um médico na tela de busca, **Quando** pesquiso por nome parcial, nome completo ou CPF exato, **Então** o sistema retorna a listagem de pacientes correspondentes.
+        - **Dado que** sou um médico visualizando a listagem de busca, **Quando** o sistema carrega os resultados, **Então** ele exibe claramente o status de acesso (Ativo/Inativo) de cada paciente no grid principal.
+- **US06 / RF06 (Prontuário SOAP estruturado):**
+    - *Critérios de Aceitação (Gherkin):*
+        - **Dado que** sou um médico acessando um prontuário assinado, **Quando** tento editar ou excluir o documento diretamente, **Então** o sistema bloqueia a ação para garantir a imutabilidade do registro original.
+        - **Dado que** sou um médico necessitando retificar um prontuário já assinado, **Quando** gravo uma alteração, **Então** o sistema cria uma nova versão/aditivo vinculada, mantendo o histórico de versões anteriores intacto no banco de dados.
+- **US08 / RF08 (Assinatura digital do prontuário):**
+    - *Critérios de Aceitação (Gherkin):*
+        - **Dado que** sou um médico acionando a assinatura de um prontuário, **Quando** clico em assinar, **Então** o sistema apresenta um modal de confirmação com a visualização estruturada dos dados clínicos antes de solicitar o acionamento da senha do certificado.
+        - **Dado que** sou um médico assinando o documento, **Quando** submeto o certificado ICP-Brasil, **Então** o sistema valida sua vigência e recusa a assinatura se o certificado estiver expirado ou revogado.
+- **US20 & US21 / RF20 & RF21 (Cadastro e Edição de médicos):**
+    - *Critérios de Aceitação (Gherkin):*
+        - **Dado que** sou um administrador cadastrando ou editando um médico, **Quando** insiro os dados do conselho, **Então** o sistema exige obrigatoriamente o número de registro de classe no formato `CRM-UF` (ex: CRM-DF).
+- **US24 / RF24 (Logs de auditoria):**
+    - *Critérios de Aceitação (Gherkin):*
+        - **Dado que** sou um administrador visualizando logs de auditoria, **Quando** o sistema exibe o histórico, **Então** todas as informações clínicas confidenciais e CPFs de pacientes aparecem mascarados, exibindo apenas metadados técnicos de acesso.
+
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |
@@ -153,3 +181,5 @@ O MVP (Produto Mínimo Viável) do ProntoCare foi definido com base nos requisit
 | 2026-06-13 | 0.5 | Unificação das tabelas de backlog e priorização, e remoção da duplicação de descrições na tabela do MVP por meio de referências. | Prontuariantes |
 | 2026-06-13 | 0.6 | Definição formal das escalas numéricas de VB, CX, ES e justificativa dos limiares de priorização. | Prontuariantes |
 | 2026-06-13 | 0.7 | Unificação de user stories de cadastro e perfil de acesso de pacientes (US01-US04 com US24-US27), e reordenação de logs de auditoria para US24. | Prontuariantes |
+| 2026-06-29 | 0.8 | Adição da seção 10.3 com critérios de aceitação detalhados e refinados pós-feedback do cliente Dr. Rogério. | Prontuariantes |
+| 2026-06-30 | 0.9 | Reformulação de todos os critérios de aceitação refinados na seção 10.3 para o padrão de especificação formal Gherkin (Dado/Quando/Então). | Prontuariantes |

@@ -16,9 +16,8 @@
 | Uires | ✅ | ❌ |
 
 - **User Stories / Requisitos Mapeados:**
-    - **[RNF03] (Operação Offline)**: Salvamento e operação de dados cadastrais (pacientes) e clínicos (prontuários) em banco local (Dexie.js) mesmo sem conexão de rede.
-    - **[RNF04] (Backup/Persistência Local)**: Garantia de persistência resiliente na camada de cliente antes da sincronização remota.
-    - Aplicação de lógica offline para as User Stories do MVP (`US01` a `US04`, `US06`, `US07`).
+    - **[RNF04]**: Rotina automática de backup diário na nuvem.
+    - **[US08 / RF08]**: Assinatura digital do prontuário médico utilizando certificado padrão ICP-Brasil.
 
 - **Pontos principais:**
     - **Planning:**
@@ -52,13 +51,15 @@ Infelizmente, a gravação da reunião Sprint 5 Review & Sprint 6 Planning foi c
 
 acesse diretamente pelo link: [https://youtu.be/thvReTFckLQ](https://youtu.be/thvReTFckLQ)
 
-## Entrega Parcial 3 - 14/06/2026
+## Entrega Parcial 3 (Consolidada UA3) - 14/06/2026
 
 | Funcionalidade / Requisito | Verificado? (Equipe) | Validado? (Cliente) |
 | --- | :---: | :---: |
-| **[RNF03]** - Operação offline e persistência local (Dexie.js) para pacientes | ✅ | ✅ |
-| **[RNF03]** - Operação offline e persistência local (Dexie.js) para prontuário SOAP | ✅ | ✅ |
-| **[PWA Config]** - Manifesto e Service Workers para carregamento sem rede | ✅ | ✅ |
+| **[RNF09]** - Lógica e infraestrutura de assinatura digital (ICP-Brasil) | ✅ | ✅ |
+| **[RNF05]** - Estrutura de conformidade CFM/SBIS para documentos | ✅ | ✅ |
+| **[RNF03]** - Operação offline e persistência local (Dexie.js) | ✅ | ✅ |
+| **[RNF04]** - Rotina automática de backup diário na nuvem | ✅ | ✅ |
+| **[US08 / RF08]** - Assinatura digital de prontuário (ICP-Brasil) | ✅ | ✅ |
 
 **Nota de Validação Clínica:** A arquitetura offline-first foi anteriormente validada em termos de necessidade assistencial e foi homologada na Review pelo Dr. Rogério Duarte após teste simulado de simulação de queda de internet.
 
@@ -70,3 +71,4 @@ acesse diretamente pelo link: [https://youtu.be/jJYnmwHTKl0](https://youtu.be/jJ
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-06-08 | 0.1 | Elaboração das atas e vídeos da Sprint 6. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos e consolidação de UA3. | Prontuariantes |

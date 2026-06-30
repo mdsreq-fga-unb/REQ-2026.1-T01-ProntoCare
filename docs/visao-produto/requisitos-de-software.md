@@ -61,6 +61,7 @@ Os requisitos não funcionais especificam critérios que determinam a operação
 | **RNF06** | **Usabilidade:** A interface do sistema deve ser responsiva, adaptando o layout automaticamente de acordo com a resolução do dispositivo, sem perda de conteúdo, quebra de elementos ou exibição de barra de rolagem horizontal. | **Global (Interface/UX):** Padrão de design responsivo aplicável de forma uniforme a todas as telas e componentes visuais do sistema. |
 | **RNF07** | **Desempenho:** As requisições para a Inteligência Artificial devem ocorrer de forma assíncrona para não travar a interface de prescrição do usuário. | **Específico (Desempenho IA):** Vinculado especificamente ao recurso de análise de interações medicamentosas por IA (RF17) para evitar gargalos na interface. |
 | **RNF08** | **Segurança:** O sistema deve gerar um hash de integridade SHA-256 para cada prontuário exportado em PDF, processado do lado do cliente através da Web Crypto API. | **Específico (Integridade de Exportação):** Vinculado exclusivamente ao requisito de geração de PDF do prontuário (RF09) para atestar que o arquivo exportado não foi adulterado. |
+| **RNF09** | **Segurança:** O sistema deve utilizar infraestrutura de chaves públicas padrão ICP-Brasil para a realização de assinaturas digitais, garantindo a autoria, a integridade e o não-repúdio dos documentos gerados. | **Específico (Assinatura Digital):** Vinculado às funcionalidades que exigem validade legal, como a assinatura do prontuário (RF08) e da receita médica (RF15). |
 
 
 ## **8.3 Matriz Síntese de Rastreabilidade**
@@ -77,7 +78,7 @@ Os requisitos não funcionais especificam critérios que determinam a operação
 | OE3 | OE1 | CP6 | VN6 | RF20, RF21, RF22, RF23 | RNF02 |
 | OE3 | OE2 | CP7 | VN7 | RF24 | RNF01 |
 | OE3 | OE5 | CP8 | VN8 | RF19 | RNF05 |
-| OE5 | OE1, OE2 | CP9 | VN9 | RF08, RF12, RF13, RF15, RF17 | \- |
+| OE5 | OE1, OE2 | CP9 | VN9 | RF08, RF12, RF13, RF15, RF17 | RNF09 |
 
 </div>
 

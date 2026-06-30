@@ -1,29 +1,34 @@
 ---
 icon: material/progress-check
 ---
-# **Progresso do Projeto**
+# :material-progress-check: **Progresso do Projeto**
 
-Esta página é dedicada ao acompanhamento do estado atual do projeto ProntoCare através do nosso quadro colaborativo (Figma JamBoard). O quadro é utilizado pela equipe como artefato central para a elicitação de requisitos, mapeamento de objetivos específicos, definição de características do produto (CPs), modelagem do backlog e dinâmicas de priorização, as telas e features podem ser acompanhadas pelas reuniões de review e também pelas entregas parciais na sprint 1, 3 e 6.
+Explore o progresso e o planejamento do desenvolvimento do projeto ProntoCare através dos painéis interativos de acompanhamento detalhados abaixo:
 
-![](../assets/visao-produto/matriz-de-progresso.png)
+<div class="grid cards" markdown>
 
-## :material-bulletin-board: **Quadro Colaborativo do Figma**
+-   __Acompanhamento de US e RNF__
 
-O quadro de desenvolvimento e organização de sprints está disponível para visualização e interação na janela abaixo. Mais do que registrar o progresso cronológico do projeto, este artefato evidencia a governança do processo ágil e desenvovimento da matéria adotado pela equipe, demonstrando a distribuição de esforço, a dinâmica de priorização e a maturidade operacional do grupo ao longo das iterações.
+    ---
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px; width: 100%; max-width: 1024px; aspect-ratio: 16/9;" src="https://embed.figma.com/board/0vnXsFutjGoQcCT6oQQ2lX/Prontuariantes?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+    Consulte o estado de conclusão e a verificação técnica detalhada de cada User Story (US) e Requisito Não Funcional (RNF) do MVP.
 
-## :material-tag-multiple-outline: **Legenda do Estado dos Requisitos**
+    [:material-table-clock: Acessar Acompanhamento](progresso-do-projeto.md)
 
-No quadro colaborativo, cada requisito é marcado com selos na matriz de rastreabilidade (*stamps*) específicos que indicam o progresso e o status da sua homologação:
+-   __Planejamento e Quadro Figma__
 
-| Selo no Quadro | Significado | Descrição do Estado |
-| :---: | :--- | :--- |
-| :material-thumb-up:{ .middle } | **Concluído** | O requisito foi totalmente desenvolvido, testado e implementado. |
-| :material-heart:{ .middle } | **Validado** | O requisito foi revisado, validado e homologado diretamente com o cliente. |
-| :material-thumb-down:{ .middle } | **Fora do MVP** | O requisito foi despriorizado ou postergado, não integrando o escopo do MVP atual. |
-| *Nenhum* | **Não Iniciado** | O requisito ainda não foi planejado ou trabalhado em nenhuma Sprint da equipe. |
+    ---
 
-Atualmente faltam 6 dos 22 requisitos que compoem o MVP sendo eles: RF08, RF10, RF11, RF12, RF13 e RF15.
+    Visualize o quadro colaborativo de planejamento da equipe no Figma, legenda de selos de homologação e justificativas regulatórias.
 
-> :octicons-link-external-16: Você também pode visualizar o board em tela cheia diretamente no Figma clicando [aqui](https://www.figma.com/board/0vnXsFutjGoQcCT6oQQ2lX/Prontuariantes?node-id=0-1&t=7WDzylophLcdH6TL-1).
+    [:material-bulletin-board: Acessar Planejamento](planejamento.md)
+
+</div>
+
+---
+
+## :material-calendar-month: **Histórico de Revisões**
+
+| Data | Versão | Descrição | Autor |
+| :---: | :---: | :---: | :---: |
+| 2026-06-30 | 1.0 | Criação do índice central do Progresso do Projeto com painéis interativos. | Prontuariantes |

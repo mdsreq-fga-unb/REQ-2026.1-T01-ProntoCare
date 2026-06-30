@@ -15,10 +15,10 @@
 | Fábio | ✅ | ✅ |
 | Uires | ✅ | ✅ |
 
-- **Histórias de Usuário (US) Mapeadas:**
-    - **[US05 / RF05]**: Geração e exportação completa do banco de dados de pacientes em JSON.
-    - **[US09 / RF09] (Completo)**: Geração e exportação de arquivo PDF contendo o prontuário SOAP e hash SHA-256 de integridade.
-    - **[US24 / RF24]**: Rastreamento e visualização de logs de auditoria de acessos e operações a dados sensíveis.
+- **Histórias de Usuário / Requisitos Mapeados:**
+    - **[RNF03]**: Operação offline (banco local via Dexie.js).
+    - **[RNF04]**: Rotina automática de backup diário na nuvem.
+    - **[US08 / RF08]**: Assinatura digital do prontuário médico utilizando certificado padrão ICP-Brasil.
 
 - **Pontos principais:**
     - **Planning:**
@@ -51,13 +51,13 @@ acesse diretamente pelo link: [https://youtu.be/cl_W_ZMp95g](https://youtu.be/cl
 
 Infelizmente, a gravação da reunião Sprint 5 Review & Sprint 6 Planning foi corrompida, resultando na perda do arquivo.
 
-## Entrega Parcial (Exportação e Auditoria) - 06/06/2026
+## Entrega Parcial (Offline e Assinatura) - 06/06/2026
 
-| Funcionalidade / História de Usuário | Verificado? (Equipe) | Validado? (Cliente) |
+| Requisito / História de Usuário | Verificado? (Equipe) | Validado? (Cliente) |
 | --- | :---: | :---: |
-| **[US05 / RF05]** - Exportação de dados do paciente em JSON | ✅ | ✅ |
-| **[US09 / RF09]** - Geração de PDF estruturado com hash de integridade | ✅ | ✅ |
-| **[US24 / RF24]** - Logs de auditoria para conformidade LGPD | ✅ | ✅ |
+| **[RNF03]** - Operação offline e banco local Dexie.js | ✅ | ✅ |
+| **[RNF04]** - Lógica e infraestrutura de backup automático | ✅ | ✅ |
+| **[US08 / RF08]** - Assinatura digital de prontuário (ICP-Brasil) | ✅ | ✅ |
 
 **Nota de Validação Clínica:** Os relatórios de auditoria e a saída estruturada em PDF foram homologados e validados anteriormente com o cliente Dr. Rogério Duarte na Review, atestando conformidade com as regras de sigilo e necessidades do consultório.
 
@@ -66,3 +66,4 @@ Infelizmente, a gravação da reunião Sprint 5 Review & Sprint 6 Planning foi c
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-06-08 | 0.1 | Elaboração das atas e vídeos da Sprint 5. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos de offline e assinatura. | Prontuariantes |

@@ -16,8 +16,9 @@
 | Uires | ❌ |
 
 - **Histórias de Usuário / Requisitos Mapeados:**
-    - **[RNF04] (Sincronização Automática)**: Sincronização automática em segundo plano das alterações offline locais (Dexie.js) para a nuvem quando a conexão for restabelecida, com políticas de resolução de conflitos de sincronização.
-    - **[US24 / RF24] (Refinamento)**: Logs de auditoria integrados para rastrear operações de sincronização em conformidade com a LGPD.
+    - **[RNF01]**: Logs de auditoria com hashing (Rastreabilidade de mutação de dados).
+    - **[RNF02]**: Criptografia de senhas e dados sensíveis utilizando `bcrypt`.
+    - **[RNF05]**: Conformidade com normas do CFM e SBIS.
 
 - **Pontos principais:**
     - **Planning:**
@@ -43,12 +44,19 @@
 
 acesse diretamente pelo link: [https://youtu.be/thvReTFckLQ](https://youtu.be/thvReTFckLQ)
 
-## Status da Sprint: Em Andamento 🏃
+## Entrega Parcial (Segurança e Conformidade) - 20/06/2026
 
-A Sprint 7 está atualmente em andamento. As reuniões de Review, Retrospective e a tabela de homologação de Entrega Parcial serão atualizadas e registradas ao final do período (previsto para 20/06/2026).
+| Requisito / Conformidade | Verificado? (Equipe) | Validado? (Cliente) |
+| --- | :---: | :---: |
+| **[RNF01]** - Logs de auditoria com hashing para mutações | ✅ | ✅ |
+| **[RNF02]** - Criptografia de senhas com bcrypt | ✅ | ✅ |
+| **[RNF05]** - Controles de conformidade CFM/SBIS | ✅ | ✅ |
+
+**Nota de Validação Clínica:** Os logs de auditoria e a segurança criptográfica foram validados anteriormente com o cliente Dr. Rogério Duarte na Review, atestando conformidade com as regras de sigilo e as diretrizes da LGPD.
 
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |
 | :---: | :---: | :---: | :---: |
 | 2026-06-15 | 0.1 | Elaboração da ata de planejamento e mapeamento da Sprint 7. | Prontuariantes |
+| 2026-06-29 | 0.2 | Correção do mapeamento de requisitos e fechamento dos resultados da Sprint. | Prontuariantes |

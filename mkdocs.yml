@@ -90,7 +90,10 @@ nav:
       - Sprint 8: atas-e-videos/sprint-8.md
       - Sprint 9: atas-e-videos/sprint-9.md
   - Planejamento e Organização: planejamento-organizacao.md
-  - Progresso do projeto: progresso/index.md
+  - Progresso do projeto:
+      - progresso/index.md
+      - Acompanhamento de US e RNF: progresso/progresso-do-projeto.md
+      - Planejamento e Quadro Figma: progresso/planejamento.md
   - Entregas de Unidade:
       - entregas/index.md
       - Entrega 1: entregas/entrega-1.md

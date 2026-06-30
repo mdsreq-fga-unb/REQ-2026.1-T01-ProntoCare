@@ -1,6 +1,3 @@
----
-icon: material/calendar-check
----
 # **Planejamento e Quadro Figma**
 
 Esta página é dedicada ao acompanhamento do planejamento estratégico do projeto ProntoCare através do nosso quadro colaborativo (Figma JamBoard). O quadro é utilizado pela equipe como artefato central para a elicitação de requisitos, mapeamento de objetivos específicos, definição de características do produto (CPs), modelagem do backlog e dinâmicas de priorização.

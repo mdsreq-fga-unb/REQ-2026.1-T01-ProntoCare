@@ -41,6 +41,8 @@ plugins:
   - search
 
 markdown_extensions:
+  - toc:
+      toc_depth: 3
   - tables
   - admonition
   - pymdownx.details
@@ -89,7 +91,8 @@ nav:
       - Sprint 7: atas-e-videos/sprint-7.md
       - Sprint 8: atas-e-videos/sprint-8.md
       - Sprint 9: atas-e-videos/sprint-9.md
-  - Planejamento e Organização: planejamento-organizacao.md
+  - Planejamento e Organização:
+      - planejamento-organizacao/index.md
   - Progresso do projeto:
       - progresso/index.md
       - Acompanhamento de US e RNF: progresso/progresso-do-projeto.md

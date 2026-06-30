@@ -1,6 +1,3 @@
----
-icon: material/progress-check
----
 # **Acompanhamento de US e RNF**
 
 Esta página apresenta as tabelas e especificações detalhadas de progresso, verificação e validação das Histórias de Usuário (US) e Requisitos Não Funcionais (RNFs) planejados para o MVP do ProntoCare.
@@ -8,30 +5,30 @@ Esta página apresenta as tabelas e especificações detalhadas de progresso, ve
 <span id="tabela-mvp"></span>
 ### Tabela Geral de Acompanhamento do MVP
 
-| ID da US | Requisito Relacionado | Sprint de Entrega | Status | Evidência de Código (Frontend/Backend) | Testes Relacionados | Definition of Done (DoD) | Feedback do Cliente (Dr. Rogério) |
-| :---: | :--- | :---: | :---: | :--- | :--- | :---: | :--- |
-| <span id="ref-us01"></span>[**US01**](#us01) | **RF01** - Cadastrar pacientes | Sprint 1 | **Concluído** | [Register/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/Register/index.jsx) | [pacientes.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js) | Aprovado | Solicitou validação do CPF e campos de contato adicionais. Implementados. |
-| <span id="ref-us02"></span>[**US02**](#us02) | **RF02** - Editar registros | Sprint 1 | **Concluído** | [PacienteDetalhe/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx) | [pacientes.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js) | Aprovado | Aprovado fluxo de edição direta no detalhe do paciente. |
-| <span id="ref-us03"></span>[**US03**](#us03) | **RF03** - Excluir registros | Sprint 1 | **Concluído** | Hook lógico em [pacientes.js](/REQ-2026.1-T01-ProntoCare/back/src/controllers/pacientes.js#L112) | [pacientes.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js) | Aprovado | Aprovada a inativação lógica para preservação de histórico. |
-| <span id="ref-us04"></span>[**US04**](#us04) | **RF04** - Buscar pacientes | Sprint 3 | **Concluído** | Filtros em [Panel/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/Panel/index.jsx) | [pacientes.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js) | Aprovado | Solicitou exibição do status ativo/inativo na busca. Implementado. |
-| <span id="ref-us05"></span>[**US05**](#us05) | **RF05** - Exportar base JSON | Sprint 5 | **Concluído** | Exportador em [offlineService.js](/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.js#L258) | [offlineService.test.js](/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.test.js) | Aprovado | Aprovado formato padrão JSON para portabilidade de dados. |
-| <span id="ref-us06"></span>[**US06**](#us06) | **RF06** - Registrar prontuário SOAP | Sprint 3 | **Concluído** | Campos SOAP em [PacienteDetalhe/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx) | [blockchain.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js) | Aprovado | Solicitou versionamento não destrutivo ao editar. Implementado. |
-| <span id="ref-us07"></span>[**US07**](#us07) | **RF07** - Histórico clínico | Sprint 3 | **Concluído** | Timeline em [PacienteDetalhe/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx) | Verificação visual e responsividade | Aprovado | Aprovado layout temporal cronológico do histórico. |
-| <span id="ref-us08"></span>[**US08**](#us08) | **RF08** - Assinar prontuário | Sprint 9/10 | **Concluído** | [AssinaturaModal.jsx](/REQ-2026.1-T01-ProntoCare/front/src/components/AssinaturaModal.jsx) / [blockchainService.js](/REQ-2026.1-T01-ProntoCare/front/src/services/blockchainService.js) | [blockchain.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js) | Aprovado | Assinatura digital qualificada de prontuários com chancela visual no PDF homologada. |
-| <span id="ref-us09"></span>[**US09**](#us09) | **RF09** - Exportar prontuário PDF | Sprint 5 | **Concluído** | Renderizador [pdfExportService.js](/REQ-2026.1-T01-ProntoCare/front/src/services/pdfExportService.js#L405) | [hashService.test.js](/REQ-2026.1-T01-ProntoCare/front/src/services/hashService.test.js) | Aprovado | Solicitou carimbo visual com o hash de integridade no PDF. Implementado. |
-| <span id="ref-us10"></span>[**US10**](#us10) | **RF10** - Visualizar calendário | Sprint 8 | **Concluído** | Interface em [Agenda/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/Agenda/index.jsx) | [Agenda/index.test.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/Agenda/index.test.jsx) | Aprovado | Visualização semanal e navegação por datas homologada. |
-| <span id="ref-us11"></span>[**US11**](#us11) | **RF11** - Agendar consultas | Sprint 8 | **Concluído** | Lógica em [consultas.js](/REQ-2026.1-T01-ProntoCare/back/src/controllers/consultas.js) | [consultas.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/consultas.test.js) | Aprovado | Validação de indisponibilidade e teleconsultas integrada. |
-| <span id="ref-us12"></span>[**US12**](#us12) | **RF12** - Listar consultas do dia | Sprint 8 | **Concluído** | Painel em [Panel/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/Panel/index.jsx) | [consultas.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/consultas.test.js) | Aprovado | Aprovada a listagem cronológica do dia no painel. |
-| <span id="ref-us13"></span>[**US13**](#us13) | **RF13** - Alterar status da consulta | Sprint 8 | **Concluído** | Controle em [consultas.js](/REQ-2026.1-T01-ProntoCare/back/src/controllers/consultas.js) | [consultas.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/consultas.test.js) | Aprovado | Estados de consulta (Agendado, Em atendimento, Finalizado) validados. |
-| <span id="ref-us14"></span>[**US14**](#us14) | **RF14** - Elaborar receita digital | Sprint 9 | **Concluído** | Componente em [Prescricao/index.jsx](/REQ-2026.1-T01-ProntoCare/front/src/pages/Prescricao/index.jsx) | Verificação funcional de campos | Aprovado | CRM com estado emissor (CRM-UF) obrigatório no topo da receita. |
-| <span id="ref-us15"></span>[**US15**](#us15) | **RF15** - Assinar receita | Sprint 9/10 | **Concluído** | [AssinaturaModal.jsx](/REQ-2026.1-T01-ProntoCare/front/src/components/AssinaturaModal.jsx) / [pdfExportService.js](/REQ-2026.1-T01-ProntoCare/front/src/services/pdfExportService.js) | [receitas.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/receitas.test.js) | Aprovado | Assinatura digital qualificada de receitas com selo no rodapé homologada. |
-| <span id="ref-us16"></span>[**US16**](#us16) | **RF16** - Emitir receita PDF | Sprint 9 | **Concluído** | Exportador local de prescrições | Verificação funcional da exportação | Aprovado | Formato de receituário padrão aprovado. |
-| <span id="ref-us18"></span>[**US18**](#us18) | **RF18** - Histórico de receitas | Sprint 9 | **Concluído** | Histórico em PacienteDetalhe | Teste de leitura IndexedDB local | Aprovado | Exibição das receitas anteriores integrada ao histórico do paciente. |
-| <span id="ref-us20"></span>[**US20**](#us20) | **RF20** - Cadastrar médicos | Sprint 3 | **Concluído** | Rotas administrativas no backend | [medicos.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js) | Aprovado | Aprovado fluxo restrito ao perfil administrador da clínica. |
-| <span id="ref-us21"></span>[**US21**](#us21) | **RF21** - Editar perfis de médicos | Sprint 1 | **Concluído** | Métodos em [medicos.js](/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js) | [medicos.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js) | Aprovado | Validadas as permissões e atualização de dados básicos. |
-| <span id="ref-us22"></span>[**US22**](#us22) | **RF22** - Inativar perfis de médicos | Sprint 1 | **Concluído** | Inativação lógica em [medicos.js](/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js) | [medicos.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js) | Aprovado | Aprovada a suspensão lógica das credenciais dos profissionais. |
-| <span id="ref-us23"></span>[**US23**](#us23) | **RF23** - Buscar perfis de médicos | Sprint 1 | **Concluído** | Busca em [medicos.js](/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js) | [medicos.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js) | Aprovado | Filtros de busca por nome e CRM validados. |
-| <span id="ref-us24"></span>[**US24**](#us24) | **RF24** - Consultar logs auditoria | Sprint 5 | **Concluído** | Logs em [auditoria.js](/REQ-2026.1-T01-ProntoCare/back/src/helpers/auditoria.js) | [logs.test.js](/REQ-2026.1-T01-ProntoCare/back/tests/logs.test.js) | Aprovado | Solicitou mascaramento de campos sensíveis para IT admins. Implementado. |
+| ID da US | Requisito Relacionado | Sprint de Entrega | PT | Status |
+| :---: | :--- | :---: | :---: | :---: |
+| <span id="ref-us01"></span>[**US01**](#us01) | **RF01** - Cadastrar pacientes | Sprint 1 | 2.0 | **Concluído** |
+| <span id="ref-us02"></span>[**US02**](#us02) | **RF02** - Editar registros | Sprint 1 | 2.0 | **Concluído** |
+| <span id="ref-us03"></span>[**US03**](#us03) | **RF03** - Excluir registros | Sprint 1 | 1.5 | **Concluído** |
+| <span id="ref-us04"></span>[**US04**](#us04) | **RF04** - Buscar pacientes | Sprint 3 | 2.0 | **Concluído** |
+| <span id="ref-us05"></span>[**US05**](#us05) | **RF05** - Exportar base JSON | Sprint 5 | 2.5 | **Concluído** |
+| <span id="ref-us06"></span>[**US06**](#us06) | **RF06** - Registrar prontuário SOAP | Sprint 3 | 3.0 | **Concluído** |
+| <span id="ref-us07"></span>[**US07**](#us07) | **RF07** - Histórico clínico | Sprint 3 | 3.0 | **Concluído** |
+| <span id="ref-us08"></span>[**US08**](#us08) | **RF08** - Assinar prontuário | Sprint 9/10 | 3.5 | **Concluído** |
+| <span id="ref-us09"></span>[**US09**](#us09) | **RF09** - Exportar prontuário PDF | Sprint 5 | 3.0 | **Concluído** |
+| <span id="ref-us10"></span>[**US10**](#us10) | **RF10** - Visualizar calendário | Sprint 8 | 2.0 | **Concluído** |
+| <span id="ref-us11"></span>[**US11**](#us11) | **RF11** - Agendar consultas | Sprint 8 | 3.0 | **Concluído** |
+| <span id="ref-us12"></span>[**US12**](#us12) | **RF12** - Listar consultas do dia | Sprint 8 | 2.0 | **Concluído** |
+| <span id="ref-us13"></span>[**US13**](#us13) | **RF13** - Alterar status da consulta | Sprint 8 | 2.0 | **Concluído** |
+| <span id="ref-us14"></span>[**US14**](#us14) | **RF14** - Elaborar receita digital | Sprint 9 | 3.0 | **Concluído** |
+| <span id="ref-us15"></span>[**US15**](#us15) | **RF15** - Assinar receita | Sprint 9/10 | 3.0 | **Concluído** |
+| <span id="ref-us16"></span>[**US16**](#us16) | **RF16** - Emitir receita PDF | Sprint 9 | 2.5 | **Concluído** |
+| <span id="ref-us18"></span>[**US18**](#us18) | **RF18** - Histórico de receitas | Sprint 9 | 2.5 | **Concluído** |
+| <span id="ref-us20"></span>[**US20**](#us20) | **RF20** - Cadastrar médicos | Sprint 3 | 3.0 | **Concluído** |
+| <span id="ref-us21"></span>[**US21**](#us21) | **RF21** - Editar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
+| <span id="ref-us22"></span>[**US22**](#us22) | **RF22** - Inativar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
+| <span id="ref-us23"></span>[**US23**](#us23) | **RF23** - Buscar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
+| <span id="ref-us24"></span>[**US24**](#us24) | **RF24** - Consultar logs auditoria | Sprint 5 | 3.0 | **Concluído** |
 
 <span id="tabela-rnfs"></span>
 ## :material-check-decagram: **Tabela de Verificação de Requisitos Não Funcionais (RNFs)**

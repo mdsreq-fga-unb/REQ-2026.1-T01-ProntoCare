@@ -13,7 +13,7 @@ Gerencie e visualize a organização estratégica, o andamento das entregas do M
 
     Consulte o estado de conclusão e a verificação técnica detalhada de cada User Story (US) e Requisito Não Funcional (RNF) do MVP.
 
-    :material-link: [Acessar Acompanhamento](progresso/progresso-do-projeto.md)
+    :material-link: [Acessar Acompanhamento](../progresso/progresso-do-projeto.md)
 
 -   __:material-bulletin-board: Planejamento e Quadro Figma__
 
@@ -21,7 +21,7 @@ Gerencie e visualize a organização estratégica, o andamento das entregas do M
 
     Visualize o quadro colaborativo de planejamento da equipe no Figma, legenda de selos de homologação e justificativas regulatórias.
 
-    :material-link: [Acessar Planejamento](progresso/planejamento.md)
+    :material-link: [Acessar Planejamento](../progresso/planejamento.md)
 
 -   __:material-clipboard-list-outline: Backlog do Produto__
 
@@ -29,7 +29,7 @@ Gerencie e visualize a organização estratégica, o andamento das entregas do M
 
     Consulte o backlog de produto completo, as métricas de priorização, estimativas de esforço e detalhamento de regras de negócio.
 
-    :material-link: [Acessar Backlog](visao-produto/backlog-de-produto.md)
+    :material-link: [Acessar Backlog](../visao-produto/backlog-de-produto.md)
 
 </div>
 

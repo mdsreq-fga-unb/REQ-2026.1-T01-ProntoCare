@@ -2306,63 +2306,63 @@
 <td style="text-align: left;"><strong>Logs com hashing:</strong> Registrar log rastreável com hashing em todas as ações de criação, edição e exclusão.</td>
 <td style="text-align: left;">Execução de testes de integração automatizados (<code>Jest</code>) no backend e validação visual da aba de Logs/Integridade na tela do paciente.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Testes de Integração:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/tests/logs.test.js">logs.test.js</a> e <a href="/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js">blockchain.test.js</a><br>- <strong>Lógica Backend:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/src/helpers/auditoria.js">auditoria.js</a> (hooks de log) e <a href="/REQ-2026.1-T01-ProntoCare/back/src/controllers/blockchain.js">blockchain.js</a> (integração do prontuário)<br>- <strong>Frontend Timeline:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a> (renderização dos logs e verificação da blockchain)</td>
+<td style="text-align: left;">- <strong>Testes de Integração:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/logs.test.js">logs.test.js</a> e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/blockchain.test.js">blockchain.test.js</a><br>- <strong>Lógica Backend:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/helpers/auditoria.js">auditoria.js</a> (hooks de log) e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/blockchain.js">blockchain.js</a> (integração do prontuário)<br>- <strong>Frontend Timeline:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a> (renderização dos logs e verificação da blockchain)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf02"></span><a href="#rnf02"><strong>RNF02</strong></a></td>
 <td style="text-align: left;"><strong>Criptografia de Credenciais:</strong> Armazenar senhas de acesso criptografadas no banco usando <code>bcrypt</code>.</td>
 <td style="text-align: left;">Verificação de criptografia no cadastro de usuários via testes automatizados no backend.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Criptografia:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js#L54">medicos.js</a> e <a href="/REQ-2026.1-T01-ProntoCare/back/src/controllers/pacientes.js#L83">pacientes.js</a><br>- <strong>Mascaramento:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/src/helpers/auditoria.js#L83">auditoria.js</a><br>- <strong>Testes de Autenticação:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/tests/auth.test.js">auth.test.js</a></td>
+<td style="text-align: left;">- <strong>Criptografia:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/medicos.js#L54">medicos.js</a> e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/pacientes.js#L83">pacientes.js</a><br>- <strong>Mascaramento:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/helpers/auditoria.js#L83">auditoria.js</a><br>- <strong>Testes de Autenticação:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/auth.test.js">auth.test.js</a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf03"></span><a href="#rnf03"><strong>RNF03</strong></a></td>
 <td style="text-align: left;"><strong>Operação Offline:</strong> Funcionar localmente e salvar dados mesmo sem conexão (IndexedDB via Dexie.js).</td>
 <td style="text-align: left;">Execução de testes de integração (<code>Vitest</code>) simulando ausência de conectividade e o uso de filas e atualizações otimistas.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Testes de Offline:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.test.js">offlineService.test.js</a> (15 testes passando)<br>- <strong>Serviço Local:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.js">offlineService.js</a> (atualização otimista e controle de fila)</td>
+<td style="text-align: left;">- <strong>Testes de Offline:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.test.js">offlineService.test.js</a> (15 testes passando)<br>- <strong>Serviço Local:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.js">offlineService.js</a> (atualização otimista e controle de fila)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf04"></span><a href="#rnf04"><strong>RNF04</strong></a></td>
 <td style="text-align: left;"><strong>Backup Diário na Nuvem:</strong> Rotina automática de backup diário dos dados para a nuvem quando houver conexão.</td>
 <td style="text-align: left;">Análise do código da barra de conectividade e das rotinas offline.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Backup Local:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.js#L258-L317">offlineService.js</a> (lógica de geração de backup JSON e restauração)<br>- <strong>Interface UI:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/components/OfflineStatusBar.jsx#L127-L167">OfflineStatusBar.jsx</a> (importação/exportação na barra de status)</td>
+<td style="text-align: left;">- <strong>Backup Local:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.js#L258-L317">offlineService.js</a> (lógica de geração de backup JSON e restauração)<br>- <strong>Interface UI:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/components/OfflineStatusBar.jsx#L127-L167">OfflineStatusBar.jsx</a> (importação/exportação na barra de status)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf05"></span><a href="#rnf05"><strong>RNF05</strong></a></td>
 <td style="text-align: left;"><strong>Conformidade CFM / SBIS:</strong> Estar em conformidade com o NGS da SBIS e resoluções do CFM sobre prontuários.</td>
 <td style="text-align: left;">Análise dos módulos de logs de auditoria e segurança.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Logs de Acesso:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/src/controllers/pacientes.js#L59">pacientes.js</a> (auditoria de visualizações)<br>- <strong>Integridade:</strong> <a href="/REQ-2026.1-T01-ProntoCare/back/src/controllers/blockchain.js">blockchain.js</a> (logs e integridade no blockchain)<br>- <strong>Assinatura Qualificada:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/components/AssinaturaModal.jsx">AssinaturaModal.jsx</a></td>
+<td style="text-align: left;">- <strong>Logs de Acesso:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/pacientes.js#L59">pacientes.js</a> (auditoria de visualizações)<br>- <strong>Integridade:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/blockchain.js">blockchain.js</a> (logs e integridade no blockchain)<br>- <strong>Assinatura Qualificada:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/components/AssinaturaModal.jsx">AssinaturaModal.jsx</a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf06"></span><a href="#rnf06"><strong>RNF06</strong></a></td>
 <td style="text-align: left;"><strong>Responsividade de Interface:</strong> Adaptar layout automaticamente de acordo com a resolução (Desktop, Tablet, Mobile).</td>
 <td style="text-align: left;">Verificação visual das telas com alteração de viewport e análise de Media Queries no CSS.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Breakpoints de CSS:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/App.css#L67-L160">App.css</a> (layout geral), <a href="/REQ-2026.1-T01-ProntoCare/front/src/pages/Panel.css#L763-L775">Panel.css</a> (painel), <a href="/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/styles.css#L901-L925">styles.css</a> (detalhes) e <a href="/REQ-2026.1-T01-ProntoCare/front/src/pages/Register/styles.css#L188-L210">styles.css</a> (formulários)</td>
+<td style="text-align: left;">- <strong>Breakpoints de CSS:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/App.css#L67-L160">App.css</a> (layout geral), <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Panel.css#L763-L775">Panel.css</a> (painel), <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/styles.css#L901-L925">styles.css</a> (detalhes) e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Register/styles.css#L188-L210">styles.css</a> (formulários)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf07"></span><a href="#rnf07"><strong>RNF07</strong></a><span id="rnf07"></span></td>
 <td style="text-align: left;"><strong>IA Assíncrona:</strong> Chamadas à Inteligência Artificial devem ser assíncronas para não travar a interface de prescrição do usuário.</td>
 <td style="text-align: left;">Análise do código da tela de prescrição (<code>Prescricao/index.jsx</code>).</td>
 <td style="text-align: left;"><strong>Não Implementado</strong></td>
-<td style="text-align: left;">- <strong>Código Prescrição:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/pages/Prescricao/index.jsx">Prescricao/index.jsx</a> (sem integrações de IA ativas)</td>
+<td style="text-align: left;">- <strong>Código Prescrição:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Prescricao/index.jsx">Prescricao/index.jsx</a> (sem integrações de IA ativas)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf08"></span><a href="#rnf08"><strong>RNF08</strong></a></td>
 <td style="text-align: left;"><strong>Hash SHA-256 de PDF:</strong> Gerar hash de integridade SHA-256 para prontuário exportado via Web Crypto API no cliente.</td>
 <td style="text-align: left;">Exportação de documentos (PDF) no frontend com verificação do hash gerado na página e gravação na blockchain de integridade.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Geração de Hash:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/hashService.js#L16-L41">hashService.js</a> e <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/pdfExportService.js#L405">pdfExportService.js</a><br>- <strong>Cadeia Blockchain:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/blockchainService.js#L81-L111">blockchainService.js</a><br>- <strong>Footer do PDF:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/pdfExportService.js#L306-L310">pdfExportService.js</a></td>
+<td style="text-align: left;">- <strong>Geração de Hash:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/hashService.js#L16-L41">hashService.js</a> e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/pdfExportService.js#L405">pdfExportService.js</a><br>- <strong>Cadeia Blockchain:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/blockchainService.js#L81-L111">blockchainService.js</a><br>- <strong>Footer do PDF:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/pdfExportService.js#L306-L310">pdfExportService.js</a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span id="ref-rnf09"></span><a href="#rnf09"><strong>RNF09</strong></a></td>
 <td style="text-align: left;"><strong>Assinatura Digital ICP-Brasil:</strong> Utilizar chaves públicas ICP-Brasil para assinaturas digitais, garantindo autoria, integridade e não-repúdio.</td>
 <td style="text-align: left;">Testes de cifragem e integração com certificados A3 na emissão de receitas e prontuários.</td>
 <td style="text-align: left;"><strong>Aprovado</strong> (Implementado e verificado)</td>
-<td style="text-align: left;">- <strong>Assinatura Digital:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/components/AssinaturaModal.jsx">AssinaturaModal.jsx</a><br>- <strong>Serviço Blockchain:</strong> <a href="/REQ-2026.1-T01-ProntoCare/front/src/services/blockchainService.js">blockchainService.js</a></td>
+<td style="text-align: left;">- <strong>Assinatura Digital:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/components/AssinaturaModal.jsx">AssinaturaModal.jsx</a><br>- <strong>Serviço Blockchain:</strong> <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/blockchainService.js">blockchainService.js</a></td>
 </tr>
 </tbody>
 </table>
@@ -2406,7 +2406,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js">pacientes.test.js</a> e interface de cadastro em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Register/index.jsx">Register/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/pacientes.test.js">pacientes.test.js</a> e interface de cadastro em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Register/index.jsx">Register/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 1 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2453,7 +2453,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js">pacientes.test.js</a> e interface de edição em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/pacientes.test.js">pacientes.test.js</a> e interface de edição em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 1 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2500,7 +2500,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js">pacientes.test.js</a> e hook lógico de inativação em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/pacientes.js#L112">pacientes.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/pacientes.test.js">pacientes.test.js</a> e hook lógico de inativação em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/pacientes.js#L112">pacientes.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 1 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2547,7 +2547,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/pacientes.test.js">pacientes.test.js</a> e interface de busca em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Panel.css">Panel.css</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/pacientes.test.js">pacientes.test.js</a> e interface de busca em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Panel.css">Panel.css</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado nas Reviews das Sprints 2 (Protótipo) e 3 (Software) pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2598,7 +2598,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de frontend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.test.js">offlineService.test.js</a> e exportador em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.js#L258">offlineService.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de frontend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.test.js">offlineService.test.js</a> e exportador em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.js#L258">offlineService.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 5 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2645,7 +2645,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_5"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes automatizados em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js">blockchain.test.js</a> e interface de prontuário em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes automatizados em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/blockchain.test.js">blockchain.test.js</a> e interface de prontuário em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 3 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_5"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2692,7 +2692,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_6"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes de responsividade e interface em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes de responsividade e interface em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 3 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_6"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2730,7 +2730,7 @@
 </ul>
 <h4 id="definition-of-done-dod_7"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg></span> Definition of Done (DoD)</h4>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Validação Técnica e Testes:</strong> Testes automatizados cobrindo geração de hash e cifragem de prontuário em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js">blockchain.test.js</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Validação Técnica e Testes:</strong> Testes automatizados cobrindo geração de hash e cifragem de prontuário em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/blockchain.test.js">blockchain.test.js</a>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Revisão Colaborativa:</strong> Lógica base revisada por pares.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Garantia de Qualidade (QA):</strong> Verificação de fluxo e interface com certificado digital padrão concluída.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Conformidade de Escopo:</strong> Integração completa realizada no frontend e backend.</li>
@@ -2739,7 +2739,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_7"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9/10 com testes integrados em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js">blockchain.test.js</a> e componentes de assinatura no frontend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/components/AssinaturaModal.jsx">AssinaturaModal.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9/10 com testes integrados em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/blockchain.test.js">blockchain.test.js</a> e componentes de assinatura no frontend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/components/AssinaturaModal.jsx">AssinaturaModal.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada com sucesso na Review final da Sprint 9/10 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_7"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2791,7 +2791,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_8"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de hash em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/hashService.test.js">hashService.test.js</a> e renderizador em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/pdfExportService.js#L405">pdfExportService.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de hash em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/hashService.test.js">hashService.test.js</a> e renderizador em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/pdfExportService.js#L405">pdfExportService.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 5 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_8"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2838,7 +2838,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_9"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de frontend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Agenda/index.test.jsx">Agenda/index.test.jsx</a> e componente de agenda em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Agenda/index.jsx">Agenda/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de frontend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Agenda/index.test.jsx">Agenda/index.test.jsx</a> e componente de agenda em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Agenda/index.jsx">Agenda/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 8 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_9"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2885,7 +2885,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_10"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/consultas.test.js">consultas.test.js</a> e lógica em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/consultas.js">consultas.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/consultas.test.js">consultas.test.js</a> e lógica em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/consultas.js">consultas.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 8 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_10"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2932,7 +2932,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_11"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de integração em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/consultas.test.js">consultas.test.js</a> e interface de painel em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/PacientePanel.jsx">PacientePanel.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de integração em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/consultas.test.js">consultas.test.js</a> e interface de painel em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacientePanel.jsx">PacientePanel.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 8 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_11"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -2979,7 +2979,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_12"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/consultas.test.js">consultas.test.js</a> e controle em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/consultas.js">consultas.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/consultas.test.js">consultas.test.js</a> e controle em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/consultas.js">consultas.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 8 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_12"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3026,7 +3026,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_13"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9 com análise funcional de campos de prescrição em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Prescricao/index.jsx">Prescricao/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9 com análise funcional de campos de prescrição em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Prescricao/index.jsx">Prescricao/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review/Planning da Sprint 9 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_13"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3064,7 +3064,7 @@
 </ul>
 <h4 id="definition-of-done-dod_14"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg></span> Definition of Done (DoD)</h4>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Validação Técnica e Testes:</strong> Testes automatizados de criptografia e validade jurídica de receitas em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/receitas.test.js">receitas.test.js</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Validação Técnica e Testes:</strong> Testes automatizados de criptografia e validade jurídica de receitas em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/receitas.test.js">receitas.test.js</a>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Revisão Colaborativa:</strong> PR aprovado por pares e integrado no CI/CD.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Garantia de Qualidade (QA):</strong> Usabilidade com certificados verificada de forma responsiva.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Conformidade de Escopo:</strong> Selo de assinatura ativo e chancelas visíveis no PDF.</li>
@@ -3120,7 +3120,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_15"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9 através do exportador local integrado de prescrições em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Prescricao/index.jsx">Prescricao/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9 através do exportador local integrado de prescrições em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Prescricao/index.jsx">Prescricao/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 9 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_15"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3213,7 +3213,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_17"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9 com teste de leitura IndexedDB local e visualização na aba de detalhes em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 9 com teste de leitura IndexedDB local e visualização na aba de detalhes em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/index.jsx">PacienteDetalhe/index.jsx</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 9 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_17"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3306,7 +3306,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_19"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js">medicos.test.js</a> e rotas administrativas no backend.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 3 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/medicos.test.js">medicos.test.js</a> e rotas administrativas no backend.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 3 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_19"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3357,7 +3357,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_20"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js">medicos.test.js</a> e métodos de controle em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js">medicos.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/medicos.test.js">medicos.test.js</a> e métodos de controle em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/medicos.js">medicos.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 1 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_20"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3404,7 +3404,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_21"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js">medicos.test.js</a> e lógica em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js">medicos.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/medicos.test.js">medicos.test.js</a> e lógica em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/medicos.js">medicos.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 1 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_21"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3451,7 +3451,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_22"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/medicos.test.js">medicos.test.js</a> e lógica em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/medicos.js">medicos.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/medicos.test.js">medicos.test.js</a> e lógica em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/medicos.js">medicos.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validado na Review da Sprint 1 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_22"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3498,7 +3498,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_23"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de logs de backend em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/logs.test.js">logs.test.js</a> e lógica em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/helpers/auditoria.js">auditoria.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de logs de backend em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/logs.test.js">logs.test.js</a> e lógica em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/helpers/auditoria.js">auditoria.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 5 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_23"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3541,7 +3541,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_24"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 7 com testes automatizados em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/logs.test.js">logs.test.js</a> e <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/blockchain.test.js">blockchain.test.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 7 com testes automatizados em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/logs.test.js">logs.test.js</a> e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/blockchain.test.js">blockchain.test.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 7 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_24"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3580,7 +3580,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_25"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de autenticação em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/tests/auth.test.js">auth.test.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com testes de autenticação em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/tests/auth.test.js">auth.test.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 8 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_25"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3620,14 +3620,14 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_26"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 6 com testes em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.test.js">offlineService.test.js</a> (15 testes passando) e serviço <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.js">offlineService.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 6 com testes em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.test.js">offlineService.test.js</a> (15 testes passando) e serviço <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.js">offlineService.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 6 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_26"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
 <ul>
 <li><strong>Feedback do Cliente:</strong> Exportação atende. Para o modo offline, solicitou indicador visual explícito do estado de rede e sincronização.</li>
 <li><strong>Decisão:</strong> Aprovado com ressalvas (Sprint 5) / Aprovado (Sprint 6).</li>
-<li><strong>Ajuste Realizado:</strong> Implementado o componente de barra de status <code>OfflineStatusBar</code> em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/components/OfflineStatusBar.jsx">OfflineStatusBar.jsx</a> e opção de backup/exportação manual na barra.</li>
+<li><strong>Ajuste Realizado:</strong> Implementado o componente de barra de status <code>OfflineStatusBar</code> em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/components/OfflineStatusBar.jsx">OfflineStatusBar.jsx</a> e opção de backup/exportação manual na barra.</li>
 </ul>
 <p><a href="#ref-rnf03"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 18h-2v-8l-3.5 3.5-1.42-1.42L12 6.16l5.92 5.92-1.42 1.42L13 10zM12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg></span> Voltar para a tabela</a></p>
 </details>
@@ -3659,7 +3659,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_27"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 6 com o analisador de sincronização em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/offlineService.js#L258-L317">offlineService.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 6 com o analisador de sincronização em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/offlineService.js#L258-L317">offlineService.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 6 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_27"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3698,7 +3698,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_28"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com análise de logs de acesso de prontuários em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/back/src/controllers/pacientes.js#L59">pacientes.js</a> e gravação de chaves/integridade do blockchain.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 8 com análise de logs de acesso de prontuários em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/back/src/controllers/pacientes.js#L59">pacientes.js</a> e gravação de chaves/integridade do blockchain.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 8 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_28"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3741,7 +3741,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_29"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de viewports no frontend e CSS customizado em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/App.css#L67">App.css</a>, <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Panel.css#L763">Panel.css</a>, <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/PacienteDetalhe/styles.css#L901">styles.css</a> e <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/pages/Register/styles.css#L188">styles.css</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 1 com testes de viewports no frontend e CSS customizado em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/App.css#L67">App.css</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Panel.css#L763">Panel.css</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/PacienteDetalhe/styles.css#L901">styles.css</a> e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/pages/Register/styles.css#L188">styles.css</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada pelo Dr. Rogério Duarte durante as reviews das Sprints 1 e 3.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_29"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>
@@ -3781,7 +3781,7 @@
 </ul>
 <h4 id="rastreabilidade-verificacao-e-validacao_30"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> Rastreabilidade, Verificação e Validação</h4>
 <ul>
-<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de hash em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/hashService.js">hashService.test.js</a> e renderizador em <a href="file:///home/eduradolm/Documents/REQ-2026.1-T01-ProntoCare/front/src/services/pdfExportService.js#L405">pdfExportService.js</a>.</li>
+<li><strong>Verificação (Equipe):</strong> Verificado na Sprint 5 com testes de hash em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/hashService.js">hashService.test.js</a> e renderizador em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-ProntoCare/blob/main/front/src/services/pdfExportService.js#L405">pdfExportService.js</a>.</li>
 <li><strong>Validação (Cliente):</strong> Validada na Review da Sprint 5 pelo Dr. Rogério Duarte.</li>
 </ul>
 <h4 id="consolidacao-do-feedback_30"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29zm1-6v3.08L16.08 17H21V7H7v10zM3 15H1V3a2 2 0 0 1 2-2h16v2H3zm6-6h10v2H9zm0 4h8v2H9z"/></svg></span> Consolidação do Feedback</h4>

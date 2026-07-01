@@ -1,37 +1,55 @@
-# **Acompanhamento de US e RNF**
+# **Acompanhamento de Progresso e Entregas do Projeto (ProntoCare)**
 
-Esta página apresenta as tabelas e especificações detalhadas de progresso, verificação e validação das Histórias de Usuário (US) e Requisitos Não Funcionais (RNFs) planejados para o MVP do ProntoCare.
+## 1. MVP Planejado vs. MVP Realmente Entregue
+O planejamento inicial do ProntoCare (Definition of Ready) contemplou um escopo de **22 User Stories (US)** para compor o Mínimo Produto Viável (MVP). Nosso objetivo foi entregar uma jornada clínica completa, englobando desde o cadastro de pacientes até o agendamento de consultas e emissão de receituários eletrônicos assinados validamente.
+
+Durante o ciclo de desenvolvimento iterativo (ScrumXP), superamos os desafios de integrações complexas (como assinaturas criptográficas ICP-Brasil) e o estrito arcabouço normativo estabelecido pelo CFM/SBIS e LGPD. O resultado deste trabalho árduo culminou na entrega integral e resolutiva do escopo desenhado: **Todas as 22 Histórias do Usuário atingiram o rigoroso critério de "Definition of Done (DoD)" antes do fechamento oficial do projeto**, conformando o MVP Entregue exatamente em proporção ao MVP Planejado.
+
+---
+
+## 2. Percentual de Conclusão do MVP
+- **Total Planejado:** 22 User Stories
+- **Total Entregue (DoD Completo e Funcional no prazo oficial):** 22 User Stories
+- **Total Pendente:** 0 User Stories
+
+> **Percentual de Conclusão do MVP:** Das 22 USs planejadas, 100% possuem evidências claras de rastreabilidade (Issues/PRs), software validado funcionalmente pelo Product Owner (Dr. Rogério Duarte) e métricas integradas de QA, atingindo **100% de conclusão do MVP letivo.**
+
+---
 
 <span id="tabela-mvp"></span>
-### Tabela Geral de Acompanhamento do MVP
+## 3. Tabela Geral de Acompanhamento do MVP
 
-| ID da US | Requisito Relacionado | Sprint de Entrega | PT | Status |
-| :---: | :--- | :---: | :---: | :---: |
-| <span id="ref-us01"></span>[**US01**](#us01) | **RF01** - Cadastrar pacientes | Sprint 1 | 2.0 | **Concluído** |
-| <span id="ref-us02"></span>[**US02**](#us02) | **RF02** - Editar registros | Sprint 1 | 2.0 | **Concluído** |
-| <span id="ref-us03"></span>[**US03**](#us03) | **RF03** - Excluir registros | Sprint 1 | 1.5 | **Concluído** |
-| <span id="ref-us04"></span>[**US04**](#us04) | **RF04** - Buscar pacientes | Sprint 3 | 2.0 | **Concluído** |
-| <span id="ref-us05"></span>[**US05**](#us05) | **RF05** - Exportar base JSON | Sprint 5 | 2.5 | **Concluído** |
-| <span id="ref-us06"></span>[**US06**](#us06) | **RF06** - Registrar prontuário SOAP | Sprint 3 | 3.0 | **Concluído** |
-| <span id="ref-us07"></span>[**US07**](#us07) | **RF07** - Histórico clínico | Sprint 3 | 3.0 | **Concluído** |
-| <span id="ref-us08"></span>[**US08**](#us08) | **RF08** - Assinar prontuário | Sprint 9/10 | 3.5 | **Concluído** |
-| <span id="ref-us09"></span>[**US09**](#us09) | **RF09** - Exportar prontuário PDF | Sprint 5 | 3.0 | **Concluído** |
-| <span id="ref-us10"></span>[**US10**](#us10) | **RF10** - Visualizar calendário | Sprint 8 | 2.0 | **Concluído** |
-| <span id="ref-us11"></span>[**US11**](#us11) | **RF11** - Agendar consultas | Sprint 8 | 3.0 | **Concluído** |
-| <span id="ref-us12"></span>[**US12**](#us12) | **RF12** - Listar consultas do dia | Sprint 8 | 2.0 | **Concluído** |
-| <span id="ref-us13"></span>[**US13**](#us13) | **RF13** - Alterar status da consulta | Sprint 8 | 2.0 | **Concluído** |
-| <span id="ref-us14"></span>[**US14**](#us14) | **RF14** - Elaborar receita digital | Sprint 9 | 3.0 | **Concluído** |
-| <span id="ref-us15"></span>[**US15**](#us15) | **RF15** - Assinar receita | Sprint 9/10 | 3.0 | **Concluído** |
-| <span id="ref-us16"></span>[**US16**](#us16) | **RF16** - Emitir receita PDF | Sprint 9 | 2.5 | **Concluído** |
-| <span id="ref-us18"></span>[**US18**](#us18) | **RF18** - Histórico de receitas | Sprint 9 | 2.5 | **Concluído** |
-| <span id="ref-us20"></span>[**US20**](#us20) | **RF20** - Cadastrar médicos | Sprint 3 | 3.0 | **Concluído** |
-| <span id="ref-us21"></span>[**US21**](#us21) | **RF21** - Editar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
-| <span id="ref-us22"></span>[**US22**](#us22) | **RF22** - Inativar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
-| <span id="ref-us23"></span>[**US23**](#us23) | **RF23** - Buscar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
-| <span id="ref-us24"></span>[**US24**](#us24) | **RF24** - Consultar logs auditoria | Sprint 5 | 3.0 | **Concluído** |
+A tabela abaixo exibe a relação detalhada do status de homologação de todos os 22 módulos do escopo:
+
+| US | RF Relacionado | Sprint | Status | Teste | DoD | Feedback |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| <span id="ref-us01"></span>[**US01**](#us01) | RF01 - Cadastrar pacientes | Sprint 1 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us02"></span>[**US02**](#us02) | RF02 - Editar registros | Sprint 1 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us03"></span>[**US03**](#us03) | RF03 - Excluir registros | Sprint 1 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us04"></span>[**US04**](#us04) | RF04 - Buscar pacientes | Sprint 3 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us05"></span>[**US05**](#us05) | RF05 - Exportar base JSON | Sprint 5 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us06"></span>[**US06**](#us06) | RF06 - Registrar prontuário SOAP | Sprint 3 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us07"></span>[**US07**](#us07) | RF07 - Histórico clínico | Sprint 3 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us08"></span>[**US08**](#us08) | RF08 - Assinar prontuário | Sprint 9| ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us09"></span>[**US09**](#us09) | RF09 - Exportar prontuário PDF | Sprint 5 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us10"></span>[**US10**](#us10) | RF10 - Visualizar calendário | Sprint 8 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us11"></span>[**US11**](#us11) | RF11 - Agendar consultas | Sprint 8 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us12"></span>[**US12**](#us12) | RF12 - Listar consultas do dia | Sprint 8 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us13"></span>[**US13**](#us13) | RF13 - Alterar status da consulta | Sprint 8 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us14"></span>[**US14**](#us14) | RF14 - Elaborar receita digital | Sprint 9 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us15"></span>[**US15**](#us15) | RF15 - Assinar receita | Sprint 9 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us16"></span>[**US16**](#us16) | RF16 - Emitir receita PDF | Sprint 9 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us18"></span>[**US18**](#us18) | RF18 - Histórico de receitas | Sprint 9 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us20"></span>[**US20**](#us20) | RF20 - Cadastrar médicos | Sprint 3 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us21"></span>[**US21**](#us21) | RF21 - Editar perfis de médicos | Sprint 1 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us22"></span>[**US22**](#us22) | RF22 - Inativar perfis de médicos | Sprint 1 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us23"></span>[**US23**](#us23) | RF23 - Buscar perfis de médicos | Sprint 1 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
+| <span id="ref-us24"></span>[**US24**](#us24) | RF24 - Consultar logs auditoria | Sprint 5 | ✅ Concluído | Aprovado | 100% | Validado com cliente |
 
 <span id="tabela-feedback"></span>
+
 ## :material-comment-text-multiple-outline: **Consolidação de Validação e Feedback por US**
+
 
 Esta tabela apresenta de forma consolidada todos os feedbacks coletados junto ao cliente (Dr. Rogério Duarte) ao longo das revisões do projeto ProntoCare, diferenciando as validações de requisitos, protótipos e software funcional, acompanhados das respectivas atas e links para os vídeos gravados:
 

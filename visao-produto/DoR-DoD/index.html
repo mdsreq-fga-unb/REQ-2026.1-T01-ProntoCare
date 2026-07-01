@@ -2153,7 +2153,7 @@
 </blockquote>
 </li>
 <li>
-<p><strong>Critérios de Aceitação e Testabilidade (INVEST - Testável):</strong> Devem ser descritos por meio de condições diretamente observáveis e mensuráveis, cobrindo o fluxo nominal e as exceções da funcionalidade. <strong>Sendo proibido o uso de adjetivos vagos ou subjetivos</strong> (como <em>"interface amigável"</em>, <em>"carregamento rápido"</em> ou <em>"notificar regularmente"</em>).</p>
+<p><strong>Critérios de Aceitação e Testabilidade (INVEST - Testável):</strong> Devem ser descritos por meio de condições diretamente observáveis e mensuráveis, cobrindo o fluxo nominal e as exceções da funcionalidade, detalhados em listas textuais por US na tabela de <a href="../../planejamento-organizacao/progresso-do-projeto/#detalhamento-do-sprint-backlog-por-us">Detalhamento do Sprint Backlog por US</a>. <strong>Sendo proibido o uso de adjetivos vagos ou subjetivos</strong> (como <em>"interface amigável"</em>, <em>"carregamento rápido"</em> ou <em>"notificar regularmente"</em>).</p>
 </li>
 <li><strong>Validação com o Cliente (INVEST - Valioso):</strong> O valor assistencial ou de negócio deve estar nítido. Para itens que envolvam dados sensíveis ou fluxos clínicos (SOAP, prescrições), é obrigatória uma <strong>evidência registrada de homologação com o cliente</strong> (seja via tag ou comentário no backlog), atestando que o Dr. Rogério validou os critérios de aceitação.</li>
 <li><strong>Visibilidade de Dependências e Riscos (INVEST - Independente):</strong> Impedimentos técnicos de arquitetura (como chaves de criptografia, persistência local no PWA, ou módulos de assinatura) devem estar resolvidos ou mitigados. Os riscos principais associados ao item (como conformidade com a LGPD ou restrições do CFM) precisam estar explícitos no corpo do card.</li>
@@ -2165,7 +2165,7 @@
 <li><strong>Validação Técnica e Cobertura de Testes:</strong> O código deve passar por testes unitários e de integração automatizados. A entrega exige uma cobertura mínima de <strong>70% geral do código</strong> (linhas e ramificações). Em módulos críticos de segurança (como geração de cadeia de hash SHA-256 e assinatura digital ICP-Brasil), a cobertura obrigatória deve cobrir cenários de sucesso e falha simulada.</li>
 <li><strong>Revisão Colaborativa (Revisão de Código):</strong> O código deve ser revisado e aprovado por pelo menos um desenvolvedor (normalmente o encarregado dos merges) e continuar a passar pelo pipeline de ci/cd. <strong>O link do Pull Request (PR) aprovado no GitHub e a identificação do integrante responsável pela revisão devem ser registrados na seção de Governança do Repositório da User Story correspondente.</strong> Nenhuma User Story será considerada "Pronta" sem esse registro linkado. A revisão garante o alinhamento com os padrões de arquitetura do projeto, a segurança no tratamento de dados sensíveis e a ausência de vulnerabilidades.</li>
 <li><strong>Garantia de Qualidade (QA):</strong> A funcionalidade deve obter aprovação visual e funcional da equipe de QA, certificando o comportamento responsivo em múltiplos contextos de uso (desktop, tablet e smartphone, conforme o RNF06) e a estabilidade da operação offline (via Dexie.js), quando aplicável.</li>
-<li><strong>Conformidade Integral do Escopo:</strong> Todos os critérios de aceitação refinados no DoR precisam ser satisfeitos em sua totalidade. Entregas parciais de critérios não são aceitas.</li>
+<li><strong>Conformidade Integral do Escopo:</strong> Todos os critérios de aceitação refinados no DoR precisam ser satisfeitos em sua totalidade (conforme descritos em <a href="../../planejamento-organizacao/progresso-do-projeto/#detalhamento-do-sprint-backlog-por-us">Detalhamento do Sprint Backlog por US</a>). Entregas parciais de critérios não são aceitas.</li>
 <li><strong>Documentação Atualizada:</strong> Toda a documentação de apoio afetada pela alteração (comentários relevantes no código, arquivos README e documentação de endpoints de API) deve ser atualizada para refletir a implementação real.</li>
 <li><strong>Rastreabilidade Verificada:</strong> A entrega deve estar explicitamente vinculada à cadeia de valor do projeto e ao repositório de código, permitindo auditorias futuras através do mapeamento:<blockquote>
 <p><strong>OE → CP → RF → US → Critério de Aceitação → Teste → Issue → Pull Request → Entrega</strong></p>
@@ -2386,6 +2386,12 @@
 <td>2026-07-01</td>
 <td>1.0</td>
 <td>Adição da seção 9.3 detalhando a evidência de validação das USs clínicas com o Dr. Rogério e o controle de DoR para entrada em sprint.</td>
+<td>Prontuariantes</td>
+</tr>
+<tr>
+<td>2026-07-01</td>
+<td>1.1</td>
+<td>Atualização de DoR e DoD com links explícitos direcionando para a tabela de detalhamento de critérios de aceitação das USs do MVP.</td>
 <td>Prontuariantes</td>
 </tr>
 <tr>

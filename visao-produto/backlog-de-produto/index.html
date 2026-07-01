@@ -2597,6 +2597,7 @@
 <th>ID da US</th>
 <th>Está no MVP?</th>
 <th>Critério Técnico de Margem de Corte e Risco</th>
+<th>Endpoint de Deploy</th>
 </tr>
 </thead>
 <tbody>
@@ -2604,121 +2605,133 @@
 <td><strong>US01</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Alto valor (VN=5) com entrega rápida e previsível (PT=2.0). Risco zero para o cronograma.</td>
+<td><a href="https://portalprontocare.netlify.app/register">https://portalprontocare.netlify.app/register</a></td>
 </tr>
 <tr>
 <td><strong>US02</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> CRUD básico com baixo custo técnico (PT=2.0), necessário para consistência da base.</td>
+<td><a href="https://portalprontocare.netlify.app/edit-paciente/:id">https://portalprontocare.netlify.app/edit-paciente/:id</a></td>
 </tr>
 <tr>
 <td><strong>US03</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Baixíssimo esforço de código (PT=1.5) para mitigar um risco crítico de segurança de acesso.</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US04</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Indexação elementar na camada de persistência com baixo impacto no cronograma (PT=2.0).</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US05</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Resolução do requisito de portabilidade dentro do teto do limite técnico aceitável (PT=2.5).</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US06</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Acompanhamento Crítico (Q2):</strong> Core business do sistema (SOAP). Inclusão obrigatória pelo valor (VN=5), exigindo monitoramento estrito devido ao risco técnico elevado (PT=3.0).</td>
+<td><a href="https://portalprontocare.netlify.app/atendimento/:pacienteId">https://portalprontocare.netlify.app/atendimento/:pacienteId</a></td>
 </tr>
 <tr>
 <td><strong>US07</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Acompanhamento Crítico (Q2):</strong> Linha do tempo possui alta complexidade de interface (PT=3.0), mas é indispensável para a tomada de decisão clínica do MVP.</td>
+<td><a href="https://portalprontocare.netlify.app/paciente-detalhe/:id">https://portalprontocare.netlify.app/paciente-detalhe/:id</a></td>
 </tr>
 <tr>
 <td><strong>US08</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Restrição Regulatória Mandatória (Q2):</strong> Retém o maior risco técnico da sprint (PT=3.5), porém mantido por ser barreira legal intransponível (ICP-Brasil).</td>
+<td><a href="https://portalprontocare.netlify.app/paciente-detalhe/:id">https://portalprontocare.netlify.app/paciente-detalhe/:id</a></td>
 </tr>
 <tr>
 <td><strong>US09</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Fatiamento de Escopo (Q2):</strong> Geração de PDF (PT=3.0) necessária para a saída de dados, com escopo restrito ao layout estruturado padrão.</td>
+<td><a href="https://portalprontocare.netlify.app/paciente-detalhe/:id">https://portalprontocare.netlify.app/paciente-detalhe/:id</a></td>
 </tr>
 <tr>
 <td><strong>US10</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Módulo temporal base com desenvolvimento previsível (PT=2.0) para viabilizar a jornada do médico.</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US11</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Acompanhamento Crítico (Q2):</strong> Lógica de agendamento e conflito de horários eleva o custo (PT=3.0), mas é o motor que alimenta as visões da agenda.</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US12</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Visão diária simples com alto impacto operacional e baixo esforço de implementação (PT=2.0).</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US13</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Máquina de estados elementar para controle de fluxo da consulta com desenvolvimento rápido (PT=2.0).</td>
+<td><a href="https://portalprontocare.netlify.app/medico">https://portalprontocare.netlify.app/medico</a></td>
 </tr>
 <tr>
 <td><strong>US14</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Acompanhamento Crítico (Q2):</strong> Principal artefato de saída assistencial. Complexidade (PT=3.0) mitigada através do uso de esquemas de dados fixos.</td>
+<td><a href="https://portalprontocare.netlify.app/prescricao/:pacienteId">https://portalprontocare.netlify.app/prescricao/:pacienteId</a></td>
 </tr>
 <tr>
 <td><strong>US15</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Restrição Regulatória Mandatória (Q2):</strong> Par dependente da US14. Alta complexidade de criptografia (PT=3.0) aceita para garantir a validade jurídica das receitas.</td>
+<td><a href="https://portalprontocare.netlify.app/prescricao/:pacienteId">https://portalprontocare.netlify.app/prescricao/:pacienteId</a></td>
 </tr>
 <tr>
 <td><strong>US16</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Exportação local simplificada da receita dentro do limiar técnico seguro (PT=2.5).</td>
-</tr>
-<tr>
-<td><strong>US17</strong></td>
-<td><strong>Não</strong></td>
-<td><strong>Exclusão por Ponto de Corte (Q4):</strong> Reprovado nos dois limiares. Valor de negócio secundário (VN=3) e altíssimo risco de atraso (PT=4.0) para o prazo letivo.</td>
+<td><a href="https://portalprontocare.netlify.app/prescricao/:pacienteId">https://portalprontocare.netlify.app/prescricao/:pacienteId</a></td>
 </tr>
 <tr>
 <td><strong>US18</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Elegibilidade Direta (Q1):</strong> Histórico de receitas baseado em leitura de persistência local, com baixo esforço e alta segurança assistencial (PT=2.5).</td>
-</tr>
-<tr>
-<td><strong>US19</strong></td>
-<td><strong>Não</strong></td>
-<td><strong>Exclusão por Ponto de Corte (Q4):</strong> Complexidade incompatível (PT=3.0) com o baixo valor imediato do recurso (VN=3). Substituído por processo manual fora do software.</td>
+<td><a href="https://portalprontocare.netlify.app/prescricao/:pacienteId">https://portalprontocare.netlify.app/prescricao/:pacienteId</a></td>
 </tr>
 <tr>
 <td><strong>US20</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Fatiamento de Escopo (Q2):</strong> Cadastro de médicos (PT=3.0) restrito estritamente à criação de credenciais básicas de segurança para a clínica piloto.</td>
+<td><a href="https://portalprontocare.netlify.app/admin">https://portalprontocare.netlify.app/admin</a></td>
 </tr>
 <tr>
 <td><strong>US21</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Acompanhamento Crítico (Q2):</strong> Alteração de permissões monitorada de perto para evitar furos na lógica de controle de acesso (RBAC).</td>
+<td><a href="https://portalprontocare.netlify.app/admin">https://portalprontocare.netlify.app/admin</a></td>
 </tr>
 <tr>
 <td><strong>US22</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Acompanhamento Crítico (Q2):</strong> Inativação de contas com custo técnico moderado (PT=3.0), mas essencial para a segurança de dados sensíveis.</td>
+<td><a href="https://portalprontocare.netlify.app/admin">https://portalprontocare.netlify.app/admin</a></td>
 </tr>
 <tr>
 <td><strong>US23</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Fatiamento de Escopo (Q2):</strong> Busca e listagem de profissionais limitada aos filtros essenciais para o controle administrativo inicial.</td>
+<td><a href="https://portalprontocare.netlify.app/admin">https://portalprontocare.netlify.app/admin</a></td>
 </tr>
 <tr>
 <td><strong>US24</strong></td>
 <td><strong>Sim</strong></td>
 <td><strong>Restrição de Compliance (Q2):</strong> Registro de trilha de auditoria complexo (PT=3.0), mas compulsório para conformidade legal imediata com a LGPD.</td>
+<td><a href="https://portalprontocare.netlify.app/admin">https://portalprontocare.netlify.app/admin</a></td>
 </tr>
 </tbody>
 </table>
@@ -2826,6 +2839,12 @@
 <td style="text-align: center;">2026-07-01</td>
 <td style="text-align: center;">1.1</td>
 <td style="text-align: center;">Adição da seção 10.2.2 detalhando evidência de validação das USs clínicas pelo Dr. Rogério e o controle de DoR para entrada em sprint.</td>
+<td style="text-align: center;">Prontuariantes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-07-01</td>
+<td style="text-align: center;">1.2</td>
+<td style="text-align: center;">Inclusão de coluna com os endpoints de deploy (Netlify) na Tabela de Definição do MVP.</td>
 <td style="text-align: center;">Prontuariantes</td>
 </tr>
 </tbody>

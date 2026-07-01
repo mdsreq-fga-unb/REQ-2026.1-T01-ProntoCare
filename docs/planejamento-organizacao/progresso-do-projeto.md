@@ -1,25 +1,27 @@
 # **Acompanhamento de Progresso e Entregas do Projeto (ProntoCare)**
 
 ## 1. MVP Planejado vs. MVP Realmente Entregue
-O planejamento inicial do ProntoCare (Definition of Ready) contemplou um escopo de **22 User Stories (US)** para compor o Mínimo Produto Viável (MVP). Nosso objetivo foi entregar uma jornada clínica completa, englobando desde o cadastro de pacientes até o agendamento de consultas e emissão de receituários eletrônicos assinados validamente.
+O backlog geral do ProntoCare foi mapeado com um escopo total de **24 User Stories (US)**. Para a definição do Mínimo Produto Viável (MVP), o planejamento inicial (Definition of Ready) contemplou um escopo de **22 User Stories (US)**. Duas histórias (US17 — Análise por IA e US19 — Termo TCLE) foram classificadas como de baixa prioridade/alto esforço (Quadrante 4 da matriz de priorização) e despriorizadas/rejeitadas em comum acordo com o cliente (Dr. Rogério Duarte), permanecendo formalmente fora do escopo do MVP. Nosso objetivo com o MVP foi entregar uma jornada clínica completa, englobando desde o cadastro de pacientes até o agendamento de consultas e emissão de receituários eletrônicos assinados validamente.
 
-Durante o ciclo de desenvolvimento iterativo (ScrumXP), superamos os desafios de integrações complexas (como assinaturas criptográficas ICP-Brasil) e o estrito arcabouço normativo estabelecido pelo CFM/SBIS e LGPD. O resultado deste trabalho árduo culminou na entrega integral e resolutiva do escopo desenhado: **Todas as 22 Histórias do Usuário atingiram o rigoroso critério de "Definition of Done (DoD)" antes do fechamento oficial do projeto**, conformando o MVP Entregue exatamente em proporção ao MVP Planejado.
+Durante o ciclo de desenvolvimento iterativo (ScrumXP), superamos os desafios de integrações complexas (como assinaturas criptográficas ICP-Brasil) e o estrito arcabouço normativo estabelecido pelo CFM/SBIS e LGPD. O resultado deste trabalho árduo culminou na entrega integral e resolutiva do escopo desenhado: **Todas as 22 Histórias do Usuário do MVP atingiram o rigoroso critério de "Definition of Done (DoD)" antes do fechamento oficial do projeto**, conformando o MVP Entregue exatamente em proporção ao MVP Planejado (100% de conclusão).
 
 ---
 
 ## 2. Percentual de Conclusão do MVP
-- **Total Planejado:** 22 User Stories
-- **Total Entregue (DoD Completo e Funcional no prazo oficial):** 22 User Stories
-- **Total Pendente:** 0 User Stories
+- **Total do Backlog Geral:** 24 User Stories
+- **Total Planejado para o MVP:** 22 User Stories
+- **Total Entregue do MVP (DoD Completo e Funcional):** 22 User Stories
+- **Total de USs Fora do MVP (Rejeitadas/Despriorizadas):** 2 User Stories (US17 e US19)
+- **Total Pendente do MVP:** 0 User Stories
 
-> **Percentual de Conclusão do MVP:** Das 22 USs planejadas, atingimos **100% de conclusão do MVP letivo** com software validado funcionalmente pelo Product Owner (Dr. Rogério Duarte). Deste montante, apenas 6 USs seguiram o fluxo formal obrigatório de Issues/PRs (US08, 10, 11, 12, 13 e 15), enquanto as demais 16 USs foram desenvolvidas em branches próprias e integradas na branch dev após notificação de conclusão ao grupo, conforme justificado na Matriz de Dívida Técnica ([ver Matriz Operacional de Entregas sem Pull Request](planejamento.md#matriz-operacional-de-entregas-sem-pull-request)).
+> **Percentual de Conclusão do MVP:** Das 22 USs planejadas para o MVP, atingimos **100% de conclusão do MVP letivo** com software validado funcionalmente pelo Product Owner (Dr. Rogério Duarte). Deste montante, apenas 6 USs seguiram o fluxo formal obrigatório de Issues/PRs (US08, 10, 11, 12, 13 e 15), enquanto as demais 16 USs foram desenvolvidas em branches próprias e integradas na branch dev após notificação de conclusão ao grupo, conforme justificado na Matriz de Dívida Técnica ([ver Matriz Operacional de Entregas sem Pull Request](planejamento.md#matriz-operacional-de-entregas-sem-pull-request)).
 
 ---
 
 <span id="tabela-mvp"></span>
 ## 3. Tabela Geral de Acompanhamento do MVP
 
-A tabela abaixo exibe a relação detalhada do status de homologação de todos os 22 módulos do escopo:
+A tabela abaixo exibe a relação detalhada do status de homologação de todos os 22 módulos do escopo do MVP:
 
 | US | RF Relacionado | Sprint | Status | Teste | DoD | Feedback |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |

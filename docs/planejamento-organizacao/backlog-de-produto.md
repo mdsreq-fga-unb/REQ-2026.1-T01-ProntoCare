@@ -58,9 +58,7 @@ O MVP foi composto pelas User Stories avaliadas como prioritárias (Quadrantes 1
 | **US14** | **RF14** | Sim | Emissão de receitas médicas digitais | [https://portalprontocare.netlify.app/prescricao/:pacienteId](https://portalprontocare.netlify.app/prescricao/:pacienteId) |
 | **US15** | **RF15** | Sim | Assinatura digital ICP-Brasil de receitas | [https://portalprontocare.netlify.app/prescricao/:pacienteId](https://portalprontocare.netlify.app/prescricao/:pacienteId) |
 | **US16** | **RF16** | Sim | Exportação da receita em PDF | [https://portalprontocare.netlify.app/prescricao/:pacienteId](https://portalprontocare.netlify.app/prescricao/:pacienteId) |
-| **US17** | **RF17** | Não | Análise de prescrições via Inteligência Artificial | — |
 | **US18** | **RF18** | Sim | Histórico de receitas médicas do paciente | [https://portalprontocare.netlify.app/prescricao/:pacienteId](https://portalprontocare.netlify.app/prescricao/:pacienteId) |
-| **US19** | **RF19** | Não | Emissão e assinatura de termo de consentimento (TCLE) | — |
 | **US20** | **RF20** | Sim | Cadastro administrativo de novos médicos | [https://portalprontocare.netlify.app/admin](https://portalprontocare.netlify.app/admin) |
 | **US21** | **RF21** | Sim | Edição e permissões de acesso médico (RBAC) | [https://portalprontocare.netlify.app/admin](https://portalprontocare.netlify.app/admin) |
 | **US22** | **RF22** | Sim | Inativação de perfis profissionais | [https://portalprontocare.netlify.app/admin](https://portalprontocare.netlify.app/admin) |

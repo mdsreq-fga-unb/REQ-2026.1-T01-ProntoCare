@@ -2183,7 +2183,7 @@
 </ul>
 <h3 id="94-matriz-operacional-de-entregas-sem-pull-request"><strong>9.4 Matriz Operacional de Entregas sem Pull Request</strong></h3>
 <blockquote>
-<p><strong>Contexto e propósito:</strong> Durante as Sprints 1 a 8, <strong>nenhum</strong> incremento de código foi entregue por meio de Pull Request (PR) ou Issue rastreável — todos os commits foram feitos diretamente na branch <code>main</code>. Essa prática violou o DoD definido na seção 9.2 (item <em>Revisão Colaborativa</em>) e os princípios de rastreabilidade do ScrumXP durante todo o período inicial do projeto. O processo formal de PR foi adotado apenas a partir da <strong>Sprint 9</strong>. Esta seção registra formalmente a dívida técnica acumulada, com causas-raiz e impactos por sprint, para fins de auditoria e não-repetição.</p>
+<p><strong>Contexto e propósito:</strong> Durante as Sprints 1 a 7, as entregas foram realizadas por meio de desenvolvimento em branches próprias, que eram mescladas (merge) diretamente na branch <code>dev</code> após os desenvolvedores notificarem o grupo de que a tarefa estava concluída (Done). Contudo, <strong>nenhum</strong> incremento de código desse período passou pelo fluxo formal de Pull Request (PR) ou teve Issue associada. Essa prática violou o DoD definido na seção 9.2 (item <em>Revisão Colaborativa</em>) e os princípios de rastreabilidade do ScrumXP durante todo o período inicial do projeto. O processo formal de PR foi adotado a partir das <strong>Sprints 8 e 9</strong>. Esta seção registra formalmente a dívida técnica acumulada, com causas-raiz e impactos por sprint, para fins de auditoria e não-repetição.</p>
 </blockquote>
 <table>
 <thead>
@@ -2197,167 +2197,166 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>US01 / RF01 – Cadastrar pacientes</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us01"><strong>US01</strong></a> <strong>/ RF01 – Cadastrar pacientes</strong></td>
 <td style="text-align: center;">Sprint 1</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">As <em>branch protection rules</em> não estavam configuradas. A equipe priorizou a entrega do cadastro básico para viabilizar as primeiras validações clínicas com o Dr. Rogério Duarte. Os integrantes estavam em curva de aprendizado inicial com o ScrumXP.</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">As <em>branch protection rules</em> não estavam configuradas. A equipe desenvolveu em branch própria e mesclou na dev após notificar o grupo. Os integrantes estavam em curva de aprendizado inicial com o ScrumXP.</td>
 <td style="text-align: left;"><strong>Alto.</strong> Código inicial da porta de entrada de dados dos pacientes. Riscos associados a validações de entrada e consistência de dados não revisados por pares.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US02 / RF02 – Editar registros de pacientes</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us02"><strong>US02</strong></a> <strong>/ RF02 – Editar registros de pacientes</strong></td>
 <td style="text-align: center;">Sprint 1</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Mesma causa-raiz da US01: ausência de proteção técnica de branches na fase de inicialização do projeto e acúmulo de entregas do núcleo principal de CRUD de pacientes.</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Ausência de proteção técnica de branches na fase de inicialização do projeto e acúmulo de entregas do núcleo principal de CRUD de pacientes. Desenvolvimento em branch própria mesclado na dev.</td>
 <td style="text-align: left;"><strong>Alto.</strong> Edição direta de atributos do paciente, o que poderia corromper registros no banco. Risco de regressão na persistência de dados sensíveis sem revisão.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US03 / RF03 – Inativar registros de pacientes (Excluir)</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us03"><strong>US03</strong></a> <strong>/ RF03 – Inativar registros de pacientes (Excluir)</strong></td>
 <td style="text-align: center;">Sprint 1</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Ausência de proteção de branch. A inativação lógica foi construída diretamente na main para validação de fluxos.</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Ausência de proteção de branch. A inativação lógica foi construída em branch e mesclada diretamente na dev após aviso de finalização ao grupo.</td>
 <td style="text-align: left;"><strong>Médio.</strong> Risco de exclusão física dos dados em vez de inativação lógica regulatória se não houvesse revisão por pares.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US21 / RF21 – Editar perfis de médicos</strong></td>
-<td style="text-align: center;">Sprint 1</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Proteção de branch desativada e priorização de entrega administrativa. O time focou no desenvolvimento paralelo ágil dos perfis administrativos.</td>
-<td style="text-align: left;"><strong>Médio.</strong> Alterações críticas na estrutura cadastral médica (validando CRM-UF) não foram inspecionadas por outros membros, podendo induzir bugs no banco.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>US22 / RF22 – Inativar perfis de médicos</strong></td>
-<td style="text-align: center;">Sprint 1</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Inexistência de regras de segurança técnica de branch na Sprint 1 e priorização de entrega de perfis administrativos.</td>
-<td style="text-align: left;"><strong>Alto.</strong> Risco de contas de profissionais inativas mantidas com acesso indevido por debaixo dos panos.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>US23 / RF23 – Buscar perfis de médicos</strong></td>
-<td style="text-align: center;">Sprint 1</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Fluxo de merge direto utilizado como padrão inicial por todos os membros para agilizar consultas internas.</td>
-<td style="text-align: left;"><strong>Baixo.</strong> Funcionalidade de leitura simples; o risco primordial é a ineficiência de busca ou exibição menor de atributos.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>US04 / RF04 – Buscar pacientes</strong></td>
-<td style="text-align: center;">Sprint 3</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">A equipe ainda operava sob a inércia dos commits diretos e por falta de um responsável designado para a gerência de branches e aprovação de PRs.</td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us04"><strong>US04</strong></a> <strong>/ RF04 – Buscar pacientes</strong></td>
+<td style="text-align: center;">Sprint 2</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">A equipe operava sob a inércia do desenvolvimento em branches com merge direto na dev sem abertura de PRs/Issues, por falta de um responsável designado para a gerência de branches.</td>
 <td style="text-align: left;"><strong>Médio.</strong> Funcionalidade de consulta e filtragem. A falta de PR impediu a otimização de queries de busca de pacientes por CPF/nome.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US06 / RF06 – Registrar prontuário SOAP</strong></td>
-<td style="text-align: center;">Sprint 3</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Embora o DoD já estivesse publicado, o time continuou com a prática de commits diretos por falta de bloqueio de branches no GitHub. Priorização da entrega rápida da anamnese livre e eixos SOAP.</td>
-<td style="text-align: left;"><strong>Crítico.</strong> Módulo clínico com alta densidade de regras do CFM e segurança. A ausência de revisão elevou o risco de erros na integridade ou permissão de alteração (SOAP) do prontuário.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>US07 / RF07 – Histórico clínico (Linha do tempo)</strong></td>
-<td style="text-align: center;">Sprint 3</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Pressão para apresentar o layout de linha temporal assistencial funcional ao cliente clínico de forma imediata.</td>
-<td style="text-align: left;"><strong>Alto.</strong> Risco de quebra de layout responsivo (RNF06) em diferentes viewports e inconsistência visual não detectados por revisão.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>US20 / RF20 – Cadastrar médicos</strong></td>
-<td style="text-align: center;">Sprint 3</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Inexistência de barreira técnica automatizada no repositório. O cadastro de médicos foi adicionado diretamente na main para viabilizar testes.</td>
-<td style="text-align: left;"><strong>Alto.</strong> Risco de duplicidades ou falhas em regras de negócio (como CRM-UF) sem verificação redundante.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>US05 / RF05 – Exportar base JSON</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us05"><strong>US05</strong></a> <strong>/ RF05 – Exportar base JSON</strong></td>
 <td style="text-align: center;">Sprint 5</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">CI/CD e proteção de branch ainda não estavam integrados de forma restritiva no GitHub, permitindo merges diretos para agilizar a entrega de portabilidade da base de dados.</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">CI/CD e proteção de branch ainda não estavam integrados de forma restritiva no GitHub, permitindo merges diretos na dev sem PR para agilizar a entrega de portabilidade da base de dados.</td>
 <td style="text-align: left;"><strong>Alto.</strong> Risco de vazamento de dados caso a exportação gerasse informações além do escopo permitido. Ausência de auditoria de código sobre o arquivo gerado.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US09 / RF09 – Exportar prontuário PDF</strong></td>
-<td style="text-align: center;">Sprint 5</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">A equipe optou por acelerar o desenvolvimento local sem controle técnico de revisão para atingir o marco de exportação/impressão do prontuário demandado nas Reviews.</td>
-<td style="text-align: left;"><strong>Alto.</strong> Geração de documento legal que necessita de hash de integridade SHA-256 no rodapé (RNF08). Falta de peer review para validar o cálculo e a fidelidade visual do PDF.</td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us06"><strong>US06</strong></a> <strong>/ RF06 – Registrar prontuário SOAP</strong></td>
+<td style="text-align: center;">Sprint 2</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">O time continuou com a prática de merges diretos na dev sem abertura de PR por falta de bloqueio de branches no GitHub, priorizando a entrega rápida da anamnese livre e eixos SOAP.</td>
+<td style="text-align: left;"><strong>Crítico.</strong> Módulo clínico com alta densidade de regras do CFM e segurança. A ausência de revisão elevou o risco de erros na integridade ou permissão de alteração (SOAP) do prontuário.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US24 / RF24 – Consultar logs de auditoria</strong></td>
-<td style="text-align: center;">Sprint 5</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Falta de configuração de proteção contra commits diretos na branch principal e inércia do fluxo de entrega rápida da equipe de desenvolvimento.</td>
-<td style="text-align: left;"><strong>Crítico.</strong> Log de auditoria e segurança. A ausência de revisão de código compromete a auditoria do próprio mecanismo de auditoria de dados e verificação de integridade/mascaramento de CPF.</td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us07"><strong>US07</strong></a> <strong>/ RF07 – Histórico clínico (Linha do tempo)</strong></td>
+<td style="text-align: center;">Sprint 3</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Pressão para apresentar o layout de linha temporal assistencial funcional ao cliente clínico, resultando em merge na dev sem processo formal de PR/Issue.</td>
+<td style="text-align: left;"><strong>Alto.</strong> Risco de quebra de layout responsivo (RNF06) em diferentes viewports e inconsistência visual não detectados por revisão.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US08 / RF08 – Assinar prontuário (ICP-Brasil)</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us08"><strong>US08</strong></a> <strong>/ RF08 – Assinar prontuário (ICP-Brasil)</strong></td>
 <td style="text-align: center;">Sprint 9</td>
 <td style="text-align: center;">✅ Com Pull Request e Issue vinculada</td>
 <td style="text-align: left;">Adotado o processo de revisão com PR e Issue vinculada para garantir a autoria, a integridade e a validade legal do módulo de assinaturas digitais brasileiras.</td>
 <td style="text-align: left;"><strong>Nenhum.</strong> Funcionalidade de alta importância assistencial e regulatória auditada e integrada via pipeline de CI/CD.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US10 / RF10 – Visualizar calendário</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us09"><strong>US09</strong></a> <strong>/ RF09 – Exportar prontuário PDF</strong></td>
+<td style="text-align: center;">Sprint 5</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">A equipe optou por acelerar o desenvolvimento local em branch e mergear na dev sem controle técnico de revisão para atingir o marco de exportação/impressão do prontuário.</td>
+<td style="text-align: left;"><strong>Alto.</strong> Geração de documento legal que necessita de hash de integridade SHA-256 no rodapé (RNF08). Falta de peer review para validar o cálculo e a fidelidade visual do PDF.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us10"><strong>US10</strong></a> <strong>/ RF10 – Visualizar calendário</strong></td>
 <td style="text-align: center;">Sprint 8</td>
 <td style="text-align: center;">✅ Com Pull Request e Issue vinculada</td>
 <td style="text-align: left;">Fluxo de pull request adotado com sucesso após refinamento técnico de planejamento da Sprint 8 para a gestão da grade da agenda do médico.</td>
 <td style="text-align: left;"><strong>Nenhum.</strong> Revisão colaborativa garantiu integridade das navegações temporais do calendário sem conflito de layout.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US11 / RF11 – Agendar consultas</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us11"><strong>US11</strong></a> <strong>/ RF11 – Agendar consultas</strong></td>
 <td style="text-align: center;">Sprint 8</td>
 <td style="text-align: center;">✅ Com Pull Request e Issue vinculada</td>
 <td style="text-align: left;">Processo de Pull Request e abertura de branches para a marcação de consultas executado com aprovação técnica da equipe na Sprint 8.</td>
 <td style="text-align: left;"><strong>Nenhum.</strong> O código da lógica de concorrência e teleconsulta passou por revisão colaborativa e testes de fluxo.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US12 / RF12 – Listar consultas do dia</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us12"><strong>US12</strong></a> <strong>/ RF12 – Listar consultas do dia</strong></td>
 <td style="text-align: center;">Sprint 8</td>
 <td style="text-align: center;">✅ Com Pull Request e Issue vinculada</td>
 <td style="text-align: left;">Desenvolvimento rastreável através de Issue e Pull Request no Github, em conformidade com o DoD de revisão por pares.</td>
 <td style="text-align: left;"><strong>Nenhum.</strong> Listagem de consultas diárias validada técnica e funcionalmente.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US13 / RF13 – Alterar status da consulta</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us13"><strong>US13</strong></a> <strong>/ RF13 – Alterar status da consulta</strong></td>
 <td style="text-align: center;">Sprint 8</td>
 <td style="text-align: center;">✅ Com Pull Request e Issue vinculada</td>
 <td style="text-align: left;">Fluxo de Pull Request formalmente aplicado durante a Sprint 8 para o controle de estados cadastrais dos atendimentos.</td>
 <td style="text-align: left;"><strong>Nenhum.</strong> Transição de status da consulta (Agendado/Atendimento/Finalizado) validada por time de revisão.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US14 / RF14 – Elaborar receita digital</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us14"><strong>US14</strong></a> <strong>/ RF14 – Elaborar receita digital</strong></td>
 <td style="text-align: center;">Sprint 9</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">A equipe de desenvolvimento, sob pressão para a entrega final da receita e integração de dados médicos no cabeçalho do PDF, realizou o merge das receitas básicas sem passar pelo fluxo completo de PR.</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">A equipe de desenvolvimento, sob pressão para a entrega final da receita e integração de dados médicos no cabeçalho do PDF, realizou o merge da branch na dev sem passar pelo fluxo completo de PR/Issue.</td>
 <td style="text-align: left;"><strong>Alto.</strong> Módulo básico para prescrição. Alterações de lógica assistencial inseridas sem revisão colaborativa, aumentando riscos de erros nos campos das receitas.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US15 / RF15 – Assinar receita (ICP-Brasil)</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us15"><strong>US15</strong></a> <strong>/ RF15 – Assinar receita (ICP-Brasil)</strong></td>
 <td style="text-align: center;">Sprint 9</td>
 <td style="text-align: center;">✅ Com Pull Request e Issue vinculada</td>
 <td style="text-align: left;">Adotado o processo formal de Pull Request e Issue para a assinatura legal da receita digital (ICP-Brasil).</td>
 <td style="text-align: left;"><strong>Nenhum.</strong> Funcionalidade de alta criticidade segurança auditada inteiramente por revisão colaborativa.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US16 / RF16 – Emitir receita PDF</strong></td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us16"><strong>US16</strong></a> <strong>/ RF16 – Emitir receita PDF</strong></td>
 <td style="text-align: center;">Sprint 9</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">Mesma causa-raiz do módulo associado US14: a pressa de fechamento do PDF do receituário com chancela visual levou a commits diretos na main.</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Mesma causa-raiz do módulo associado US14: a pressa de fechamento do PDF do receituário com chancela visual levou ao merge direto na dev a partir de branch própria.</td>
 <td style="text-align: left;"><strong>Alto.</strong> Risco de má-formatação no documento de receita gerado ou ausência de validação de dados obrigatórios exigidos no CFM.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>US18 / RF18 – Histórico de receitas</strong></td>
-<td style="text-align: center;">Sprint 9</td>
-<td style="text-align: center;">❌ Sem PR — commit direto em <code>main</code></td>
-<td style="text-align: left;">A inércia no fluxo manual de commits diretos e pressa no fechamento dos históricos remanescentes causou a ausência de PR para este recurso secundário de visualização.</td>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us18"><strong>US18</strong></a> <strong>/ RF18 – Histórico de receitas</strong></td>
+<td style="text-align: center;">Sprint 5</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">A inércia no fluxo manual de merges diretos na dev e pressa no fechamento dos históricos remanescentes causou a ausência de PR/Issue para este recurso de visualização.</td>
 <td style="text-align: left;"><strong>Médio.</strong> Risco de falha de segurança na API do histórico clínico, com possibilidade de leitura de dados por perfis não médicos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us20"><strong>US20</strong></a> <strong>/ RF20 – Cadastrar médicos</strong></td>
+<td style="text-align: center;">Sprint 2</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Inexistência de barreira técnica automatizada no repositório. O cadastro de médicos foi desenvolvido em branch e integrado diretamente na dev após comunicação de conclusão.</td>
+<td style="text-align: left;"><strong>Alto.</strong> Risco de duplicidades ou falhas em regras de negócio (como CRM-UF) sem verificação redundante.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us21"><strong>US21</strong></a> <strong>/ RF21 – Editar perfis de médicos</strong></td>
+<td style="text-align: center;">Sprint 1</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Proteção de branch desativada. O time focou no desenvolvimento paralelo ágil dos perfis administrativos em branch própria e mergeou na dev após notificação.</td>
+<td style="text-align: left;"><strong>Médio.</strong> Alterações críticas na estrutura cadastral médica (validando CRM-UF) não foram inspecionadas por outros membros, podendo induzir bugs no banco.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us22"><strong>US22</strong></a> <strong>/ RF22 – Inativar perfis de médicos</strong></td>
+<td style="text-align: center;">Sprint 1</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Inexistência de regras de segurança técnica de branch na Sprint 1. O recurso foi feito em branch e integrado diretamente na dev após aviso ao grupo.</td>
+<td style="text-align: left;"><strong>Alto.</strong> Risco de contas de profissionais inativas mantidas com acesso indevido por debaixo dos panos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us23"><strong>US23</strong></a> <strong>/ RF23 – Buscar perfis de médicos</strong></td>
+<td style="text-align: center;">Sprint 1</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Fluxo de merge na dev a partir de branch própria utilizado como padrão inicial por todos os membros para agilizar consultas internas após aviso ao grupo.</td>
+<td style="text-align: left;"><strong>Baixo.</strong> Funcionalidade de leitura simples; o risco primordial é a ineficiência de busca ou exibição menor de atributos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../../planejamento-organizacao/progresso-do-projeto/#us24"><strong>US24</strong></a> <strong>/ RF24 – Consultar logs de auditoria</strong></td>
+<td style="text-align: center;">Sprint 5</td>
+<td style="text-align: center;">❌ Sem PR/Issue — merge na dev</td>
+<td style="text-align: left;">Falta de configuração de proteção contra merges diretos na branch dev e inércia do fluxo de entrega rápida em branch sem processo formal de PR.</td>
+<td style="text-align: left;"><strong>Crítico.</strong> Log de auditoria e segurança. A ausência de revisão de código compromete a auditoria do próprio mecanismo de auditoria de dados e verificação de integridade/mascaramento de CPF.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Ações corretivas adotadas a partir da Sprint 9:</strong></p>
+<p><strong>Ações corretivas adotadas a partir da Sprint 8 e 9:</strong></p>
 <ol>
-<li><strong>Proteção de branch ativada:</strong> A branch <code>main</code> passou a exigir, obrigatoriamente, ao menos 1 (um) PR aprovado e a passagem bem-sucedida do pipeline de CI/CD para que qualquer merge seja autorizado.</li>
+<li><strong>Proteção de branch ativada:</strong> As branches principais (<code>main</code>/<code>dev</code>) passaram a exigir, obrigatoriamente, ao menos 1 (um) PR aprovado e a passagem bem-sucedida do pipeline de CI/CD para que qualquer merge seja autorizado.</li>
 <li><strong>DoD operacionalizado como etapa bloqueante:</strong> O critério de <em>Revisão Colaborativa</em> do DoD foi integrado ao fluxo de trabalho como gate obrigatório, não sugestivo. Nenhuma US é considerada "Pronta" sem PR aprovado e mergeado.</li>
-<li><strong>Abertura retroativa de Issues:</strong> As USs e RFs listados nesta matriz foram registrados como issues no repositório, vinculando os commits já realizados à rastreabilidade exigida pelo DoD e possibilitando auditoria futura.</li>
-<li><strong>Pipeline de CI/CD configurado:</strong> Os <em>status checks</em> do GitHub Actions foram habilitados para bloquear merges em caso de falha nos testes automatizados, eliminando a possibilidade técnica de commit direto na <code>main</code>.</li>
+<li><strong>Pipeline de CI/CD configurado:</strong> Os <em>status checks</em> do GitHub Actions foram habilitados para bloquear merges em caso de falha nos testes automatizados, eliminando a possibilidade técnica de merge direto sem PR.</li>
 </ol>
 <h4 id="historico-de-revisoes">Histórico de Revisões</h4>
 <table>
@@ -2428,6 +2427,18 @@
 <td>2026-07-01</td>
 <td>1.6</td>
 <td>Correção de auditoria: DoD expandido para exigir textualmente link de PR aprovado e identificação do revisor como critério obrigatório de conclusão. Cadeia de rastreabilidade atualizada para incluir Issue e Pull Request.</td>
+<td>Prontuariantes</td>
+</tr>
+<tr>
+<td>2026-07-01</td>
+<td>1.7</td>
+<td>Correção das informações de governança: detalhamento sobre desenvolvimento em branches, merges diretos na dev sem PR/Issue, correções de sprints das USs 04, 06, 20 e 18 na matriz ordenada de 01 a 24, e remoção da ação de criação retroativa de Issues.</td>
+<td>Prontuariantes</td>
+</tr>
+<tr>
+<td>2026-07-01</td>
+<td>1.8</td>
+<td>Adição de links de rastreabilidade na matriz de entregas (9.4) apontando diretamente para o detalhamento e status das User Stories no progresso do projeto.</td>
 <td>Prontuariantes</td>
 </tr>
 </tbody>

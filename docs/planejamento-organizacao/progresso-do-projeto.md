@@ -117,12 +117,13 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, eu quero registrar novos pacientes com seus dados cadastrais básicos e credenciais de acesso, para que eu possa iniciar o acompanhamento de histórico clínico e conceder acesso a eles no sistema."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o médico edita o CPF do paciente no cadastro, **Quando** insiro o CPF "11111111111", **Então** o sistema recusa o salvamento de "11111111111" e exibe o erro "CPF inválido".
-    * [x] **Dado que** o médico realiza o cadastro de um paciente, **Quando** digita um CPF "123.456.789-00" já cadastrado para outro paciente, **Então** o sistema impede a gravação e exibe o erro "Paciente com este CPF já cadastrado".
-    * [x] **Dado que** o médico realiza o cadastro de um paciente, **Quando** deixa os campos de telefone ou contato de emergência vazios, **Então** o sistema recusa o salvamento e exibe o erro "O campo de telefone/contato de emergência é obrigatório".
-    * [x] **Dado que** o médico define o status do paciente no cadastro, **Quando** seleciona a opção "Ativo", **Então** o sistema salva o paciente com status "Ativo".
-    * [x] **Dado que** o médico salva com sucesso um novo paciente, **Quando** o cadastro é concluído, **Então** o sistema gera a senha inicial "ProntoCare123!" e exibe as credenciais.
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** todos os dados obrigatórios e formatos são válidos, **Quando** o recepcionista tenta salvar o formulário, **Então** o paciente é gravado no banco de dados e a interface exibe confirmação. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** já existe um cadastro prévio, **Quando** o recepcionista tenta cadastrar um novo paciente utilizando o CPF "123.456.789-00" já alocado, **Então** o sistema barra a submissão e exibe erro de "CPF duplicado". `[Teste Automatizado]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Declaração segue o padrão focado em valor e tamanho adequado.
@@ -366,11 +367,14 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, eu quero registrar prontuários estruturados no padrão SOAP no histórico clínico do paciente (preenchendo dados subjetivos, objetivos, avaliação e plano, incluindo anamnese em texto livre e a anexação de exames/documentos), para centralizar e manter o registro completo das informações de atendimento."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o médico registra a ficha SOAP do paciente, **Quando** deixa um dos campos Subjetivo, Objetivo, Avaliação ou Plano vazio, **Então** o sistema impede o salvamento e exibe o erro "O campo [nome_do_campo] é obrigatório".
-    * [x] **Dado que** o médico tenta anexar um documento ao prontuário SOAP, **Quando** o arquivo excede o limite de 5MB ou possui formato diferente de PDF/Imagem, **Então** o sistema rejeita o upload e exibe o erro "Arquivo inválido ou excede o tamanho limite".
-    * [x] **Dado que** o médico visualiza um prontuário com o status "Assinado", **Quando** clico nos botões de edição ou exclusão, **Então** o sistema bloqueia a ação e exibe o aviso "Este prontuário está assinado e não pode ser alterado".
-    * [x] **Dado que** o médico necessita retificar um prontuário assinado, **Quando** gravo um aditivo explicativo, **Então** o sistema gera a versão "v2" vinculada à "v1" original na blockchain.
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** o registro evolutivo foi redigido na integridade, **Quando** o médico clica em gravar, **Então** a ficha SOAP é criptografada e salva no histórico imutável do paciente. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** a estrutura base não foi obedecida, **Quando** o médico tenta salvar o registro sem preencher os blocos mandatórios da anamnese, **Então** o sistema exibe "Prontuário sem campos obrigatórios" (S, O, A ou P vazios). `[Teste Automatizado]`
+    * [x] **Dado que** exames prévios precisam constar na raiz, **Quando** o operador do sistema anexa um arquivo não suportado, malicioso ou gigantesco (>15mb), **Então** o bucket de arquivos recusa constando "Anexo inválido". `[Teste Manual]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História central de negócio (SOAP) refinada e fatiada.
@@ -617,10 +621,14 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, eu quero agendar novas consultas e/ou teleconsultas, vinculando paciente, data e horário, para gerenciar a marcação de atendimentos de forma eficiente."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o médico possui uma consulta ativa às 14:00 do dia 01/07/2026, **Quando** tento cadastrar outra consulta para a mesma hora e data, **Então** o sistema recusa o agendamento e exibe o erro "Horário indisponível".
-    * [x] **Dado que** o médico preenche o formulário de consulta, **Quando** seleciono o tipo de atendimento, **Então** o sistema permite escolher entre "Presencial" ou "Telemedicina".
-    * [x] **Dado que** o médico realiza o agendamento de uma consulta, **Quando** digito no campo Paciente, **Então** o sistema exibe sugestões de busca e vincula obrigatoriamente a um ID existente na base de pacientes.
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** a agenda da clínica possui vaga no horário, **Quando** o médico seleciona "14h" para um paciente, **Então** o calendário reflete a nova marcação na interface global. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** um evento já ocupa o slot das 14h, **Quando** o operador tenta agendar outro paciente para o mesmo médico às 14h, **Então** o calendário acusa "Conflito de horário" e impede a sobreposição da consulta. `[Teste Automatizado]`
+    * [x] **Dado que** o paciente foi desligado ou punido, **Quando** o operador busca a ficha do "Paciente X" (com status inativo) para marcação, **Então** o sistema bloqueia e retorna "Paciente inativo - Impedido de agendar". `[Teste Manual]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena e negociável baseada em lógica de indisponibilidade.
@@ -764,10 +772,14 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, eu quero elaborar receitas médicas digitais no sistema, para formalizar a prescrição de medicamentos de forma clara e padronizada."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o médico Dr. Rogério Duarte com CRM "123456-DF" elabora uma receita, **Quando** a receita é preenchida, **Então** o topo do documento exibe "CRM-DF: 123456".
-    * [x] **Dado que** o médico elabora uma receita para o paciente "João da Silva", **Quando** a receita é visualizada, **Então** o cabeçalho exibe "Consultório ProntoCare", "Médico: Dr. Rogério Duarte" e "Paciente: João da Silva".
-    * [x] **Dado que** o médico insere os itens da receita, **Quando** deixa os campos de medicamento, dosagem ou via de administração vazios, **Então** o sistema impede o salvamento e exibe o erro "O preenchimento do medicamento, dosagem e via de administração é obrigatório".
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** a prescrição está concluída pelo médico, **Quando** clico em "Imprimir", **Então** o sistema gera um PDF assinado, carimbado digitalmente e sem desconfiguração de página. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** o plugin ou provedor ICP-Brasil está off-line, **Quando** ocorre a tentativa de carimbar, **Então** o painel emite "Assinatura indisponível" e entra em contingência sem apagar os dados receitados. `[Teste Automatizado]`
+    * [x] **Dado que** há uma quebra técnica catastrófica na lib geradora, **Quando** o botão emitir é pressionado e colapsa, **Então** emite log avisando que "PDF não gerado" foi alertado ao suporte técnico. `[Teste Manual]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História central de emissão de prescrição estruturada.
@@ -813,10 +825,14 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, eu quero assinar digitalmente a receita utilizando um certificado padrão ICP-Brasil, para garantir a autenticidade e a validade legal da prescrição."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o médico aciona a assinatura da receita, **Quando** clico em "Assinar com ICP-Brasil", **Então** o sistema gera o PDF da receita com a marca "Assinado digitalmente via ICP-Brasil" no rodapé.
-    * [x] **Dado que** o médico insere o certificado digital, **Quando** a autoridade certificadora valida o token junto ao barramento da ICP-Brasil, **Então** o sistema exibe "Assinatura realizada com sucesso".
-    * [x] **Dado que** a receita do paciente "João da Silva" está com status "Assinada", **Quando** tento editar as dosagens prescritas, **Então** o sistema desabilita os botões de edição e exibe o aviso "Receita assinada não pode ser alterada".
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** a prescrição está concluída pelo médico, **Quando** clico em "Imprimir", **Então** o sistema gera um PDF assinado, carimbado digitalmente e sem desconfiguração de página. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** o plugin ou provedor ICP-Brasil está off-line, **Quando** ocorre a tentativa de carimbar, **Então** o painel emite "Assinatura indisponível" e entra em contingência sem apagar os dados receitados. `[Teste Automatizado]`
+    * [x] **Dado que** há uma quebra técnica catastrófica na lib geradora, **Quando** o botão emitir é pressionado e colapsa, **Então** emite log avisando que "PDF não gerado" foi alertado ao suporte técnico. `[Teste Manual]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História fatiada para a segurança de receita digital (INVEST).
@@ -862,10 +878,14 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, eu quero salvar a receita gerada em formato PDF, para imprimi-la ou enviá-la ao paciente de forma segura."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o médico solicita o download da receita, **Quando** clico em "Gerar PDF", **Então** o sistema formata o documento "receita_joao.pdf" nas dimensões 210mm x 297mm (tamanho A4).
-    * [x] **Dado que** o PDF da receita é gerado com sucesso, **Quando** o arquivo fica pronto, **Então** o navegador inicia o download de "receita_joao.pdf" de forma automática.
-    * [x] **Dado que** o médico abre o arquivo "receita_joao.pdf" baixado, **Quando** rola até o rodapé, **Então** o documento exibe o selo oficial de assinatura eletrônica da ICP-Brasil.
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** a prescrição está concluída pelo médico, **Quando** clico em "Imprimir", **Então** o sistema gera um PDF assinado, carimbado digitalmente e sem desconfiguração de página. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** o plugin ou provedor ICP-Brasil está off-line, **Quando** ocorre a tentativa de carimbar, **Então** o painel emite "Assinatura indisponível" e entra em contingência sem apagar os dados receitados. `[Teste Automatizado]`
+    * [x] **Dado que** há uma quebra técnica catastrófica na lib geradora, **Quando** o botão emitir é pressionado e colapsa, **Então** emite log avisando que "PDF não gerado" foi alertado ao suporte técnico. `[Teste Manual]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena voltada a geração de arquivo local (INVEST).
@@ -1038,10 +1058,13 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como administrador, eu quero cadastrar novos perfis de acesso de médicos, para registrar novos profissionais no sistema."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** o usuário logado possui o perfil "Médico", **Quando** tenta acessar a página administrativa de cadastro `/admin/medicos/novo`, **Então** o sistema bloqueia o acesso e redireciona para a dashboard principal.
-    * [x] **Dado que** o administrador cadastra o perfil do profissional, **Quando** preenche o campo CRM com "12345" (sem UF), **Então** o sistema impede o salvamento e exibe o erro "O campo CRM deve seguir o formato CRM-UF (ex: 12345-DF)".
-    * [x] **Dado que** o administrador insere os dados de um novo médico, **Quando** digita um CPF "123.456.789-00" já cadastrado, **Então** o sistema impede a gravação e exibe o erro "Médico com este CPF já cadastrado".
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** o usuário está na tela de login, **Quando** insere credenciais previamente validadas, **Então** o sistema concede o token JWT e redireciona para o painel principal. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** o usuário não possui conta ou errou a digitação, **Quando** tenta acessar com e-mail ou senha errados, **Então** o sistema nega o payload e emite o aviso "Credenciais inválidas". `[Teste Automatizado]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco em permissões de perfil administrativo.
@@ -1236,10 +1259,13 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     #### :material-lightbulb-outline: Declaração INVEST
     > "Como médico, administrador ou paciente, eu quero visualizar, buscar e filtrar o histórico de logs de auditoria sobre dados sensíveis, para rastrear todas as operações e garantir a conformidade e segurança."
 
-    #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um administrador visualizando logs de auditoria, **Quando** o sistema exibe o histórico, **Então** todas as informações clínicas confidenciais e CPFs de pacientes aparecem mascarados, exibindo apenas metadados técnicos de acesso.
-    * [x] **Dado que** sou um usuário consultando os logs de auditoria, **Quando** realizo buscas e aplico filtros por data/timestamp, usuário ou tipo de mutação, **Então** o sistema retorna os logs correspondentes.
-    * [x] **Dado que** sou um médico ou auditor consultando a trilha, **Quando** o sistema grava os logs de auditoria, **Então** ele gera hashes criptográficos associados para provar a integridade da trilha de logs de mutação de dados.
+    #### :material-scale-balance: Critérios de Aceitação (Gherkin Estruturado)
+
+    **Fluxo Nominal (Caminho Feliz)**
+    * [x] **Dado que** sou um administrador, **Quando** navego pela aba de logs de integração, **Então** consigo ver o histórico de hashes para cada paciente sem manipulação de terceiros. `[Teste Automatizado]`
+
+    **Cenários de Exceção (Casos Críticos)**
+    * [x] **Dado que** o servidor detecta uma tentativa de violação, alteração ou exclusão arbitrária feita via acesso direto ao banco (DB), **Quando** eu carrego a aba Auditoria, **Então** o painel brilha uma notificação severa identificando "Falha de auditoria: Quebra detectada na rastreabilidade". `[Teste Automatizado]`
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco no cumprimento de normas da LGPD e segurança de auditoria (INVEST).

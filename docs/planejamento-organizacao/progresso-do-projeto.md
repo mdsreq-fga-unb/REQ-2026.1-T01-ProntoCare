@@ -30,6 +30,43 @@ Esta página apresenta as tabelas e especificações detalhadas de progresso, ve
 | <span id="ref-us23"></span>[**US23**](#us23) | **RF23** - Buscar perfis de médicos | Sprint 1 | 3.0 | **Concluído** |
 | <span id="ref-us24"></span>[**US24**](#us24) | **RF24** - Consultar logs auditoria | Sprint 5 | 3.0 | **Concluído** |
 
+<span id="tabela-feedback"></span>
+## :material-comment-text-multiple-outline: **Consolidação de Validação e Feedback por US**
+
+Esta tabela apresenta de forma consolidada todos os feedbacks coletados junto ao cliente (Dr. Rogério Duarte) ao longo das revisões do projeto ProntoCare, diferenciando as validações de requisitos, protótipos e software funcional, acompanhados das respectivas atas e links para os vídeos gravados:
+
+| Sprint | US | Tipo de Validação / Artefato Apresentado | Feedback Recebido | Decisão | Ajuste Realizado | Status de Validação | Links (Ata / Vídeo) |
+| :---: | :---: | :--- | :--- | :---: | :--- | :---: | :--- |
+| **Sprint 1** | [US01](#us01) | Software Funcional (Interface de Cadastro) | Solicitou validação obrigatória e impeditiva do CPF e adição de campos de telefone e contato de emergência. | Aprovado com ressalvas | Atualizado o backlog da Sprint 2 com novas regras de CPF e campos de contato no cadastro. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-1.md) / [Vídeo](https://youtu.be/kuSMW1pVD9A) |
+| **Sprint 1** | [US02](#us02) | Software Funcional (Interface de Edição) | Aprovou o fluxo de edição direta no detalhe do paciente. | Aprovado | Nenhuma alteração de escopo necessária. | **Aprovado** | [Ata](../atas-e-videos/sprint-1.md) / [Vídeo](https://youtu.be/kuSMW1pVD9A) |
+| **Sprint 1** | [US03](#us03) | Software Funcional (Inativação Lógica) | Aprovada a inativação lógica para preservação de histórico clínico regulatório. | Aprovado | Nenhuma alteração de escopo necessária. | **Aprovado** | [Ata](../atas-e-videos/sprint-1.md) / [Vídeo](https://youtu.be/kuSMW1pVD9A) |
+| **Sprint 2** | [US04](#us04) | Protótipo (Interface no Figma) | Solicitou que a busca suportasse pesquisa por CPF e nome, exibindo o status de acesso (ativo/inativo) no grid de listagem. | Aprovado com ressalvas | Ajustados os critérios da história de busca de pacientes e adicionado o status de acesso no grid de listagem. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-2.md) / [Vídeo](https://youtu.be/hed-WqOa3yY) |
+| **Sprint 3** | [US04](#us04) | Software Funcional (Interface de Busca) | Funcionalidades de busca e cadastro operam perfeitamente. | Aprovado | Nenhuma alteração de escopo necessária. | **Aprovado** | [Ata](../atas-e-videos/sprint-3.md) / [Vídeo](https://youtu.be/pgax0OPZzBo) |
+| **Sprint 5** | [US05](#us05) | Software Funcional (Exportador JSON) | Aprovado formato padrão JSON para portabilidade de dados. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-5.md) / [Vídeo (Corrompido)](../atas-e-videos/sprint-5.md#videos) |
+| **Sprint 3** | [US06](#us06) | Software Funcional (Prontuário SOAP) | Solicitou que a edição de prontuários assinados não destrua o registro original, gerando um histórico/versão vinculada. | Aprovado com ressalvas | Adicionada lógica de versionamento de prontuários no backend e no fluxo do prontuário eletrônico. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-3.md) / [Vídeo](https://youtu.be/pgax0OPZzBo) |
+| **Sprint 3** | [US07](#us07) | Software Funcional (Linha do Tempo) | Aprovado layout temporal cronológico do histórico assistencial. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-3.md) / [Vídeo](https://youtu.be/pgax0OPZzBo) |
+| **Sprint 2** | [US08](#us08) | Protótipo (Interface no Figma) | Recomendou modal de confirmação visual estruturado dos dados pré-assinatura. | Aprovado com ressalvas | Incluído no backlog a exibição do resumo estruturado de prontuário pré-assinatura. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-2.md) / [Vídeo](https://youtu.be/hed-WqOa3yY) |
+| **Sprint 3** | [US08](#us08) | Software Funcional (Lógica ICP-Brasil) | Solicitou chancela/carimbo da assinatura visível explicitamente no PDF do prontuário. | Aprovado com ressalvas | Ajustado o layout em PDF no backlog. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-3.md) / [Vídeo](https://youtu.be/pgax0OPZzBo) |
+| **Sprint 6** | [US08](#us08) | Software Funcional (Sincronização Offline) | Sincronização offline das assinaturas validada. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-6.md) / [Vídeo](https://youtu.be/thvReTFckLQ) |
+| **Sprint 9/10** | [US08](#us08) | Software Funcional (Assinatura Prontuário) | Homologação final do MVP do ProntoCare e assinatura do Termo de Aceite pelo cliente Dr. Rogério Duarte. | Aprovado | Termo de Aceite assinado pela equipe e cliente. | **Aprovado** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/zBuWdVirAcE) |
+| **Sprint 5** | [US09](#us09) | Software Funcional (Exportador PDF) | Solicitou carimbo visual com o hash de integridade no rodapé do PDF gerado. | Aprovado com ressalvas | Atualizado o serviço de exportação de prontuário com o carimbo visual de integridade de hash SHA-256. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-5.md) / [Vídeo (Corrompido)](../atas-e-videos/sprint-5.md#videos) |
+| **Sprint 8** | [US10](#us10) | Software Funcional (Interface Calendário) | Visualização semanal e navegação por datas homologada de forma amigável. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-8.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 8** | [US11](#us11) | Software Funcional (Agendamento) | Validação de indisponibilidade e teleconsultas integrada com sucesso. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-8.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 8** | [US12](#us12) | Software Funcional (Listagem do Dia) | Aprovada a listagem cronológica do dia no painel. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-8.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 8** | [US13](#us13) | Software Funcional (Mudar Status) | Estados de consulta (Agendado, Em atendimento, Finalizado) validados na Review. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-8.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 9** | [US14](#us14) | Software Funcional (Prescrição Digital) | Solicitou layout de receita padrão contendo dados do consultório, médico (CRM) e paciente no topo. | Aprovado com ressalvas | Atualizado o layout de exportação de receitas médicas em PDF no backlog para conter dados no cabeçalho e validação obrigatória do CRM-UF. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 9/10** | [US15](#us15) | Software Funcional (Assinatura Receita) | Solicitou o selo de assinatura no rodapé do documento de receita padrão. | Aprovado com ressalvas | Atualização do layout de exportação de receitas médicas em PDF no backlog para incluir chancela no rodapé. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/zBuWdVirAcE) |
+| **Sprint 9** | [US16](#us16) | Software Funcional (Exportador PDF Receita) | Formato de receituário padrão aprovado na Review. | Aprovado | Nenhuma alteração de escopo exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 9** | [US17](#us17) | Requisito (Análise por IA) | Considerado recurso secundário em relação às barreiras regulatórias. | Rejeitado (Fora do MVP) | Nenhuma atividade de desenvolvimento executada. | **Rejeitado** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 9** | [US18](#us18) | Software Funcional (Histórico Receitas) | Exibição das receitas anteriores integrada de forma fluida ao histórico do paciente. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 9** | [US19](#us19) | Requisito (Termo TCLE) | Entendeu que o recurso é dispensável no MVP e pode ser contornado manualmente. | Rejeitado (Fora do MVP) | Nenhuma alteração efetuada. | **Rejeitado** | [Ata](../atas-e-videos/sprint-9.md) / [Vídeo](https://youtu.be/la-cM83mW_8) |
+| **Sprint 2** | [US20](#us20) | Requisito (Perfil de Médico) | Aprovado conforme a lógica proposta para a clínica piloto (administrador cadastra médicos). | Aprovado | Nossos padrões atendem. Nenhuma alteração exigida além da unificação do padrão CRM-UF. | **Aprovado** | [Ata](../atas-e-videos/sprint-2.md) / [Vídeo](https://youtu.be/hed-WqOa3yY) |
+| **Sprint 3** | [US20](#us20) | Software Funcional (Cadastro Médico) | Cadastro e fluxos operam perfeitamente. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-3.md) / [Vídeo](https://youtu.be/pgax0OPZzBo) |
+| **Sprint 1** | [US21](#us21) | Software Funcional (Editar Perfis Médico) | CRM dos médicos deve exigir obrigatoriamente a unidade federativa (CRM-UF) para evitar duplicidade de registros. | Aprovado com ressalvas | Atualizada a especificação do cadastro de médicos no backlog e banco de dados para incluir validação obrigatória do CRM-UF. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-1.md) / [Vídeo](https://youtu.be/kuSMW1pVD9A) |
+| **Sprint 1** | [US22](#us22) | Software Funcional (Inativar Perfis Médico) | Aprovada a suspensão lógica das credenciais dos profissionais. | Aprovado | Nenhuma alteração exigida. | **Aprovado** | [Ata](../atas-e-videos/sprint-1.md) / [Vídeo](https://youtu.be/kuSMW1pVD9A) |
+| **Sprint 1** | [US23](#us23) | Software Funcional (Buscar Perfis Médico) | Filtros de busca por nome e CRM validados. | Aprovado | Nenhuma alteração de escopo necessária. | **Aprovado** | [Ata](../atas-e-videos/sprint-1.md) / [Vídeo](https://youtu.be/kuSMW1pVD9A) |
+| **Sprint 5** | [US24](#us24) | Software Funcional (Logs de Auditoria) | O sistema grava logs corretamente, mas dados clínicos e informações sensíveis (CPF) de pacientes devem ser mascarados para o perfil admin. | Aprovado com ressalvas | Atualizada a política de auditoria e código para mascarar campos sensíveis nos logs visualizados por administradores de TI. | **Aprovado com ressalvas** | [Ata](../atas-e-videos/sprint-5.md) / [Vídeo (Corrompido)](../atas-e-videos/sprint-5.md#videos) |
+
 <span id="tabela-rnfs"></span>
 ## :material-check-decagram: **Tabela de Verificação de Requisitos Não Funcionais (RNFs)**
 
@@ -63,10 +100,10 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero registrar novos pacientes com seus dados cadastrais básicos e credenciais de acesso, para que eu possa iniciar o acompanhamento de histórico clínico e conceder acesso a eles no sistema."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico na tela de cadastro, **Quando** insiro um CPF com formato ou dígito verificador inválido, **Então** o sistema impede o salvamento e exibe um erro de validação.
-    * [x] **Dado que** sou um médico na tela de cadastro, **Quando** preencho os dados do paciente, **Então** o sistema exige obrigatoriamente os campos de telefone e contato de emergência.
-    * [x] **Dado que** sou um médico salvando um cadastro, **Quando** defino o status de acesso do paciente, **Então** o sistema permite selecionar entre "Ativo" ou "Inativo" no fluxo de criação.
-    * [x] **Dado que** sou um médico concluindo o cadastro, **Quando** o paciente é salvo com sucesso, **Então** o sistema gera credenciais de acesso seguras e iniciais para o perfil dele.
+    * [x] **Dado que** o médico edita o CPF do paciente no cadastro, **Quando** insiro o CPF "11111111111", **Então** o sistema recusa o salvamento de "11111111111" e exibe o erro "CPF inválido".
+    * [x] **Dado que** o médico realiza o cadastro de um paciente, **Quando** deixa os campos de telefone ou contato de emergência vazios, **Então** o sistema recusa o salvamento e exibe o erro "O campo de telefone/contato de emergência é obrigatório".
+    * [x] **Dado que** o médico define o status do paciente no cadastro, **Quando** seleciona a opção "Ativo", **Então** o sistema salva o paciente com status "Ativo".
+    * [x] **Dado que** o médico salva com sucesso um novo paciente, **Quando** o cadastro é concluído, **Então** o sistema gera a senha inicial "ProntoCare123!" e exibe as credenciais.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Declaração segue o padrão focado em valor e tamanho adequado.
@@ -104,9 +141,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero atualizar os dados cadastrais e credenciais de acesso dos pacientes, para manter a base de dados e perfis sempre corretos e atualizados."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico visualizando o perfil de um paciente, **Quando** clico em editar, **Então** o sistema permite a edição direta de seus dados na mesma tela.
-    * [x] **Dado que** sou um médico editando os dados do paciente, **Quando** altero o CPF para um formato inválido, **Então** o sistema recusa o salvamento e valida o formato do dígito.
-    * [x] **Dado que** sou um médico salvando a edição, **Quando** confirmo as alterações, **Então** o sistema grava um log de auditoria associado ao ID do usuário que realizou a alteração.
+    * [x] **Dado que** o médico visualiza o perfil do paciente "João da Silva", **Quando** clico em "Editar", **Então** o sistema habilita os campos de texto para edição direta na tela.
+    * [x] **Dado que** o médico edita o CPF do paciente, **Quando** altero o CPF para "11111111111", **Então** o sistema recusa o salvamento de "11111111111" e exibe o erro "O número de dígitos é menor do que 12".
+    * [x] **Dado que** o médico salva a edição do paciente, **Quando** clico em "Salvar", **Então** o sistema grava o log "MUTAÇÃO: Paciente Editado por ID 45" na trilha de auditoria.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História independente e negociável de tamanho reduzido.
@@ -144,9 +181,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero inativar logicamente o registro e o perfil de acesso dos pacientes, para revogar seu acesso e suspender o acompanhamento sem perder o histórico clínico."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico efetuando uma exclusão, **Quando** solicito excluir um paciente, **Então** o sistema realiza a inativação lógica do registro no banco de dados sem removê-lo fisicamente.
-    * [x] **Dado que** sou um médico inativando um paciente, **Quando** confirmo a inativação, **Então** o sistema altera o status do perfil de acesso dele para "Inativo".
-    * [x] **Dado que** sou um paciente inativo, **Quando** tento efetuar login no sistema, **Então** o sistema bloqueia meu acesso de imediato.
+    * [x] **Dado que** o médico solicita a exclusão do paciente "João da Silva", **Quando** clico em "Excluir", **Então** o sistema executa a inativação lógica, mantendo o registro no banco de dados com a flag `deleted_at`.
+    * [x] **Dado que** o médico inativa o paciente, **Quando** confirmo a inativação, **Então** o sistema define o campo `status` do paciente como "Inativo".
+    * [x] **Dado que** o paciente "João da Silva" está com status "Inativo", **Quando** tento realizar login com as credenciais dele, **Então** o sistema recusa o acesso e exibe a mensagem "Usuário inativo. Acesso bloqueado".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco claro no valor de segurança e integridade de dados (INVEST).
@@ -184,9 +221,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero buscar e listar pacientes e perfis utilizando filtros (ex: nome, CPF, status de acesso), para gerenciar as credenciais e localizar o prontuário da pessoa atendida."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico na tela de busca, **Quando** pesquiso por nome parcial, nome completo ou CPF exato, **Então** o sistema retorna a listagem de pacientes correspondentes.
-    * [x] **Dado que** sou um médico visualizando a listagem de busca, **Quando** o sistema carrega os resultados, **Então** ele exibe claramente o status de acesso (Ativo/Inativo) de cada paciente no grid principal.
-    * [x] **Dado que** sou um médico consultando uma base volumosa de pacientes, **Quando** realizo uma busca, **Então** o sistema exibe os resultados com paginação ou carregamento sob demanda para otimizar a performance.
+    * [x] **Dado que** o médico busca um paciente, **Quando** pesquiso por "João" ou "123.456.789-00", **Então** o sistema retorna a lista contendo "João da Silva".
+    * [x] **Dado que** o médico visualiza os resultados da busca, **Quando** o grid é renderizado, **Então** o sistema exibe o nome do paciente and uma badge verde "Ativo" ou cinza "Inativo" ao lado.
+    * [x] **Dado que** o médico busca em uma base com 1000 pacientes, **Quando** a busca é executada, **Então** o sistema exibe apenas os 10 primeiros registros e habilita os botões de navegação de página.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena e testável de busca de registros.
@@ -226,9 +263,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico ou administrador da clínica, eu quero exportar a base de dados completa dos pacientes em formato JSON, para garantir a portabilidade das informações e evitar o aprisionamento tecnológico (vendor lock-in)."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico ou administrador autenticado, **Quando** solicito a exportação de dados, **Então** o sistema gera um arquivo JSON estruturado contendo a base completa dos pacientes.
-    * [x] **Dado que** sou um usuário exportando a base, **Quando** clico no botão de exportação, **Então** o navegador inicia localmente o download imediato do arquivo JSON.
-    * [x] **Dado que** sou um usuário gerando uma exportação de dados, **Quando** a exportação é concluída, **Então** o sistema registra um log de auditoria no banco de dados com a identificação de quem realizou a ação.
+    * [x] **Dado que** o administrador realiza login, **Quando** clico em "Exportar Base", **Então** o sistema gera o arquivo "pacientes_backup.json" contendo todos os dados cadastrais.
+    * [x] **Dado que** a exportação é iniciada, **Quando** o arquivo JSON fica pronto, **Então** o navegador inicia o download automático de "pacientes_backup.json".
+    * [x] **Dado que** a exportação é concluída, **Quando** o arquivo é baixado, **Então** o sistema grava o log "EXPORTAÇÃO: Base de pacientes baixada por Admin ID 2" na trilha de auditoria.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História independente voltada a portabilidade de dados.
@@ -266,9 +303,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero registrar prontuários estruturados no padrão SOAP no histórico clínico do paciente (preenchendo dados subjetivos, objetivos, avaliação e plano, incluindo anamnese em texto livre e a anexação de exames/documentos), para centralizar e manter o registro completo das informações de atendimento."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico registrando um atendimento, **Quando** preencho a ficha clínica, **Então** o sistema exige e valida a inserção de dados nos eixos estruturados do SOAP (Subjetivo, Objetivo, Avaliação, Plano).
-    * [x] **Dado que** sou um médico acessando um prontuário assinado, **Quando** tento editar ou excluir o documento diretamente, **Então** o sistema bloqueia a ação para garantir a imutabilidade do registro original.
-    * [x] **Dado que** sou um médico necessitando retificar um prontuário já assinado, **Quando** gravo uma alteração, **Então** o sistema cria uma nova versão/aditivo vinculada, mantendo o histórico de versões anteriores intacto no banco de dados.
+    * [x] **Dado que** o médico registra a ficha SOAP do paciente, **Quando** deixa um dos campos Subjetivo, Objetivo, Avaliação ou Plano vazio, **Então** o sistema impede o salvamento e exibe o erro "O campo [nome_do_campo] é obrigatório".
+    * [x] **Dado que** o médico visualiza um prontuário com o status "Assinado", **Quando** clico nos botões de edição ou exclusão, **Então** o sistema bloqueia a ação e exibe o aviso "Este prontuário está assinado e não pode ser alterado".
+    * [x] **Dado que** o médico necessita retificar um prontuário assinado, **Quando** gravo um aditivo explicativo, **Então** o sistema gera a versão "v2" vinculada à "v1" original na blockchain.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História central de negócio (SOAP) refinada e fatiada.
@@ -306,9 +343,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero visualizar uma linha do tempo cronológica com todo o histórico clínico do paciente, para compreender rapidamente a evolução do quadro de saúde e os tratamentos anteriores durante a consulta."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico visualizando o prontuário do paciente, **Quando** acesso o histórico clínico, **Então** o sistema exibe os atendimentos e registros organizados por data de forma decrescente (do mais recente ao mais antigo).
-    * [x] **Dado que** sou um médico consultando o histórico clínico, **Quando** visualizo as entradas da linha do tempo, **Então** o sistema identifica claramente o tipo de registro (SOAP, Prescrição, Anexo) e o médico autor de cada ação.
-    * [x] **Dado que** sou um médico consultando a linha do tempo em múltiplos dispositivos, **Quando** a tela é redimensionada, **Então** a interface adapta seu layout responsivamente sem perda de conteúdo.
+    * [x] **Dado que** o médico abre o perfil do paciente "João da Silva", **Quando** acesso o histórico clínico, **Então** o sistema exibe o atendimento de "01/07/2026" acima do atendimento de "15/06/2026".
+    * [x] **Dado que** o médico visualiza a linha do tempo, **Quando** os registros são exibidos, **Então** o sistema renderiza uma badge "Prescrição" and o nome "Dr. Rogério Duarte" no item correspondente.
+    * [x] **Dado que** o médico consulta a linha do tempo, **Quando** a largura da tela é alterada para "375px" (mobile), **Então** o menu lateral é ocultado e os elementos são empilhados verticalmente.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História voltada à usabilidade clínica e leitura rápida.
@@ -346,9 +383,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero assinar digitalmente o prontuário utilizando um certificado padrão ICP-Brasil, para garantir a autoria, a integridade e a validade jurídica do atendimento médico realizado."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico acionando a assinatura de um prontuário, **Quando** clico em assinar, **Então** o sistema apresenta um modal de confirmação com a visualização estruturada dos dados clínicos antes de solicitar o acionamento da senha do certificado.
-    * [x] **Dado que** sou um médico assinando o documento, **Quando** submeto o certificado ICP-Brasil, **Então** o sistema valida sua vigência e recusa a assinatura se o certificado estiver expirado ou revogado.
-    * [x] **Dado que** sou um médico com prontuário assinado, **Quando** realizo a exportação do prontuário para PDF, **Então** o sistema estampa no rodapé a chancela visual da assinatura digital qualificada e o hash de integridade.
+    * [x] **Dado que** o médico aciona a assinatura do prontuário, **Quando** clico em "Assinar", **Então** o sistema abre um modal com o resumo dos dados estruturados do SOAP para revisão prévia.
+    * [x] **Dado que** o médico insere um certificado digital no modal, **Quando** a data de validade do certificado é "31/12/2025" (expirado), **Então** o sistema rejeita o certificado e exibe o erro "Certificado expirado".
+    * [x] **Dado que** o médico exporta o prontuário assinado, **Quando** o arquivo PDF é gerado, **Então** o sistema insere o rodapé contendo "Assinado digitalmente por Dr. Rogério Duarte - Hash SHA-256: e3b0c442...".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História refinada com restrições jurídicas/regulatórias claras.
@@ -389,9 +426,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero gerar e exportar um arquivo PDF contendo o prontuário completo do paciente, para facilitar o compartilhamento físico, arquivamento ou a entrega do documento ao próprio paciente quando solicitado."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico solicitando a exportação, **Quando** escolho baixar o prontuário, **Então** o sistema gera um arquivo PDF estruturado de acordo com o padrão clínico da clínica.
-    * [x] **Dado que** sou um médico visualizando o prontuário exportado, **Quando** verifico as páginas do PDF, **Então** o sistema estampa o hash SHA-256 de integridade e a chancela da assinatura digital qualificada no rodapé.
-    * [x] **Dado que** sou um médico exportando o PDF do prontuário, **Quando** a exportação é iniciada, **Então** o sistema realiza o processamento local do PDF através do navegador com a biblioteca frontend.
+    * [x] **Dado que** o médico está na tela de histórico do paciente, **Quando** clico em "Exportar PDF", **Então** o sistema gera o arquivo "prontuario_joao.pdf" no formato A4 com o logo da clínica.
+    * [x] **Dado que** o médico abre o PDF exportado, **Quando** visualizo a folha, **Então** o sistema exibe no rodapé o hash "SHA-256: a1b2c3d4..." e a chancela de assinatura.
+    * [x] **Dado que** a exportação do prontuário é iniciada, **Quando** o processamento ocorre no frontend, **Então** o navegador inicia o download automático de "prontuario_joao.pdf" sem recarregar a página.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História testável com valor direto ao compartilhamento de dados.
@@ -429,9 +466,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero visualizar um calendário semanal das minhas consultas, para ter uma visão clara e organizada da minha agenda e planejar meu dia de trabalho."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico na tela de agenda, **Quando** acesso o calendário, **Então** o sistema exibe os compromissos em uma grade semanal com escala de segunda-feira a sábado.
-    * [x] **Dado que** sou um médico gerenciando meus horários, **Quando** clico nos botões de navegação, **Então** o sistema alterna o calendário entre a semana atual, semanas anteriores e semanas posteriores.
-    * [x] **Dado que** sou um médico olhando os blocos do calendário, **Quando** há consultas agendadas, **Então** o sistema renderiza o nome do paciente, horário de início e o status atual da consulta na célula correspondente.
+    * [x] **Dado que** o médico acessa a tela de agenda, **Quando** clico no calendário, **Então** o sistema renderiza uma tabela de 6 colunas, de "Segunda-feira" a "Sábado".
+    * [x] **Dado que** o médico visualiza a semana atual, **Quando** clico no botão "Próxima Semana", **Então** o calendário avança as datas em 7 dias exibindo a grade do próximo período.
+    * [x] **Dado que** o médico possui um agendamento na segunda-feira às 14:00, **Quando** a grade é exibida, **Então** a célula correspondente exibe "14:00 - João da Silva [Agendado]".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco no fluxo de agendamentos e dia de trabalho médico.
@@ -469,9 +506,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero agendar novas consultas e/ou teleconsultas, vinculando paciente, data e horário, para gerenciar a marcação de atendimentos de forma eficiente."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico efetuando uma marcação, **Quando** tento agendar uma consulta para uma data e horário em que já há outro agendamento ativo, **Então** o sistema rejeita a operação devido ao conflito de horários.
-    * [x] **Dado que** sou um médico na tela de agendamento, **Quando** crio uma consulta, **Então** o sistema permite selecionar se o atendimento será presencial ou por telemedicina (teleconsulta).
-    * [x] **Dado que** sou um médico agendando um compromisso, **Quando** preencho o paciente, **Então** o sistema exige que ele seja selecionado de forma vinculada a partir da base de pacientes cadastrados.
+    * [x] **Dado que** o médico possui uma consulta ativa às 14:00 do dia 01/07/2026, **Quando** tento cadastrar outra consulta para a mesma hora e data, **Então** o sistema recusa o agendamento e exibe o erro "Horário indisponível".
+    * [x] **Dado que** o médico preenche o formulário de consulta, **Quando** seleciono o tipo de atendimento, **Então** o sistema permite escolher entre "Presencial" ou "Telemedicina".
+    * [x] **Dado que** o médico realiza o agendamento de uma consulta, **Quando** digito no campo Paciente, **Então** o sistema exibe sugestões de busca e vincula obrigatoriamente a um ID existente na base de pacientes.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena e negociável baseada em lógica de indisponibilidade.
@@ -509,9 +546,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero visualizar a listagem de consultas agendadas para o dia atual, para acompanhar meu fluxo de trabalho."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico na tela inicial do sistema, **Quando** faço login na dashboard, **Então** o sistema carrega automaticamente a listagem de consultas do dia atual.
-    * [x] **Dado que** sou um médico visualizando as consultas do dia, **Quando** a lista é exibida, **Então** o sistema ordena os agendamentos cronologicamente a partir do horário de atendimento.
-    * [x] **Dado que** sou um médico gerenciando o fluxo diário, **Quando** olho o grid de consultas, **Então** o sistema exibe os dados do paciente e o status de andamento (Agendado, Em atendimento, Finalizado).
+    * [x] **Dado que** o médico faz login no sistema em "01/07/2026", **Quando** a tela inicial carrega, **Então** o sistema exibe apenas as consultas cuja data seja igual a "01/07/2026".
+    * [x] **Dado que** o médico possui consultas às 09:00 e às 14:00, **Quando** o painel é carregado, **Então** a consulta das 09:00 aparece no topo da lista antes da consulta das 14:00.
+    * [x] **Dado que** o médico gerencia os atendimentos do dia, **Quando** abre a lista de consultas, **Então** o sistema exibe uma linha com "João da Silva - 09:00 - [Agendado]" e outra com "Maria Oliveira - 10:00 - [Finalizado]".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena voltada a organização de fluxo diário.
@@ -549,9 +586,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero alterar o status de uma consulta do dia atual (ex: Agendado, Em atendimento, Finalizado), para atualizar o andamento do atendimento em tempo real."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um usuário tentando alterar uma consulta, **Quando** tento modificar seu status, **Então** o sistema valida minhas permissões e recusa se eu não for o médico responsável ou uma secretária autorizada da clínica.
-    * [x] **Dado que** sou um médico iniciando um atendimento, **Quando** altero o status da consulta para "Em atendimento", **Então** o sistema me redireciona automaticamente para a tela do prontuário clínico estruturado do paciente.
-    * [x] **Dado que** sou um médico concluindo uma consulta, **Quando** mudo o status para "Finalizado", **Então** o sistema bloqueia novas alterações de status para esse agendamento.
+    * [x] **Dado que** o usuário realiza login com o perfil "Recepcionista", **Quando** tenta alterar o status de uma consulta de outro profissional não autorizado, **Então** o sistema impede a alteração e exibe a mensagem "Ação não permitida".
+    * [x] **Dado que** o médico visualiza a lista de consultas, **Quando** altero o status da consulta do "João" para "Em atendimento", **Então** o sistema redireciona o médico para a página `/paciente/123/prontuario`.
+    * [x] **Dado que** a consulta do "João" está com status "Finalizado", **Quando** tento alterar o status para "Agendado", **Então** o sistema bloqueia a edição e exibe o erro "Consulta finalizada não pode ter o status alterado".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena baseada em fluxo nominal de consulta.
@@ -589,9 +626,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero elaborar receitas médicas digitais no sistema, para formalizar a prescrição de medicamentos de forma clara e padronizada."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico gerando uma receita, **Quando** preencho a prescrição, **Então** o sistema exibe obrigatoriamente meu CRM no formato `CRM-UF` no topo do documento.
-    * [x] **Dado que** sou um médico gerando uma receita, **Quando** o layout é montado, **Então** o sistema insere o cabeçalho estruturado com dados do consultório, do médico e dados de identificação do paciente.
-    * [x] **Dado que** sou um médico redigindo a receita, **Quando** prescrevo os itens, **Então** o sistema exige o preenchimento detalhado do medicamento, da dosagem e das vias de administração.
+    * [x] **Dado que** o médico Dr. Rogério Duarte com CRM "123456-DF" elabora uma receita, **Quando** a receita é preenchida, **Então** o topo do documento exibe "CRM-DF: 123456".
+    * [x] **Dado que** o médico elabora uma receita para o paciente "João da Silva", **Quando** a receita é visualizada, **Então** o cabeçalho exibe "Consultório ProntoCare", "Médico: Dr. Rogério Duarte" e "Paciente: João da Silva".
+    * [x] **Dado que** o médico insere os itens da receita, **Quando** deixa os campos de medicamento, dosagem ou via de administração vazios, **Então** o sistema impede o salvamento e exibe o erro "O preenchimento do medicamento, dosagem e via de administração é obrigatório".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História central de emissão de prescrição estruturada.
@@ -629,9 +666,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero assinar digitalmente a receita utilizando um certificado padrão ICP-Brasil, para garantir a autenticidade e a validade legal da prescrição."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico assinando a receita, **Quando** aciono a assinatura com certificado ICP-Brasil, **Então** o sistema estampa o carimbo/selo de assinatura eletrônica qualificada no rodapé do PDF gerado.
-    * [x] **Dado que** sou um médico executando a assinatura da receita, **Quando** submeto o certificado, **Então** o sistema valida sua autenticidade e status ativo junto à ICP-Brasil.
-    * [x] **Dado que** sou um médico com receita assinada digitalmente, **Quando** o processo é concluído, **Então** o sistema bloqueia qualquer modificação ou edição no corpo do documento de receita.
+    * [x] **Dado que** o médico aciona a assinatura da receita, **Quando** clico em "Assinar com ICP-Brasil", **Então** o sistema gera o PDF da receita com a marca "Assinado digitalmente via ICP-Brasil" no rodapé.
+    * [x] **Dado que** o médico insere o certificado digital, **Quando** a autoridade certificadora valida o token junto ao barramento da ICP-Brasil, **Então** o sistema exibe "Assinatura realizada com sucesso".
+    * [x] **Dado que** a receita do paciente "João da Silva" está com status "Assinada", **Quando** tento editar as dosagens prescritas, **Então** o sistema desabilita os botões de edição e exibe o aviso "Receita assinada não pode ser alterada".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História fatiada para a segurança de receita digital (INVEST).
@@ -669,9 +706,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero salvar a receita gerada em formato PDF, para imprimi-la ou enviá-la ao paciente de forma segura."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico solicitando a emissão, **Quando** exporto a receita para PDF, **Então** o sistema gera um arquivo estruturado compatível com o tamanho padrão A4.
-    * [x] **Dado que** sou um médico baixando a receita, **Quando** clico em exportar, **Então** o navegador inicia automaticamente o download do arquivo PDF.
-    * [x] **Dado que** sou um médico visualizando o PDF gerado da receita, **Quando** o arquivo é aberto, **Então** ele exibe o carimbo da chancela visual de assinatura eletrônica qualificada no rodapé.
+    * [x] **Dado que** o médico solicita o download da receita, **Quando** clico em "Gerar PDF", **Então** o sistema formata o documento "receita_joao.pdf" nas dimensões 210mm x 297mm (tamanho A4).
+    * [x] **Dado que** o PDF da receita é gerado com sucesso, **Quando** o arquivo fica pronto, **Então** o navegador inicia o download de "receita_joao.pdf" de forma automática.
+    * [x] **Dado que** o médico abre o arquivo "receita_joao.pdf" baixado, **Quando** rola até o rodapé, **Então** o documento exibe o selo oficial de assinatura eletrônica da ICP-Brasil.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena voltada a geração de arquivo local (INVEST).
@@ -709,8 +746,8 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero que o sistema analise a prescrição em tempo real, utilizando IA para alertar sobre interações medicamentosas, garantindo a segurança do paciente."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [ ] **Dado que** sou um médico prescrevendo medicamentos, **Quando** insiro os itens clínicos no formulário, **Então** o sistema realiza chamadas assíncronas para a API de IA farmacológica sem travar a interface.
-    * [ ] **Dado que** sou um médico prescrevendo múltiplos medicamentos, **Quando** há alguma incompatibilidade medicamentosa grave, **Então** o sistema exibe alertas visuais em destaque na tela de prescrição.
+    * [ ] **Dado que** o médico digita os itens de prescrição, **Quando** insiro "Dipirona 500mg", **Então** o sistema envia a requisição para o serviço de IA em segundo plano e mantém a digitação fluida.
+    * [ ] **Dado que** o médico prescreve "Ibuprofeno" e "Varfarina", **Quando** a análise de incompatibilidade é concluída, **Então** o sistema abre um alerta vermelho na tela sinalizando "Risco de hemorragia".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [ ] **Estrutura INVEST:** História de alta complexidade e fora do MVP.
@@ -748,9 +785,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero manter um log visível de todas as receitas anteriormente prescritas ao paciente, para consultar o histórico de tratamentos ao longo do tempo."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico acessando o prontuário, **Quando** abro a aba de histórico de receitas, **Então** o sistema lê todas as receitas cadastradas a partir do banco de dados local IndexedDB.
-    * [x] **Dado que** sou um médico visualizando a aba de receitas, **Quando** a lista é exibida, **Então** o sistema exibe as prescrições organizadas em ordem cronológica de emissão.
-    * [x] **Dado que** sou um médico consultando o histórico de receitas, **Quando** clico em uma receita antiga, **Então** o sistema permite a visualização detalhada de seus dados e a re-emissão de seu PDF.
+    * [x] **Dado que** o médico abre o perfil do paciente "João da Silva", **Quando** clico na aba "Histórico de Receitas", **Então** o sistema lê a tabela local `receitas` do Dexie.js sem efetuar requisições ao servidor.
+    * [x] **Dado que** o médico visualiza a aba de receitas, **Quando** o histórico é carregado, **Então** o sistema ordena a receita emitida em "01/07/2026" antes da receita de "15/06/2026".
+    * [x] **Dado que** o médico clica na receita emitida em "15/06/2026", **Quando** seleciono "Visualizar", **Então** o sistema abre uma pré-visualização da receita e disponibiliza o botão "Baixar PDF".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco no histórico de receitas clínicas (INVEST).
@@ -788,8 +825,8 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como médico, eu quero que o sistema gere o Termo de Consentimento (TCLE) e permita sua assinatura digital (ICP-Brasil), para formalizar o aceite do paciente antes do atendimento e cumprir exigências legais."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [ ] **Dado que** sou um médico agendando um procedimento, **Quando** solicito a criação do termo de consentimento, **Então** o sistema gera o texto do TCLE estruturado com os dados de identificação do paciente.
-    * [ ] **Dado que** sou um médico e paciente na sessão clínica, **Quando** assinamos o documento digitalmente, **Então** o sistema gera a trilha de chaves de assinatura conjunta do médico e aceite do paciente.
+    * [ ] **Dado que** o médico solicita o termo de consentimento, **Quando** clico em "Gerar TCLE", **Então** o sistema monta o documento associando o nome "João da Silva" e o CPF "123.456.789-00" ao texto padrão do termo.
+    * [ ] **Dado que** o médico e o paciente iniciam a assinatura do TCLE, **Quando** submetem os certificados digitais, **Então** o sistema gera as chaves de assinatura conjunta do médico e o registro de aceite de "João da Silva".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [ ] **Estrutura INVEST:** História despriorizada do MVP letivo.
@@ -827,9 +864,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como administrador, eu quero cadastrar novos perfis de acesso de médicos, para registrar novos profissionais no sistema."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um usuário no painel administrativo, **Quando** tento cadastrar um perfil médico, **Então** o sistema verifica minhas permissões e recusa se meu perfil não for Administrador.
-    * [x] **Dado que** sou um administrador cadastrando um médico, **Quando** insiro os dados, **Então** o sistema exige obrigatoriamente o CRM no formato `CRM-UF`.
-    * [x] **Dado que** sou um administrador salvando o cadastro de médico, **Quando** confirmo o formulário, **Então** o sistema valida o CPF e CRM do profissional impedindo duplicidades na base de dados.
+    * [x] **Dado que** o usuário logado possui o perfil "Médico", **Quando** tenta acessar a página administrativa de cadastro `/admin/medicos/novo`, **Então** o sistema bloqueia o acesso e redireciona para a dashboard principal.
+    * [x] **Dado que** o administrador cadastra o perfil do profissional, **Quando** preenche o campo CRM com "12345" (sem UF), **Então** o sistema impede o salvamento e exibe o erro "O campo CRM deve seguir o formato CRM-UF (ex: 12345-DF)".
+    * [x] **Dado que** o administrador insere os dados de um novo médico, **Quando** digita um CPF "123.456.789-00" já cadastrado, **Então** o sistema impede a gravação e exibe o erro "Médico com este CPF já cadastrado".
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco em permissões de perfil administrativo.
@@ -869,9 +906,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como administrador, eu quero editar os perfis de acesso de médicos, para atualizar seus dados cadastrais e permissões."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um usuário no sistema, **Quando** tento editar as informações de um perfil médico, **Então** o sistema valida minhas credenciais e impede o acesso se eu não for Administrador.
-    * [x] **Dado que** sou um administrador editando o cadastro de médico, **Quando** altero as informações, **Então** o sistema exige o formato obrigatório `CRM-UF` para o registro de conselho de classe.
-    * [x] **Dado que** sou um administrador salvando as alterações de perfil médico, **Quando** a edição é concluída, **Então** o sistema grava os logs de mutação cadastral na trilha de auditoria.
+    * [x] **Dado que** o usuário possui o perfil "Recepcionista", **Quando** tenta acessar a rota de edição de médicos `/admin/medicos/12/editar`, **Então** o sistema impede o acesso e exibe "Ação restrita a Administradores".
+    * [x] **Dado que** o administrador edita as informações do médico, **Quando** limpa o sufixo da UF deixando apenas "54321", **Então** o sistema invalida o campo e exibe o erro "O CRM-UF é obrigatório".
+    * [x] **Dado que** o administrador conclui a edição do médico ID 12, **Quando** clico em "Salvar", **Então** o sistema insere o log "MUTAÇÃO: Cadastro do Médico ID 12 editado por Admin ID 2" na trilha de auditoria.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena e negociável voltada a permissões.
@@ -909,9 +946,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como administrador, eu quero inativar logicamente perfis de acesso de médicos, para suspender o acesso de profissionais que não atuam mais no sistema."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um administrador removendo um profissional, **Quando** inativo o perfil de um médico, **Então** o sistema realiza a inativação lógica do registro no banco de dados sem deletar fisicamente.
-    * [x] **Dado que** sou um médico com perfil inativado pelo administrador, **Quando** tento efetuar login no sistema, **Então** o sistema bloqueia meu acesso de imediato.
-    * [x] **Dado que** sou um usuário sem perfil administrador, **Quando** tento inativar a conta de um médico, **Então** o sistema recusa e bloqueia a operação.
+    * [x] **Dado que** o administrador inativa o médico "Dr. Renato Santos", **Quando** clico em "Inativar", **Então** o sistema define a flag `status` como "Inativo" na tabela `medicos` do banco de dados, sem remover o registro.
+    * [x] **Dado que** o médico "Dr. Renato Santos" está com status "Inativo", **Quando** tenta efetuar login com suas credenciais, **Então** o sistema recusa a autenticação e exibe o erro "Acesso bloqueado. Profissional inativo".
+    * [x] **Dado que** o usuário logado possui o perfil "Recepcionista", **Quando** envia uma requisição de inativação de médico, **Então** a API recusa a requisição e retorna o status `403 Forbidden`.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** Foco no bloqueio rápido de credenciais e segurança de acessos.
@@ -949,9 +986,9 @@ Abaixo está listada a especificação completa de cada história de usuário (U
     > "Como administrador, eu quero buscar e listar perfis de acesso de médicos, para gerenciar as credenciais e contas de profissionais do sistema."
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um administrador no painel de busca de profissionais, **Quando** filtro por nome ou número de conselho (CRM), **Então** o sistema exibe a lista de médicos cadastrados correspondentes.
-    * [x] **Dado que** sou um usuário comum do consultório, **Quando** tento buscar perfis médicos de forma administrativa, **Então** o sistema recusa o acesso de busca por restrição de perfil.
-    * [x] **Dado que** sou um administrador visualizando o grid de busca médica, **Quando** os resultados são carregados, **Então** o sistema exibe de forma destacada o status ativo/inativo de cada profissional listado.
+    * [x] **Dado que** o administrador está na tela de pesquisa de profissionais, **Quando** digito "Renato" ou "12345-DF", **Então** o sistema exibe na lista o registro de "Dr. Renato Santos".
+    * [x] **Dado que** o usuário comum tenta acessar a lista de busca administrativa de médicos, **Quando** carrega a rota `/admin/medicos`, **Então** o sistema redireciona o usuário para a página de acesso negado.
+    * [x] **Dado que** o administrador visualiza a tabela de busca de médicos, **Quando** o grid carrega, **Então** o sistema exibe o nome do profissional e uma sinalização visual "Ativo" ou "Inativo" na coluna de status.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] **Estrutura INVEST:** História pequena voltada a visualização administrativa.
@@ -1035,8 +1072,8 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve registrar um log rastreável com hashing em todas as ações de criação, edição e exclusão feitas pelos usuários, garantindo a auditabilidade de mutações de dados.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um usuário realizando operações cadastrais ou clínicas, **Quando** insiro, edito ou excluo registros, **Então** o sistema grava automaticamente um registro contendo timestamp, ID do usuário, tipo de alteração e hash SHA-256 do estado anterior e atual.
-    * [x] **Dado que** sou um médico visualizando o histórico do paciente, **Quando** acesso o prontuário, **Então** o sistema integra os logs no frontend permitindo verificar visualmente a integridade da blockchain.
+    * [x] **Dado que** o médico realiza o salvamento de um prontuário clínico, **Quando** a operação de gravação é finalizada, **Então** o sistema registra na tabela de auditoria a linha contendo o timestamp, `medico_id`, o tipo "CRIAÇÃO" e o hash "SHA-256: f1e2d3...".
+    * [x] **Dado que** o médico abre o prontuário do paciente "João da Silva", **Quando** visualizo a seção de integridade, **Então** o sistema renderiza uma linha do tempo com ícones verdes indicando a validação de hash bem-sucedida de cada registro.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Critérios de integridade definidos de forma clara.
@@ -1068,8 +1105,8 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > As senhas e demais dados sensíveis de acesso devem ser armazenados de forma criptografada no banco de dados usando `bcrypt`.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um usuário criando ou alterando credenciais, **Quando** digito minha senha, **Então** o sistema a armazena aplicando o algoritmo bcrypt com salt e fator de custo seguro.
-    * [x] **Dado que** sou um usuário trafegando dados, **強 Quando** a senha de acesso é enviada ou salva, **Então** o sistema garante que ela nunca seja exibida ou transmitida em texto legível.
+    * [x] **Dado que** o usuário define a senha como "ProntoCare123!" no cadastro, **Quando** clico em salvar, **Então** o sistema armazena no banco de dados o valor gerado "$2b$12$Lh..." pelo algoritmo bcrypt.
+    * [x] **Dado que** o usuário realiza login no sistema, **Quando** a requisição HTTP de autenticação é enviada, **Então** a senha trafega criptografada na camada HTTPS e o campo de senha no banco nunca é exposto em texto claro.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Biblioteca de criptografia e fator de segurança de chaves definidos.
@@ -1100,9 +1137,9 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve ser capaz de operar localmente e salvar dados mesmo sem conexão com a internet (banco local offline via Dexie.js).
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico atendendo em local sem internet, **Quando** acesso o prontuário eletrônico do paciente, **Então** o sistema permite a leitura e inserção de dados localmente de forma ininterrupta.
-    * [x] **Dado que** sou um usuário operando o ProntoCare, **Quando** o estado de conectividade muda, **Então** o sistema exibe na tela um indicador visual claro (barra de status) com o estado de rede e sincronização.
-    * [x] **Dado que** sou um médico inserindo dados em modo desconectado, **Quando** salvo o prontuário, **Então** o sistema realiza atualizações otimistas na tela e salva temporariamente os registros na fila local do IndexedDB.
+    * [x] **Dado que** a rede de internet é desconectada no tablet do médico, **Quando** abro a tela do prontuário do paciente "João da Silva", **Então** o sistema lê os dados salvos localmente e permite realizar novas anotações SOAP.
+    * [x] **Dado que** a conectividade do sistema é interrompida, **Quando** o navegador detecta a queda da rede, **Então** a barra superior muda de cor para vermelho e exibe o aviso "Modo Offline - Sincronização pendente".
+    * [x] **Dado que** o médico salva um prontuário em modo desconectado, **Quando** clico em "Salvar", **Então** o sistema exibe a mensagem "Salvo no dispositivo" e enfileira a requisição na base local `Dexie.js`.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Arquitetura offline-first e persistência IndexedDB documentadas.
@@ -1133,8 +1170,8 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve possuir uma rotina automática que realiza o backup diário dos dados para a nuvem quando houver conexão.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico com dados pendentes de sincronização, **Quando** a conexão com a internet é restabelecida, **Então** o sistema executa automaticamente a sincronização da fila IndexedDB em segundo plano com o servidor.
-    * [x] **Dado que** sou um médico com dados em sincronização, **Quando** ocorrem falhas temporárias de rede, **Então** o sistema retenta a transmissão silenciosamente em segundo plano sem disparar popups invasivos de erro.
+    * [x] **Dado que** o tablet do médico possui 3 requisições salvas na fila IndexedDB, **Quando** a internet é restabelecida, **Então** o service worker envia as requisições de forma assíncrona esvaziando a fila de pendências.
+    * [x] **Dado que** a sincronização em segundo plano está em andamento, **Quando** ocorre uma oscilação na rede que derruba a conexão por 5 segundos, **Então** o sistema aguarda e retenta a sincronização silenciosamente sem exibir popups de erro para o médico.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Regras de resolução de conflitos e sincronização especificadas.
@@ -1165,8 +1202,8 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve estar em conformidade com as resoluções do CFM, garantindo que seus módulos cumpram os requisitos do NGS exigidos para a certificação da SBIS.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico com prontuário assinado eletronicamente, **Quando** tento alterar ou retificar dados desse prontuário, **Então** o sistema impede a edição direta e exige a criação de uma nova versão vinculada (histórico).
-    * [x] **Dado que** sou um médico necessitando do arquivamento legal, **Quando** exporto prontuários ou backups, **Então** o sistema gera arquivos estruturados de longo prazo suportando a norma de guarda por 20 anos.
+    * [x] **Dado que** o prontuário do paciente "João da Silva" está assinado digitalmente, **Quando** clico no campo SOAP para tentar reescrever o texto da anamnese, **Então** o sistema desabilita o campo e exibe o botão "Adicionar Retificação".
+    * [x] **Dado que** o médico executa a exportação histórica de prontuários, **Quando** a rotina de backup gera os arquivos compactados, **Então** os relatórios são salvos em formato PDF/A estruturado legível por leitores padrão de longo prazo.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Mapeamento dos requisitos do NGS da SBIS efetuado.
@@ -1199,8 +1236,8 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve adaptar seu layout automaticamente de acordo com a resolução do dispositivo utilizado (Desktop, Tablet, Mobile), garantindo a legibilidade e usabilidade da interface clínica.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um profissional de saúde acessando o ProntoCare de um celular, tablet ou desktop, **Quando** redimensiono o navegador ou alterno entre dispositivos, **Então** o layout se reorganiza responsivamente sem cortar elements ou quebrar textos.
-    * [x] **Dado que** sou um médico visualizando prontuários ou agendas, **Quando** acesso o painel em telas menores, **Então** o sistema oculta menus laterais em um menu hambúrguer para otimizar a área útil de leitura.
+    * [x] **Dado que** a interface é aberta em uma tela com largura de "360px" (viewport de celular), **Quando** a página carrega, **Então** o sistema reorganiza os botões e campos de texto em coluna única mantendo o padding legível.
+    * [x] **Dado que** a agenda é exibida em um tablet com largura de "768px", **Quando** a tela é carregada, **Então** o menu de navegação lateral se recolhe e o botão de menu "hambúrguer" fica visível no topo da página.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Grade responsiva e breakpoints de CSS definidos no Design System.
@@ -1231,9 +1268,9 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve gerar um hash de integridade SHA-256 para cada prontuário exportado em PDF, processado do lado do cliente através da Web Crypto API.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico exportando um prontuário clínico, **Quando** solicito a geração do PDF, **Então** o sistema computa localmente o hash SHA-256 do arquivo através da Web Crypto API do navegador.
-    * [x] **Dado que** sou um médico abrindo o PDF exportado, **Quando** visualizo a página gerada, **Então** o sistema estampa o hash de integridade de forma legível no rodapé (footer) do documento.
-    * [x] **Dado que** sou um médico concluindo a exportação, **Quando** o PDF do prontuário é gerado, **Então** o sistema registra o hash correspondente na blockchain de integridade para fins de auditabilidade.
+    * [x] **Dado que** o prontuário de "João da Silva" é gerado como um array de bytes no navegador, **Quando** a exportação para PDF é iniciada, **Então** a função `crypto.subtle.digest` calcula o hash SHA-256 del conteúdo.
+    * [x] **Dado que** o médico abre o arquivo `prontuario_joao.pdf` gerado, **Quando** visualizo a parte inferior da folha, **Então** o sistema estampa o texto "Hash de Integridade (SHA-256): 9f86d081...".
+    * [x] **Dado que** o PDF é exportado localmente, **Quando** o processo é concluído, **Então** o sistema envia uma requisição HTTP contendo o hash do PDF para salvamento na tabela `blockchain` do banco de dados.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Biblioteca de criptografia nativa (Web Crypto API) mapeada.
@@ -1264,8 +1301,8 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
     > O sistema deve utilizar infraestrutura de chaves públicas padrão ICP-Brasil para a realização de assinaturas digitais, garantindo a autoria, a integridade e o não-repúdio dos documentos gerados.
 
     #### :material-scale-balance: Critérios de Aceitação (Gherkin)
-    * [x] **Dado que** sou um médico efetuando assinaturas válidas, **Quando** assino digitalmente uma receita ou prontuário, **Então** o sistema exige e valida o uso de certificados digitais do padrão ICP-Brasil (A3/PSC).
-    * [x] **Dado que** sou um médico concluindo uma assinatura, **Quando** o certificado é validado e aplicado ao documento, **Então** o sistema sela as chaves e impede qualquer alteração posterior no conteúdo assinado.
+    * [x] **Dado que** o médico insere um certificado no modal de assinatura, **Quando** clico em assinar, **Então** o sistema valida a cadeia de confiança do certificado A3/PSC contra as ACs autorizadas da ICP-Brasil.
+    * [x] **Dado que** o certificado digital del médico é verificado com sucesso, **Quando** a assinatura qualificada é vinculada ao prontuário, **Então** o status do registro muda para "Assinado" e a edição do conteúdo original é permanentemente bloqueada.
 
     #### :material-clipboard-check-outline: Definition of Ready (DoR)
     * [x] Bibliotecas de integração e conformidade regulatória com chaves ICP-Brasil mapeadas.
@@ -1299,6 +1336,7 @@ Abaixo está listada a especificação detalhada de conformidade de cada requisi
 | 2026-06-30 | 1.3 | Correção de quebras de formatação: remoção de invólucros HTML raw (`<div>`) que impediam o parser markdown de renderizar as listas e checklists de forma correta e elegante no MkDocs. | Prontuariantes |
 | 2026-06-30 | 1.4 | Transição de dropdowns HTML (`<details>`) para dropdowns nativos do Material for MkDocs (`???` e `??? success/danger`) indentados a 4 espaços, e substituição de todos os emojis por Material Icons oficiais (`:material-...:`). | Prontuariantes |
 | 2026-06-30 | 1.5 | Unificação do Sprint Backlog detalhado (USs, RNFs e revisões) diretamente no painel de progresso do projeto (`progresso/index.md`), eliminando arquivos redundantes. | Prontuariantes |
+| 2026-07-01 | 1.6 | Adição da Tabela Consolidadora de Feedback de Validação por US com diferenciação de tipos de artefatos e links diretos para atas e vídeos das sprints correspondentes. | Prontuariantes |
 
 
 <script>

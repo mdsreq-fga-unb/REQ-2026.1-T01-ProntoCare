@@ -26,9 +26,18 @@ Para garantir a estabilidade do ProntoCare, uma funcionalidade só será conside
 * **Rastreabilidade Verificada:** A entrega deve estar explicitamente vinculada à cadeia de valor do projeto, permitindo auditorias futuras através do mapeamento:
 > **OE → CP → RF → US → Critério de Aceitação → Teste → Entrega**
 
+### **9.3 Evidência de Validação Clínica e Controle de Prontidão (DoR)**
+
+Para fins de governança ágil e atendimento a requisitos de auditoria, detalham-se abaixo as evidências de validação das histórias clínicas com o cliente e a garantia de integridade do DoR para entrada em sprint:
+
+* **Evidência de Validação de Histórias Clínicas (Dr. Rogério):** A validação e o aceite dos critérios de aceitação e do escopo de todas as histórias clínicas (como prontuário SOAP, histórico clínico, receitas e segurança) ocorreram de forma integrada durante a **Reunião de Elicitação e Priorização do MVP (24/04/2026)** com o Dr. Rogério Duarte. Nessa reunião, o cliente realizou a priorização quantitativa por valores de negócio e homologou o escopo das USs que comporiam as sprints subsequentes.
+    * **Evidência Registrada:** [Ata da Reunião (Sprint 0)](../atas-e-videos/sprint-0.md) e a gravação em vídeo disponível em [Vídeo da Reunião de Elicitação (YouTube)](https://youtu.be/QuqCF0-1avU).
+* **Controle de Entrada em Sprint (USs sem DoR completo):** Não houve histórias de usuário (User Stories) que entraram em desenvolvimento sem o DoR completo. A conformidade com os critérios do DoR foi atestada e confirmada previamente como parte do DoR dos próprios requisitos funcionais associados (RFs), durante as dinâmicas de refinamento (grooming) e planejamento coletivo, assegurando que nenhuma funcionalidade clínica fosse iniciada sem o claro entendimento e consentimento do cliente.
+
 #### Histórico de Revisões
 
 | Data | Versão | Descrição | Autor |
 | --- | --- | --- | --- |
 | 2026-05-18 | 0.1 | Elaboração e revisão inicial dos critérios de DoR e DoD. | Prontuariantes |
 | 2026-06-14 | 0.2 | Consolidação do documento: adição da validação com o cliente (DoR) e métricas de cobertura de testes (DoD). | Prontuariantes |
+| 2026-07-01 | 1.0 | Adição da seção 9.3 detalhando a evidência de validação das USs clínicas com o Dr. Rogério e o controle de DoR para entrada em sprint. | Prontuariantes |
